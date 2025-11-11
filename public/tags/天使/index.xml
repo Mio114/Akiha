@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>天使 on My New Hugo Site</title>
+    <link>https://example.org/tags/%E5%A4%A9%E4%BD%BF/</link>
+    <description>Recent content in 天使 on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://example.org/tags/%E5%A4%A9%E4%BD%BF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ANGEL TYPE</title>
+      <link>https://example.org/games/angel-type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/games/angel-type/</guid>
+      <description>&lt;p&gt;以天使与人类的相遇为主题，讲述了一段跨越种族的爱情故事。作品展现了Minori对奇幻题材的独特诠释。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

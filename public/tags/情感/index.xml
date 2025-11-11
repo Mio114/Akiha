@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>情感 on My New Hugo Site</title>
+    <link>https://example.org/tags/%E6%83%85%E6%84%9F/</link>
+    <description>Recent content in 情感 on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://example.org/tags/%E6%83%85%E6%84%9F/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>无尽的平安夜</title>
+      <link>https://example.org/games/endless-christmas-eve/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/games/endless-christmas-eve/</guid>
+      <description>&lt;p&gt;以十二个月为主题，讲述了十二个独立而又相互关联的故事。作品展现了Minori对短篇故事集的独特处理。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

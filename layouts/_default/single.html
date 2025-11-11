@@ -1,0 +1,42 @@
+{{ define "main" }}
+<article class="page-content">
+    <div class="container">
+        {{ .Content | safeHTML }}
+    </div>
+</article>
+{{ end }}
+
+{{ define "scripts" }}
+<!-- 加载关于页面特定CSS -->
+{{ if eq .Page.RelPermalink "/about/" }}
+    <link rel="stylesheet" href="{{ "css/about.css" | relURL }}">
+{{ end }}
+
+<!-- 加载联系页面特定CSS -->
+{{ if eq .Page.RelPermalink "/contact/" }}
+    <link rel="stylesheet" href="{{ "css/contact.css" | relURL }}">
+{{ end }}
+
+<!-- 加载游戏会社页面特定CSS和JS -->
+{{ if eq .Page.RelPermalink "/products/companies/" }}
+    <link rel="stylesheet" href="{{ "css/companies.css" | relURL }}">
+    <script src="{{ "js/companies-common.js" | relURL }}"></script>
+{{ end }}
+
+<!-- 加载Key社作品页面特定CSS -->
+{{ if eq .Page.RelPermalink "/products/key-works/" }}
+    <link rel="stylesheet" href="{{ "css/companies.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/companies-common.css" | relURL }}">
+{{ end }}
+
+<!-- 加载Minori作品页面特定CSS -->
+{{ if eq .Page.RelPermalink "/products/minori-works/" }}
+    <link rel="stylesheet" href="{{ "css/companies.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/companies-common.css" | relURL }}">
+{{ end }}
+
+<!-- 加载登录页面特定CSS -->
+{{ if eq .Page.RelPermalink "/login/" }}
+    <link rel="stylesheet" href="{{ "css/style-login.css" | relURL }}">
+{{ end }}
+{{ end }}

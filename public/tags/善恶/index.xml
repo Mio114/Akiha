@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>善恶 on My New Hugo Site</title>
+    <link>https://example.org/tags/%E5%96%84%E6%81%B6/</link>
+    <description>Recent content in 善恶 on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://example.org/tags/%E5%96%84%E6%81%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>装甲恶鬼村正</title>
+      <link>https://example.org/games/full-metal-daemon-muramasa/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/games/full-metal-daemon-muramasa/</guid>
+      <description>&lt;p&gt;武士道与善恶观的深刻探讨，展现正义的相对性。这部作品以其复杂的哲学思考和独特的叙事风格成为Nitro+的代表作之一。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

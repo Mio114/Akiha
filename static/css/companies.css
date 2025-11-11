@@ -1,0 +1,372 @@
+/* ===== 游戏会社页面特定样式 ===== */
+.works-banner {
+  background: var(--gradient-primary);
+  color: var(--text-white);
+  text-align: center;
+  padding: 2.5rem 0;
+  margin-bottom: 2.5rem;
+}
+
+.works-banner h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.works-banner p {
+  opacity: 0.9;
+  font-size: 1.25rem;
+}
+
+.company-section {
+  margin-bottom: 2.5rem;
+  background: var(--bg-white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.company-header {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.company-main {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.company-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.company-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center; 
+}
+
+.company-info h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-dark);
+}
+
+.company-info p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.view-all-btn {
+  background: var(--gradient-primary);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.view-all-btn:hover {
+  transform: translateX(3px);
+  box-shadow: var(--shadow-medium);
+}
+
+.company-intro {
+  padding: 1rem 1.5rem;
+  color: var(--text-light);
+  border-top: 1px solid var(--bg-light);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  background: var(--bg-light);
+}
+
+.works-container {
+  position: relative;
+  padding: 1rem 2.2rem;
+}
+
+.works-scroll {
+  overflow-x: hidden; /* 完全禁用横向滚动 */
+  overflow-y: visible;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  /* 确保内容不会溢出 */
+  width: 100%;
+}
+
+.works-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.works-scroll::-webkit-scrollbar-track {
+  background: var(--bg-light);
+  border-radius: 3px;
+}
+
+.works-scroll::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 3px;
+}
+
+.works-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* 优化后的作品卡片样式 - 增大尺寸且包含图片 */
+.work-card {
+  min-width: 240px;
+  max-width: 240px;
+  background: var(--bg-white);
+  border: 1px solid var(--bg-light);
+  border-radius: var(--border-radius);
+  padding: 1.25rem;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-soft);
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.work-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+}
+
+.work-image {
+  width: 100%;
+  height: 140px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.work-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.work-card:hover .work-image img {
+  transform: scale(1.05);
+}
+
+.work-year {
+  background-color:rgba(74, 108, 247, 0.8);
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 0.8rem;
+}
+
+.work-card h4 {
+  font-size: 1.05rem;
+  margin-bottom: 0.7rem;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+
+/* 简介样式 - 添加悬停显示完整简介功能 */
+.work-description {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+  max-height: 3.6em; /* 限制显示行数 */
+  transition: max-height 0.3s ease;
+}
+
+.work-card:hover .work-description {
+  max-height: 140px; /* 悬停时显示更多内容 */
+}
+
+.work-description::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1.2em;
+  background: linear-gradient(transparent, white);
+  transition: opacity 0.3s ease;
+}
+
+.work-card:hover .work-description::after {
+  opacity: 0;
+}
+
+.work-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.work-tag {
+  background: rgba(106, 17, 203, 0.1);
+  color: var(--secondary-color);
+  padding: 0.3rem 0.7rem;
+  border-radius: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: lightpink;
+  border: 1px solid var(--bg-light);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-soft);
+  z-index: 2;
+  font-size: 0.9rem;
+}
+
+.scroll-btn:hover {
+  background-color: darkred;
+  color: white;
+  box-shadow: var(--shadow-medium);
+}
+
+.scroll-btn.prev {
+  left: 0.5rem;
+}
+
+.scroll-btn.next {
+  right: 0.5rem;
+}
+
+.scroll-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ===== 查看更多会社按钮样式 ===== */
+.more-companies-section {
+  text-align: center;
+  padding: 3rem 0;
+  background: var(--bg-white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-soft);
+  margin-top: 2rem;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.more-companies-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  background: var(--gradient-primary);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--border-radius-lg);
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all var(--transition-bounce);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.more-companies-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.more-companies-btn:hover::before {
+  left: 100%;
+}
+
+.more-companies-btn:hover {
+  transform: translateY(-0.5rem) scale(1.05);
+  box-shadow: var(--shadow-hover);
+}
+
+.more-companies-btn:active {
+  transform: translateY(-0.25rem) scale(1.02);
+}
+
+.more-companies-btn .btn-icon {
+  font-size: 1.2rem;
+  transition: transform var(--transition-fast);
+}
+
+.more-companies-btn:hover .btn-icon {
+  transform: translateX(0.25rem);
+}
+
+.more-companies-text {
+  margin-bottom: 1.5rem;
+}
+
+.more-companies-text h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.more-companies-text p {
+  color: var(--text-light);
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .more-companies-section {
+    padding: 2rem 0;
+    margin-top: 1.5rem;
+  }
+  
+  .more-companies-btn {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+  
+  .more-companies-text h2 {
+    font-size: 1.5rem;
+  }
+}

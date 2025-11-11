@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>角色深度 on My New Hugo Site</title>
+    <link>https://example.org/tags/%E8%A7%92%E8%89%B2%E6%B7%B1%E5%BA%A6/</link>
+    <description>Recent content in 角色深度 on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://example.org/tags/%E8%A7%92%E8%89%B2%E6%B7%B1%E5%BA%A6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>罪之光约会-继代深柑篇</title>
+      <link>https://example.org/games/sin-light-fukadai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://example.org/games/sin-light-fukadai/</guid>
+      <description>&lt;p&gt;主要讲述了在《罪之光：约会》的平行世界里，被迫加入美术部的野野村优人与继代深柑——我行我素的美术部部长之间发生的故事。拥有远离尘世的性格、常常说出耐人寻味的话语的深柑，会被另一个孤独的少年染上怎样的颜色呢？&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

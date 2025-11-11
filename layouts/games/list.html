@@ -1,0 +1,100 @@
+{{ define "main" }}
+<div class="games-overview">
+    <!-- 页面标题 -->
+    <header class="games-header">
+        <h1>{{ .Title }}</h1>
+        <p class="page-description">{{ .Description }}</p>
+    </header>
+
+    <!-- 统计信息 -->
+    <section class="games-stats">
+        <div class="stat-card">
+            <div class="stat-number">{{ len .Pages }}</div>
+            <div class="stat-label">总作品数</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ len (where .Pages "Params.developer" "Key") }}</div>
+            <div class="stat-label">Key 作品</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ len (where .Pages "Params.developer" "minori") }}</div>
+            <div class="stat-label">minori 作品</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">{{ len (where .Pages "Params.developer" "Nitro+") }}</div>
+            <div class="stat-label">Nitro+ 作品</div>
+        </div>
+    </section>
+
+    <!-- 筛选控件 -->
+    <section class="games-filters">
+        <div class="filter-group">
+            <label for="company-filter">会社筛选:</label>
+            <select id="company-filter">
+                <option value="">全部会社</option>
+                <option value="Key">Key</option>
+                <option value="minori">minori</option>
+                <option value="Nitro+">Nitro+</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <label for="sort-select">排序方式:</label>
+            <select id="sort-select">
+                <option value="year-desc">发行时间 ↓</option>
+                <option value="year-asc">发行时间 ↑</option>
+                <option value="name-asc">名称 A-Z</option>
+                <option value="name-desc">名称 Z-A</option>
+                <option value="rating-desc">评分 ↓</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <input type="text" id="search-input" placeholder="搜索游戏名称...">
+        </div>
+    </section>
+
+    <!-- 游戏网格 -->
+    <section class="games-grid" id="games-grid">
+        {{ range .Pages.ByDate.Reverse }}
+        <article class="game-card" 
+                 data-company="{{ .Params.developer }}"
+                 data-year="{{ .Params.release_date | dateFormat "2006" }}"
+                 data-name="{{ .Title }}"
+                 data-rating="{{ .Params.rating | default 0 }}">
+            <div class="game-card-image">
+                <img src="{{ .Params.cover_image | default "/images/default-cover.jpg" | relURL }}" 
+                     alt="{{ .Title }}封面" loading="lazy">
+                <span class="game-year">{{ .Params.release_date | dateFormat "2006" }}</span>
+            </div>
+            <div class="game-card-content">
+                <h3 class="game-title">{{ .Title }}</h3>
+                <p class="game-developer">{{ .Params.developer }}</p>
+                <div class="game-description">
+                    {{ .Params.description | default .Summary | truncate 100 }}
+                </div>
+                <div class="game-tags">
+                    {{ range first 3 (.Params.tags | default slice) }}
+                    <span class="game-tag">{{ . }}</span>
+                    {{ end }}
+                </div>
+                <a href="{{ .RelPermalink }}" class="game-link">查看详情 →</a>
+            </div>
+        </article>
+        {{ else }}
+        <div class="games-empty">
+            <p>暂无游戏数据，请先添加游戏内容</p>
+        </div>
+        {{ end }}
+    </section>
+
+    <!-- 空状态 -->
+    <div class="games-empty" id="games-empty" style="display: none;">
+        <p>没有找到匹配的游戏，请尝试调整筛选条件</p>
+    </div>
+</div>
+{{ end }}
+
+{{ define "scripts" }}
+<!-- 加载游戏总览页专用CSS -->
+<link rel="stylesheet" href="{{ "css/games.css" | relURL }}">
+<script src="{{ "js/games.js" | relURL }}"></script>
+{{ end }}
