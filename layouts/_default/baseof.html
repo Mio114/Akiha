@@ -1,5 +1,5 @@
 <!DOCTYPE html> 
-<html lang="zh-CN"> 
+<html lang="zh-CN" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,15 +47,38 @@
       <li><a href="{{ "contact/" | relURL }}">联系我们</a></li>
     </ul>
     
-    <div class="login-container">
-      <a href="{{ "login/" | relURL }}" class="login-btn">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" 
-                stroke="currentColor" stroke-width="2" fill="none"/>
-        </svg>
-        <span class="text">登录/注册</span>
-      </a>
-    </div>
+<!-- 替换原来的主题切换按钮 -->
+<div class="navbar-controls">
+  <!-- 新的主题切换器 -->
+  <label for="theme" class="theme-toggle-new">
+    <span class="theme__toggle-wrap">
+      <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="dark">
+      <span class="theme__fill"></span>
+      <span class="theme__icon">
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+      </span>
+    </span>
+  </label>
+  
+  <!-- 登录按钮保持不变 -->
+  <div class="login-container">
+    <a href="{{ "login/" | relURL }}" class="login-btn">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" 
+              stroke="currentColor" stroke-width="2" fill="none"/>
+      </svg>
+      <span class="text">登录/注册</span>
+    </a>
+  </div>
+</div>
   </nav>
 
   <main>
@@ -87,6 +110,15 @@
     <script src="{{ $mainJS.Permalink }}"></script>
   {{ else }}
     <script src="{{ "js/script.js" | relURL }}"></script>
+  {{ end }}
+
+  <!-- 添加主题切换脚本 -->
+  {{ $themeJS := resources.Get "js/theme-switcher.js" }}
+  {{ if $themeJS }}
+    {{ $themeJS = $themeJS | resources.Minify | fingerprint }}
+    <script src="{{ $themeJS.Permalink }}"></script>
+  {{ else }}
+    <script src="{{ "js/theme-switcher.js" | relURL }}"></script>
   {{ end }}
   
   {{ block "scripts" . }}{{ end }}
