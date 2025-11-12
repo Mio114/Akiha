@@ -16,11 +16,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 状态变量
     let allGameCards = Array.from(gamesGrid.querySelectorAll('.game-card'));
+    const originalGameCards = [...allGameCards]; // 保存原始引用
     let currentPage = 1;
     let pageSize = parseInt(pageSizeSelect?.value || 9);
     
     // 初始隐藏空状态
     gamesEmpty.style.display = 'none';
+    
+    // 检查主题状态
+    function checkThemeState() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        console.log('当前主题状态:', currentTheme);
+        return currentTheme;
+    }
     
     // 全局排序函数
     function sortGames(games, sortValue) {
@@ -61,10 +69,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const startIndex = (page - 1) * pageSize;
         const endIndex = Math.min(startIndex + pageSize, games.length);
         
-        // 显示当前页的游戏
+        console.log(`显示第 ${page} 页: 游戏 ${startIndex + 1}-${endIndex}, 共 ${games.length} 个游戏`);
+        
+        // 显示当前页的游戏 - 使用原始元素
         for (let i = startIndex; i < endIndex; i++) {
-            gamesGrid.appendChild(games[i].cloneNode(true));
+            // 找到在原始数组中的索引
+            const originalIndex = allGameCards.indexOf(games[i]);
+            if (originalIndex !== -1) {
+                gamesGrid.appendChild(originalGameCards[originalIndex]);
+            }
         }
+        
+        // 确保应用当前主题
+        const currentTheme = checkThemeState();
+        gamesGrid.setAttribute('data-theme', currentTheme);
         
         return totalPages;
     }
@@ -81,6 +99,8 @@ document.addEventListener('DOMContentLoaded', function() {
             pageInput.max = totalPages;
             pageInput.value = currentPage;
         }
+        
+        console.log(`分页状态: 第 ${currentPage} 页 / 共 ${totalPages} 页`);
     }
     
     // 主筛选排序分页函数
@@ -88,6 +108,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const companyValue = companyFilter.value;
         const searchValue = searchInput.value.toLowerCase().trim();
         const sortValue = sortSelect.value;
+        
+        console.log('执行筛选排序 - 会社:', companyValue, '搜索:', searchValue, '排序:', sortValue);
         
         // 筛选
         let filteredGames = allGameCards.filter(card => {
@@ -106,6 +128,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             return true;
         });
+        
+        console.log('筛选后游戏数量:', filteredGames.length);
         
         // 排序
         const sortedGames = sortGames(filteredGames, sortValue);
@@ -171,6 +195,17 @@ document.addEventListener('DOMContentLoaded', function() {
         filterSortAndPaginate();
     }
     
+    // 重置到原始状态
+    function resetToOriginal() {
+        // 重新获取原始元素引用
+        allGameCards = [...originalGameCards];
+        currentPage = 1;
+        if (pageInput) pageInput.value = '1';
+        if (companyFilter) companyFilter.value = '';
+        if (sortSelect) sortSelect.value = 'year-desc';
+        if (searchInput) searchInput.value = '';
+    }
+    
     // 事件监听器
     function initEventListeners() {
         // 筛选器事件
@@ -230,12 +265,46 @@ document.addEventListener('DOMContentLoaded', function() {
         if (goToPageBtn) {
             goToPageBtn.addEventListener('click', goToPage);
         }
+        
+        // 监听主题变化
+        const themeToggle = document.getElementById('theme');
+        if (themeToggle) {
+            themeToggle.addEventListener('change', function() {
+                console.log('主题切换事件触发');
+                // 主题切换后短暂延迟然后重新应用筛选分页
+                setTimeout(() => {
+                    filterSortAndPaginate();
+                }, 50);
+            });
+        }
+        
+        // 监听窗口焦点变化（处理浏览器返回等情况）
+        window.addEventListener('focus', function() {
+            // 检查主题状态是否变化
+            const currentTheme = checkThemeState();
+            const lastKnownTheme = window.lastKnownTheme;
+            
+            if (lastKnownTheme !== currentTheme) {
+                console.log('检测到主题变化，重新渲染');
+                filterSortAndPaginate();
+            }
+            
+            window.lastKnownTheme = currentTheme;
+        });
     }
     
     // 初始化
     function init() {
+        console.log('初始化游戏页面筛选排序系统...');
+        console.log('初始游戏数量:', allGameCards.length);
+        
+        // 保存初始主题状态
+        window.lastKnownTheme = checkThemeState();
+        
         initEventListeners();
         filterSortAndPaginate();
+        
+        console.log('游戏页面筛选排序系统初始化完成');
     }
     
     // 启动

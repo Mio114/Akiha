@@ -517,3 +517,54 @@
         width: 100%;
     }
 }
+/* ===== 游戏库页面深色模式背景色修复 ===== */
+
+/* 浅色模式下的背景色（确保有明确定义） */
+.games-overview {
+    background-color: var(--bg-light);
+    min-height: 100vh;
+}
+
+/* 深色模式下的背景色 */
+[data-theme="dark"] .games-overview {
+    background-color: var(--bg-light) !important;
+}
+
+/* 确保 body 和 main 在深色模式下也有正确背景 */
+[data-theme="dark"] body {
+    background-color: var(--bg-light) !important;
+}
+
+[data-theme="dark"] main {
+    background-color: var(--bg-light) !important;
+}
+
+/* 如果 CSS 变量不工作，使用具体颜色值 */
+[data-theme="dark"] .games-overview {
+    background-color: #2d2d2d !important;
+}
+
+[data-theme="dark"] body {
+    background-color: #2d2d2d !important;
+}
+
+[data-theme="dark"] main {
+    background-color: #2d2d2d !important;
+}
+
+/* 浅色模式下的背景色（回退） */
+.games-overview {
+    background-color: #f8f9fa;
+}
+
+[data-theme="light"] .games-overview {
+    background-color: #f8f9fa !important;
+}
+
+[data-theme="light"] body {
+    background-color: #f8f9fa !important;
+}
+
+[data-theme="light"] main {
+    background-color: #f8f9fa !important;
+}
