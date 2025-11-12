@@ -594,15 +594,32 @@ date: 2024-01-15
       </div>
     </section>
   </main>
-
 <!-- 分页控件 -->
 <div class="company-common-pagination">
   <div class="company-common-pagination-controls">
-    <button class="company-common-pagination-btn" id="prev-page" disabled>上一页</button>
+    <button class="company-common-pagination-btn" id="prev-page" disabled>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/>
+      </svg>
+      上一页
+    </button>
+    
     <div class="company-common-pagination-info">
       <span id="current-page">1</span> / <span id="total-pages">1</span>
     </div>
-    <button class="company-common-pagination-btn" id="next-page">下一页</button>
+    
+    <div class="company-common-pagination-input-container">
+      <span class="company-common-pagination-input-label">跳转到:</span>
+      <input type="number" class="company-common-pagination-input" id="page-input" min="1" value="1">
+      <button class="company-common-pagination-go-btn" id="go-to-page">前往</button>
+    </div>
+    
+    <button class="company-common-pagination-btn" id="next-page">
+      下一页
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/>
+      </svg>
+    </button>
   </div>
   
   <div class="company-common-page-size-selector">
@@ -610,7 +627,7 @@ date: 2024-01-15
     <select class="company-common-page-size-select" id="page-size-select">
       <option value="9" selected>9个作品</option>
       <option value="18">18个作品</option>
-      <option value="27">27 个作品</option>
+      <option value="27">27个作品</option>
     </select>
   </div>
 </div>

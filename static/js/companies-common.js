@@ -1,4 +1,4 @@
-// static/js/companies-common.js
+// companies-common.js
 document.addEventListener('DOMContentLoaded', function() {
     console.log('companies-common.js 加载成功');
 
@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const currentPageSpan = document.getElementById('current-page');
     const totalPagesSpan = document.getElementById('total-pages');
     const pageSizeSelect = document.getElementById('page-size-select');
+    const pageInput = document.getElementById('page-input');
+    const goToPageBtn = document.getElementById('go-to-page');
 
     // 检查必要元素是否存在
     if (!worksGrid) {
@@ -137,7 +139,39 @@ document.addEventListener('DOMContentLoaded', function() {
         if (prevPageBtn) prevPageBtn.disabled = currentPage === 1;
         if (nextPageBtn) nextPageBtn.disabled = currentPage === totalPages || totalPages === 0;
         
+        // 更新页码输入框的最大值
+        if (pageInput) {
+            pageInput.max = totalPages;
+            pageInput.value = currentPage;
+        }
+        
         console.log(`分页状态: 第 ${currentPage} 页 / 共 ${totalPages} 页`);
+    }
+
+    // 跳转到指定页面
+    function goToPage() {
+        if (!pageInput) return;
+        
+        const targetPage = parseInt(pageInput.value);
+        const sortedWorks = globalSortWorks(currentSortType);
+        const totalPages = Math.ceil(sortedWorks.length / pageSize);
+        
+        if (isNaN(targetPage) || targetPage < 1 || targetPage > totalPages) {
+            // 输入无效，重置为当前页
+            alert(`请输入有效的页码 (1-${totalPages})`);
+            pageInput.value = currentPage;
+            return;
+        }
+        
+        currentPage = targetPage;
+        applySortAndPagination();
+    }
+
+    // 更新页码输入框的值
+    function updatePageInput() {
+        if (pageInput) {
+            pageInput.value = currentPage;
+        }
     }
 
     // 初始化事件监听
@@ -157,6 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 应用新排序
                 currentSortType = this.getAttribute('data-sort');
                 currentPage = 1; // 重置到第一页
+                updatePageInput();
                 applySortAndPagination();
             });
         });
@@ -166,6 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
             prevPageBtn.addEventListener('click', function() {
                 if (currentPage > 1) {
                     currentPage--;
+                    updatePageInput();
                     applySortAndPagination();
                 }
             });
@@ -179,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (currentPage < totalPages) {
                     currentPage++;
+                    updatePageInput();
                     applySortAndPagination();
                 }
             });
@@ -189,8 +226,23 @@ document.addEventListener('DOMContentLoaded', function() {
             pageSizeSelect.addEventListener('change', function() {
                 pageSize = parseInt(this.value);
                 currentPage = 1; // 重置到第一页
+                updatePageInput();
                 applySortAndPagination();
             });
+        }
+        
+        // 页码输入框事件
+        if (pageInput) {
+            pageInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    goToPage();
+                }
+            });
+        }
+        
+        // 前往按钮事件
+        if (goToPageBtn) {
+            goToPageBtn.addEventListener('click', goToPage);
         }
     }
 

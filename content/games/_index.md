@@ -1,6 +1,6 @@
 ---
 title: "游戏作品总览"
-description: "探索完整的 Galgame 作品库 - 包含 Key、minori、Nitro+ 等知名会社的经典作品"
+description: "探索完整的 Galgame 作品库 - 包含各会社的经典作品"
 date: 2024-01-15
 ---
 
