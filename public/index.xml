@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>My New Hugo Site</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Key社作品</title>
+      <link>http://localhost:1313/products/key-works/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/products/key-works/</guid>
+      <description>&lt;style&gt;&#xD;&#xA;  /* Key 会社特定颜色主题 */&#xD;&#xA;  :root {&#xD;&#xA;    --key-primary-color: #4A6CF7;&#xD;&#xA;    --key-secondary-color: #6A11CB;&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .key-company-info h2 {&#xD;&#xA;    background: linear-gradient(135deg, var(--key-primary-color), var(--key-secondary-color));&#xD;&#xA;    -webkit-background-clip: text;&#xD;&#xA;    -webkit-text-fill-color: transparent;&#xD;&#xA;    background-clip: text;&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-detail-icon {&#xD;&#xA;    color: var(--key-primary-color); &#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-detail-value {&#xD;&#xA;    background: rgba(106, 17, 203, 0.08);&#xD;&#xA;    border: 1px solid rgba(106, 17, 203, 0.1);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-website-link {&#xD;&#xA;    color: var(--key-primary-color);&#xD;&#xA;    background: rgba(74, 108, 247, 0.08);&#xD;&#xA;    border: 1.5px solid rgba(74, 108, 247, 0.15);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-stat-number {&#xD;&#xA;    color: var(--key-primary-color);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-works-section h2 {&#xD;&#xA;    border-bottom-color: var(--key-primary-color);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-works-section h2::after {&#xD;&#xA;    background: linear-gradient(90deg, var(--key-primary-color), var(--key-secondary-color));&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-work-year {&#xD;&#xA;    background: linear-gradient(135deg, var(--key-primary-color), var(--key-secondary-color));&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-work-tag {&#xD;&#xA;    background: rgba(106, 17, 203, 0.1);&#xD;&#xA;    color: var(--key-primary-color);&#xD;&#xA;    border: 1px solid rgba(106, 17, 203, 0.2);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-work-link {&#xD;&#xA;    color: var(--key-primary-color);&#xD;&#xA;    background: rgba(74, 108, 247, 0.08);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-sort-option:hover {&#xD;&#xA;    background: rgba(74, 108, 247, 0.1);&#xD;&#xA;    color: var(--key-primary-color);&#xD;&#xA;    border-color: rgba(74, 108, 247, 0.2);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-sort-option.active {&#xD;&#xA;    background: var(--key-primary-color);&#xD;&#xA;    border-color: var(--key-primary-color);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-sort-status {&#xD;&#xA;    background: rgba(74, 108, 247, 0.08);&#xD;&#xA;    border: 1px solid rgba(74, 108, 247, 0.1);&#xD;&#xA;  }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&#xD;&#xA;&lt;!-- Key 会社信息 --&gt;&#xD;&#xA;&lt;section class=&#34;company-common-info key-company-info&#34;&gt;&#xD;&#xA;  &lt;div class=&#34;company-common-logo-large&#34;&gt;&#xD;&#xA;    &lt;img src=&#34;http://localhost:1313/images/Key_LOGO.jpg&#34; alt=&#34;Key&#34;&gt;&#xD;&#xA;  &lt;/div&gt;&#xD;&#xA;  &lt;div class=&#34;company-common-info-text&#34;&gt;&#xD;&#xA;    &lt;h2&gt;Key&lt;/h2&gt;&#xD;&#xA;    &lt;p&gt;Key是Visual Arts旗下的视觉小说品牌，成立于1998年7月21日。以其深刻的情感描写和催人泪下的剧情而闻名，作品往往探讨亲情、友情和爱情等永恒主题，在玩家中享有&#34;泣きゲー&#34;（催泪游戏）的美誉。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Minori作品</title>
+      <link>http://localhost:1313/products/minori-works/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/products/minori-works/</guid>
+      <description>&lt;style&gt;&#xD;&#xA;  /* Minori 会社特定颜色主题 */&#xD;&#xA;  :root {&#xD;&#xA;    --minori-primary-color: #FF6B6B;&#xD;&#xA;    --minori-secondary-color: #FF8E53;&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .minori-company-info h2 {&#xD;&#xA;    background: linear-gradient(135deg, var(--minori-primary-color), var(--minori-secondary-color));&#xD;&#xA;    -webkit-background-clip: text;&#xD;&#xA;    -webkit-text-fill-color: transparent;&#xD;&#xA;    background-clip: text;&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-detail-icon {&#xD;&#xA;    color: var(--minori-primary-color);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-detail-value {&#xD;&#xA;    background: rgba(255, 107, 107, 0.08);&#xD;&#xA;    border: 1px solid rgba(255, 107, 107, 0.1);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-website-link {&#xD;&#xA;    color: var(--minori-primary-color);&#xD;&#xA;    background: rgba(255, 107, 107, 0.08);&#xD;&#xA;    border: 1.5px solid rgba(255, 107, 107, 0.15);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-stat-number {&#xD;&#xA;    color: var(--minori-primary-color);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-works-section h2 {&#xD;&#xA;    border-bottom-color: var(--minori-primary-color);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-works-section h2::after {&#xD;&#xA;    background: linear-gradient(90deg, var(--minori-primary-color), var(--minori-secondary-color));&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-work-year {&#xD;&#xA;    background: linear-gradient(135deg, var(--minori-primary-color), var(--minori-secondary-color));&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-work-tag {&#xD;&#xA;    background: rgba(255, 107, 107, 0.1);&#xD;&#xA;    color: var(--minori-primary-color);&#xD;&#xA;    border: 1px solid rgba(255, 107, 107, 0.2);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-work-link {&#xD;&#xA;    color: var(--minori-primary-color);&#xD;&#xA;    background: rgba(255, 107, 107, 0.08);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-sort-option:hover {&#xD;&#xA;    background: rgba(255, 107, 107, 0.1);&#xD;&#xA;    color: var(--minori-primary-color);&#xD;&#xA;    border-color: rgba(255, 107, 107, 0.2);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-sort-option.active {&#xD;&#xA;    background: var(--minori-primary-color);&#xD;&#xA;    border-color: var(--minori-primary-color);&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  .company-common-sort-status {&#xD;&#xA;    background: rgba(255, 107, 107, 0.08);&#xD;&#xA;    border: 1px solid rgba(255, 107, 107, 0.1);&#xD;&#xA;  }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&#xD;&#xA;&lt;!-- Minori 会社信息 --&gt;&#xD;&#xA;&lt;section class=&#34;company-common-info minori-company-info&#34;&gt;&#xD;&#xA;  &lt;div class=&#34;company-common-logo-large&#34;&gt;&#xD;&#xA;    &lt;img src=&#34;http://localhost:1313/images/Minori.jpg&#34; alt=&#34;Minori&#34;&gt;&#xD;&#xA;  &lt;/div&gt;&#xD;&#xA;  &lt;div class=&#34;company-common-info-text&#34;&gt;&#xD;&#xA;    &lt;h2&gt;Minori&lt;/h2&gt;&#xD;&#xA;    &lt;p&gt;Minori是日本知名的视觉小说游戏开发商，成立于1997年。以其精美的视觉效果、深刻的剧情和独特的艺术风格而闻名，作品常常探讨人生、梦想和成长等主题。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>关于我们</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;section class=&#34;content-section&#34;&gt;&#xD;&#xA;  &lt;h2&gt;平台简介&lt;/h2&gt;&#xD;&#xA;  &lt;p class=&#34;intro-text&#34;&gt;AKIHA FIELD 是一个专注于&lt;span class=&#34;highlight&#34;&gt;Galgame收藏与分享&lt;/span&gt;的在线平台，由一群热爱视觉小说的爱好者共同创建和维护。&lt;/p&gt;&#xD;&#xA;  &lt;p&gt;我们致力于收集和整理网络上优秀的Galgame资源，为玩家提供一个&lt;span class=&#34;highlight&#34;&gt;便捷、全面&lt;/span&gt;的游戏发现和分享空间。&lt;/p&gt;&#xD;&#xA;  &lt;p&gt;我们的名字源自&lt;span class=&#34;highlight&#34;&gt;秋叶原(Akihabara)&lt;/span&gt;，这个二次元文化的圣地，代表着我们对Galgame文化的热爱与传承。&lt;/p&gt;&#xD;&#xA;&lt;/section&gt;&#xD;&#xA;&lt;section class=&#34;content-section mission-section&#34;&gt;&#xD;&#xA;  &lt;h2&gt;我们的使命&lt;/h2&gt;&#xD;&#xA;  &lt;p&gt;我们致力于成为连接Galgame玩家与优秀作品的桥梁，让更多人能够接触和了解这一独特的艺术形式。&lt;/p&gt;&#xD;&#xA;  &lt;p&gt;通过我们的平台，玩家可以轻松发现经典作品，了解最新资讯，并与志同道合的朋友分享游戏体验。&lt;/p&gt;&#xD;&#xA;  &lt;p&gt;感谢您对AKIHA FIELD的支持，我们会继续努力，为Galgame爱好者提供更好的服务！&lt;/p&gt;&#xD;&#xA;&lt;/section&gt;</description>
+    </item>
+    <item>
+      <title>游戏会社作品</title>
+      <link>http://localhost:1313/products/companies/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/products/companies/</guid>
+      <description>&lt;!-- Key社 --&gt;&#xD;&#xA;&lt;section class=&#34;company-section&#34; data-company=&#34;Key&#34;&gt;&#xD;&#xA;  &lt;div class=&#34;company-header&#34;&gt;&#xD;&#xA;    &lt;div class=&#34;company-main&#34;&gt;&#xD;&#xA;      &lt;div class=&#34;company-logo&#34;&gt;&#xD;&#xA;        &lt;img src=&#34;http://localhost:1313/images/Key_LOGO.jpg&#34; alt=&#34;Key&#34;&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;      &lt;div class=&#34;company-info&#34;&gt;&#xD;&#xA;        &lt;h2&gt;Key&lt;/h2&gt;&#xD;&#xA;        &lt;p&gt;视觉小说品牌 · 1998年成立&lt;/p&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &lt;a href=&#34;http://localhost:1313/products/key-works/&#34; class=&#34;view-all-btn&#34;&gt;&#xD;&#xA;      查看全部&#xD;&#xA;      &lt;span&gt;▶&lt;/span&gt;&#xD;&#xA;    &lt;/a&gt;&#xD;&#xA;  &lt;/div&gt;&#xD;&#xA;  &#xD;&#xA;  &lt;div class=&#34;company-intro&#34;&gt;&#xD;&#xA;    以催人泪下的剧情和深刻的角色塑造闻名，被誉为&#34;泣きゲー&#34;的代表。作品往往探讨亲情、友情和爱情等永恒主题。&#xD;&#xA;  &lt;/div&gt;&#xD;&#xA;&#xD;&#xA;  &lt;div class=&#34;works-container&#34;&gt;&#xD;&#xA;    &lt;button class=&#34;scroll-btn prev hidden&#34;&gt;‹&lt;/button&gt;&#xD;&#xA;    &lt;div class=&#34;works-scroll&#34; id=&#34;key-scroll&#34;&gt;&#xD;&#xA;      &lt;div class=&#34;work-card&#34; data-game=&#34;CLANNAD&#34;&gt;&#xD;&#xA;        &lt;div class=&#34;work-image&#34;&gt;&#xD;&#xA;          &lt;img src=&#34;http://localhost:1313/images/CLANNAD.jpg&#34; alt=&#34;CLANNAD&#34;&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;span class=&#34;work-year&#34;&gt;2004&lt;/span&gt;&#xD;&#xA;        &lt;h4&gt;CLANNAD&lt;/h4&gt;&#xD;&#xA;        &lt;div class=&#34;work-description&#34;&gt;&#xD;&#xA;          被誉为&#34;人生&#34;的视觉小说，通过主角冈崎朋也的成长故事，深刻探讨了家庭、亲情和人生的意义。这部作品以其感人至深的剧情和深刻的主题赢得了全球玩家的喜爱。&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;div class=&#34;work-tags&#34;&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;校园&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;亲情&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;催泪&lt;/span&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;&#xD;&#xA;      &lt;div class=&#34;work-card&#34; data-game=&#34;AIR&#34;&gt;&#xD;&#xA;        &lt;div class=&#34;work-image&#34;&gt;&#xD;&#xA;          &lt;img src=&#34;http://localhost:1313/images/AIR.jpg&#34; alt=&#34;AIR&#34;&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;span class=&#34;work-year&#34;&gt;2000&lt;/span&gt;&#xD;&#xA;        &lt;h4&gt;AIR&lt;/h4&gt;&#xD;&#xA;        &lt;div class=&#34;work-description&#34;&gt;&#xD;&#xA;          夏日、天空与千年诅咒的故事，以独特的叙事结构和深刻的情感描写成为Key社的经典之作。这部作品以其唯美的画面和感人的剧情赢得了广泛赞誉。&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;div class=&#34;work-tags&#34;&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;夏日&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;传说&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;治愈&lt;/span&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;&#xD;&#xA;      &lt;div class=&#34;work-card&#34; data-game=&#34;Summer Pockets&#34;&gt;&#xD;&#xA;        &lt;div class=&#34;work-image&#34;&gt;&#xD;&#xA;          &lt;img src=&#34;http://localhost:1313/images/夏日口袋Summer Pockets.jpg&#34; alt=&#34;Summer Pockets&#34;&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;span class=&#34;work-year&#34;&gt;2018&lt;/span&gt;&#xD;&#xA;        &lt;h4&gt;Summer Pockets&lt;/h4&gt;&#xD;&#xA;        &lt;div class=&#34;work-description&#34;&gt;&#xD;&#xA;          以濑户内海的夏日小岛为舞台，讲述了一个充满怀旧与感动的夏日物语。这部作品融合了Key社一贯的感人剧情和夏日氛围，带给玩家温暖与感动。&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;div class=&#34;work-tags&#34;&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;夏日&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;岛屿&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;怀旧&lt;/span&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;&#xD;&#xA;      &lt;div class=&#34;work-card&#34; data-game=&#34;Little Busters!&#34;&gt;&#xD;&#xA;        &lt;div class=&#34;work-image&#34;&gt;&#xD;&#xA;          &lt;img src=&#34;http://localhost:1313/images/小小克星Little Busters.jpg&#34; alt=&#34;Little Busters!&#34;&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;span class=&#34;work-year&#34;&gt;2007&lt;/span&gt;&#xD;&#xA;        &lt;h4&gt;Little Busters!&lt;/h4&gt;&#xD;&#xA;        &lt;div class=&#34;work-description&#34;&gt;&#xD;&#xA;          以友情为主题的青春群像剧，通过棒球社团的活动探讨友情与成长的意义。这部作品以其丰富的角色塑造和感人的友情故事深受玩家喜爱。&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;div class=&#34;work-tags&#34;&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;友情&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;校园&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;成长&lt;/span&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;&#xD;&#xA;      &lt;div class=&#34;work-card&#34; data-game=&#34;Kanon&#34;&gt;&#xD;&#xA;        &lt;div class=&#34;work-image&#34;&gt;&#xD;&#xA;          &lt;img src=&#34;http://localhost:1313/images/Kanon.jpg&#34; alt=&#34;Kanon&#34;&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;span class=&#34;work-year&#34;&gt;1999&lt;/span&gt;&#xD;&#xA;        &lt;h4&gt;Kanon&lt;/h4&gt;&#xD;&#xA;        &lt;div class=&#34;work-description&#34;&gt;&#xD;&#xA;          冬季的奇迹与重逢的故事，以雪景为背景讲述了一段感人至深的爱情故事。这部作品奠定了Key社在视觉小说领域的地位。&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;div class=&#34;work-tags&#34;&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;冬季&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;奇迹&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;爱情&lt;/span&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &lt;button class=&#34;scroll-btn next&#34;&gt;›&lt;/button&gt;&#xD;&#xA;  &lt;/div&gt;&#xD;&#xA;&lt;/section&gt;&#xD;&#xA;&#xD;&#xA;&lt;!-- minori --&gt;&#xD;&#xA;&lt;section class=&#34;company-section&#34; data-company=&#34;minori&#34;&gt;&#xD;&#xA;  &lt;div class=&#34;company-header&#34;&gt;&#xD;&#xA;    &lt;div class=&#34;company-main&#34;&gt;&#xD;&#xA;      &lt;div class=&#34;company-logo&#34;&gt;&#xD;&#xA;        &lt;img src=&#34;http://localhost:1313/images/Minori.jpg&#34; alt=&#34;minori&#34;&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;      &lt;div class=&#34;company-info&#34;&gt;&#xD;&#xA;        &lt;h2&gt;minori&lt;/h2&gt;&#xD;&#xA;        &lt;p&gt;游戏公司 · 2000年成立&lt;/p&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &lt;a href=&#34;http://localhost:1313/products/minori-works/&#34; class=&#34;view-all-btn&#34;&gt;&#xD;&#xA;      查看全部&#xD;&#xA;      &lt;span&gt;▶&lt;/span&gt;&#xD;&#xA;    &lt;/a&gt;&#xD;&#xA;  &lt;/div&gt;&#xD;&#xA;  &#xD;&#xA;  &lt;div class=&#34;company-intro&#34;&gt;&#xD;&#xA;    以&#34;我们编织的是感动&#34;为理念，作品以其精美的画面、深刻的剧情和独特的演出风格著称，尤其擅长描绘人物细腻的情感变化。&#xD;&#xA;  &lt;/div&gt;&#xD;&#xA;&#xD;&#xA;  &lt;div class=&#34;works-container&#34;&gt;&#xD;&#xA;    &lt;button class=&#34;scroll-btn prev hidden&#34;&gt;‹&lt;/button&gt;&#xD;&#xA;    &lt;div class=&#34;works-scroll&#34; id=&#34;minori-scroll&#34;&gt;&#xD;&#xA;      &lt;div class=&#34;work-card&#34; data-game=&#34;悠久之翼-前篇&#34;&gt;&#xD;&#xA;        &lt;div class=&#34;work-image&#34;&gt;&#xD;&#xA;          &lt;img src=&#34;http://localhost:1313/images/悠久之翼-前篇.jpg&#34; alt=&#34;ef - the first tale.&#34;&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;span class=&#34;work-year&#34;&gt;2006&lt;/span&gt;&#xD;&#xA;        &lt;h4&gt;悠久之翼-前篇&lt;/h4&gt;&#xD;&#xA;        &lt;div class=&#34;work-description&#34;&gt;&#xD;&#xA;          交织在音羽镇的两段爱情故事，以其独特的叙事手法和电影化演出闻名。作品深刻探讨了爱情、命运与救赎的主题。&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;div class=&#34;work-tags&#34;&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;视觉小说&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;爱情&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;命运&lt;/span&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;&#xD;&#xA;      &lt;div class=&#34;work-card&#34; data-game=&#34;eden*&#34;&gt;&#xD;&#xA;        &lt;div class=&#34;work-image&#34;&gt;&#xD;&#xA;          &lt;img src=&#34;http://localhost:1313/images/Eden.jpg&#34; alt=&#34;eden*&#34;&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;span class=&#34;work-year&#34;&gt;2009&lt;/span&gt;&#xD;&#xA;        &lt;h4&gt;eden*&lt;/h4&gt;&#xD;&#xA;        &lt;div class=&#34;work-description&#34;&gt;&#xD;&#xA;          在世界末日背景下，少年与最后的人造人少女之间纯粹而悲伤的爱情故事。以其唯美的画面和感人至深的剧情成为经典。&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;div class=&#34;work-tags&#34;&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;末世&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;爱情&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;科幻&lt;/span&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;&#xD;&#xA;      &lt;div class=&#34;work-card&#34; data-game=&#34;春天来了&#34;&gt;&#xD;&#xA;        &lt;div class=&#34;work-image&#34;&gt;&#xD;&#xA;          &lt;img src=&#34;http://localhost:1313/images/春天来了.jpg&#34; alt=&#34;春天来了&#34;&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;span class=&#34;work-year&#34;&gt;2012&lt;/span&gt;&#xD;&#xA;        &lt;h4&gt;春天来了&lt;/h4&gt;&#xD;&#xA;        &lt;div class=&#34;work-description&#34;&gt;&#xD;&#xA;          以音乐和魔法为主题，讲述少年与魔法少女们的奇幻冒险。延续了minori一贯的精美制作水准和感人剧情。&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;div class=&#34;work-tags&#34;&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;魔法&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;音乐&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;奇幻&lt;/span&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;&#xD;&#xA;      &lt;div class=&#34;work-card&#34; data-game=&#34;夏空的英仙座&#34;&gt;&#xD;&#xA;        &lt;div class=&#34;work-image&#34;&gt;&#xD;&#xA;          &lt;img src=&#34;http://localhost:1313/images/夏空的英仙座.jpg&#34; alt=&#34;夏空的英仙座&#34;&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;span class=&#34;work-year&#34;&gt;2012&lt;/span&gt;&#xD;&#xA;        &lt;h4&gt;夏空的英仙座&lt;/h4&gt;&#xD;&#xA;        &lt;div class=&#34;work-description&#34;&gt;&#xD;&#xA;          以夏日乡村为舞台的感人故事，讲述少年与少女们之间的羁绊与成长，充满青春与治愈的气息。&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;div class=&#34;work-tags&#34;&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;夏日&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;乡村&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;治愈&lt;/span&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;&#xD;&#xA;      &lt;div class=&#34;work-card&#34; data-game=&#34;永不落幕的前奏诗&#34;&gt;&#xD;&#xA;        &lt;div class=&#34;work-image&#34;&gt;&#xD;&#xA;          &lt;img src=&#34;http://localhost:1313/images/永不落幕的前奏诗.png&#34; alt=&#34;永不落幕的前奏诗&#34;&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;span class=&#34;work-year&#34;&gt;2015&lt;/span&gt;&#xD;&#xA;        &lt;h4&gt;永不落幕的前奏诗&lt;/h4&gt;&#xD;&#xA;        &lt;div class=&#34;work-description&#34;&gt;&#xD;&#xA;          充满幻想色彩的爱情故事，以音乐和命运为主题，讲述跨越时空的邂逅与永恒的爱恋。&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;        &lt;div class=&#34;work-tags&#34;&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;幻想&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;音乐&lt;/span&gt;&#xD;&#xA;          &lt;span class=&#34;work-tag&#34;&gt;命运&lt;/span&gt;&#xD;&#xA;        &lt;/div&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &lt;button class=&#34;scroll-btn next&#34;&gt;›&lt;/button&gt;&#xD;&#xA;  &lt;/div&gt;&#xD;&#xA;&lt;/section&gt;&#xD;&#xA;&#xD;&#xA;&lt;!-- Nitro+ --&gt;&#xD;&#xA;&lt;section class=&#34;company-section&#34; data-company=&#34;Nitro+&#34;&gt;&#xD;&#xA;  &lt;div class=&#34;company-header&#34;&gt;&#xD;&#xA;    &lt;div class=&#34;company-main&#34;&gt;&#xD;&#xA;      &lt;div class=&#34;company-logo&#34;&gt;&#xD;&#xA;        &lt;img src=&#34;http://localhost:1313/images/Nitro Plus.jpg&#34; alt=&#34;Nitro+&#34;&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;      &lt;div class=&#34;company-info&#34;&gt;&#xD;&#xA;        &lt;h2&gt;Nitro+&lt;/h2&gt;&#xD;&#xA;        &lt;p&gt;视觉小说开发商 · 2000年成立&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>用户服务协议</title>
+      <link>http://localhost:1313/user-agreement/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/user-agreement/</guid>
+      <description>&lt;style&gt;&#xD;&#xA;    * {&#xD;&#xA;        margin: 0;&#xD;&#xA;        padding: 0;&#xD;&#xA;        box-sizing: border-box;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    body {&#xD;&#xA;        font-family: &#39;Microsoft YaHei&#39;, Arial, sans-serif;&#xD;&#xA;        line-height: 1.6;&#xD;&#xA;        color: #333;&#xD;&#xA;        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);&#xD;&#xA;        min-height: 100vh;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .container {&#xD;&#xA;        max-width: 1000px;&#xD;&#xA;        margin: 0 auto;&#xD;&#xA;        padding: 40px 20px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .agreement-header {&#xD;&#xA;        text-align: center;&#xD;&#xA;        margin-bottom: 40px;&#xD;&#xA;        padding: 30px;&#xD;&#xA;        background: white;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        box-shadow: 0 4px 6px rgba(0,0,0,0.1);&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .agreement-header h1 {&#xD;&#xA;        color: #6a11cb;&#xD;&#xA;        font-size: 2.5rem;&#xD;&#xA;        margin-bottom: 10px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .agreement-header .subtitle {&#xD;&#xA;        color: #666;&#xD;&#xA;        font-size: 1.1rem;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .agreement-content {&#xD;&#xA;        background: white;&#xD;&#xA;        padding: 40px;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        box-shadow: 0 4px 6px rgba(0,0,0,0.1);&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section {&#xD;&#xA;        margin-bottom: 30px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section h2 {&#xD;&#xA;        color: #6a11cb;&#xD;&#xA;        font-size: 1.5rem;&#xD;&#xA;        margin-bottom: 15px;&#xD;&#xA;        padding-bottom: 10px;&#xD;&#xA;        border-bottom: 2px solid #e9ecef;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section p {&#xD;&#xA;        margin-bottom: 15px;&#xD;&#xA;        text-align: justify;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section ul {&#xD;&#xA;        margin-left: 20px;&#xD;&#xA;        margin-bottom: 15px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section li {&#xD;&#xA;        margin-bottom: 8px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .highlight {&#xD;&#xA;        background: #fff3cd;&#xD;&#xA;        padding: 15px;&#xD;&#xA;        border-left: 4px solid #ffc107;&#xD;&#xA;        margin: 15px 0;&#xD;&#xA;        border-radius: 4px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .back-btn {&#xD;&#xA;        display: inline-block;&#xD;&#xA;        padding: 12px 30px;&#xD;&#xA;        background: linear-gradient(to right, #6a11cb, #2575fc);&#xD;&#xA;        color: white;&#xD;&#xA;        text-decoration: none;&#xD;&#xA;        border-radius: 25px;&#xD;&#xA;        font-weight: 600;&#xD;&#xA;        transition: all 0.3s;&#xD;&#xA;        border: none;&#xD;&#xA;        cursor: pointer;&#xD;&#xA;        margin-top: 20px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .back-btn:hover {&#xD;&#xA;        transform: translateY(-2px);&#xD;&#xA;        box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .footer {&#xD;&#xA;        text-align: center;&#xD;&#xA;        margin-top: 40px;&#xD;&#xA;        color: #666;&#xD;&#xA;        font-size: 0.9rem;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    @media (max-width: 768px) {&#xD;&#xA;        .container {&#xD;&#xA;            padding: 20px 15px;&#xD;&#xA;        }&#xD;&#xA;        &#xD;&#xA;        .agreement-content {&#xD;&#xA;            padding: 20px;&#xD;&#xA;        }&#xD;&#xA;        &#xD;&#xA;        .agreement-header h1 {&#xD;&#xA;            font-size: 2rem;&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&#xD;&#xA;&lt;div class=&#34;container&#34;&gt;&#xD;&#xA;    &lt;div class=&#34;agreement-header&#34;&gt;&#xD;&#xA;        &lt;h1&gt;用户服务协议&lt;/h1&gt;&#xD;&#xA;        &lt;div class=&#34;subtitle&#34;&gt;最后更新日期：2025年10月&lt;/div&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &#xD;&#xA;    &lt;div class=&#34;agreement-content&#34;&gt;&#xD;&#xA;        &lt;div class=&#34;section&#34;&gt;&#xD;&#xA;            &lt;h2&gt;一、总则&lt;/h2&gt;&#xD;&#xA;            &lt;p&gt;欢迎您使用AKIHA FIELD提供的服务。本协议是您与AKIHA FIELD（以下简称&#34;我们&#34;或&#34;平台&#34;）之间就使用平台服务所订立的协议。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>电信欺诈应对公告</title>
+      <link>http://localhost:1313/fraud-prevention/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/fraud-prevention/</guid>
+      <description>&lt;style&gt;&#xD;&#xA;    * {&#xD;&#xA;        margin: 0;&#xD;&#xA;        padding: 0;&#xD;&#xA;        box-sizing: border-box;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    body {&#xD;&#xA;        font-family: &#39;Microsoft YaHei&#39;, Arial, sans-serif;&#xD;&#xA;        line-height: 1.6;&#xD;&#xA;        color: #333;&#xD;&#xA;        background: linear-gradient(135deg, #fff5f5 0%, #ffe6e6 100%);&#xD;&#xA;        min-height: 100vh;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .container {&#xD;&#xA;        max-width: 1000px;&#xD;&#xA;        margin: 0 auto;&#xD;&#xA;        padding: 40px 20px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .announcement-header {&#xD;&#xA;        text-align: center;&#xD;&#xA;        margin-bottom: 40px;&#xD;&#xA;        padding: 30px;&#xD;&#xA;        background: white;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        box-shadow: 0 4px 6px rgba(0,0,0,0.1);&#xD;&#xA;        border-left: 6px solid #dc3545;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .announcement-header h1 {&#xD;&#xA;        color: #dc3545;&#xD;&#xA;        font-size: 2.5rem;&#xD;&#xA;        margin-bottom: 10px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .announcement-header .subtitle {&#xD;&#xA;        color: #666;&#xD;&#xA;        font-size: 1.1rem;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .announcement-content {&#xD;&#xA;        background: white;&#xD;&#xA;        padding: 40px;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        box-shadow: 0 4px 6px rgba(0,0,0,0.1);&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section {&#xD;&#xA;        margin-bottom: 30px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section h2 {&#xD;&#xA;        color: #dc3545;&#xD;&#xA;        font-size: 1.5rem;&#xD;&#xA;        margin-bottom: 15px;&#xD;&#xA;        padding-bottom: 10px;&#xD;&#xA;        border-bottom: 2px solid #e9ecef;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section p {&#xD;&#xA;        margin-bottom: 15px;&#xD;&#xA;        text-align: justify;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section ul {&#xD;&#xA;        margin-left: 20px;&#xD;&#xA;        margin-bottom: 15px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section li {&#xD;&#xA;        margin-bottom: 8px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .warning {&#xD;&#xA;        background: #f8d7da;&#xD;&#xA;        padding: 20px;&#xD;&#xA;        border-left: 6px solid #dc3545;&#xD;&#xA;        margin: 20px 0;&#xD;&#xA;        border-radius: 4px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .important {&#xD;&#xA;        background: #fff3cd;&#xD;&#xA;        padding: 20px;&#xD;&#xA;        border-left: 6px solid #ffc107;&#xD;&#xA;        margin: 20px 0;&#xD;&#xA;        border-radius: 4px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .tips {&#xD;&#xA;        background: #d1edff;&#xD;&#xA;        padding: 20px;&#xD;&#xA;        border-left: 6px solid #0d6efd;&#xD;&#xA;        margin: 20px 0;&#xD;&#xA;        border-radius: 4px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .fraud-types {&#xD;&#xA;        display: grid;&#xD;&#xA;        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));&#xD;&#xA;        gap: 20px;&#xD;&#xA;        margin: 20px 0;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .fraud-type {&#xD;&#xA;        background: #f8f9fa;&#xD;&#xA;        padding: 20px;&#xD;&#xA;        border-radius: 8px;&#xD;&#xA;        border: 1px solid #dee2e6;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .fraud-type h3 {&#xD;&#xA;        color: #dc3545;&#xD;&#xA;        margin-bottom: 10px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .back-btn {&#xD;&#xA;        display: inline-block;&#xD;&#xA;        padding: 12px 30px;&#xD;&#xA;        background: linear-gradient(to right, #dc3545, #e35d6a);&#xD;&#xA;        color: white;&#xD;&#xA;        text-decoration: none;&#xD;&#xA;        border-radius: 25px;&#xD;&#xA;        font-weight: 600;&#xD;&#xA;        transition: all 0.3s;&#xD;&#xA;        border: none;&#xD;&#xA;        cursor: pointer;&#xD;&#xA;        margin-top: 20px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .back-btn:hover {&#xD;&#xA;        transform: translateY(-2px);&#xD;&#xA;        box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .emergency-contact {&#xD;&#xA;        background: #dc3545;&#xD;&#xA;        color: white;&#xD;&#xA;        padding: 25px;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        text-align: center;&#xD;&#xA;        margin: 30px 0;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .emergency-contact h3 {&#xD;&#xA;        margin-bottom: 15px;&#xD;&#xA;        font-size: 1.3rem;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .footer {&#xD;&#xA;        text-align: center;&#xD;&#xA;        margin-top: 40px;&#xD;&#xA;        color: #666;&#xD;&#xA;        font-size: 0.9rem;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    @media (max-width: 768px) {&#xD;&#xA;        .container {&#xD;&#xA;            padding: 20px 15px;&#xD;&#xA;        }&#xD;&#xA;        &#xD;&#xA;        .announcement-content {&#xD;&#xA;            padding: 20px;&#xD;&#xA;        }&#xD;&#xA;        &#xD;&#xA;        .announcement-header h1 {&#xD;&#xA;            font-size: 2rem;&#xD;&#xA;        }&#xD;&#xA;        &#xD;&#xA;        .fraud-types {&#xD;&#xA;            grid-template-columns: 1fr;&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&#xD;&#xA;&lt;div class=&#34;container&#34;&gt;&#xD;&#xA;    &lt;div class=&#34;announcement-header&#34;&gt;&#xD;&#xA;        &lt;h1&gt;关于强化应对电信欺诈行为的公告&lt;/h1&gt;&#xD;&#xA;        &lt;div class=&#34;subtitle&#34;&gt;最后更新日期：2025年10月&lt;/div&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &#xD;&#xA;    &lt;div class=&#34;announcement-content&#34;&gt;&#xD;&#xA;        &lt;div class=&#34;warning&#34;&gt;&#xD;&#xA;            &lt;h2&gt;⚠️ 重要安全警示&lt;/h2&gt;&#xD;&#xA;            &lt;p&gt;近期电信网络诈骗案件频发，为保护您的财产安全，请务必仔细阅读本公告并提高警惕！&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>登录与注册</title>
+      <link>http://localhost:1313/login/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/login/</guid>
+      <description>&lt;div class=&#34;floating-elements&#34;&gt;&#xD;&#xA;  &lt;div class=&#34;floating-element&#34;&gt;&lt;/div&gt;&#xD;&#xA;  &lt;div class=&#34;floating-element&#34;&gt;&lt;/div&gt;&#xD;&#xA;  &lt;div class=&#34;floating-element&#34;&gt;&lt;/div&gt;&#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&#xD;&#xA;&lt;!-- 登录页面 --&gt;&#xD;&#xA;&lt;div class=&#34;page&#34; id=&#34;login-page&#34;&gt;&#xD;&#xA;    &lt;div class=&#34;form-container&#34;&gt;&#xD;&#xA;        &lt;h2&gt;登录&lt;/h2&gt;&#xD;&#xA;        &lt;form id=&#34;login-form&#34; novalidate&gt;&#xD;&#xA;            &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;                &lt;label for=&#34;login-email&#34;&gt;电子邮件地址&lt;/label&gt;&#xD;&#xA;                &lt;input type=&#34;email&#34; id=&#34;login-email&#34; placeholder=&#34;请输入您的邮箱&#34; required&gt;&#xD;&#xA;                &lt;div class=&#34;error-message&#34; id=&#34;login-email-error&#34;&gt;&lt;/div&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;            &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;                &lt;label for=&#34;login-password&#34;&gt;密码&lt;/label&gt;&#xD;&#xA;                &lt;input type=&#34;password&#34; id=&#34;login-password&#34; placeholder=&#34;请输入您的密码&#34; required minlength=&#34;6&#34;&gt;&#xD;&#xA;                &lt;div class=&#34;error-message&#34; id=&#34;login-password-error&#34;&gt;&lt;/div&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;&#xD;&#xA;            &lt;div class=&#34;form-group checkbox-group&#34;&gt;&#xD;&#xA;                &lt;label class=&#34;checkbox-label&#34;&gt;&#xD;&#xA;                    &lt;input type=&#34;checkbox&#34; name=&#34;remember&#34;&gt;&#xD;&#xA;                    &lt;span class=&#34;checkmark&#34;&gt;&lt;/span&gt;&#xD;&#xA;                    记住我&#xD;&#xA;                &lt;/label&gt;&#xD;&#xA;                &lt;label class=&#34;checkbox-label&#34;&gt;&#xD;&#xA;                    &lt;input type=&#34;checkbox&#34; name=&#34;agreement1&#34; required&gt;&#xD;&#xA;                    &lt;span class=&#34;checkmark&#34;&gt;&lt;/span&gt;&#xD;&#xA;                    我已阅读并同意&lt;a href=&#34;http://localhost:1313/user-agreement/&#34; target=&#34;_blank&#34;&gt;用户服务协议&lt;/a&gt;与&lt;a href=&#34;http://localhost:1313/privacy-policy/&#34; target=&#34;_blank&#34;&gt;隐私政策&lt;/a&gt;&#xD;&#xA;                &lt;/label&gt;&#xD;&#xA;                &lt;label class=&#34;checkbox-label&#34;&gt;&#xD;&#xA;                    &lt;input type=&#34;checkbox&#34; name=&#34;agreement2&#34; required&gt;&#xD;&#xA;                    &lt;span class=&#34;checkmark&#34;&gt;&lt;/span&gt;&#xD;&#xA;                    我已阅读并同意&lt;a href=&#34;http://localhost:1313/fraud-prevention/&#34; target=&#34;_blank&#34;&gt;关于强化应对电信欺诈行为的公告&lt;/a&gt;&#xD;&#xA;                &lt;/label&gt;&#xD;&#xA;                &lt;div class=&#34;error-message&#34; id=&#34;login-agreement-error&#34;&gt;&lt;/div&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;            &lt;div class=&#34;form-actions&#34;&gt;&#xD;&#xA;                &lt;button type=&#34;submit&#34; class=&#34;btn btn-login&#34;&gt;登录&lt;/button&gt;&#xD;&#xA;                &lt;button type=&#34;button&#34; class=&#34;btn btn-register&#34; onclick=&#34;showRegisterPage()&#34;&gt;注册新账号&lt;/button&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;            &lt;div class=&#34;forgot-password&#34;&gt;&#xD;&#xA;                &lt;a href=&#34;#&#34; onclick=&#34;showForgotPasswordPage()&#34;&gt;忘记密码？&lt;/a&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;        &lt;/form&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&#xD;&#xA;&lt;!-- 注册页面 --&gt;&#xD;&#xA;&lt;div class=&#34;page&#34; id=&#34;register-page&#34; style=&#34;display: none;&#34;&gt;&#xD;&#xA;    &lt;div class=&#34;form-container&#34;&gt;&#xD;&#xA;        &lt;h2&gt;注册&lt;/h2&gt;&#xD;&#xA;        &lt;form id=&#34;register-form&#34; novalidate&gt;&#xD;&#xA;            &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;                &lt;label for=&#34;register-nickname&#34;&gt;昵称&lt;/label&gt;&#xD;&#xA;                &lt;input type=&#34;text&#34; id=&#34;register-nickname&#34; placeholder=&#34;请输入您的昵称&#34; required minlength=&#34;2&#34; maxlength=&#34;20&#34;&gt;&#xD;&#xA;                &lt;div class=&#34;error-message&#34; id=&#34;register-nickname-error&#34;&gt;&lt;/div&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;            &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;                &lt;label for=&#34;register-email&#34;&gt;电子邮件地址&lt;/label&gt;&#xD;&#xA;                &lt;input type=&#34;email&#34; id=&#34;register-email&#34; placeholder=&#34;请使用有效的电子邮件地址注册以接收激活邮件&#34; required&gt;&#xD;&#xA;                &lt;div class=&#34;error-message&#34; id=&#34;register-email-error&#34;&gt;&lt;/div&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;            &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;                &lt;label for=&#34;register-password&#34;&gt;密码&lt;/label&gt;&#xD;&#xA;                &lt;input type=&#34;password&#34; id=&#34;register-password&#34; placeholder=&#34;请输入您的密码&#34; required minlength=&#34;6&#34; autocomplete=&#34;off&#34;&gt;&#xD;&#xA;                &lt;div class=&#34;password-strength&#34; id=&#34;password-strength&#34;&gt;&#xD;&#xA;                    &lt;div class=&#34;strength-bar&#34;&gt;&lt;/div&gt;&#xD;&#xA;                    &lt;div class=&#34;strength-text&#34; id=&#34;strength-text&#34;&gt;密码强度：无&lt;/div&gt;&#xD;&#xA;                &lt;/div&gt;&#xD;&#xA;                &lt;div class=&#34;error-message&#34; id=&#34;register-password-error&#34;&gt;&lt;/div&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;            &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;                &lt;label for=&#34;register-confirm-password&#34;&gt;确认密码&lt;/label&gt;&#xD;&#xA;                &lt;input type=&#34;password&#34; id=&#34;register-confirm-password&#34; placeholder=&#34;请再次输入您的密码&#34; required&gt;&#xD;&#xA;                &lt;div class=&#34;error-message&#34; id=&#34;register-confirm-password-error&#34;&gt;&lt;/div&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;            &lt;div class=&#34;form-group checkbox-group&#34;&gt;&#xD;&#xA;                &lt;label class=&#34;checkbox-label&#34;&gt;&#xD;&#xA;                    &lt;input type=&#34;checkbox&#34; name=&#34;register-agreement1&#34; required&gt;&#xD;&#xA;                    &lt;span class=&#34;checkmark&#34;&gt;&lt;/span&gt;&#xD;&#xA;                    我已阅读并同意&lt;a href=&#34;http://localhost:1313/user-agreement/&#34; target=&#34;_blank&#34;&gt;用户服务协议&lt;/a&gt;与&lt;a href=&#34;http://localhost:1313/privacy-policy/&#34; target=&#34;_blank&#34;&gt;隐私政策&lt;/a&gt;&#xD;&#xA;                &lt;/label&gt;&#xD;&#xA;                &lt;label class=&#34;checkbox-label&#34;&gt;&#xD;&#xA;                    &lt;input type=&#34;checkbox&#34; name=&#34;register-agreement2&#34; required&gt;&#xD;&#xA;                    &lt;span class=&#34;checkmark&#34;&gt;&lt;/span&gt;&#xD;&#xA;                    我已阅读并同意&lt;a href=&#34;http://localhost:1313/fraud-prevention/&#34; target=&#34;_blank&#34;&gt;关于强化应对电信欺诈行为的公告&lt;/a&gt;&#xD;&#xA;                &lt;/label&gt;&#xD;&#xA;                &lt;div class=&#34;error-message&#34; id=&#34;register-agreement-error&#34;&gt;&lt;/div&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;            &lt;div class=&#34;form-actions&#34;&gt;&#xD;&#xA;                &lt;button type=&#34;submit&#34; class=&#34;btn btn-register&#34;&gt;注册&lt;/button&gt;&#xD;&#xA;                &lt;button type=&#34;button&#34; class=&#34;btn btn-login&#34; onclick=&#34;showLoginPage()&#34;&gt;已有账号登录&lt;/button&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;        &lt;/form&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&#xD;&#xA;&lt;!-- 忘记密码页面 --&gt;&#xD;&#xA;&lt;div class=&#34;page&#34; id=&#34;forgot-password-page&#34; style=&#34;display: none;&#34;&gt;&#xD;&#xA;    &lt;div class=&#34;form-container&#34;&gt;&#xD;&#xA;        &lt;h2&gt;找回密码&lt;/h2&gt;&#xD;&#xA;        &lt;form id=&#34;forgot-password-form&#34; novalidate&gt;&#xD;&#xA;            &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;                &lt;label for=&#34;forgot-email&#34;&gt;电子邮件地址&lt;/label&gt;&#xD;&#xA;                &lt;input type=&#34;email&#34; id=&#34;forgot-email&#34; placeholder=&#34;请输入您注册时使用的邮箱&#34; required autocomplete=&#34;off&#34;&gt;&#xD;&#xA;                &lt;div class=&#34;error-message&#34; id=&#34;forgot-email-error&#34;&gt;&lt;/div&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;            &#xD;&#xA;            &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;                &lt;label for=&#34;verification-code&#34;&gt;验证码&lt;/label&gt;&#xD;&#xA;                &lt;div class=&#34;verification-code-group&#34;&gt;&#xD;&#xA;                    &lt;input type=&#34;text&#34; id=&#34;verification-code&#34; placeholder=&#34;请输入验证码&#34; required autocomplete=&#34;off&#34;&gt;&#xD;&#xA;                    &lt;button type=&#34;button&#34; class=&#34;btn-send-code&#34; id=&#34;send-code-btn&#34;&gt;发送验证码&lt;/button&gt;&#xD;&#xA;                &lt;/div&gt;&#xD;&#xA;                &lt;div class=&#34;error-message&#34; id=&#34;verification-code-error&#34;&gt;&lt;/div&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;            &#xD;&#xA;            &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;                &lt;label for=&#34;new-password&#34;&gt;新密码&lt;/label&gt;&#xD;&#xA;                &lt;input type=&#34;password&#34; id=&#34;new-password&#34; placeholder=&#34;请输入新密码&#34; required minlength=&#34;6&#34; autocomplete=&#34;off&#34;&gt;&#xD;&#xA;                &lt;div class=&#34;password-strength&#34; id=&#34;new-password-strength&#34;&gt;&#xD;&#xA;                    &lt;div class=&#34;strength-bar&#34;&gt;&lt;/div&gt;&#xD;&#xA;                    &lt;div class=&#34;strength-text&#34; id=&#34;new-strength-text&#34;&gt;密码强度：无&lt;/div&gt;&#xD;&#xA;                &lt;/div&gt;&#xD;&#xA;                &lt;div class=&#34;error-message&#34; id=&#34;new-password-error&#34;&gt;&lt;/div&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;            &#xD;&#xA;            &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;                &lt;label for=&#34;confirm-new-password&#34;&gt;确认新密码&lt;/label&gt;&#xD;&#xA;                &lt;input type=&#34;password&#34; id=&#34;confirm-new-password&#34; placeholder=&#34;请再次输入新密码&#34; required autocomplete=&#34;off&#34;&gt;&#xD;&#xA;                &lt;div class=&#34;error-message&#34; id=&#34;confirm-new-password-error&#34;&gt;&lt;/div&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;&#xD;&#xA;            &lt;div class=&#34;form-actions&#34;&gt;&#xD;&#xA;                &lt;button type=&#34;submit&#34; class=&#34;btn btn-reset&#34;&gt;重置密码&lt;/button&gt;&#xD;&#xA;                &lt;button type=&#34;button&#34; class=&#34;btn btn-back&#34; onclick=&#34;showLoginPage()&#34;&gt;返回登录&lt;/button&gt;&#xD;&#xA;            &lt;/div&gt;&#xD;&#xA;        &lt;/form&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&#xD;&#xA;&lt;script&gt;&#xD;&#xA;// 页面切换功能&#xD;&#xA;function showLoginPage() {&#xD;&#xA;    document.getElementById(&#39;login-page&#39;).style.display = &#39;flex&#39;;&#xD;&#xA;    document.getElementById(&#39;register-page&#39;).style.display = &#39;none&#39;;&#xD;&#xA;    document.getElementById(&#39;forgot-password-page&#39;).style.display = &#39;none&#39;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function showRegisterPage() {&#xD;&#xA;    document.getElementById(&#39;login-page&#39;).style.display = &#39;none&#39;;&#xD;&#xA;    document.getElementById(&#39;register-page&#39;).style.display = &#39;flex&#39;;&#xD;&#xA;    document.getElementById(&#39;forgot-password-page&#39;).style.display = &#39;none&#39;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function showForgotPasswordPage() {&#xD;&#xA;    document.getElementById(&#39;login-page&#39;).style.display = &#39;none&#39;;&#xD;&#xA;    document.getElementById(&#39;register-page&#39;).style.display = &#39;none&#39;;&#xD;&#xA;    document.getElementById(&#39;forgot-password-page&#39;).style.display = &#39;flex&#39;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// 密码强度检测&#xD;&#xA;function checkPasswordStrength(password) {&#xD;&#xA;    let strength = 0;&#xD;&#xA;    if (password.length &gt;= 6) strength++;&#xD;&#xA;    if (password.match(/[a-z]+/)) strength++;&#xD;&#xA;    if (password.match(/[A-Z]+/)) strength++;&#xD;&#xA;    if (password.match(/[0-9]+/)) strength++;&#xD;&#xA;    if (password.match(/[$@#&amp;!]+/)) strength++;&#xD;&#xA;    &#xD;&#xA;    return strength;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function updatePasswordStrength(password, strengthBar, strengthText) {&#xD;&#xA;    const strength = checkPasswordStrength(password);&#xD;&#xA;    const strengthLabels = [&#39;无&#39;, &#39;弱&#39;, &#39;一般&#39;, &#39;强&#39;, &#39;很强&#39;, &#39;极强&#39;];&#xD;&#xA;    const strengthColors = [&#39;#dc3545&#39;, &#39;#ff6b6b&#39;, &#39;#ffa726&#39;, &#39;#4caf50&#39;, &#39;#2e7d32&#39;, &#39;#1b5e20&#39;];&#xD;&#xA;    &#xD;&#xA;    strengthBar.style.width = (strength * 20) + &#39;%&#39;;&#xD;&#xA;    strengthBar.style.backgroundColor = strengthColors[strength];&#xD;&#xA;    strengthText.textContent = &#39;密码强度：&#39; + strengthLabels[strength];&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;// 事件监听&#xD;&#xA;document.addEventListener(&#39;DOMContentLoaded&#39;, function() {&#xD;&#xA;    // 密码强度检测&#xD;&#xA;    const passwordInput = document.getElementById(&#39;register-password&#39;);&#xD;&#xA;    const strengthBar = document.querySelector(&#39;#password-strength .strength-bar&#39;);&#xD;&#xA;    const strengthText = document.getElementById(&#39;strength-text&#39;);&#xD;&#xA;    &#xD;&#xA;    if (passwordInput) {&#xD;&#xA;        passwordInput.addEventListener(&#39;input&#39;, function() {&#xD;&#xA;            updatePasswordStrength(this.value, strengthBar, strengthText);&#xD;&#xA;        });&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    // 新密码强度检测&#xD;&#xA;    const newPasswordInput = document.getElementById(&#39;new-password&#39;);&#xD;&#xA;    const newStrengthBar = document.querySelector(&#39;#new-password-strength .strength-bar&#39;);&#xD;&#xA;    const newStrengthText = document.getElementById(&#39;new-strength-text&#39;);&#xD;&#xA;    &#xD;&#xA;    if (newPasswordInput) {&#xD;&#xA;        newPasswordInput.addEventListener(&#39;input&#39;, function() {&#xD;&#xA;            updatePasswordStrength(this.value, newStrengthBar, newStrengthText);&#xD;&#xA;        });&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    // 发送验证码按钮&#xD;&#xA;    const sendCodeBtn = document.getElementById(&#39;send-code-btn&#39;);&#xD;&#xA;    if (sendCodeBtn) {&#xD;&#xA;        sendCodeBtn.addEventListener(&#39;click&#39;, function() {&#xD;&#xA;            const email = document.getElementById(&#39;forgot-email&#39;).value;&#xD;&#xA;            if (!email) {&#xD;&#xA;                document.getElementById(&#39;forgot-email-error&#39;).textContent = &#39;请输入邮箱地址&#39;;&#xD;&#xA;                document.getElementById(&#39;forgot-email-error&#39;).style.display = &#39;block&#39;;&#xD;&#xA;                return;&#xD;&#xA;            }&#xD;&#xA;            &#xD;&#xA;            // 模拟发送验证码&#xD;&#xA;            this.disabled = true;&#xD;&#xA;            this.textContent = &#39;60秒后重发&#39;;&#xD;&#xA;            let countdown = 60;&#xD;&#xA;            &#xD;&#xA;            const timer = setInterval(() =&gt; {&#xD;&#xA;                countdown--;&#xD;&#xA;                this.textContent = countdown + &#39;秒后重发&#39;;&#xD;&#xA;                &#xD;&#xA;                if (countdown &lt;= 0) {&#xD;&#xA;                    clearInterval(timer);&#xD;&#xA;                    this.disabled = false;&#xD;&#xA;                    this.textContent = &#39;发送验证码&#39;;&#xD;&#xA;                }&#xD;&#xA;            }, 1000);&#xD;&#xA;            &#xD;&#xA;            alert(&#39;验证码已发送到：&#39; + email);&#xD;&#xA;        });&#xD;&#xA;    }&#xD;&#xA;});&#xD;&#xA;&lt;/script&gt;</description>
+    </item>
+    <item>
+      <title>联系我们</title>
+      <link>http://localhost:1313/contact/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/contact/</guid>
+      <description>&lt;div class=&#34;contact-content&#34;&gt;&#xD;&#xA;  &lt;!-- 联系信息 --&gt;&#xD;&#xA;  &lt;section class=&#34;contact-info&#34;&gt;&#xD;&#xA;    &lt;h2&gt;联系方式&lt;/h2&gt;&#xD;&#xA;    &lt;div class=&#34;contact-item&#34;&gt;&#xD;&#xA;      &lt;h3&gt;📧 内容建议&lt;/h3&gt;&#xD;&#xA;      &lt;p&gt;content@akihafield.com&lt;/p&gt;&#xD;&#xA;      &lt;p&gt;接收游戏收录建议和内容反馈&lt;/p&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &lt;div class=&#34;contact-item&#34;&gt;&#xD;&#xA;      &lt;h3&gt;🔧 技术支持&lt;/h3&gt;&#xD;&#xA;      &lt;p&gt;support@akihafield.com&lt;/p&gt;&#xD;&#xA;      &lt;p&gt;网站使用问题和功能建议&lt;/p&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &lt;div class=&#34;contact-item&#34;&gt;&#xD;&#xA;      &lt;h3&gt;🤝 合作咨询&lt;/h3&gt;&#xD;&#xA;      &lt;p&gt;cooperation@akihafield.com&lt;/p&gt;&#xD;&#xA;      &lt;p&gt;游戏会社合作与内容授权&lt;/p&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &lt;div class=&#34;contact-item&#34;&gt;&#xD;&#xA;      &lt;h3&gt;📝 内容提交&lt;/h3&gt;&#xD;&#xA;      &lt;p&gt;submit@akihafield.com&lt;/p&gt;&#xD;&#xA;      &lt;p&gt;提交新的Galgame信息或修正内容&lt;/p&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;  &lt;/section&gt;&#xD;&#xA;  &lt;!-- 联系表单 --&gt;&#xD;&#xA;  &lt;section class=&#34;contact-form&#34;&gt;&#xD;&#xA;    &lt;h2&gt;发送消息&lt;/h2&gt;&#xD;&#xA;    &lt;form id=&#34;contactForm&#34;&gt;&#xD;&#xA;      &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;        &lt;label for=&#34;name&#34;&gt;您的称呼&lt;/label&gt;&#xD;&#xA;        &lt;input type=&#34;text&#34; id=&#34;name&#34; required placeholder=&#34;请输入您的名字&#34;&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;      &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;        &lt;label for=&#34;email&#34;&gt;电子邮箱&lt;/label&gt;&#xD;&#xA;        &lt;input type=&#34;email&#34; id=&#34;email&#34; required placeholder=&#34;请输入您的邮箱&#34;&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;      &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;        &lt;label for=&#34;subject&#34;&gt;咨询类型&lt;/label&gt;&#xD;&#xA;        &lt;select id=&#34;subject&#34; required&gt;&#xD;&#xA;          &lt;option value=&#34;&#34;&gt;请选择咨询类型&lt;/option&gt;&#xD;&#xA;          &lt;option value=&#34;content&#34;&gt;内容建议&lt;/option&gt;&#xD;&#xA;          &lt;option value=&#34;support&#34;&gt;技术支持&lt;/option&gt;&#xD;&#xA;          &lt;option value=&#34;cooperation&#34;&gt;合作咨询&lt;/option&gt;&#xD;&#xA;          &lt;option value=&#34;submit&#34;&gt;内容提交&lt;/option&gt;&#xD;&#xA;          &lt;option value=&#34;other&#34;&gt;其他&lt;/option&gt;&#xD;&#xA;        &lt;/select&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;      &lt;div class=&#34;form-group&#34;&gt;&#xD;&#xA;        &lt;label for=&#34;message&#34;&gt;详细内容&lt;/label&gt;&#xD;&#xA;        &lt;textarea id=&#34;message&#34; required placeholder=&#34;请详细描述您想咨询的内容...&#34;&gt;&lt;/textarea&gt;&#xD;&#xA;      &lt;/div&gt;&#xD;&#xA;      &lt;button type=&#34;submit&#34; class=&#34;submit-btn&#34;&gt;发送消息&lt;/button&gt;&#xD;&#xA;    &lt;/form&gt;&#xD;&#xA;  &lt;/section&gt;&#xD;&#xA;&lt;/div&gt;&#xD;&#xA;&lt;!-- 常见问题 --&gt;&#xD;&#xA;&lt;section class=&#34;faq-section&#34;&gt;&#xD;&#xA;  &lt;h2&gt;常见问题&lt;/h2&gt;&#xD;&#xA;  &lt;div class=&#34;faq-grid&#34;&gt;&#xD;&#xA;    &lt;div class=&#34;faq-item&#34;&gt;&#xD;&#xA;      &lt;h3&gt;如何提交新的游戏信息？&lt;/h3&gt;&#xD;&#xA;      &lt;p&gt;欢迎通过内容提交邮箱或联系表单提交新的Galgame信息，我们会尽快审核并添加到游戏库中。&lt;/p&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &lt;div class=&#34;faq-item&#34;&gt;&#xD;&#xA;      &lt;h3&gt;发现游戏信息有误怎么办？&lt;/h3&gt;&#xD;&#xA;      &lt;p&gt;如果您发现游戏信息有误，请通过内容建议邮箱或技术支持邮箱联系我们，我们会及时修正。&lt;/p&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &lt;div class=&#34;faq-item&#34;&gt;&#xD;&#xA;      &lt;h3&gt;回复需要多长时间？&lt;/h3&gt;&#xD;&#xA;      &lt;p&gt;我们会在3-5个工作日内回复您的邮件。内容提交类信息可能需要更长时间审核，感谢您的耐心等待。&lt;/p&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &lt;div class=&#34;faq-item&#34;&gt;&#xD;&#xA;      &lt;h3&gt;可以申请删除游戏信息吗？&lt;/h3&gt;&#xD;&#xA;      &lt;p&gt;如果您是游戏版权方并希望删除相关信息，请通过合作咨询邮箱联系我们，我们会及时处理。&lt;/p&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;  &lt;/div&gt;&#xD;&#xA;&lt;/section&gt;&#xD;&#xA;&lt;script&gt;&#xD;&#xA;document.getElementById(&#39;contactForm&#39;).addEventListener(&#39;submit&#39;, function(e) {&#xD;&#xA;  e.preventDefault();&#xD;&#xA;  &#xD;&#xA;  const name = document.getElementById(&#39;name&#39;).value;&#xD;&#xA;  const subject = document.getElementById(&#39;subject&#39;).value;&#xD;&#xA;  &#xD;&#xA;  if (!subject) {&#xD;&#xA;    alert(&#39;请选择咨询类型&#39;);&#xD;&#xA;    return;&#xD;&#xA;  }&#xD;&#xA;  &#xD;&#xA;  alert(`感谢 ${name} 的留言！我们会尽快回复您。`);&#xD;&#xA;  this.reset();&#xD;&#xA;});&#xD;&#xA;&lt;/script&gt;</description>
+    </item>
+    <item>
+      <title>隐私政策</title>
+      <link>http://localhost:1313/privacy-policy/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/privacy-policy/</guid>
+      <description>&lt;style&gt;&#xD;&#xA;    * {&#xD;&#xA;        margin: 0;&#xD;&#xA;        padding: 0;&#xD;&#xA;        box-sizing: border-box;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    body {&#xD;&#xA;        font-family: &#39;Microsoft YaHei&#39;, Arial, sans-serif;&#xD;&#xA;        line-height: 1.6;&#xD;&#xA;        color: #333;&#xD;&#xA;        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);&#xD;&#xA;        min-height: 100vh;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .container {&#xD;&#xA;        max-width: 1000px;&#xD;&#xA;        margin: 0 auto;&#xD;&#xA;        padding: 40px 20px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .privacy-header {&#xD;&#xA;        text-align: center;&#xD;&#xA;        margin-bottom: 40px;&#xD;&#xA;        padding: 30px;&#xD;&#xA;        background: white;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        box-shadow: 0 4px 6px rgba(0,0,0,0.1);&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .privacy-header h1 {&#xD;&#xA;        color: #6a11cb;&#xD;&#xA;        font-size: 2.5rem;&#xD;&#xA;        margin-bottom: 10px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .privacy-header .subtitle {&#xD;&#xA;        color: #666;&#xD;&#xA;        font-size: 1.1rem;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .privacy-content {&#xD;&#xA;        background: white;&#xD;&#xA;        padding: 40px;&#xD;&#xA;        border-radius: 10px;&#xD;&#xA;        box-shadow: 0 4px 6px rgba(0,0,0,0.1);&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section {&#xD;&#xA;        margin-bottom: 30px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section h2 {&#xD;&#xA;        color: #6a11cb;&#xD;&#xA;        font-size: 1.5rem;&#xD;&#xA;        margin-bottom: 15px;&#xD;&#xA;        padding-bottom: 10px;&#xD;&#xA;        border-bottom: 2px solid #e9ecef;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section p {&#xD;&#xA;        margin-bottom: 15px;&#xD;&#xA;        text-align: justify;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section ul {&#xD;&#xA;        margin-left: 20px;&#xD;&#xA;        margin-bottom: 15px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .section li {&#xD;&#xA;        margin-bottom: 8px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .highlight {&#xD;&#xA;        background: #d1ecf1;&#xD;&#xA;        padding: 15px;&#xD;&#xA;        border-left: 4px solid #17a2b8;&#xD;&#xA;        margin: 15px 0;&#xD;&#xA;        border-radius: 4px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .warning {&#xD;&#xA;        background: #f8d7da;&#xD;&#xA;        padding: 15px;&#xD;&#xA;        border-left: 4px solid #dc3545;&#xD;&#xA;        margin: 15px 0;&#xD;&#xA;        border-radius: 4px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .back-btn {&#xD;&#xA;        display: inline-block;&#xD;&#xA;        padding: 12px 30px;&#xD;&#xA;        background: linear-gradient(to right, #6a11cb, #2575fc);&#xD;&#xA;        color: white;&#xD;&#xA;        text-decoration: none;&#xD;&#xA;        border-radius: 25px;&#xD;&#xA;        font-weight: 600;&#xD;&#xA;        transition: all 0.3s;&#xD;&#xA;        border: none;&#xD;&#xA;        cursor: pointer;&#xD;&#xA;        margin-top: 20px;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .back-btn:hover {&#xD;&#xA;        transform: translateY(-2px);&#xD;&#xA;        box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .footer {&#xD;&#xA;        text-align: center;&#xD;&#xA;        margin-top: 40px;&#xD;&#xA;        color: #666;&#xD;&#xA;        font-size: 0.9rem;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    .contact-info {&#xD;&#xA;        background: #e7f3ff;&#xD;&#xA;        padding: 20px;&#xD;&#xA;        border-radius: 8px;&#xD;&#xA;        margin: 20px 0;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    @media (max-width: 768px) {&#xD;&#xA;        .container {&#xD;&#xA;            padding: 20px 15px;&#xD;&#xA;        }&#xD;&#xA;        &#xD;&#xA;        .privacy-content {&#xD;&#xA;            padding: 20px;&#xD;&#xA;        }&#xD;&#xA;        &#xD;&#xA;        .privacy-header h1 {&#xD;&#xA;            font-size: 2rem;&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;&lt;/style&gt;&#xD;&#xA;&#xD;&#xA;&lt;div class=&#34;container&#34;&gt;&#xD;&#xA;    &lt;div class=&#34;privacy-header&#34;&gt;&#xD;&#xA;        &lt;h1&gt;隐私政策&lt;/h1&gt;&#xD;&#xA;        &lt;div class=&#34;subtitle&#34;&gt;最后更新日期：2025年10月&lt;/div&gt;&#xD;&#xA;    &lt;/div&gt;&#xD;&#xA;    &#xD;&#xA;    &lt;div class=&#34;privacy-content&#34;&gt;&#xD;&#xA;        &lt;div class=&#34;section&#34;&gt;&#xD;&#xA;            &lt;h2&gt;一、引言&lt;/h2&gt;&#xD;&#xA;            &lt;p&gt;AKIHA FIELD（以下简称&#34;我们&#34;）高度重视用户的隐私保护。本隐私政策旨在说明我们如何收集、使用、存储和保护您的个人信息。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AIR</title>
+      <link>http://localhost:1313/games/air/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/air/</guid>
+      <description>&lt;p&gt;夏日、天空与千年诅咒的故事，以独特的叙事结构和深刻的情感描写成为Key社的经典之作。这部作品以其唯美的画面和感人的剧情赢得了广泛赞誉。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Angel Beats!</title>
+      <link>http://localhost:1313/games/angel-beats/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/angel-beats/</guid>
+      <description>&lt;p&gt;以死后世界为舞台，讲述了一群少年少女反抗命运的故事。作品融合了青春、战斗与感动的元素，延续了Key社一贯的情感冲击力。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Angel Beats!:1st beat</title>
+      <link>http://localhost:1313/games/angel-beats-1st-beat/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/angel-beats-1st-beat/</guid>
+      <description>&lt;p&gt;Angel Beats!的视觉小说版第一部，扩展了动画中的世界观和角色故事，让玩家更深入地了解死后世界战线的成员们。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>ANGEL TYPE</title>
+      <link>http://localhost:1313/games/angel-type/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/angel-type/</guid>
+      <description>&lt;p&gt;以天使与人类的相遇为主题，讲述了一段跨越种族的爱情故事。作品展现了Minori对奇幻题材的独特诠释。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CLANNAD</title>
+      <link>http://localhost:1313/games/clannad/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/clannad/</guid>
+      <description>&lt;p&gt;被誉为&amp;quot;人生&amp;quot;的视觉小说，通过主角冈崎朋也的成长故事，深刻探讨了家庭、亲情和人生的意义。这部作品以其感人至深的剧情和深刻的主题赢得了全球玩家的喜爱。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>eden*</title>
+      <link>http://localhost:1313/games/eden/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/eden/</guid>
+      <description>&lt;p&gt;以末世为背景，讲述了一段关于爱与牺牲的感人故事。作品以其精美的画面和深刻的主题赢得了广泛赞誉。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Harmonia</title>
+      <link>http://localhost:1313/games/harmonia/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/harmonia/</guid>
+      <description>&lt;p&gt;以机器人与人类共存的世界为背景，讲述人造人少年与人类少女相遇的故事。作品延续了Key社一贯的情感深度，探讨了人性与情感的本质。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Kanon</title>
+      <link>http://localhost:1313/games/kanon/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/kanon/</guid>
+      <description>&lt;p&gt;冬季的奇迹与重逢的故事，以雪景为背景讲述了一段感人至深的爱情故事。这部作品奠定了Key社在视觉小说领域的地位。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Little Busters!</title>
+      <link>http://localhost:1313/games/little-busters/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/little-busters/</guid>
+      <description>&lt;p&gt;以友情为主题的青春群像剧，通过棒球社团的活动探讨友情与成长的意义。这部作品以其丰富的角色塑造和感人的友情故事深受玩家喜爱。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LOOPERS</title>
+      <link>http://localhost:1313/games/loopers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/loopers/</guid>
+      <description>&lt;p&gt;以时间循环为主题的短篇视觉小说，讲述主角被困在同一天不断循环的故事。作品以其紧凑的剧情和悬疑氛围吸引了众多玩家。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Planetarian ～星之梦～</title>
+      <link>http://localhost:1313/games/planetarian/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/planetarian/</guid>
+      <description>&lt;p&gt;短篇视觉小说，讲述在末日后的世界中，废墟猎人偶遇天文馆机器人星野梦美的故事。作品以其简洁而深刻的叙事风格感动了无数玩家。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rewrite</title>
+      <link>http://localhost:1313/games/rewrite/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/rewrite/</guid>
+      <description>&lt;p&gt;以环保和超自然为主题，讲述主角天王寺瑚太朗调查超自然现象的故事。作品融合了奇幻、悬疑和科幻元素，展现了Key社在题材上的创新。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Rewrite Harvest festa!</title>
+      <link>http://localhost:1313/games/rewrite-harvest-festa/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/rewrite-harvest-festa/</guid>
+      <description>&lt;p&gt;Rewrite的Fan Disc，包含多个角色的后日谈故事，为原作提供了更多剧情补充和角色发展，深受粉丝喜爱。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sakusaku</title>
+      <link>http://localhost:1313/games/sakusaku/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/sakusaku/</guid>
+      <description>&lt;p&gt;它是 minori 于 2004 年推出的第三 18 款双人游戏软件 &amp;ldquo;Haru no Ashioto &amp;ldquo;的 &amp;ldquo;粉丝光盘&amp;rdquo;。 在发行之前，3 月份在全国的商店举行了原作动画《樱花铃重现》的试映会。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Summer Pockets</title>
+      <link>http://localhost:1313/games/summer-pockets/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/summer-pockets/</guid>
+      <description>&lt;p&gt;以濑户内海的夏日小岛为舞台，讲述了一个充满怀旧与感动的夏日物语。这部作品融合了Key社一贯的感人剧情和夏日氛围，带给玩家温暖与感动。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Summer Pockets REFLECTION BLUE</title>
+      <link>http://localhost:1313/games/summer-pockets-reflection-blue/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/summer-pockets-reflection-blue/</guid>
+      <description>&lt;p&gt;Summer Pockets的增强版，增加了新角色和剧情线，进一步丰富了原作的故事内容，带给玩家更完整的夏日体验。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Trinoline</title>
+      <link>http://localhost:1313/games/trinoline/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/trinoline/</guid>
+      <description>&lt;p&gt;Minori的最后一作，以鸟和线为主题，讲述了一段关于自由和羁绊的故事。作品展现了Minori对艺术的不懈追求。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Trinoline Genesis</title>
+      <link>http://localhost:1313/games/trinoline-genesis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/trinoline-genesis/</guid>
+      <description>&lt;p&gt;Trinoline的续作，进一步深化了人与机器人之间关系的探讨。作品延续了前作的艺术风格，在剧情和主题上进行了更深入的挖掘。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>你与她与她的恋爱。</title>
+      <link>http://localhost:1313/games/you-and-me-and-her/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/you-and-me-and-her/</guid>
+      <description>&lt;p&gt;突破第四面墙的元叙事作品，挑战传统视觉小说的界限。这部作品以其创新的叙事手法和对玩家与角色关系的探讨赢得了广泛关注。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>命运石之门</title>
+      <link>http://localhost:1313/games/steins-gate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/steins-gate/</guid>
+      <description>&lt;p&gt;时间旅行与命运抉择的科幻悬疑，通过世界线理论展现多重可能性。这部作品以其严谨的科学设定和扣人心弦的剧情成为科幻视觉小说的经典之作。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>夏空的英仙座</title>
+      <link>http://localhost:1313/games/summer-sky-perseus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/summer-sky-perseus/</guid>
+      <description>&lt;p&gt;以夏日乡村为舞台的感人故事，讲述少年与少女们之间的羁绊与成长，充满青春与治愈的气息。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>天使的星期日</title>
+      <link>http://localhost:1313/games/angel-sunday/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/angel-sunday/</guid>
+      <description>&lt;p&gt;以天使与人类的温馨日常为主题，讲述了一段充满欢笑与感动的夏日故事。作品展现了Minori对轻松愉快题材的驾驭能力。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>天籁人偶 冬空焰火/雪花纹理</title>
+      <link>http://localhost:1313/games/otonairo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/otonairo/</guid>
+      <description>&lt;p&gt;以人偶为主题的视觉小说，讲述在战后世界中，人偶们追寻自我意义的故事。作品延续了Key社对情感和人性的深刻探讨。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>天籁人偶：无名典礼</title>
+      <link>http://localhost:1313/games/otonairo-unnamed-ceremony/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/otonairo-unnamed-ceremony/</guid>
+      <description>&lt;p&gt;天籁人偶系列的最新作品，继续探索人偶与人类之间的关系，讲述了一个关于记忆、身份与情感的动人故事。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>少女与野兽</title>
+      <link>http://localhost:1313/games/maiden-and-beast/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/maiden-and-beast/</guid>
+      <description>&lt;p&gt;以童话般的奇幻世界为背景，讲述了少女与野兽之间跨越种族的深情故事。作品融合了浪漫与冒险元素，展现了Minori对奇幻题材的独特诠释。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>库特wafter</title>
+      <link>http://localhost:1313/games/kud-wafter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/kud-wafter/</guid>
+      <description>&lt;p&gt;Little Busters!的衍生作品，以能美库特莉亚芙卡为主角，讲述暑假期间与直枝理树共度的温馨夏日故事。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>微风赠礼 - Wind Pleasurable Box</title>
+      <link>http://localhost:1313/games/wind-pleasurable-box/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/wind-pleasurable-box/</guid>
+      <description>&lt;p&gt;Wind系列的特别版本，包含了额外的内容和赠品。作品延续了原作的温馨风格，为玩家带来了更多的感动和惊喜。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>悠久之翼-前篇</title>
+      <link>http://localhost:1313/games/ef-first-tale/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/ef-first-tale/</guid>
+      <description>&lt;p&gt;交织在音羽镇的两段爱情故事，以其独特的叙事手法和电影化演出闻名。作品深刻探讨了爱情、命运与救赎的主题。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>悠久之翼-后篇</title>
+      <link>http://localhost:1313/games/ef-latter-tale/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/ef-latter-tale/</guid>
+      <description>&lt;p&gt;ef系列的第二部作品，延续了前作的艺术风格和叙事手法，讲述了新的爱情故事。作品以其唯美的画面和感人的剧情深受玩家喜爱。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>无尽的平安夜</title>
+      <link>http://localhost:1313/games/endless-christmas-eve/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/endless-christmas-eve/</guid>
+      <description>&lt;p&gt;以十二个月为主题，讲述了十二个独立而又相互关联的故事。作品展现了Minori对短篇故事集的独特处理。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>星之终途</title>
+      <link>http://localhost:1313/games/stella-of-the-end/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/stella-of-the-end/</guid>
+      <description>&lt;p&gt;讲述在人类文明衰落后的世界中，送货人菲利亚与仿生人少女裘德的故事。作品延续了Key社对人性与情感的深刻探讨，展现了末日背景下的温情。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>春天来了</title>
+      <link>http://localhost:1313/games/spring-has-come/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/spring-has-come/</guid>
+      <description>&lt;p&gt;以平行世界为主题，讲述了一段跨越时空的爱情故事。作品展现了Minori对科幻题材的独特诠释。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>春天的足音</title>
+      <link>http://localhost:1313/games/spring-footsteps/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/spring-footsteps/</guid>
+      <description>&lt;p&gt;Minori的早期作品，以春天为背景，讲述了一段青涩的校园爱情故事。作品展现了Minori独特的艺术风格和叙事手法。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>智代After～It&#39;s a Wonderful Life～</title>
+      <link>http://localhost:1313/games/tomoyo-after/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/tomoyo-after/</guid>
+      <description>&lt;p&gt;CLANNAD的续作，聚焦于坂上智代与冈崎朋也的后续故事。作品延续了CLANNAD的情感深度，讲述了两人面对生活挑战的感人故事。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>永不落幕的前奏诗</title>
+      <link>http://localhost:1313/games/prelude-poem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/prelude-poem/</guid>
+      <description>&lt;p&gt;以音乐和青春为主题，讲述了一段关于梦想和坚持的故事。作品展现了Minori对音乐题材的独特诠释。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>沙耶之歌</title>
+      <link>http://localhost:1313/games/song-of-saya/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/song-of-saya/</guid>
+      <description>&lt;p&gt;爱与存在的哲学思考，探讨认知与现实的边界。这部作品以其独特的视角和深刻的主题在视觉小说界引起了广泛讨论。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>混沌之脑</title>
+      <link>http://localhost:1313/games/chaos-head/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/chaos-head/</guid>
+      <description>&lt;p&gt;以妄想为主题的悬疑故事，探讨现实与幻想的边界。这部作品以其独特的设定和悬疑氛围吸引了大量粉丝。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>罪之光约会</title>
+      <link>http://localhost:1313/games/sin-light-rendezvous/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/sin-light-rendezvous/</guid>
+      <description>&lt;p&gt;以罪与光为主题，讲述了一段关于救赎和希望的故事。作品展现了Minori对深刻主题的探讨能力。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>罪之光约会-继代深柑篇</title>
+      <link>http://localhost:1313/games/sin-light-fukadai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/sin-light-fukadai/</guid>
+      <description>&lt;p&gt;主要讲述了在《罪之光：约会》的平行世界里，被迫加入美术部的野野村优人与继代深柑——我行我素的美术部部长之间发生的故事。拥有远离尘世的性格、常常说出耐人寻味的话语的深柑，会被另一个孤独的少年染上怎样的颜色呢？&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>装甲恶鬼村正</title>
+      <link>http://localhost:1313/games/full-metal-daemon-muramasa/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/full-metal-daemon-muramasa/</guid>
+      <description>&lt;p&gt;武士道与善恶观的深刻探讨，展现正义的相对性。这部作品以其复杂的哲学思考和独特的叙事风格成为Nitro+的代表作之一。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>风-心之呼吸</title>
+      <link>http://localhost:1313/games/wind-breath-of-heart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/wind-breath-of-heart/</guid>
+      <description>&lt;p&gt;以风为主题，讲述了一个充满诗意和感动的故事。作品以其独特的氛围和深刻的情感描写赢得了玩家的喜爱。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

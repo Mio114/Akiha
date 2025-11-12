@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>冬季 on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/%E5%86%AC%E5%AD%A3/</link>
+    <description>Recent content in 冬季 on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/tags/%E5%86%AC%E5%AD%A3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kanon</title>
+      <link>http://localhost:1313/games/kanon/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/kanon/</guid>
+      <description>&lt;p&gt;冬季的奇迹与重逢的故事，以雪景为背景讲述了一段感人至深的爱情故事。这部作品奠定了Key社在视觉小说领域的地位。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
