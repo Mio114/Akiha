@@ -81,6 +81,81 @@
     <div class="container">
         
 <style>
+    /* 深色模式检测和修复 */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #2d2d2d !important;
+        color: #e0e0e0 !important;
+    }
+    
+    .announcement-header,
+    .announcement-content,
+    .privacy-header,
+    .privacy-content,
+    .agreement-header,
+    .agreement-content {
+        background: #1a1a1a !important;
+        color: #e0e0e0 !important;
+    }
+    
+    .announcement-header h1,
+    .privacy-header h1,
+    .agreement-header h1 {
+        color: #bb645b !important;
+    }
+}
+
+/* 基于data-theme属性的深色模式 */
+[data-theme="dark"] body {
+    background: #2d2d2d !important;
+    color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .announcement-header,
+[data-theme="dark"] .announcement-content,
+[data-theme="dark"] .privacy-header,
+[data-theme="dark"] .privacy-content,
+[data-theme="dark"] .agreement-header,
+[data-theme="dark"] .agreement-content {
+    background: #1a1a1a !important;
+    color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .announcement-header h1,
+[data-theme="dark"] .privacy-header h1,
+[data-theme="dark"] .agreement-header h1 {
+    color: #bb645b !important;
+}
+
+[data-theme="dark"] .section h2 {
+    color: #bb645b !important;
+}
+
+[data-theme="dark"] .warning {
+    background: rgba(187, 100, 91, 0.2) !important;
+    border-left-color: #bb645b !important;
+}
+
+[data-theme="dark"] .important {
+    background: rgba(255, 193, 7, 0.2) !important;
+}
+
+[data-theme="dark"] .tips {
+    background: rgba(13, 110, 253, 0.2) !important;
+}
+
+[data-theme="dark"] .highlight {
+    background: rgba(23, 162, 184, 0.2) !important;
+}
+
+[data-theme="dark"] .fraud-type {
+    background: #2d2d2d !important;
+    border-color: #444 !important;
+}
+
+[data-theme="dark"] .emergency-contact {
+    background: #bb645b !important;
+}
     * {
         margin: 0;
         padding: 0;
