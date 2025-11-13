@@ -121,16 +121,16 @@
             <div class="page-content">
                 <!-- 游戏介绍页面 -->
                 <div class="page active" id="description-page">
-                    <section class="description-section">
-                        <h2 class="section-title">游戏介绍</h2>
-                        <div class="description-content">
-                            {{ with .Params.description }}
-                                <p>{{ . }}</p>
-                            {{ else }}
-                                {{ .Content }}
-                            {{ end }}
-                        </div>
-                    </section>
+                <section class="description-section">
+    <h2 class="section-title">游戏介绍</h2>
+    <div class="description-content">
+        {{ with .Params.description }}
+            {{ . | safeHTML }}
+        {{ else }}
+            {{ .Content }}
+        {{ end }}
+    </div>
+</section>
 
                     <!-- 游戏截图 -->
                     {{ with .Params.screenshots }}

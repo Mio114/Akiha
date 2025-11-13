@@ -1,12 +1,28 @@
 ---
-title: "Angel Beats!:1st beat"
+title: "Angel Beats! -1st beat-"
 developer: "Key"
-release_date: "2015-05-29"
+release_date: "2015-06-26"
 platforms: ["Windows", "PS3", "PS Vita"]
-tags: ["视觉小说", "扩展", "世界观"]
-rating: 8.5
+tags: ["学园", "死后世界", "战斗", "催泪"]
+rating: 7.87
 cover_image: "/images/Angel Beats! -1st best.jpg"
-description: "Angel Beats!的视觉小说版第一部，扩展了动画中的世界观和角色故事。"
----
+description: "舞台为死后的世界。向命运反抗的少年少女们的物语——因某个理由迎来了死亡的少年·音無、他于死后世界的学校里邂逅了名为“ゆり”的少女。她是与强加给人们荒唐不经的人生的神抗争的“死后世界战线”的领袖、并且每日每夜都在进行着激烈的战斗。而阻挡在她们面前的是、一名被称为神的使者“天使”的可爱少女。失去了生前的记忆、对在这个死后的世界发生的事情一无所知的音無感到困惑无比。虽然他选择了与ゆり众人一同奋战的道路……"
 
-Angel Beats!的视觉小说版第一部，扩展了动画中的世界观和角色故事，让玩家更深入地了解死后世界战线的成员们。
+# 游戏别名
+alternative_names: ["AB！", "エンジェルビーツ 1stビート"]
+
+# VNDB 链接
+vndb_link: "https://vndb.org/v13774"
+
+trailer: "https://cloud.touchgaloss.com/2023/08/7b109913bb20231103181336.mp4"
+website: "https://key.visualarts.gr.jp/ab/1stbeat/"
+download: "https://pan.touchgal.net/s/rOauy"
+
+screenshots:
+  - "https://cloud.touchgaloss.com/uploads/1466d00b02084956_jpg.avif"
+  - "https://cloud.touchgaloss.com/uploads/716409c88b084958_jpg.avif"
+  - "https://cloud.touchgaloss.com/uploads/132dc9b097085001_jpg.avif"
+
+
+wiki_link: "https://zh.wikipedia.org/wiki/Angel_Beats!"
+---
