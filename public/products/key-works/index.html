@@ -715,7 +715,7 @@
 <!-- 添加动态链接设置脚本 -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // 游戏名称到URL的映射
+  // 游戏名称到URL的映射 - 根据你的实际文件结构
   const gameUrlMap = {
     'clannad': '/games/clannad/',
     'air': '/games/air/',
@@ -729,11 +729,9 @@ document.addEventListener('DOMContentLoaded', function() {
     'stella-of-the-end': '/games/stella-of-the-end/',
     'tomoyo-after': '/games/tomoyo-after/',
     'kud-wafter': '/games/kud-wafter/',
-    'rewrite-harvest-festa': '/games/rewrite-harvest-festa/',
+    'rewrite-harvest-festa': '/games/rewrite-harvest-fest/',
     'summer-pockets-reflection-blue': '/games/summer-pockets-reflection-blue/',
-    'angel-beats-1st-beat': '/games/angel-beats-1st-beat/',
-    'tianlai-renou': '/games/tianlai-renou/',
-    'tianlai-renou-ceremony': '/games/tianlai-renou-ceremony/',
+    'angel-beats-1st-beat': '/games/angel-beats-1stbeat/',
     'loopers': '/games/loopers/'
   };
 
@@ -744,6 +742,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const gameSlug = link.getAttribute('data-game');
     if (gameSlug && gameUrlMap[gameSlug]) {
       link.href = gameUrlMap[gameSlug];
+      console.log(`设置链接: ${gameSlug} -> ${gameUrlMap[gameSlug]}`);
+    } else {
+      console.warn(`未找到游戏映射: ${gameSlug}`);
     }
   });
 });

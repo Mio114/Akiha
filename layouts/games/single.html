@@ -1,132 +1,114 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLANNAD - 视觉小说收藏</title>
-    <link rel="stylesheet" href="/css/game-detail.css">
+    <title>{{ .Title }} - 视觉小说收藏</title>
+    <link rel="stylesheet" href="{{ "css/game-detail.css" | relURL }}">
 </head>
 <body>
-    
+    <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="/" class="nav-logo">VisualNovel</a>
+            <a href="{{ "/" | relURL }}" class="nav-logo">VisualNovel</a>
             <div class="nav-links">
-                <a href="/">首页</a>
-                <a href="/games">游戏库</a>
+                <a href="{{ "/" | relURL }}">首页</a>
+                <a href="{{ "/games" | relURL }}">游戏库</a>
             </div>
         </div>
     </nav>
 
-    
+    <!-- 游戏主区域 -->
     <main class="game-main">
-        
+        <!-- 封面背景 -->
         <div class="cover-background">
-            
-            <img src="/images/CLANNAD.jpg" alt="CLANNAD" class="background-image">
-            
+            {{ with .Params.cover_image }}
+            <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="background-image">
+            {{ end }}
             <div class="background-overlay"></div>
         </div>
 
-        
+        <!-- 游戏内容 -->
         <div class="game-content">
             <div class="game-header">
                 <div class="cover-container">
-                    
-                    <img src="/images/CLANNAD.jpg" alt="CLANNAD" class="game-cover">
-                    
+                    {{ with .Params.cover_image }}
+                    <img src="{{ . | relURL }}" alt="{{ $.Title }}" class="game-cover">
+                    {{ end }}
                 </div>
                 
                 <div class="game-info">
-                    <h1 class="game-title">CLANNAD</h1>
+                    <h1 class="game-title">{{ .Title }}</h1>
                     <div class="game-meta">
-                        
+                        {{ with .Params.developer }}
                         <div class="meta-item">
                             <span class="meta-label">开发商</span>
-                            <span class="meta-value">Key</span>
+                            <span class="meta-value">{{ . }}</span>
                         </div>
+                        {{ end }}
                         
-                        
-                        
+                        {{ with .Params.release_date }}
                         <div class="meta-item">
                             <span class="meta-label">发行日期</span>
-                            <span class="meta-value">2004-04-28</span>
+                            <span class="meta-value">{{ . }}</span>
                         </div>
+                        {{ end }}
                         
-                        
-                        
-                        
+                        <!-- 添加别名 -->
+                        {{ with .Params.alternative_names }}
                         <div class="meta-item">
                             <span class="meta-label">别名</span>
-                            <span class="meta-value">クラナド / Clannad / 团子大家族</span>
+                            <span class="meta-value">{{ delimit . " / " }}</span>
                         </div>
+                        {{ end }}
                         
-                        
-                        
+                        {{ with .Params.rating }}
                         <div class="meta-item rating-item">
                             <span class="meta-label">评分</span>
-                            <span class="rating-value">8.92</span>
+                            <span class="rating-value">{{ . }}</span>
                             <div class="rating-stars">
-                                
-                                
-                                <span class="star filled">★</span>
-                                
-                                <span class="star filled">★</span>
-                                
-                                <span class="star filled">★</span>
-                                
-                                <span class="star filled">★</span>
-                                
-                                <span class="star ">★</span>
-                                
+                                {{ $rating := . }}
+                                {{ range seq 1 5 }}
+                                <span class="star {{ if le . (div $rating 2) }}filled{{ end }}">★</span>
+                                {{ end }}
                             </div>
-                            
-                            
-                            <a href="https://vndb.org/v4" target="_blank" class="vndb-link" title="评分来自 VNDB">
+                            <!-- 添加 VNDB 链接 -->
+                            {{ with $.Params.vndb_link }}
+                            <a href="{{ . }}" target="_blank" class="vndb-link" title="评分来自 VNDB">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
                                 </svg>
                             </a>
-                            
+                            {{ end }}
                         </div>
-                        
+                        {{ end }}
                     </div>
 
-                    
-                    
+                    <!-- 平台标签 -->
+                    {{ with .Params.platforms }}
                     <div class="platforms">
                         <span class="section-label">平台</span>
                         <div class="platform-tags">
-                            
-                            <span class="platform-tag">Windows</span>
-                            
-                            <span class="platform-tag">Switch</span>
-                            
-                            <span class="platform-tag">Steam</span>
-                            
-                            <span class="platform-tag">PS4</span>
-                            
+                            {{ range . }}
+                            <span class="platform-tag">{{ . }}</span>
+                            {{ end }}
                         </div>
                     </div>
-                    
+                    {{ end }}
 
-                    
-                    
+                    <!-- 类型标签 -->
+                    {{ with .Params.tags }}
                     <div class="tags-section">
                         <span class="section-label">标签</span>
                         <div class="tag-list">
-                            
-                            <span class="game-tag">校园</span>
-                            
-                            <span class="game-tag">亲情</span>
-                            
-                            <span class="game-tag">催泪</span>
-                            
+                            {{ range . }}
+                            <span class="game-tag">{{ . }}</span>
+                            {{ end }}
                         </div>
                     </div>
-                    
+                    {{ end }}
 
-                    
+                    <!-- 页面导航 -->
                     <div class="page-navigation">
                         <button class="nav-btn active" data-page="description">游戏介绍</button>
                         <button class="nav-btn" data-page="links">官网与下载</button>
@@ -135,47 +117,41 @@
                 </div>
             </div>
 
-            
+            <!-- 页面内容区域 -->
             <div class="page-content">
-                
+                <!-- 游戏介绍页面 -->
                 <div class="page active" id="description-page">
                     <section class="description-section">
                         <h2 class="section-title">游戏介绍</h2>
                         <div class="description-content">
-                            
-                                <p>在某个小镇，主角冈崎朋也因为家庭的因素成为不良少年，一直与春原阳平为伍，在光坂高校过着潦倒的生活，但冀望终有一天能够离开所在的小镇。某年4月14日，他在学校坡道前发现了一个止步不前的女孩，在朋也认识了这个名为“古河渚”的女孩后，他的生活开始有了重大的变化。学园篇为主角和女主角们之间所发生的事件，After story为主角在学校毕业之后，以及家庭生活，其中还关联著“幻想世界”，CLANNAD就是由这三个要素所组成的故事。</p>
-                            
+                            {{ with .Params.description }}
+                                <p>{{ . }}</p>
+                            {{ else }}
+                                {{ .Content }}
+                            {{ end }}
                         </div>
                     </section>
 
-                    
-                    
+                    <!-- 游戏截图 -->
+                    {{ with .Params.screenshots }}
                     <section class="screenshots-section">
                         <h2 class="section-title">游戏截图</h2>
                         <div class="screenshots-grid">
-                            
+                            {{ range first 3 . }}
                             <div class="screenshot-item">
-                                <img src="https://cloud.touchgaloss.com/uploads/50ff7f36bf842a85e54fa832a35a1340f914f056_jpg@942w_707h_progressive_webp.avif" alt="游戏截图" class="screenshot-image">
+                                <img src="{{ . }}" alt="游戏截图" class="screenshot-image">
                             </div>
-                            
-                            <div class="screenshot-item">
-                                <img src="https://cloud.touchgaloss.com/uploads/9f5bad1ca0d5a5420473a645655f0eae94f58180_jpg@942w_707h_progressive_webp.avif" alt="游戏截图" class="screenshot-image">
-                            </div>
-                            
-                            <div class="screenshot-item">
-                                <img src="https://cloud.touchgaloss.com/uploads/dc7d6869679914620cbdd951b4122b548ee63fcd_jpg@942w_707h_progressive_webp.avif" alt="游戏截图" class="screenshot-image">
-                            </div>
-                            
+                            {{ end }}
                         </div>
                     </section>
-                    
+                    {{ end }}
 
-                    
-                    
+                    <!-- PV鉴赏 -->
+                    {{ with .Params.trailer }}
                     <section class="trailer-section">
                         <h2 class="section-title">PV鉴赏</h2>
                         <div class="video-container">
-                            <div class="video-placeholder" data-src="https://cloud.touchgaloss.com/2023/05/70da972a1f20231203221450.webm">
+                            <div class="video-placeholder" data-src="{{ . }}">
                                 <div class="video-poster">
                                     <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
                                         <path d="M8 5v14l11-7z" fill="currentColor"/>
@@ -184,34 +160,51 @@
                             </div>
                         </div>
                     </section>
-                    
+                    {{ else }}
+                    <section class="trailer-section">
+                        <h2 class="section-title">PV鉴赏</h2>
+                        <div class="no-trailer">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                                <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/>
+                            </svg>
+                            <p>暂无宣传视频</p>
+                        </div>
+                    </section>
+                    {{ end }}
                 </div>
 
-                
+                <!-- 官网与下载页面 -->
                 <div class="page" id="links-page">
                     <section class="links-section">
                         <h2 class="section-title">官方网站</h2>
-                        
+                        {{ with .Params.website }}
                         <div class="website-link-container">
-                            <a href="https://key.visualarts.gr.jp/product/clannad/" class="official-website-link" target="_blank">
+                            <a href="{{ . }}" class="official-website-link" target="_blank">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
                                 </svg>
                                 <span>访问官方网站</span>
                             </a>
-                            <p class="website-url">https://key.visualarts.gr.jp/product/clannad/</p>
+                            <p class="website-url">{{ . }}</p>
                         </div>
-                        
+                        {{ else }}
+                        <div class="no-link">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                                <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1 0 1.71-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z" fill="currentColor"/>
+                            </svg>
+                            <p>暂无官方网站信息</p>
+                        </div>
+                        {{ end }}
                     </section>
 
                     <section class="download-section">
                         <h2 class="section-title">下载链接</h2>
-                        
+                        {{ with .Params.download }}
                         <div class="download-links">
-                            
-                            <div class="download-button" data-tooltip="文件大小: 未知">
+                            <!-- 新的下载按钮 -->
+                            <div class="download-button" data-tooltip="文件大小: {{ with $.Params.file_size }}{{ . }}{{ else }}未知{{ end }}">
                                 <div class="button-wrapper">
-                                    <a href="https://pan.touchgal.net/s/weaHv" class="download-link" target="_blank">
+                                    <a href="{{ . }}" class="download-link" target="_blank">
                                         <div class="text">下载游戏</div>
                                         <span class="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
@@ -226,38 +219,56 @@
                                 <p>请注意, 本站的 Galgame 下载资源和补丁均来自互联网或用户上传, 请自行鉴别资源安全性。如果您要发布资源, 请您选择正确的资源分类, 并仔细编写注意事项, 以免其它用户产生困扰。使用资源前请认真阅读资源的备注（如果有）, 以免产生问题。</p>
                             </div>
                         </div>
-                        
+                        {{ else }}
+                        <div class="no-download">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+                            </svg>
+                            <p>暂无下载链接</p>
+                        </div>
+                        {{ end }}
                     </section>
 
                     <section class="additional-links-section">
                         <h2 class="section-title">相关链接</h2>
                         <div class="additional-links">
-                            
-                            <a href="https://store.steampowered.com/app/324160/CLANNAD/" class="additional-link steam-link" target="_blank">
+                            {{ with .Params.steam_link }}
+                            <a href="{{ . }}" class="additional-link steam-link" target="_blank">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                                     <path d="M11.979 3C8.571 3 5.798 5.274 5.798 8.9c0 2.002 1.001 3.701 2.471 4.642-.043.287-.074.58-.074.88 0 1.386 1.124 2.578 2.576 2.578.493 0 .958-.134 1.363-.367.637.94 1.743 1.567 2.998 1.567 1.92 0 3.5-1.466 3.5-3.3 0-1.834-1.58-3.3-3.5-3.3-.286 0-.563.042-.83.104-.364-1.151-1.424-2.008-2.67-2.008-1.58 0-2.864 1.206-2.864 2.7 0 .294.064.574.168.834C7.372 11.183 6.61 10.14 6.61 8.9c0-2.166 2.394-3.9 5.369-3.9s5.369 1.734 5.369 3.9c0 .594-.156 1.166-.428 1.686.396.19.75.45 1.042.768.52-.78.817-1.7.817-2.684 0-3.626-2.773-5.9-6.181-5.9z" fill="currentColor"/>
                                 </svg>
                                 Steam 商店
                             </a>
-                            
+                            {{ end }}
 
-                            
+                            {{ with .Params.dlc_link }}
+                            <a href="{{ . }}" class="additional-link dlc-link" target="_blank">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M17 6H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h10c2.76 0 5-2.24 5-5s-2.24-5-5-5zm0 8H7c-1.66 0-3-1.34-3-3s1.34-3 3-3h10c1.66 0 3 1.34 3 3s-1.34-3-3-3z" fill="currentColor"/>
+                                </svg>
+                                DLC 内容
+                            </a>
+                            {{ end }}
 
-                            
-                            <a href="https://zh.wikipedia.org/wiki/CLANNAD" class="additional-link wiki-link" target="_blank">
+                            {{ with .Params.wiki_link }}
+                            <a href="{{ . }}" class="additional-link wiki-link" target="_blank">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
                                 </svg>
                                 维基百科
                             </a>
-                            
+                            {{ end }}
                         </div>
 
-                        
+                        {{ if not (or .Params.steam_link .Params.dlc_link .Params.wiki_link) }}
+                        <div class="no-additional-links">
+                            <p>暂无相关链接</p>
+                        </div>
+                        {{ end }}
                     </section>
                 </div>
 
-                
+                <!-- 游戏评价页面 -->
                 <div class="page" id="reviews-page">
                     <section class="review-section">
                         <h2 class="section-title">发表评价</h2>
@@ -292,13 +303,13 @@
         </div>
     </main>
 
-    
+    <!-- 页脚 -->
     <footer class="site-footer">
         <div class="footer-content">
-            <p>&copy; 2025  Akiha Field. 保留所有权利。</p>
+            <p>&copy; {{ now.Year }}  Akiha Field. 保留所有权利。</p>
         </div>
     </footer>
 
-    <script src="/js/game-detail.js"></script>
+    <script src="{{ "js/game-detail.js" | relURL }}"></script>
 </body>
 </html>

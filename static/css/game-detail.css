@@ -1,0 +1,1218 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4A6CF7;
+    --primary-dark: #3a5ae5;
+    --secondary-color: #f8fafc;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f1f5f9;
+    --border-color: #e2e8f0;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+    --primary-color: #818cf8;
+    --primary-dark: #6366f1;
+    --secondary-color: #1e293b;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --border-color: #334155;
+}
+
+body {
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    overflow-x: hidden;
+}
+
+/* 导航栏 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-links a {
+    margin-left: 2rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* 主内容区域 */
+.game-main {
+    position: relative;
+    min-height: 100vh;
+}
+
+/* 封面背景 */
+.cover-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4);
+}
+
+.background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        var(--bg-primary) 100%
+    );
+}
+
+/* 游戏内容 */
+.game-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 6rem 2rem 2rem;
+}
+
+/* 游戏头部信息 */
+.game-header {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    align-items: start;
+}
+
+.cover-container {
+    position: relative;
+}
+
+.game-cover {
+    width: 100%;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+}
+
+.game-cover:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg), 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+
+.game-info {
+    padding-top: 1rem;
+}
+
+.game-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.game-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.meta-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    min-width: 80px;
+}
+
+.meta-value {
+    font-weight: 500;
+}
+
+.rating-item {
+    align-items: center;
+}
+
+.rating-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.rating-stars {
+    display: flex;
+    gap: 2px;
+}
+
+.star {
+    color: #cbd5e1;
+    font-size: 1.1rem;
+}
+
+.star.filled {
+    color: #fbbf24;
+}
+
+/* VNDB 链接样式 */
+.vndb-link {
+    margin-left: 0.5rem;
+    color: var(--text-secondary);
+    transition: var(--transition);
+    opacity: 0.7;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.vndb-link:hover {
+    color: var(--primary-color);
+    opacity: 1;
+}
+
+.vndb-link svg {
+    vertical-align: middle;
+}
+
+/* 平台和标签 */
+.platforms, .tags-section {
+    margin-bottom: 1.5rem;
+}
+
+.section-label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.platform-tags, .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.platform-tag, .game-tag {
+    padding: 0.5rem 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.platform-tag:hover, .game-tag:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* 页面导航 - 底部边框指示器风格 */
+.page-navigation {
+    display: flex;
+    gap: 0;
+    margin-top: 2rem;
+    padding: 0;
+    border-bottom: 2px solid var(--border-color);
+    background: transparent;
+}
+
+.nav-btn {
+    padding: 1rem 2rem;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-secondary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    white-space: nowrap;
+}
+
+.nav-btn:hover {
+    background: rgba(74, 108, 247, 0.05);
+    color: var(--primary-color);
+}
+
+.nav-btn.active {
+    background: transparent;
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* 页面内容 */
+.page-content {
+    margin-top: 2rem;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+    animation: slideInUp 0.4s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 内容区块通用样式 */
+.description-section, .screenshots-section, .trailer-section, 
+.links-section, .download-section, .additional-links-section,
+.review-section, .reviews-list-section {
+    margin-bottom: 3rem;
+    transition: var(--transition);
+}
+
+.description-section:hover, .screenshots-section:hover, .trailer-section:hover, 
+.links-section:hover, .download-section:hover, .additional-links-section:hover,
+.review-section:hover, .reviews-list-section:hover {
+    transform: translateY(-2px);
+}
+
+.section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* 游戏介绍页面改进 */
+.description-section {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+}
+
+.description-content {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+}
+
+.description-content p {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+/* 截图网格改进 */
+.screenshots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.screenshot-item {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    cursor: pointer;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+.screenshot-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.screenshot-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+/* pv视频容器样式 */
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    background: #000;
+    cursor: pointer;
+}
+
+/* 视频占位符 - 确保完全覆盖 */
+.video-placeholder {
+    position: relative;
+    width: 100%;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* 直接视频样式 - 增强样式 */
+.video-placeholder video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: none !important;
+    outline: none !important;
+    border-radius: 12px;
+    background: #000;
+}
+
+/* 嵌入视频包装容器 - 增强样式 */
+.video-embed-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.video-embed-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none !important;
+    outline: none !important;
+    border-radius: 12px;
+    background: #000;
+}
+
+/* 通用 iframe 样式 - 增强 */
+.video-placeholder iframe {
+    width: 100%;
+    height: 400px;
+    border: none !important;
+    outline: none !important;
+    border-radius: 12px;
+    background: #000;
+}
+
+/* 播放状态 - 确保海报完全隐藏 */
+.video-placeholder.playing .video-poster {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+
+/* 官网与下载页面改进 */
+.links-section, .download-section, .additional-links-section {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+}
+
+/* 官方网站样式改进 */
+.website-link-container {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    text-align: center;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+
+.official-website-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: var(--transition);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.official-website-link:hover {
+    background: var(--primary-dark);
+}
+
+.website-url {
+    color: var(--text-secondary);
+    font-family: 'Monaco', 'Consolas', monospace;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: inline-block;
+    word-break: break-all;
+    font-size: 0.9rem;
+}
+
+/* 下载链接样式改进 */
+.download-links {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+}
+
+/* 新的下载按钮样式 */
+.download-button {
+  --width: 160px;
+  --height: 50px;
+  --tooltip-height: 35px;
+  --tooltip-width: 140px;
+  --gap-between-tooltip-to-button: 18px;
+  --button-color: #2ecc71;
+  --tooltip-color: #fff;
+  width: var(--width);
+  height: var(--height);
+  background: var(--button-color);
+  position: relative;
+  text-align: center;
+  border-radius: 0.45em;
+  font-family: inherit;
+  transition: background 0.3s;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+.download-button::before {
+  position: absolute;
+  content: attr(data-tooltip);
+  width: var(--tooltip-width);
+  height: var(--tooltip-height);
+  background-color: var(--tooltip-color);
+  font-size: 0.8rem;
+  color: #111;
+  border-radius: .25em;
+  line-height: var(--tooltip-height);
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+  left: calc(50% - var(--tooltip-width) / 2);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.download-button::after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: var(--tooltip-color);
+  left: calc(50% - 10px);
+  bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+  z-index: 10;
+}
+
+.download-button::after,
+.download-button::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+.download-button .button-wrapper,
+.download-button .text,
+.download-button .icon {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  color: #fff;
+}
+
+.download-button .text {
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.download-button .text,
+.download-button .icon {
+  transition: top 0.5s;
+}
+
+.download-button .icon {
+  color: #fff;
+  top: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-button .icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.download-button:hover {
+  background: #27ae60;
+}
+
+.download-button:hover .text {
+  top: -100%;
+}
+
+.download-button:hover .icon {
+  top: 0;
+}
+
+.download-button:hover:before,
+.download-button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.download-button:hover:after {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+}
+
+.download-button:hover:before {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+}
+
+/* 下载链接样式调整 */
+.download-button .download-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.download-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg-primary);
+    border-radius: 6px;
+    margin-top: 1rem;
+}
+
+.download-info p {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* 相关链接改进 */
+.additional-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.additional-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.additional-link:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+    border-color: var(--primary-color);
+}
+
+.steam-link:hover {
+    background: #1b2838;
+}
+
+.dlc-link:hover {
+    background: #9b59b6;
+}
+
+.wiki-link:hover {
+    background: #3498db;
+}
+
+/* 无内容状态 */
+.no-link, .no-download, .no-additional-links, .no-trailer {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border-radius: var(--radius);
+    border: 2px dashed var(--border-color);
+}
+
+.no-link svg, .no-download svg, .no-trailer svg {
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.no-additional-links {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border-radius: var(--radius);
+}
+
+/* 游戏评价页面改进 */
+.review-section {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+}
+
+.review-editor {
+    background: var(--bg-primary);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    margin-bottom: 0;
+}
+
+.review-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.6;
+    resize: vertical;
+    transition: var(--transition);
+}
+
+.review-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+}
+
+.review-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.review-counter {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.char-count {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.review-submit {
+    padding: 0.75rem 1.75rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1rem;
+}
+
+.review-submit:hover:not(:disabled) {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.review-submit:disabled {
+    background: var(--text-secondary);
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* 评价列表改进 */
+.reviews-list-section {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.review-placeholder {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border-radius: var(--radius);
+    border: 2px dashed var(--border-color);
+}
+
+.review-placeholder svg {
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* 单个评价项 */
+.review-item {
+    background: var(--bg-primary);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    border-left: 4px solid var(--primary-color);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.review-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.review-author {
+    font-weight: 700;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+}
+
+.review-date {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.review-content {
+    color: var(--text-primary);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    white-space: pre-wrap;
+    font-size: 1rem;
+}
+
+.review-stats {
+    margin-bottom: 1rem;
+}
+
+.review-likes {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.review-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.review-action {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: var(--transition);
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+}
+
+.review-action:hover {
+    background: rgba(74, 108, 247, 0.1);
+    color: var(--primary-color);
+}
+
+.review-action.liked {
+    color: var(--primary-color);
+}
+
+/* 回复功能样式 */
+.reply-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    display: none;
+}
+
+.reply-textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 0.875rem;
+    resize: vertical;
+    margin-bottom: 0.5rem;
+    transition: var(--transition);
+}
+
+.reply-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(74, 108, 247, 0.1);
+}
+
+.reply-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reply-counter {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+
+.reply-cancel, .reply-submit {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.reply-cancel {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    margin-right: 0.5rem;
+}
+
+.reply-cancel:hover {
+    background: var(--border-color);
+}
+
+.reply-submit {
+    background: var(--primary-color);
+    color: white;
+}
+
+.reply-submit:hover {
+    background: var(--primary-dark);
+}
+
+.reply-submit:disabled {
+    background: var(--text-secondary);
+    cursor: not-allowed;
+}
+
+/* 回复列表 */
+.replies-list {
+    margin-top: 1rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--border-color);
+}
+
+.reply-item {
+    background: rgba(74, 108, 247, 0.05);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+}
+
+.reply-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.reply-author {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+}
+
+.reply-date {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+
+.reply-content {
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.reply-actions {
+    margin-top: 0.5rem;
+}
+
+.reply-action {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: var(--transition);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.reply-action:hover {
+    background: rgba(74, 108, 247, 0.1);
+    color: var(--primary-color);
+}
+
+.reply-action.liked {
+    color: var(--primary-color);
+}
+
+/* 消息提示 */
+.message-toast {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    padding: 12px 20px;
+    background: #2ecc71;
+    color: white;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10000;
+    font-size: 14px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.message-toast.message-error {
+    background: #e74c3c;
+}
+
+.message-toast.message-success {
+    background: #2ecc71;
+}
+
+/* 图片预览模态框 */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    cursor: zoom-out;
+}
+
+.image-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* 页脚 */
+.site-footer {
+    background: var(--bg-secondary);
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .game-header {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .cover-container {
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    
+    .game-title {
+        font-size: 2.5rem;
+    }
+    
+    .nav-container {
+        padding: 1rem;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+    
+    .game-content {
+        padding: 5rem 1rem 1rem;
+    }
+    
+    .page-navigation {
+        flex-direction: column;
+        border-bottom: none;
+        gap: 0.5rem;
+    }
+    
+    .nav-btn {
+        text-align: center;
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        border-radius: 8px;
+        background: var(--bg-secondary);
+    }
+    
+    .nav-btn.active {
+        border-left-color: var(--primary-color);
+        border-bottom: none;
+    }
+    
+    .additional-links {
+        grid-template-columns: 1fr;
+    }
+    
+    .download-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .official-website-link,
+    .download-button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .review-controls {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    
+    .review-submit {
+        width: 100%;
+    }
+    
+    .screenshots-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .description-section, .links-section, .download-section, 
+    .additional-links-section, .review-section, .reviews-list-section {
+        padding: 1rem;
+    }
+    
+    .download-button {
+        --width: 100%;
+    }
+}
