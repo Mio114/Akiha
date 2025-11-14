@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>末世 on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/%E6%9C%AB%E4%B8%96/</link>
+    <description>Recent content in 末世 on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/tags/%E6%9C%AB%E4%B8%96/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>eden*</title>
+      <link>http://localhost:1313/games/eden/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/eden/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Planetarian ～星之梦～</title>
+      <link>http://localhost:1313/games/planetarian/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/planetarian/</guid>
+      <description>&lt;p&gt;短篇视觉小说，讲述在末日后的世界中，废墟猎人偶遇天文馆机器人星野梦美的故事。作品以其简洁而深刻的叙事风格感动了无数玩家。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>星之终途</title>
+      <link>http://localhost:1313/games/stella-of-the-end/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/stella-of-the-end/</guid>
+      <description>&lt;p&gt;讲述在人类文明衰落后的世界中，送货人菲利亚与仿生人少女裘德的故事。作品延续了Key社对人性与情感的深刻探讨，展现了末日背景下的温情。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

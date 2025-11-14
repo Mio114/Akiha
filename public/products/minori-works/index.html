@@ -1,0 +1,842 @@
+<!DOCTYPE html> 
+<html lang="zh-CN" data-theme="light">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minori社作品 - AKIHA FIELD</title>
+  <meta name="description" content="AKIHA FIELD致力于创作和发行高质量的视觉小说游戏，将精美的画面、动人的故事和丰富的角色融为一体，为玩家带来沉浸式的游戏体验.">
+  
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/common.6c268cb221f057ae621040fda8b43e7c5b826958f3e3adea53b493411c72ab6d.css">
+  
+  
+  
+    
+    <link rel="stylesheet" href="http://localhost:1313/css/style.374e976b987ea422d413d8508b022ac0980ffd950864a2a598b8ccbee724a0f0.css">
+  
+</head>
+<body> 
+  
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <a class="logo" href="/" aria-label="AKIHA FIELD 首页">
+        <div class="logo-img">
+          <img src="/images/AKIHA%20FIELD%20logo.jpg" alt="AKIHA FIELD" loading="lazy">
+        </div>
+        <div class="logo-text">
+          <h1>AKIHA FIELD</h1>
+          <p>典藏世间之美，共叙心动诗篇。</p>
+        </div>
+      </a>
+    </div>  
+    
+    <ul class="navbar-menu">
+      <li><a href="/">首页</a></li>
+      <li><a href="/games/">游戏库</a></li>
+      <li><a href="/products/companies/">游戏会社</a></li>
+      <li><a href="/about/">关于我们</a></li>
+      <li><a href="/contact/">联系我们</a></li>
+    </ul>
+    
+
+<div class="navbar-controls">
+  
+  <label for="theme" class="theme-toggle-new">
+    <span class="theme__toggle-wrap">
+      <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="dark">
+      <span class="theme__fill"></span>
+      <span class="theme__icon">
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+        <span class="theme__icon-part"></span>
+      </span>
+    </span>
+  </label>
+  
+  
+  <div class="login-container">
+    <a href="/login/" class="login-btn">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" 
+              stroke="currentColor" stroke-width="2" fill="none"/>
+      </svg>
+      <span class="text">登录/注册</span>
+    </a>
+  </div>
+</div>
+  </nav>
+
+  <main>
+    
+<article class="page-content">
+    <div class="container">
+         <style>
+  /* Minori 会社特定颜色主题 - 增强版 */
+  :root {
+    --minori-primary-color: #FF6B6B !important;
+    --minori-secondary-color: #FF8E53 !important;
+  }
+  
+  /* 增强选择器优先级 */
+  .minori-company-info h2 {
+    background: linear-gradient(135deg, var(--minori-primary-color), var(--minori-secondary-color)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+  }
+  
+  /* 为所有相关元素添加 Minori 类名增强 */
+  .minori-company-info .company-common-detail-icon {
+    color: var(--minori-primary-color) !important;
+  }
+  
+  .minori-company-info .company-common-detail-value {
+    background: rgba(255, 107, 107, 0.08) !important;
+    border: 1px solid rgba(255, 107, 107, 0.1) !important;
+  }
+  
+  .minori-company-info .company-common-website-link {
+    color: var(--minori-primary-color) !important;
+    background: rgba(255, 107, 107, 0.08) !important;
+    border: 1.5px solid rgba(255, 107, 107, 0.15) !important;
+  }
+  
+  .minori-company-info .company-common-stat-number {
+    color: var(--minori-primary-color) !important;
+  }
+  
+  /* 作品部分样式 */
+  .company-common-works-section h2 {
+    border-bottom-color: var(--minori-primary-color) !important;
+  }
+  
+  .company-common-works-section h2::after {
+    background: linear-gradient(90deg, var(--minori-primary-color), var(--minori-secondary-color)) !important;
+  }
+  
+  .company-common-work-year {
+    background: linear-gradient(135deg, var(--minori-primary-color), var(--minori-secondary-color)) !important;
+  }
+  
+  .company-common-work-tag {
+    background: rgba(255, 107, 107, 0.1) !important;
+    color: var(--minori-primary-color) !important;
+    border: 1px solid rgba(255, 107, 107, 0.2) !important;
+  }
+  
+  .company-common-work-link {
+    color: var(--minori-primary-color) !important;
+    background: rgba(255, 107, 107, 0.08) !important;
+  }
+  
+  .company-common-sort-option:hover {
+    background: rgba(255, 107, 107, 0.1) !important;
+    color: var(--minori-primary-color) !important;
+    border-color: rgba(255, 107, 107, 0.2) !important;
+  }
+  
+  .company-common-sort-option.active {
+    background: var(--minori-primary-color) !important;
+    border-color: var(--minori-primary-color) !important;
+    color: white !important;
+  }
+  
+  .company-common-sort-status {
+    background: rgba(255, 107, 107, 0.08) !important;
+    border: 1px solid rgba(255, 107, 107, 0.1) !important;
+    color: var(--minori-primary-color) !important;
+  }
+  
+  /* 分页控件样式 */
+  .company-common-pagination-btn {
+    color: var(--minori-primary-color) !important;
+    border-color: var(--minori-primary-color) !important;
+  }
+  
+  .company-common-pagination-btn:hover:not(:disabled) {
+    background: rgba(255, 107, 107, 0.1) !important;
+  }
+  
+  .company-common-pagination-input {
+    border-color: var(--minori-primary-color) !important;
+  }
+  
+  .company-common-pagination-go-btn {
+    background: var(--minori-primary-color) !important;
+    color: white !important;
+  }
+  
+  .company-common-page-size-select {
+    border-color: var(--minori-primary-color) !important;
+  }
+</style>
+
+<!-- Minori 会社信息 -->
+<section class="company-common-info minori-company-info">
+  <div class="company-common-logo-large">
+    <img src="/images/Minori.jpg" alt="Minori">
+  </div>
+  <div class="company-common-info-text">
+        <h2>Minori</h2>
+        <p>Minori是日本知名的视觉小说游戏开发商，成立于2007年。以其精美的视觉效果、深刻的剧情和独特的艺术风格而闻名，作品常常探讨人生、梦想和成长等主题。</p>
+        <p>Minori凭借高水准的制作质量与鲜明的叙事风格，在视觉小说领域形成了独树一帜的创作特色。其多部作品曾被改编为动画，累积了大量忠实支持者。尽管公司已于2019年停止运营，但其留下的作品至今仍被全球玩家深深铭记，持续传递着感动与思考。</p>
+    
+    <!-- 会社别名和官网信息 -->
+        <div class="company-common-details">
+          <div class="company-common-detail">
+            <svg class="company-common-detail-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+            </svg>
+            <span class="company-common-detail-label">别名:</span>
+            <span class="company-common-detail-value">みのり</span>
+            <span class="company-common-detail-value">中二社</span>
+          </div>
+          <div class="company-common-detail">
+            <svg class="company-common-detail-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
+            </svg>
+            <span class="company-common-detail-label">官方链接:</span>
+            <div class="company-common-website-links">
+              <a href="http://www.minori.ph/" class="company-common-website-link" target="_blank" title="官方网站">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
+                </svg>
+                官网
+              </a>
+              <a href="https://en.wikipedia.org/wiki/Minori_(company)" class="company-common-website-link" target="_blank" title="维基百科(英文)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                </svg>
+                Wiki(EN)
+              </a>
+              <a href="https://ja.wikipedia.org/wiki/Minori" class="company-common-website-link" target="_blank" title="维基百科(日文)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                </svg>
+                Wiki(JP)
+              </a>
+              <a href="https://www.wikidata.org/wiki/Q307403" class="company-common-website-link" target="_blank" title="维基数据">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                </svg>
+                Wikidata
+              </a>
+              <a href="https://x.com/nekoten_yuuna" class="company-common-website-link" target="_blank" title="X (Twitter)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" fill="currentColor"/>
+                </svg>
+                X
+              </a>
+              <a href="https://www.mobygames.com/company/minori" class="company-common-website-link" target="_blank" title="MobyGames">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
+                </svg>
+                MobyGames
+              </a>
+              <a href="https://store.steampowered.com/curator/36069420" class="company-common-website-link" target="_blank" title="Steam">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
+                </svg>
+                Steam
+              </a>
+            </div>
+          </div>
+        </div>
+    
+    <div class="company-common-stats">
+      <div class="company-common-stat">
+        <div class="company-common-stat-number">15+</div>
+        <div class="company-common-stat-label">作品数量</div>
+      </div>
+      <div class="company-common-stat">
+        <div class="company-common-stat-number">2007</div>
+        <div class="company-common-stat-label">成立年份<br>（于2019年停止活动）</div>
+      </div>
+      <div class="company-common-stat">
+        <div class="company-common-stat-number">艺术与感动</div>
+        <div class="company-common-stat-label">象征</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Minori 主要作品 -->
+<section class="company-common-works-section">
+  <h2>主要作品</h2>
+  
+  <!-- 排序控件 -->
+  <div class="company-common-sort-controls">
+    <div class="company-common-sort-label">排序方式:</div>
+    <div class="company-common-sort-options">
+      <button class="company-common-sort-option active" data-sort="default">默认排序</button>
+      <button class="company-common-sort-option" data-sort="name-asc">名称 A-Z</button>
+      <button class="company-common-sort-option" data-sort="name-desc">名称 Z-A</button>
+      <button class="company-common-sort-option" data-sort="year-asc">发行时间 ↑</button>
+      <button class="company-common-sort-option" data-sort="year-desc">发行时间 ↓</button>
+    </div>
+    <div class="company-common-sort-status">当前排序: 默认排序</div>
+  </div>
+  
+  <div class="company-common-works-grid" id="works-grid">
+    <!-- ef - the first tale. -->
+    <div class="company-common-work-card" data-name="悠久之翼-前篇" data-year="2006">
+      <div class="company-common-work-image">
+        <img src="/images/悠久之翼-前篇.jpg" alt="悠久之翼-前篇">
+        <span class="company-common-work-year">2006</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>悠久之翼-前篇</h3>
+        <div class="company-common-work-description">
+          以音羽和千寻两个城市为舞台，讲述了两对男女之间交织的爱情故事。作品以其独特的叙事结构、精美的视觉效果和深刻的主题赢得了广泛赞誉。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">爱情</span>
+          <span class="company-common-work-tag">双城记</span>
+          <span class="company-common-work-tag">艺术</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="ef-first-tale">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- ef - the latter tale. -->
+    <div class="company-common-work-card" data-name="悠久之翼-后篇" data-year="2008">
+      <div class="company-common-work-image">
+        <img src="/images/悠久之翼-后篇.jpg" alt="悠久之翼-后篇">
+        <span class="company-common-work-year">2008</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>悠久之翼-后篇</h3>
+        <div class="company-common-work-description">
+          ef系列的第二部作品，延续了前作的艺术风格和叙事手法，讲述了新的爱情故事。作品以其唯美的画面和感人的剧情深受玩家喜爱。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">续作</span>
+          <span class="company-common-work-tag">爱情</span>
+          <span class="company-common-work-tag">艺术</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="ef-latter-tale">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- 春天的足音 -->
+    <div class="company-common-work-card" data-name="春天的足音" data-year="2004">
+      <div class="company-common-work-image">
+        <img src="/images/春天的足音.png" alt="春天的足音">
+        <span class="company-common-work-year">2004</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>春天的足音</h3>
+        <div class="company-common-work-description">
+          Minori的早期作品，以春天为背景，讲述了一段青涩的校园爱情故事。作品展现了Minori独特的艺术风格和叙事手法。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">校园</span>
+          <span class="company-common-work-tag">爱情</span>
+          <span class="company-common-work-tag">青春</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="haru-no-ashioto">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Wind -a breath of heart- -->
+    <div class="company-common-work-card" data-name="风-心之呼吸" data-year="2002">
+      <div class="company-common-work-image">
+        <img src="/images/风-心之呼吸.jpg" alt="风-心之呼吸">
+        <span class="company-common-work-year">2002</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>风-心之呼吸</h3>
+        <div class="company-common-work-description">
+          以风为主题，讲述了一个充满诗意和感动的故事。作品以其独特的氛围和深刻的情感描写赢得了玩家的喜爱。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">诗意</span>
+          <span class="company-common-work-tag">感动</span>
+          <span class="company-common-work-tag">氛围</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="wind-breath-of-heart">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- ANGEL TYPE -->
+    <div class="company-common-work-card" data-name="ANGEL TYPE" data-year="2005">
+      <div class="company-common-work-image">
+        <img src="/images/ANGEL TYPE.jpg" alt="ANGEL TYPE">
+        <span class="company-common-work-year">2005</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>ANGEL TYPE</h3>
+        <div class="company-common-work-description">
+          以天使与人类的相遇为主题，讲述了一段跨越种族的爱情故事。作品展现了Minori对奇幻题材的独特诠释。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">奇幻</span>
+          <span class="company-common-work-tag">天使</span>
+          <span class="company-common-work-tag">爱情</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="angel-type">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- eden* -->
+    <div class="company-common-work-card" data-name="eden*" data-year="2009">
+      <div class="company-common-work-image">
+        <img src="/images/Eden.jpg" alt="eden*">
+        <span class="company-common-work-year">2009</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>eden*</h3>
+        <div class="company-common-work-description">
+          以末世为背景，讲述了一段关于爱与牺牲的感人故事。作品以其精美的画面和深刻的主题赢得了广泛赞誉。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">末世</span>
+          <span class="company-common-work-tag">爱情</span>
+          <span class="company-common-work-tag">牺牲</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="eden">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- SPPL -->
+    <div class="company-common-work-card" data-name="春天来了" data-year="2012">
+      <div class="company-common-work-image">
+        <img src="/images/春天来了.jpg" alt="春天来了">
+        <span class="company-common-work-year">2012</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>春天来了</h3>
+        <div class="company-common-work-description">
+          以平行世界为主题，讲述了一段跨越时空的爱情故事。作品展现了Minori对科幻题材的独特诠释。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">科幻</span>
+          <span class="company-common-work-tag">平行世界</span>
+          <span class="company-common-work-tag">爱情</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="sppl">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- 12の月のイヴ -->
+    <div class="company-common-work-card" data-name="无尽的平安夜" data-year="2013">
+      <div class="company-common-work-image">
+        <img src="/images/无尽的平安夜.jpg" alt="无尽的平安夜">
+        <span class="company-common-work-year">2013</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>无尽的平安夜</h3>
+        <div class="company-common-work-description">
+          以十二个月为主题，讲述了十二个独立而又相互关联的故事。作品展现了Minori对短篇故事集的独特处理。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">短篇集</span>
+          <span class="company-common-work-tag">季节</span>
+          <span class="company-common-work-tag">情感</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="12months-eve">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- 罪ノ光ランデヴー -->
+    <div class="company-common-work-card" data-name="罪之光约会" data-year="2016">
+      <div class="company-common-work-image">
+        <img src="/images/罪之光约会.jpg" alt="罪之光约会">
+        <span class="company-common-work-year">2016</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>罪之光约会</h3>
+        <div class="company-common-work-description">
+          以罪与光为主题，讲述了一段关于救赎和希望的故事。作品展现了Minori对深刻主题的探讨能力。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">救赎</span>
+          <span class="company-common-work-tag">希望</span>
+          <span class="company-common-work-tag">深刻</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="tsumi-no-hikari-rendezvous">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- ソレヨリノ前奏詩 -->
+    <div class="company-common-work-card" data-name="永不落幕的前奏诗" data-year="2015">
+      <div class="company-common-work-image">
+        <img src="/images/永不落幕的前奏诗.png" alt="永不落幕的前奏诗">
+        <span class="company-common-work-year">2015</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>永不落幕的前奏诗</h3>
+        <div class="company-common-work-description">
+          以音乐和青春为主题，讲述了一段关于梦想和坚持的故事。作品展现了Minori对音乐题材的独特诠释。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">音乐</span>
+          <span class="company-common-work-tag">青春</span>
+          <span class="company-common-work-tag">梦想</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="sore-yori-no-prelude">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- トリノライン -->
+    <div class="company-common-work-card" data-name="Trinoline" data-year="2017">
+      <div class="company-common-work-image">
+        <img src="/images/Trinoline.jpg" alt="Trinoline">
+        <span class="company-common-work-year">2017</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>Trinoline</h3>
+        <div class="company-common-work-description">
+          Minori的最后一作，以鸟和线为主题，讲述了一段关于自由和羁绊的故事。作品展现了Minori对艺术的不懈追求。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">自由</span>
+          <span class="company-common-work-tag">羁绊</span>
+          <span class="company-common-work-tag">艺术</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="trinoline">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Trinoline Genesis -->
+    <div class="company-common-work-card" data-name="Trinoline Genesis" data-year="2018">
+      <div class="company-common-work-image">
+        <img src="/images/Trinoline Genesis.png" alt="Trinoline Genesis">
+        <span class="company-common-work-year">2018</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>Trinoline Genesis</h3>
+        <div class="company-common-work-description">
+          Trinoline的续作，进一步深化了人与机器人之间关系的探讨。作品延续了前作的艺术风格，在剧情和主题上进行了更深入的挖掘。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">续作</span>
+          <span class="company-common-work-tag">科幻</span>
+          <span class="company-common-work-tag">机器人</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="trinoline-genesis">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 夏空的英仙座 -->
+    <div class="company-common-work-card" data-name="夏空的英仙座" data-year="2012">
+      <div class="company-common-work-image">
+        <img src="/images/夏空的英仙座.jpg" alt="夏空的英仙座">
+        <span class="company-common-work-year">2012</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>夏空的英仙座</h3>
+        <div class="company-common-work-description">
+          以夏日星空为背景，讲述了一段关于约定、回忆与成长的感人故事。作品以其唯美的画面和深刻的情感描写，展现了Minori对夏日题材的独特诠释。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">夏日</span>
+          <span class="company-common-work-tag">星空</span>
+          <span class="company-common-work-tag">成长</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="natsuzora-no-perseus">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 天使的星期日-->
+    <div class="company-common-work-card" data-name="天使的星期日" data-year="2010">
+      <div class="company-common-work-image">
+        <img src="/images/天使的星期日.png" alt="天使的星期日">
+        <span class="company-common-work-year">2010</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>天使的星期日</h3>
+        <div class="company-common-work-description">
+          以天使与人类的温馨日常为主题，讲述了一段充满欢笑与感动的夏日故事。作品展现了Minori对轻松愉快题材的驾驭能力。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">日常</span>
+          <span class="company-common-work-tag">温馨</span>
+          <span class="company-common-work-tag">夏日</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="tenshi-no-sunday">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 罪之光:约会 继代深柑篇 -->
+    <div class="company-common-work-card" data-name="罪之光约会-继代深柑篇" data-year="2016">
+      <div class="company-common-work-image">
+        <img src="/images/罪之光约会 继代深柑篇.png" alt="罪之光:约会 继代深柑篇">
+        <span class="company-common-work-year">2016</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>罪之光:约会 继代深柑篇</h3>
+        <div class="company-common-work-description">
+          主要讲述了在《罪之光：约会》的平行世界里，被迫加入美术部的野野村优人与继代深柑——我行我素的美术部部长之间发生的故事。
+          拥有远离尘世的性格、常常说出耐人寻味的话语的深柑，会被另一个孤独的少年染上怎样的颜色呢？
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">续篇</span>
+          <span class="company-common-work-tag">角色深度</span>
+          <span class="company-common-work-tag">成长</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="tsumi-no-hikari-fukamikan">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Sakusaku -->
+    <div class="company-common-work-card" data-name="Sakusaku" data-year="2006">
+      <div class="company-common-work-image">
+        <img src="/images/Sakusaku.png" alt="Sakusaku">
+        <span class="company-common-work-year">2006</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>Sakusaku</h3>
+        <div class="company-common-work-description">
+          它是 minori 于 2004 年推出的第三 18 款双人游戏软件 "Haru no Ashioto "的 "粉丝光盘"。 在发行之前，3 月份在全国的商店举行了原作动画《樱花铃重现》的试映会。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">恋爱</span>
+          <span class="company-common-work-tag">成长</span>
+          <span class="company-common-work-tag">校园</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="sakusaku">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 微风赠礼 - Wind Pleasurable Box - -->
+    <div class="company-common-work-card" data-name="微风赠礼 - Wind Pleasurable Box" data-year="2002">
+      <div class="company-common-work-image">
+        <img src="/images/微风赠礼 - Wind Pleasurable Box.png" alt="微风赠礼 - Wind Pleasurable Box">
+        <span class="company-common-work-year">2002</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>微风赠礼 - Wind Pleasurable Box</h3>
+        <div class="company-common-work-description">
+          Wind系列的特别版本，包含了额外的内容和赠品。作品延续了原作的温馨风格，为玩家带来了更多的感动和惊喜。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">特别版</span>
+          <span class="company-common-work-tag">赠品</span>
+          <span class="company-common-work-tag">温馨</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="wind-pleasurable-box">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 少女与野兽 -->
+    <div class="company-common-work-card" data-name="少女与野兽" data-year="2005">
+      <div class="company-common-work-image">
+        <img src="/images/少女与野兽.jpg" alt="少女与野兽">
+        <span class="company-common-work-year">2005</span>
+      </div>
+      <div class="company-common-work-content">
+        <h3>少女与野兽</h3>
+        <div class="company-common-work-description">
+          以童话般的奇幻世界为背景，讲述了少女与野兽之间跨越种族的深情故事。作品融合了浪漫与冒险元素，展现了Minori对奇幻题材的独特诠释。
+        </div>
+        <div class="company-common-work-tags">
+          <span class="company-common-work-tag">奇幻</span>
+          <span class="company-common-work-tag">浪漫</span>
+          <span class="company-common-work-tag">冒险</span>
+        </div>
+        <a href="#" class="company-common-work-link" data-game="shoujo-to-kemono">
+          查看详情
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 分页控件 -->
+<div class="company-common-pagination">
+  <div class="company-common-pagination-controls">
+    <button class="company-common-pagination-btn" id="prev-page" disabled>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"/>
+      </svg>
+      上一页
+    </button>
+    
+    <div class="company-common-pagination-info">
+      <span id="current-page">1</span> / <span id="total-pages">1</span>
+    </div>
+    
+    <div class="company-common-pagination-input-container">
+      <span class="company-common-pagination-input-label">跳转到:</span>
+      <input type="number" class="company-common-pagination-input" id="page-input" min="1" value="1">
+      <button class="company-common-pagination-go-btn" id="go-to-page">前往</button>
+    </div>
+    
+    <button class="company-common-pagination-btn" id="next-page">
+      下一页
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"/>
+      </svg>
+    </button>
+  </div>
+  
+  <div class="company-common-page-size-selector">
+    <span class="company-common-page-size-label">每页显示:</span>
+    <select class="company-common-page-size-select" id="page-size-select">
+      <option value="9" selected>9个作品</option>
+      <option value="18">18个作品</option>
+      <option value="24">24个作品</option>
+    </select>
+  </div>
+</div>
+
+<script src="/js/companies-common.js"></script>
+
+<!-- 添加动态链接设置脚本 -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Minori游戏名称到URL的映射
+  const gameUrlMap = {
+    'ef-first-tale': '/games/ef-first-tale/',
+    'ef-latter-tale': '/games/ef-latter-tale/',
+    'haru-no-ashioto': '/games/haru-no-ashioto/',
+    'wind-breath-of-heart': '/games/wind-breath-of-heart/',
+    'angel-type': '/games/angel-type/',
+    'eden': '/games/eden/',
+    'sppl': '/games/sppl/',
+    '12months-eve': '/games/12months-eve/',
+    'tsumi-no-hikari-rendezvous': '/games/tsumi-no-hikari-rendezvous/',
+    'sore-yori-no-prelude': '/games/sore-yori-no-prelude/',
+    'trinoline': '/games/trinoline/',
+    'trinoline-genesis': '/games/trinoline-genesis/',
+    'natsuzora-no-perseus': '/games/natsuzora-no-perseus/',
+    'tenshi-no-sunday': '/games/tenshi-no-sunday/',
+    'tsumi-no-hikari-fukamikan': '/games/tsumi-no-hikari-fukamikan/',
+    'sakusaku': '/games/sakusaku/',
+    'wind-pleasurable-box': '/games/wind-pleasurable-box/',
+    'shoujo-to-kemono': '/games/shoujo-to-kemono/'
+  };
+
+  // 为所有"查看详情"链接设置正确的URL
+  const workLinks = document.querySelectorAll('.company-common-work-link');
+  
+  workLinks.forEach(link => {
+    const gameSlug = link.getAttribute('data-game');
+    if (gameSlug && gameUrlMap[gameSlug]) {
+      link.href = gameUrlMap[gameSlug];
+    }
+  });
+});
+</script>
+    </div>
+</article>
+
+  </main>
+  
+  
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="/user-agreement/" class="footer-link" target="_blank">用户服务协议</a>
+        <a href="/privacy-policy/" class="footer-link" target="_blank">隐私政策</a>
+        <a href="/fraud-prevention/" class="footer-link" target="_blank">电信欺诈应对公告</a>
+      </div>
+      <p>© 2025 Akiha Field. 保留所有权利。</p>
+      <button class="back-to-top" aria-label="返回顶部">
+        <svg class="svgIcon" viewBox="0 0 384 512">
+          <path
+            d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"
+          ></path>
+        </svg>
+      </button>
+    </div>
+  </footer>
+
+  
+  
+    
+    <script src="http://localhost:1313/js/script.min.fdf8dcc163f134753c64864ef8422dd8bd28fda89c7baa281a68c0d88981955e.js"></script>
+  
+
+  
+  
+  
+    <script src="/js/theme-switcher.js"></script>
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="/css/companies.css">
+    <link rel="stylesheet" href="/css/companies-common.css">
+
+
+
+
+
+</body>
+</html>
