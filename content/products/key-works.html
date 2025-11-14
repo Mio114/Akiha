@@ -4,75 +4,101 @@ date: 2024-01-15
 ---
 
 <style>
-  /* Key 会社特定颜色主题 */
+  /* Key 会社特定颜色主题 - 增强版 */
   :root {
-    --key-primary-color: #4A6CF7;
-    --key-secondary-color: #6A11CB;
+    --key-primary-color: #849bf8 !important;
+    --key-secondary-color: #6e40a0 !important;
   }
   
   .key-company-info h2 {
-    background: linear-gradient(135deg, var(--key-primary-color), var(--key-secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background: linear-gradient(135deg, var(--key-primary-color), var(--key-secondary-color)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
   }
   
-  .company-common-detail-icon {
-    color: var(--key-primary-color); 
+  .key-company-info .company-common-detail-icon {
+    color: var(--key-primary-color) !important;
   }
   
-  .company-common-detail-value {
-    background: rgba(106, 17, 203, 0.08);
-    border: 1px solid rgba(106, 17, 203, 0.1);
+  .key-company-info .company-common-detail-value {
+    background: rgba(106, 17, 203, 0.08) !important;
+    border: 1px solid rgba(106, 17, 203, 0.1) !important;
   }
   
-  .company-common-website-link {
-    color: var(--key-primary-color);
-    background: rgba(74, 108, 247, 0.08);
-    border: 1.5px solid rgba(74, 108, 247, 0.15);
+  .key-company-info .company-common-website-link {
+    color: var(--key-primary-color) !important;
+    background: rgba(74, 108, 247, 0.08) !important;
+    border: 1.5px solid rgba(74, 108, 247, 0.15) !important;
   }
   
-  .company-common-stat-number {
-    color: var(--key-primary-color);
+  .key-company-info .company-common-stat-number {
+    color: var(--key-primary-color) !important;
   }
   
+  /* 作品部分样式 */
   .company-common-works-section h2 {
-    border-bottom-color: var(--key-primary-color);
+    border-bottom-color: var(--key-primary-color) !important;
   }
   
   .company-common-works-section h2::after {
-    background: linear-gradient(90deg, var(--key-primary-color), var(--key-secondary-color));
+    background: linear-gradient(90deg, var(--key-primary-color), var(--key-secondary-color)) !important;
   }
   
   .company-common-work-year {
-    background: linear-gradient(135deg, var(--key-primary-color), var(--key-secondary-color));
+    background: linear-gradient(135deg, var(--key-primary-color), var(--key-secondary-color)) !important;
   }
   
   .company-common-work-tag {
-    background: rgba(106, 17, 203, 0.1);
-    color: var(--key-primary-color);
-    border: 1px solid rgba(106, 17, 203, 0.2);
+    background: rgba(106, 17, 203, 0.1) !important;
+    color: var(--key-primary-color) !important;
+    border: 1px solid rgba(106, 17, 203, 0.2) !important;
   }
   
   .company-common-work-link {
-    color: var(--key-primary-color);
-    background: rgba(74, 108, 247, 0.08);
+    color: var(--key-primary-color) !important;
+    background: rgba(74, 108, 247, 0.08) !important;
   }
   
   .company-common-sort-option:hover {
-    background: rgba(74, 108, 247, 0.1);
-    color: var(--key-primary-color);
-    border-color: rgba(74, 108, 247, 0.2);
+    background: rgba(74, 108, 247, 0.1) !important;
+    color: var(--key-primary-color) !important;
+    border-color: rgba(74, 108, 247, 0.2) !important;
   }
   
   .company-common-sort-option.active {
-    background: var(--key-primary-color);
-    border-color: var(--key-primary-color);
+    background: var(--key-primary-color) !important;
+    border-color: var(--key-primary-color) !important;
+    color: white !important;
   }
   
   .company-common-sort-status {
-    background: rgba(74, 108, 247, 0.08);
-    border: 1px solid rgba(74, 108, 247, 0.1);
+    background: rgba(74, 108, 247, 0.08) !important;
+    border: 1px solid rgba(74, 108, 247, 0.1) !important;
+    color: var(--key-primary-color) !important;
+  }
+  
+  /* 分页控件样式 */
+  .company-common-pagination-btn {
+    color: var(--key-primary-color) !important;
+    border-color: var(--key-primary-color) !important;
+  }
+  
+  .company-common-pagination-btn:hover:not(:disabled) {
+    background: rgba(74, 108, 247, 0.1) !important;
+  }
+  
+  .company-common-pagination-input {
+    border-color: var(--key-primary-color) !important;
+  }
+  
+  .company-common-pagination-go-btn {
+    background: var(--key-primary-color) !important;
+    color: white !important;
+  }
+  
+  .company-common-page-size-select {
+    border-color: var(--key-primary-color) !important;
   }
 </style>
 

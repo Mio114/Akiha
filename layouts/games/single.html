@@ -197,37 +197,60 @@
                         {{ end }}
                     </section>
 
-                    <section class="download-section">
-                        <h2 class="section-title">下载链接</h2>
-                        {{ with .Params.download }}
-                        <div class="download-links">
-                            <!-- 新的下载按钮 -->
-                            <div class="download-button" data-tooltip="文件大小: {{ with $.Params.file_size }}{{ . }}{{ else }}未知{{ end }}">
-                                <div class="button-wrapper">
-                                    <a href="{{ . }}" class="download-link" target="_blank">
-                                        <div class="text">下载游戏</div>
-                                        <span class="icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path>
-                                            </svg>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                            
-                            <div class="download-info">
-                                <p>请注意, 本站的 Galgame 下载资源和补丁均来自互联网或用户上传, 请自行鉴别资源安全性。如果您要发布资源, 请您选择正确的资源分类, 并仔细编写注意事项, 以免其它用户产生困扰。使用资源前请认真阅读资源的备注（如果有）, 以免产生问题。</p>
-                            </div>
-                        </div>
+                   <section class="download-section">
+    <h2 class="section-title">下载链接</h2>
+    {{ with .Params.downloads }}
+    <div class="download-links">
+        <div class="download-dropdown">
+            <button class="download-main-button">
+                <span>下载游戏</span>
+                <span class="icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </span>
+            </button>
+            <div class="download-dropdown-menu">
+                {{ range . }}
+                <div class="download-option {{ .type }}" data-url="{{ .url }}">
+                    <div class="option-icon">
+                        {{ if eq .type "pc" }}
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/>
+                        </svg>
+                        {{ else if eq .type "mobile" }}
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
+                        </svg>
                         {{ else }}
-                        <div class="no-download">
-                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
-                                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
-                            </svg>
-                            <p>暂无下载链接</p>
-                        </div>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                        </svg>
                         {{ end }}
-                    </section>
+                    </div>
+                    <div class="option-info">
+                        <div class="option-name">{{ .name }}</div>
+                        <div class="option-desc">{{ .info }}</div>
+                    </div>
+                    <span class="option-badge">{{ .type }}</span>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        
+        <div class="download-info">
+            <p>请注意, 本站的 Galgame 下载资源和补丁均来自互联网或用户上传, 请自行鉴别资源安全性。如果您要发布资源, 请您选择正确的资源分类, 并仔细编写注意事项, 以免其它用户产生困扰。使用资源前请认真阅读资源的备注（如果有）, 以免产生问题。</p>
+        </div>
+    </div>
+    {{ else }}
+    <div class="no-download">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+        </svg>
+        <p>暂无下载链接</p>
+    </div>
+    {{ end }}
+</section>
 
                     <section class="additional-links-section">
                         <h2 class="section-title">相关链接</h2>

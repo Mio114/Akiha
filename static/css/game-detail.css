@@ -69,7 +69,7 @@ body {
 
 .nav-links a {
     margin-left: 2rem;
-    color: var(--text-primary);
+    color:goldenrod;
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
@@ -537,142 +537,164 @@ body {
     border: 1px solid var(--border-color);
 }
 
-/* 新的下载按钮样式 */
-.download-button {
-  --width: 160px;
-  --height: 50px;
-  --tooltip-height: 35px;
-  --tooltip-width: 140px;
-  --gap-between-tooltip-to-button: 18px;
-  --button-color: #2ecc71;
-  --tooltip-color: #fff;
-  width: var(--width);
-  height: var(--height);
-  background: var(--button-color);
-  position: relative;
-  text-align: center;
-  border-radius: 0.45em;
-  font-family: inherit;
-  transition: background 0.3s;
-  margin-bottom: 1.5rem;
-  cursor: pointer;
+/* 下载下拉菜单样式 */
+.download-dropdown {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
 }
 
-.download-button::before {
-  position: absolute;
-  content: attr(data-tooltip);
-  width: var(--tooltip-width);
-  height: var(--tooltip-height);
-  background-color: var(--tooltip-color);
-  font-size: 0.8rem;
-  color: #111;
-  border-radius: .25em;
-  line-height: var(--tooltip-height);
-  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
-  left: calc(50% - var(--tooltip-width) / 2);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  z-index: 10;
+.download-main-button {
+    --width: 220px;
+    --height: 60px;
+    --button-color: #4A6CF7;
+    width: var(--width);
+    height: var(--height);
+    background: var(--button-color);
+    position: relative;
+    text-align: center;
+    border-radius: 0.45em;
+    font-family: inherit;
+    transition: all 0.3s;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
-.download-button::after {
-  position: absolute;
-  content: '';
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-top-color: var(--tooltip-color);
-  left: calc(50% - 10px);
-  bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
-  z-index: 10;
+.download-main-button:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
-.download-button::after,
-.download-button::before {
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.5s;
+.download-main-button .icon {
+    transition: transform 0.3s ease;
 }
 
-.download-button .button-wrapper,
-.download-button .text,
-.download-button .icon {
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  color: #fff;
+.download-main-button.open .icon {
+    transform: rotate(180deg);
 }
 
-.download-button .text {
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
+.download-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    margin-top: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 100;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
-.download-button .text,
-.download-button .icon {
-  transition: top 0.5s;
+.download-dropdown-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
-.download-button .icon {
-  color: #fff;
-  top: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.download-option {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: var(--transition);
+    border-bottom: 1px solid var(--border-color);
+    cursor: pointer;
 }
 
-.download-button .icon svg {
-  width: 24px;
-  height: 24px;
+.download-option:last-child {
+    border-bottom: none;
 }
 
-.download-button:hover {
-  background: #27ae60;
+.download-option:hover {
+    background: var(--bg-secondary);
+    color: var(--primary-color);
 }
 
-.download-button:hover .text {
-  top: -100%;
+.download-option .option-icon {
+    margin-right: 0.75rem;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.download-button:hover .icon {
-  top: 0;
+.download-option .option-info {
+    flex: 1;
 }
 
-.download-button:hover:before,
-.download-button:hover:after {
-  opacity: 1;
-  visibility: visible;
+.download-option .option-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
 }
 
-.download-button:hover:after {
-  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+.download-option .option-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.3;
 }
 
-.download-button:hover:before {
-  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+.download-option .option-badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
 }
 
-/* 下载链接样式调整 */
-.download-button .download-link {
-  display: block;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  color: inherit;
+.download-option.pc .option-badge {
+    background: #4A6CF7;
+}
+
+.download-option.mobile .option-badge {
+    background: #2ecc71;
+}
+
+.download-option.other .option-badge {
+    background: #9b59b6;
+}
+
+/* 无下载选项时的样式 */
+.no-download-options {
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.no-download-options svg {
+    margin-bottom: 0.75rem;
+    opacity: 0.5;
 }
 
 .download-info {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
-    padding: 1rem;
+    padding: 1.5rem;
     background: var(--bg-primary);
-    border-radius: 6px;
+    border-radius: var(--radius);
     margin-top: 1rem;
+    border: 1px solid var(--border-color);
 }
 
 .download-info p {
@@ -1188,7 +1210,7 @@ body {
     }
     
     .official-website-link,
-    .download-button {
+    .download-main-button {
         width: 100%;
         justify-content: center;
     }
@@ -1212,7 +1234,17 @@ body {
         padding: 1rem;
     }
     
-    .download-button {
+    .download-main-button {
         --width: 100%;
+        max-width: 280px;
+    }
+    
+    .download-dropdown {
+        width: 100%;
+    }
+    
+    .download-dropdown-menu {
+        width: 100%;
+        min-width: 280px;
     }
 }

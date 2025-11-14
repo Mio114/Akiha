@@ -19,7 +19,12 @@ vndb_link: "https://vndb.org/v4189"
 
 trailer: "https://cloud.touchgaloss.com/2023/01/20231023020050634-ef-a-fairy-tale-of-the-two-HD-Op-nnl.mp4"
 website: "https://www.getchu.com/soft.phtml?id=681342"
-download: "https://pan.touchgal.net/s/DpLux"
+downloads:
+  - name: "Windows"
+    url: "https://pan.touchgal.net/s/DpLux"
+    type: "pc"
+    info: "包含游戏本体文件，适用于 Windows 系统"
+
 
 screenshots:
 - "https://cloud.touchgaloss.com/uploads/20250322110412295.avif"

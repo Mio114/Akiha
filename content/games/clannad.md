@@ -7,8 +7,13 @@ tags: ["校园", "亲情", "催泪"]
 rating: 8.92
 cover_image: "/images/CLANNAD.jpg"
 description: |
-  <p> "在某个小镇，主角冈崎朋也因为家庭的因素成为不良少年，一直与春原阳平为伍，在光坂高校过着潦倒的生活，但冀望终有一天能够离开所在的小镇。某年4月14日，他在学校坡道前发现了一个止步不前的女孩，在朋也认识了这个名为“古河渚”的女孩后，他的生活开始有了重大的变化。</p>
-  <p>学园篇为主角和女主角们之间所发生的事件，After story为主角在学校毕业之后，以及家庭生活，其中还关联著“幻想世界”，CLANNAD就是由这三个要素所组成的故事。</p>
+  <p>在某个小镇，主角冈崎朋也因为家庭的因素成为不良少年，一直与春原阳平为伍，在光坂高校过着潦倒的生活，但冀望终有一天能够离开所在的小镇。</p>
+  
+  <p>某年4月14日，他在学校坡道前发现了一个止步不前的女孩，在朋也认识了这个名为"古河渚"的女孩后，他的生活开始有了重大的变化。</p>
+  
+  <p>学园篇为主角和女主角们之间所发生的事件，After story为主角在学校毕业之后，以及家庭生活，其中还关联著"幻想世界"。</p>
+  
+  <p>CLANNAD就是由这三个要素所组成的故事。</p>
 
 # 游戏别名 - 添加多个
 alternative_names: ["クラナド", "Clannad", "团子大家族"]
@@ -18,7 +23,20 @@ vndb_link: "https://vndb.org/v4"
 
 trailer: "https://cloud.touchgaloss.com/2023/05/70da972a1f20231203221450.webm"
 website: "https://key.visualarts.gr.jp/product/clannad/"
-download: "https://pan.touchgal.net/s/weaHv"
+downloads:
+  - name: "Windows"
+    url: "https://pan.touchgal.net/s/weaHv"
+    type: "pc"
+    info: "包含游戏本体文件，适用于 Windows 系统"
+  - name: "Android" 
+    url: "https://pan.touchgal.net/s/ABOtP"
+    type: "mobile"
+    info: "Android APK 版本"
+  - name: "Web在线"
+    url: "https://wg.saop.cc/clannad/"
+    type: "Web"
+    infp: "Powered by Onscripter Yuri"
+
 
 screenshots:
   - "https://cloud.touchgaloss.com/uploads/50ff7f36bf842a85e54fa832a35a1340f914f056_jpg@942w_707h_progressive_webp.avif"

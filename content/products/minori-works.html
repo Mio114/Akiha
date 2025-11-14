@@ -1,3 +1,196 @@
+---
+title: "Minori社作品"
+date: 2024-01-15
+---
+ <style>
+  /* Minori 会社特定颜色主题 - 增强版 */
+  :root {
+    --minori-primary-color: #FF6B6B !important;
+    --minori-secondary-color: #FF8E53 !important;
+  }
+  
+  /* 增强选择器优先级 */
+  .minori-company-info h2 {
+    background: linear-gradient(135deg, var(--minori-primary-color), var(--minori-secondary-color)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+  }
+  
+  /* 为所有相关元素添加 Minori 类名增强 */
+  .minori-company-info .company-common-detail-icon {
+    color: var(--minori-primary-color) !important;
+  }
+  
+  .minori-company-info .company-common-detail-value {
+    background: rgba(255, 107, 107, 0.08) !important;
+    border: 1px solid rgba(255, 107, 107, 0.1) !important;
+  }
+  
+  .minori-company-info .company-common-website-link {
+    color: var(--minori-primary-color) !important;
+    background: rgba(255, 107, 107, 0.08) !important;
+    border: 1.5px solid rgba(255, 107, 107, 0.15) !important;
+  }
+  
+  .minori-company-info .company-common-stat-number {
+    color: var(--minori-primary-color) !important;
+  }
+  
+  /* 作品部分样式 */
+  .company-common-works-section h2 {
+    border-bottom-color: var(--minori-primary-color) !important;
+  }
+  
+  .company-common-works-section h2::after {
+    background: linear-gradient(90deg, var(--minori-primary-color), var(--minori-secondary-color)) !important;
+  }
+  
+  .company-common-work-year {
+    background: linear-gradient(135deg, var(--minori-primary-color), var(--minori-secondary-color)) !important;
+  }
+  
+  .company-common-work-tag {
+    background: rgba(255, 107, 107, 0.1) !important;
+    color: var(--minori-primary-color) !important;
+    border: 1px solid rgba(255, 107, 107, 0.2) !important;
+  }
+  
+  .company-common-work-link {
+    color: var(--minori-primary-color) !important;
+    background: rgba(255, 107, 107, 0.08) !important;
+  }
+  
+  .company-common-sort-option:hover {
+    background: rgba(255, 107, 107, 0.1) !important;
+    color: var(--minori-primary-color) !important;
+    border-color: rgba(255, 107, 107, 0.2) !important;
+  }
+  
+  .company-common-sort-option.active {
+    background: var(--minori-primary-color) !important;
+    border-color: var(--minori-primary-color) !important;
+    color: white !important;
+  }
+  
+  .company-common-sort-status {
+    background: rgba(255, 107, 107, 0.08) !important;
+    border: 1px solid rgba(255, 107, 107, 0.1) !important;
+    color: var(--minori-primary-color) !important;
+  }
+  
+  /* 分页控件样式 */
+  .company-common-pagination-btn {
+    color: var(--minori-primary-color) !important;
+    border-color: var(--minori-primary-color) !important;
+  }
+  
+  .company-common-pagination-btn:hover:not(:disabled) {
+    background: rgba(255, 107, 107, 0.1) !important;
+  }
+  
+  .company-common-pagination-input {
+    border-color: var(--minori-primary-color) !important;
+  }
+  
+  .company-common-pagination-go-btn {
+    background: var(--minori-primary-color) !important;
+    color: white !important;
+  }
+  
+  .company-common-page-size-select {
+    border-color: var(--minori-primary-color) !important;
+  }
+</style>
+
+<!-- Minori 会社信息 -->
+<section class="company-common-info minori-company-info">
+  <div class="company-common-logo-large">
+    <img src="/images/Minori.jpg" alt="Minori">
+  </div>
+  <div class="company-common-info-text">
+        <h2>Minori</h2>
+        <p>Minori是日本知名的视觉小说游戏开发商，成立于2007年。以其精美的视觉效果、深刻的剧情和独特的艺术风格而闻名，作品常常探讨人生、梦想和成长等主题。</p>
+        <p>Minori凭借高水准的制作质量与鲜明的叙事风格，在视觉小说领域形成了独树一帜的创作特色。其多部作品曾被改编为动画，累积了大量忠实支持者。尽管公司已于2019年停止运营，但其留下的作品至今仍被全球玩家深深铭记，持续传递着感动与思考。</p>
+    
+    <!-- 会社别名和官网信息 -->
+        <div class="company-common-details">
+          <div class="company-common-detail">
+            <svg class="company-common-detail-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+            </svg>
+            <span class="company-common-detail-label">别名:</span>
+            <span class="company-common-detail-value">みのり</span>
+            <span class="company-common-detail-value">中二社</span>
+          </div>
+          <div class="company-common-detail">
+            <svg class="company-common-detail-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
+            </svg>
+            <span class="company-common-detail-label">官方链接:</span>
+            <div class="company-common-website-links">
+              <a href="http://www.minori.ph/" class="company-common-website-link" target="_blank" title="官方网站">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
+                </svg>
+                官网
+              </a>
+              <a href="https://en.wikipedia.org/wiki/Minori_(company)" class="company-common-website-link" target="_blank" title="维基百科(英文)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                </svg>
+                Wiki(EN)
+              </a>
+              <a href="https://ja.wikipedia.org/wiki/Minori" class="company-common-website-link" target="_blank" title="维基百科(日文)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                </svg>
+                Wiki(JP)
+              </a>
+              <a href="https://www.wikidata.org/wiki/Q307403" class="company-common-website-link" target="_blank" title="维基数据">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                </svg>
+                Wikidata
+              </a>
+              <a href="https://x.com/nekoten_yuuna" class="company-common-website-link" target="_blank" title="X (Twitter)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" fill="currentColor"/>
+                </svg>
+                X
+              </a>
+              <a href="https://www.mobygames.com/company/minori" class="company-common-website-link" target="_blank" title="MobyGames">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
+                </svg>
+                MobyGames
+              </a>
+              <a href="https://store.steampowered.com/curator/36069420" class="company-common-website-link" target="_blank" title="Steam">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
+                </svg>
+                Steam
+              </a>
+            </div>
+          </div>
+        </div>
+    
+    <div class="company-common-stats">
+      <div class="company-common-stat">
+        <div class="company-common-stat-number">15+</div>
+        <div class="company-common-stat-label">作品数量</div>
+      </div>
+      <div class="company-common-stat">
+        <div class="company-common-stat-number">2007</div>
+        <div class="company-common-stat-label">成立年份<br>（于2019年停止活动）</div>
+      </div>
+      <div class="company-common-stat">
+        <div class="company-common-stat-number">艺术与感动</div>
+        <div class="company-common-stat-label">象征</div>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- Minori 主要作品 -->
 <section class="company-common-works-section">
   <h2>主要作品</h2>

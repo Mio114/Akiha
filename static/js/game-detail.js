@@ -326,6 +326,81 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+// ========== 下载下拉菜单功能 ==========
+function initDownloadDropdown() {
+    const downloadDropdown = document.querySelector('.download-dropdown');
+    if (!downloadDropdown) return;
+
+    const mainButton = downloadDropdown.querySelector('.download-main-button');
+    const dropdownMenu = downloadDropdown.querySelector('.download-dropdown-menu');
+    const downloadOptions = downloadDropdown.querySelectorAll('.download-option');
+
+    // 切换下拉菜单显示/隐藏
+    mainButton.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isOpen = dropdownMenu.classList.contains('open');
+        
+        if (isOpen) {
+            closeDropdown();
+        } else {
+            openDropdown();
+        }
+    });
+
+    // 点击下载选项
+    downloadOptions.forEach(option => {
+        option.addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = this.getAttribute('data-url');
+            const name = this.querySelector('.option-name').textContent;
+            
+            if (url) {
+                // 打开下载链接
+                window.open(url, '_blank');
+                console.log(`开始下载: ${name}`);
+                
+                // 这里可以添加下载统计
+                // gtag('event', 'download', {
+                //     'event_category': 'game_download',
+                //     'event_label': name
+                // });
+                
+                // 关闭下拉菜单
+                closeDropdown();
+                
+                // 显示下载提示
+                showMessage(`开始下载: ${name}`, 'success');
+            }
+        });
+    });
+
+    // 点击页面其他区域关闭下拉菜单
+    document.addEventListener('click', function(e) {
+        if (!downloadDropdown.contains(e.target)) {
+            closeDropdown();
+        }
+    });
+
+    // ESC键关闭下拉菜单
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeDropdown();
+        }
+    });
+
+    function openDropdown() {
+        dropdownMenu.classList.add('open');
+        mainButton.classList.add('open');
+    }
+
+    function closeDropdown() {
+        dropdownMenu.classList.remove('open');
+        mainButton.classList.remove('open');
+    }
+
+    console.log(`下载下拉菜单初始化完成，找到 ${downloadOptions.length} 个下载选项`);
+}
+
     // ========== 评价系统 ==========
     function initReviewSystem() {
         const reviewTextarea = document.querySelector('.review-textarea');
@@ -743,6 +818,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initReviewSystem();
         initVideoLazyLoad();
         initVideoPlayer();
+        initDownloadDropdown(); 
         
         console.log('🎮 游戏详情页所有功能初始化完成！');
     }

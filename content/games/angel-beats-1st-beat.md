@@ -16,7 +16,11 @@ vndb_link: "https://vndb.org/v13774"
 
 trailer: "https://cloud.touchgaloss.com/2023/08/7b109913bb20231103181336.mp4"
 website: "https://key.visualarts.gr.jp/ab/1stbeat/"
-download: "https://pan.touchgal.net/s/rOauy"
+downloads:
+  - name: "Windows"
+    url: "https://pan.touchgal.net/s/rOauy"
+    type: "pc"
+    info: "包含游戏本体文件，适用于 Windows 系统"
 
 screenshots:
   - "https://cloud.touchgaloss.com/uploads/1466d00b02084956_jpg.avif"

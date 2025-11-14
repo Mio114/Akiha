@@ -21,7 +21,11 @@ vndb_link: "https://vndb.org/v162"
 
 trailer: "https://cloud.touchgaloss.com/uploads/20250714212233649.mp4"
 website: "https://www.getchu.com/soft.phtml?id=24547"
-download: "https://pan.touchgal.net/s/wer1Iv"
+downloads:
+  - name: "Windows"
+    url: "https://pan.touchgal.net/s/wer1Iv"
+    type: "pc"
+    info: "包含游戏本体文件，适用于 Windows 系统"
 
 screenshots: 
 - "https://cloud.touchgaloss.com/uploads/20250714211953228.avif"
