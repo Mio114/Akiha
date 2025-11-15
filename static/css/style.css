@@ -19,7 +19,7 @@
   bottom: 0;
   background: url("../images/1.jpg");
   background-size: cover;
-  background-position:top;
+  background-position: top;
   background-repeat: no-repeat;
   z-index: 1;
 }
@@ -37,6 +37,7 @@
   line-height: 1.1;
   letter-spacing: -0.02em;
   animation: fadeInUp 0.8s ease-out;
+  will-change: transform, opacity;
 }
 
 .banner p {
@@ -50,6 +51,7 @@
   animation: fadeInUp 0.8s ease-out 0.15s both;
   line-height: 1.6;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+  will-change: transform, opacity;
 }
 
 .banner .buttons {
@@ -58,6 +60,7 @@
   gap: clamp(1rem, 2vw, 1.5rem);
   flex-wrap: wrap;
   animation: fadeInUp 0.8s ease-out 0.3s both;
+  will-change: transform, opacity;
 }
 
 .banner .btn {
@@ -81,6 +84,7 @@
   white-space: nowrap;
   border: 2px solid transparent;
   min-height: clamp(3rem, 6vw, 3.5rem);
+  will-change: transform;
 }
 
 .banner .btn::before {
@@ -123,6 +127,7 @@
   margin: 0 var(--element-spacing) clamp(2rem, 4vw, 3.5rem);
   position: relative;
   animation: fadeIn 1s ease-out;
+  will-change: opacity;
 }
 
 .content::before {
@@ -176,8 +181,7 @@
   }
 }
 
-
-/* ===== 响应式设计补充 ===== */
+/* ===== 响应式设计优化 ===== */
 @media (max-width: 1536px) {
   .games-grid {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
@@ -186,16 +190,13 @@
 }
 
 @media (max-width: 1280px) {
-  .banner h1 {
-    font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  .banner h1,
+  .content h2 {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   }
   
   .banner p {
     font-size: clamp(1.1rem, 2.2vw, 1.5rem);
-  }
-  
-  .content h2 {
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   }
   
   .games-grid {
@@ -216,7 +217,7 @@
     margin: 0 clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2.5rem);
   }
   
-  .games-grid{
+  .games-grid {
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: 1.25rem;
   }
@@ -243,7 +244,7 @@
     padding: clamp(2rem, 5vw, 3rem) 0;
   }
   
-  .games-grid{
+  .games-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
@@ -258,25 +259,6 @@
 
   .game-image {
     height: 18rem;
-  }
-}
-
-/* 容器查询支持 */
-@container (min-width: 400px) {
-  .game-card {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .game-image {
-    flex-shrink: 0;
-  }
-  
-  .game-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
   }
 }
 
@@ -307,5 +289,24 @@
   
   .content h2 {
     font-size: 1.6rem;
+  }
+}
+
+/* 容器查询支持 */
+@container (min-width: 400px) {
+  .game-card {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .game-image {
+    flex-shrink: 0;
+  }
+  
+  .game-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 }

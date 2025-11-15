@@ -20,99 +20,101 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentPage = 1;
     let pageSize = parseInt(pageSizeSelect?.value || 9);
     
+    // 性能优化缓存
+    const filterCache = new Map();
+    const sortCache = new Map();
+    let lastFilterState = '';
+    
     // 初始隐藏空状态
     gamesEmpty.style.display = 'none';
     
+    // 性能优化工具函数
+    const perfUtils = {
+        // 防抖函数
+        debounce: function(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func.apply(this, args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        },
+        
+        // 节流函数
+        throttle: function(func, limit) {
+            let inThrottle;
+            return function(...args) {
+                if (!inThrottle) {
+                    func.apply(this, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            };
+        },
+        
+        // 批量DOM操作
+        batchDOMUpdate: function(callback) {
+            requestAnimationFrame(callback);
+        }
+    };
+    
     // 检查主题状态
     function checkThemeState() {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        console.log('当前主题状态:', currentTheme);
-        return currentTheme;
+        return document.documentElement.getAttribute('data-theme');
     }
     
-    // 全局排序函数
+    // 优化的排序比较器
+    const sortComparators = {
+        'year-desc': (a, b) => (parseInt(b.dataset.year) || 0) - (parseInt(a.dataset.year) || 0),
+        'year-asc': (a, b) => (parseInt(a.dataset.year) || 0) - (parseInt(b.dataset.year) || 0),
+        'name-asc': (a, b) => (a.dataset.name || '').localeCompare(b.dataset.name || '', 'zh-CN'),
+        'name-desc': (a, b) => (b.dataset.name || '').localeCompare(a.dataset.name || '', 'zh-CN'),
+        'rating-desc': (a, b) => (parseFloat(b.dataset.rating) || 0) - (parseFloat(a.dataset.rating) || 0)
+    };
+    
+    // 全局排序函数（优化版）
     function sortGames(games, sortValue) {
-        const sortedGames = [...games];
+        const cacheKey = `${sortValue}-${games.length}`;
         
-        sortedGames.sort((a, b) => {
-            const nameA = a.dataset.name || '';
-            const nameB = b.dataset.name || '';
-            const yearA = parseInt(a.dataset.year) || 0;
-            const yearB = parseInt(b.dataset.year) || 0;
-            const ratingA = parseFloat(a.dataset.rating) || 0;
-            const ratingB = parseFloat(b.dataset.rating) || 0;
-            
-            switch (sortValue) {
-                case 'year-desc':
-                    return yearB - yearA;
-                case 'year-asc':
-                    return yearA - yearB;
-                case 'name-asc':
-                    return nameA.localeCompare(nameB, 'zh-CN');
-                case 'name-desc':
-                    return nameB.localeCompare(nameA, 'zh-CN');
-                case 'rating-desc':
-                    return ratingB - ratingA;
-                default:
-                    return 0;
-            }
-        });
+        // 检查缓存
+        if (sortCache.has(cacheKey)) {
+            return sortCache.get(cacheKey);
+        }
+        
+        const sortedGames = [...games];
+        const comparator = sortComparators[sortValue];
+        
+        if (comparator) {
+            sortedGames.sort(comparator);
+        }
+        
+        // 缓存结果
+        sortCache.set(cacheKey, sortedGames);
+        
+        // 限制缓存大小
+        if (sortCache.size > 10) {
+            const firstKey = sortCache.keys().next().value;
+            sortCache.delete(firstKey);
+        }
         
         return sortedGames;
     }
     
-    // 显示指定页面的游戏
-    function displayPage(games, page, pageSize) {
-        gamesGrid.innerHTML = '';
-        
-        const totalPages = Math.ceil(games.length / pageSize);
-        const startIndex = (page - 1) * pageSize;
-        const endIndex = Math.min(startIndex + pageSize, games.length);
-        
-        console.log(`显示第 ${page} 页: 游戏 ${startIndex + 1}-${endIndex}, 共 ${games.length} 个游戏`);
-        
-        // 显示当前页的游戏 - 使用原始元素
-        for (let i = startIndex; i < endIndex; i++) {
-            // 找到在原始数组中的索引
-            const originalIndex = allGameCards.indexOf(games[i]);
-            if (originalIndex !== -1) {
-                gamesGrid.appendChild(originalGameCards[originalIndex]);
-            }
-        }
-        
-        // 确保应用当前主题
-        const currentTheme = checkThemeState();
-        gamesGrid.setAttribute('data-theme', currentTheme);
-        
-        return totalPages;
-    }
-    
-    // 更新分页控件
-    function updatePaginationControls(totalPages) {
-        if (totalPagesSpan) totalPagesSpan.textContent = totalPages;
-        if (currentPageSpan) currentPageSpan.textContent = currentPage;
-        
-        if (prevPageBtn) prevPageBtn.disabled = currentPage === 1;
-        if (nextPageBtn) nextPageBtn.disabled = currentPage === totalPages || totalPages === 0;
-        
-        if (pageInput) {
-            pageInput.max = totalPages;
-            pageInput.value = currentPage;
-        }
-        
-        console.log(`分页状态: 第 ${currentPage} 页 / 共 ${totalPages} 页`);
-    }
-    
-    // 主筛选排序分页函数
-    function filterSortAndPaginate() {
+    // 优化的筛选函数
+    function filterGames() {
         const companyValue = companyFilter.value;
         const searchValue = searchInput.value.toLowerCase().trim();
-        const sortValue = sortSelect.value;
+        const filterKey = `${companyValue}-${searchValue}`;
         
-        console.log('执行筛选排序 - 会社:', companyValue, '搜索:', searchValue, '排序:', sortValue);
+        // 检查缓存
+        if (filterCache.has(filterKey) && lastFilterState === filterKey) {
+            return filterCache.get(filterKey);
+        }
         
-        // 筛选
-        let filteredGames = allGameCards.filter(card => {
+        const filteredGames = allGameCards.filter(card => {
             const company = card.dataset.company || '';
             const name = (card.dataset.name || '').toLowerCase();
             
@@ -129,60 +131,138 @@ document.addEventListener('DOMContentLoaded', function() {
             return true;
         });
         
-        console.log('筛选后游戏数量:', filteredGames.length);
+        // 缓存结果
+        filterCache.set(filterKey, filteredGames);
+        lastFilterState = filterKey;
         
-        // 排序
-        const sortedGames = sortGames(filteredGames, sortValue);
-        
-        // 分页显示
-        const totalPages = displayPage(sortedGames, currentPage, pageSize);
-        
-        // 更新分页控件
-        updatePaginationControls(totalPages);
-        
-        // 显示/隐藏空状态
-        if (filteredGames.length > 0) {
-            gamesEmpty.style.display = 'none';
-            gamesGrid.style.display = 'grid';
-        } else {
-            gamesGrid.style.display = 'none';
-            gamesEmpty.style.display = 'block';
+        // 限制缓存大小
+        if (filterCache.size > 10) {
+            const firstKey = filterCache.keys().next().value;
+            filterCache.delete(firstKey);
         }
         
-        // 添加动画效果
-        const currentCards = gamesGrid.querySelectorAll('.game-card');
-        currentCards.forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            
-            setTimeout(() => {
-                card.style.transition = 'all 0.5s ease';
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-            }, index * 100);
+        return filteredGames;
+    }
+    
+    // 显示指定页面的游戏（优化版）
+    function displayPage(games, page, pageSize) {
+        return new Promise(resolve => {
+            perfUtils.batchDOMUpdate(() => {
+                // 使用文档片段优化DOM操作
+                const fragment = document.createDocumentFragment();
+                const totalPages = Math.ceil(games.length / pageSize);
+                const startIndex = (page - 1) * pageSize;
+                const endIndex = Math.min(startIndex + pageSize, games.length);
+                
+                console.log(`显示第 ${page} 页: 游戏 ${startIndex + 1}-${endIndex}, 共 ${games.length} 个游戏`);
+                
+                // 显示当前页的游戏 - 使用原始元素
+                for (let i = startIndex; i < endIndex; i++) {
+                    const originalIndex = allGameCards.indexOf(games[i]);
+                    if (originalIndex !== -1) {
+                        fragment.appendChild(originalGameCards[originalIndex].cloneNode(true));
+                    }
+                }
+                
+                // 批量更新DOM
+                gamesGrid.innerHTML = '';
+                gamesGrid.appendChild(fragment);
+                
+                // 确保应用当前主题
+                const currentTheme = checkThemeState();
+                gamesGrid.setAttribute('data-theme', currentTheme);
+                
+                resolve(totalPages);
+            });
         });
     }
     
-    // 跳转到指定页面
-    function goToPage() {
-        if (!pageInput) return;
+    // 更新分页控件
+    function updatePaginationControls(totalPages) {
+        perfUtils.batchDOMUpdate(() => {
+            if (totalPagesSpan) totalPagesSpan.textContent = totalPages;
+            if (currentPageSpan) currentPageSpan.textContent = currentPage;
+            
+            if (prevPageBtn) prevPageBtn.disabled = currentPage === 1;
+            if (nextPageBtn) nextPageBtn.disabled = currentPage === totalPages || totalPages === 0;
+            
+            if (pageInput) {
+                pageInput.max = totalPages;
+                pageInput.value = currentPage;
+            }
+            
+            console.log(`分页状态: 第 ${currentPage} 页 / 共 ${totalPages} 页`);
+        });
+    }
+    
+    // 添加卡片动画（优化版）
+    function animateCards() {
+        const currentCards = gamesGrid.querySelectorAll('.game-card');
         
-        const targetPage = parseInt(pageInput.value);
+        perfUtils.batchDOMUpdate(() => {
+            currentCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 50); // 减少延迟时间
+            });
+        });
+    }
+    
+    // 主筛选排序分页函数（优化版）
+    async function filterSortAndPaginate() {
         const companyValue = companyFilter.value;
         const searchValue = searchInput.value.toLowerCase().trim();
         const sortValue = sortSelect.value;
         
-        // 重新计算筛选后的游戏
-        let filteredGames = allGameCards.filter(card => {
-            const company = card.dataset.company || '';
-            const name = (card.dataset.name || '').toLowerCase();
-            
-            if (companyValue && company !== companyValue) return false;
-            if (searchValue && !name.includes(searchValue)) return false;
-            return true;
-        });
+        console.log('执行筛选排序 - 会社:', companyValue, '搜索:', searchValue, '排序:', sortValue);
         
-        const sortedGames = sortGames(filteredGames, sortValue);
+        try {
+            // 并行执行筛选和排序
+            const [filteredGames, sortedGames] = await Promise.all([
+                Promise.resolve(filterGames()),
+                Promise.resolve().then(() => {
+                    const filtered = filterGames();
+                    return sortGames(filtered, sortValue);
+                })
+            ]);
+            
+            console.log('筛选后游戏数量:', filteredGames.length);
+            
+            // 分页显示
+            const totalPages = await displayPage(sortedGames, currentPage, pageSize);
+            
+            // 更新分页控件
+            updatePaginationControls(totalPages);
+            
+            // 显示/隐藏空状态
+            perfUtils.batchDOMUpdate(() => {
+                if (filteredGames.length > 0) {
+                    gamesEmpty.style.display = 'none';
+                    gamesGrid.style.display = 'grid';
+                    animateCards();
+                } else {
+                    gamesGrid.style.display = 'none';
+                    gamesEmpty.style.display = 'block';
+                }
+            });
+            
+        } catch (error) {
+            console.error('筛选排序分页过程中出错:', error);
+        }
+    }
+    
+    // 跳转到指定页面（优化版）
+    async function goToPage() {
+        if (!pageInput) return;
+        
+        const targetPage = parseInt(pageInput.value);
+        const filteredGames = filterGames();
+        const sortedGames = sortGames(filteredGames, sortSelect.value);
         const totalPages = Math.ceil(sortedGames.length / pageSize);
         
         if (isNaN(targetPage) || targetPage < 1 || targetPage > totalPages) {
@@ -192,7 +272,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         currentPage = targetPage;
-        filterSortAndPaginate();
+        await filterSortAndPaginate();
     }
     
     // 重置到原始状态
@@ -200,50 +280,48 @@ document.addEventListener('DOMContentLoaded', function() {
         // 重新获取原始元素引用
         allGameCards = [...originalGameCards];
         currentPage = 1;
+        
+        // 清空缓存
+        filterCache.clear();
+        sortCache.clear();
+        lastFilterState = '';
+        
         if (pageInput) pageInput.value = '1';
         if (companyFilter) companyFilter.value = '';
         if (sortSelect) sortSelect.value = 'year-desc';
         if (searchInput) searchInput.value = '';
     }
     
-    // 事件监听器
+    // 事件监听器（优化版）
     function initEventListeners() {
+        // 使用防抖优化频繁事件
+        const debouncedFilter = perfUtils.debounce(() => {
+            currentPage = 1;
+            filterSortAndPaginate();
+        }, 150);
+        
         // 筛选器事件
-        companyFilter.addEventListener('change', function() {
-            currentPage = 1;
-            filterSortAndPaginate();
-        });
+        companyFilter.addEventListener('change', debouncedFilter);
+        sortSelect.addEventListener('change', debouncedFilter);
         
-        sortSelect.addEventListener('change', function() {
-            currentPage = 1;
-            filterSortAndPaginate();
-        });
-        
-        // 搜索防抖
-        let searchTimeout;
-        searchInput.addEventListener('input', function() {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                currentPage = 1;
-                filterSortAndPaginate();
-            }, 300);
-        });
+        // 搜索事件
+        searchInput.addEventListener('input', debouncedFilter);
         
         // 分页事件
         if (prevPageBtn) {
-            prevPageBtn.addEventListener('click', function() {
+            prevPageBtn.addEventListener('click', perfUtils.throttle(function() {
                 if (currentPage > 1) {
                     currentPage--;
                     filterSortAndPaginate();
                 }
-            });
+            }, 500));
         }
         
         if (nextPageBtn) {
-            nextPageBtn.addEventListener('click', function() {
+            nextPageBtn.addEventListener('click', perfUtils.throttle(function() {
                 currentPage++;
                 filterSortAndPaginate();
-            });
+            }, 500));
         }
         
         if (pageSizeSelect) {
@@ -263,24 +341,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (goToPageBtn) {
-            goToPageBtn.addEventListener('click', goToPage);
+            goToPageBtn.addEventListener('click', perfUtils.throttle(goToPage, 500));
         }
         
-        // 监听主题变化
+        // 监听主题变化（优化版）
         const themeToggle = document.getElementById('theme');
         if (themeToggle) {
-            themeToggle.addEventListener('change', function() {
+            themeToggle.addEventListener('change', perfUtils.debounce(function() {
                 console.log('主题切换事件触发');
-                // 主题切换后短暂延迟然后重新应用筛选分页
-                setTimeout(() => {
-                    filterSortAndPaginate();
-                }, 50);
-            });
+                filterSortAndPaginate();
+            }, 100));
         }
         
         // 监听窗口焦点变化（处理浏览器返回等情况）
-        window.addEventListener('focus', function() {
-            // 检查主题状态是否变化
+        window.addEventListener('focus', perfUtils.throttle(function() {
             const currentTheme = checkThemeState();
             const lastKnownTheme = window.lastKnownTheme;
             
@@ -290,11 +364,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             window.lastKnownTheme = currentTheme;
-        });
+        }, 1000));
+        
+        // 监听页面可见性变化
+        document.addEventListener('visibilitychange', perfUtils.throttle(function() {
+            if (document.visibilityState === 'visible') {
+                const currentTheme = checkThemeState();
+                if (window.lastKnownTheme !== currentTheme) {
+                    console.log('页面重新可见，检测到主题变化');
+                    filterSortAndPaginate();
+                }
+                window.lastKnownTheme = currentTheme;
+            }
+        }, 1000));
+    }
+    
+    // 清理函数
+    function cleanup() {
+        filterCache.clear();
+        sortCache.clear();
+        allGameCards = [];
     }
     
     // 初始化
-    function init() {
+    async function init() {
         console.log('初始化游戏页面筛选排序系统...');
         console.log('初始游戏数量:', allGameCards.length);
         
@@ -302,11 +395,14 @@ document.addEventListener('DOMContentLoaded', function() {
         window.lastKnownTheme = checkThemeState();
         
         initEventListeners();
-        filterSortAndPaginate();
+        await filterSortAndPaginate();
         
         console.log('游戏页面筛选排序系统初始化完成');
     }
     
     // 启动
     init();
+    
+    // 页面卸载时清理
+    window.addEventListener('beforeunload', cleanup);
 });

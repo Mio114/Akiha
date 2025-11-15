@@ -1,5 +1,6 @@
-/* 基础样式重置 */
-* {
+/* 游戏详情页面CSS性能优化完整版 */
+/* 基础样式重置 - 优化版本 */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,6 +19,24 @@
     --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     --radius: 12px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* 性能相关变量 */
+    --animation-duration: 0.3s;
+    --fast-animation: 0.15s;
+    --slow-animation: 0.5s;
+    --content-visibility: auto;
+    
+    /* 语义化颜色 */
+    --success-color: #2ecc71;
+    --warning-color: #f59e0b;
+    --error-color: #e74c3c;
+    
+    /* 间距系统 */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
 }
 
 [data-theme="dark"] {
@@ -37,9 +56,14 @@ body {
     color: var(--text-primary);
     background: var(--bg-primary);
     overflow-x: hidden;
+    
+    /* 性能优化属性 */
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* 导航栏 */
+/* 导航栏性能优化 */
 .navbar {
     position: fixed;
     top: 0;
@@ -49,15 +73,22 @@ body {
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
     transition: var(--transition);
+    
+    /* 性能优化 */
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: var(--space-sm) var(--space-lg);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    /* 性能优化 */
+    content-visibility: auto;
 }
 
 .nav-logo {
@@ -68,8 +99,8 @@ body {
 }
 
 .nav-links a {
-    margin-left: 2rem;
-    color:goldenrod;
+    margin-left: var(--space-lg);
+    color: goldenrod;
     text-decoration: none;
     font-weight: 500;
     transition: var(--transition);
@@ -79,13 +110,16 @@ body {
     color: var(--primary-color);
 }
 
-/* 主内容区域 */
+/* 主内容区域优化 */
 .game-main {
     position: relative;
     min-height: 100vh;
+    
+    /* 性能优化 */
+    contain: layout style paint;
 }
 
-/* 封面背景 */
+/* 封面背景优化 */
 .cover-background {
     position: absolute;
     top: 0;
@@ -93,6 +127,10 @@ body {
     width: 100%;
     height: 70vh;
     overflow: hidden;
+    
+    /* 性能优化 */
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .background-image {
@@ -100,6 +138,11 @@ body {
     height: 100%;
     object-fit: cover;
     filter: brightness(0.4);
+    
+    /* 性能优化 */
+    background-color: var(--bg-secondary);
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 .background-overlay {
@@ -115,21 +158,27 @@ body {
     );
 }
 
-/* 游戏内容 */
+/* 游戏内容优化 */
 .game-content {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 6rem 2rem 2rem;
+    padding: 6rem var(--space-lg) var(--space-lg);
+    
+    /* 性能优化 */
+    transform: translateZ(0);
 }
 
-/* 游戏头部信息 */
+/* 游戏头部信息优化 */
 .game-header {
     display: grid;
     grid-template-columns: 280px 1fr;
-    gap: 3rem;
-    margin-bottom: 2rem;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-lg);
     align-items: start;
+    
+    /* 性能优化 */
+    content-visibility: auto;
 }
 
 .cover-container {
@@ -140,7 +189,11 @@ body {
     width: 100%;
     border-radius: var(--radius);
     box-shadow: var(--shadow-lg);
-    transition: var(--transition);
+    transition: transform var(--animation-duration) ease, box-shadow var(--animation-duration) ease;
+    
+    /* 性能优化 */
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .game-cover:hover {
@@ -149,13 +202,13 @@ body {
 }
 
 .game-info {
-    padding-top: 1rem;
+    padding-top: var(--space-sm);
 }
 
 .game-title {
     font-size: 3rem;
     font-weight: 800;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-md);
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -165,14 +218,14 @@ body {
 .game-meta {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
 }
 
 .meta-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: var(--space-sm);
 }
 
 .meta-label {
@@ -209,9 +262,9 @@ body {
     color: #fbbf24;
 }
 
-/* VNDB 链接样式 */
+/* VNDB 链接样式优化 */
 .vndb-link {
-    margin-left: 0.5rem;
+    margin-left: var(--space-xs);
     color: var(--text-secondary);
     transition: var(--transition);
     opacity: 0.7;
@@ -229,26 +282,26 @@ body {
     vertical-align: middle;
 }
 
-/* 平台和标签 */
+/* 平台和标签优化 */
 .platforms, .tags-section {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-md);
 }
 
 .section-label {
     display: block;
     font-weight: 600;
     color: var(--text-secondary);
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-xs);
 }
 
 .platform-tags, .tag-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: var(--space-xs);
 }
 
 .platform-tag, .game-tag {
-    padding: 0.5rem 1rem;
+    padding: var(--space-xs) var(--space-sm);
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 20px;
@@ -263,18 +316,18 @@ body {
     transform: translateY(-2px);
 }
 
-/* 页面导航 - 底部边框指示器风格 */
+/* 页面导航优化 */
 .page-navigation {
     display: flex;
     gap: 0;
-    margin-top: 2rem;
+    margin-top: var(--space-lg);
     padding: 0;
     border-bottom: 2px solid var(--border-color);
     background: transparent;
 }
 
 .nav-btn {
-    padding: 1rem 2rem;
+    padding: var(--space-sm) var(--space-lg);
     background: transparent;
     border: none;
     border-bottom: 3px solid transparent;
@@ -297,9 +350,9 @@ body {
     border-bottom-color: var(--primary-color);
 }
 
-/* 页面内容 */
+/* 页面内容优化 */
 .page-content {
-    margin-top: 2rem;
+    margin-top: var(--space-lg);
 }
 
 .page {
@@ -309,29 +362,38 @@ body {
 .page.active {
     display: block;
     animation: slideInUp 0.4s ease-out;
+    
+    /* 性能优化 */
+    will-change: transform, opacity;
 }
 
 @keyframes slideInUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translate3d(0, 20px, 0);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
     }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { 
+        opacity: 0; 
+        transform: translate3d(0, 10px, 0); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translate3d(0, 0, 0); 
+    }
 }
 
-/* 内容区块通用样式 */
+/* 内容区块通用样式优化 */
 .description-section, .screenshots-section, .trailer-section, 
 .links-section, .download-section, .additional-links-section,
 .review-section, .reviews-list-section {
-    margin-bottom: 3rem;
+    margin-bottom: var(--space-xl);
     transition: var(--transition);
 }
 
@@ -344,7 +406,7 @@ body {
 .section-title {
     font-size: 1.75rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-md);
     color: var(--text-primary);
     position: relative;
 }
@@ -360,10 +422,10 @@ body {
     border-radius: 2px;
 }
 
-/* 游戏介绍页面改进 */
+/* 游戏介绍页面优化 */
 .description-section {
     background: var(--bg-secondary);
-    padding: 1.5rem;
+    padding: var(--space-md);
     border-radius: var(--radius);
     border: 1px solid var(--border-color);
 }
@@ -375,26 +437,34 @@ body {
 }
 
 .description-content p {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-md);
     text-align: justify;
 }
 
-/* 截图网格改进 */
+/* 截图网格优化 */
 .screenshots-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+    
+    /* 性能优化 */
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
 }
 
 .screenshot-item {
     border-radius: var(--radius);
     overflow: hidden;
     box-shadow: var(--shadow);
-    transition: var(--transition);
+    transition: transform var(--fast-animation) ease, box-shadow var(--fast-animation) ease;
     cursor: pointer;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
+    
+    /* 性能优化 */
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .screenshot-item:hover {
@@ -407,9 +477,13 @@ body {
     height: 200px;
     object-fit: cover;
     transition: var(--transition);
+    
+    /* 性能优化 */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
-/* pv视频容器样式 */
+/* 视频容器优化 */
 .video-container {
     position: relative;
     width: 100%;
@@ -420,9 +494,11 @@ body {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     background: #000;
     cursor: pointer;
+    
+    /* 性能优化 */
+    contain: layout style paint;
 }
 
-/* 视频占位符 - 确保完全覆盖 */
 .video-placeholder {
     position: relative;
     width: 100%;
@@ -431,7 +507,6 @@ body {
     overflow: hidden;
 }
 
-/* 直接视频样式 - 增强样式 */
 .video-placeholder video {
     width: 100%;
     height: auto;
@@ -442,7 +517,6 @@ body {
     background: #000;
 }
 
-/* 嵌入视频包装容器 - 增强样式 */
 .video-embed-wrapper {
     position: relative;
     width: 100%;
@@ -464,7 +538,6 @@ body {
     background: #000;
 }
 
-/* 通用 iframe 样式 - 增强 */
 .video-placeholder iframe {
     width: 100%;
     height: 400px;
@@ -474,35 +547,33 @@ body {
     background: #000;
 }
 
-/* 播放状态 - 确保海报完全隐藏 */
 .video-placeholder.playing .video-poster {
     opacity: 0;
     pointer-events: none;
     display: none;
 }
 
-/* 官网与下载页面改进 */
+/* 官网与下载页面优化 */
 .links-section, .download-section, .additional-links-section {
     background: var(--bg-secondary);
-    padding: 1.5rem;
+    padding: var(--space-md);
     border-radius: var(--radius);
     border: 1px solid var(--border-color);
 }
 
-/* 官方网站样式改进 */
 .website-link-container {
     background: var(--bg-secondary);
-    padding: 1.5rem;
+    padding: var(--space-md);
     border-radius: var(--radius);
     text-align: center;
     border: 1px solid var(--border-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-md);
 }
 
 .official-website-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-xs);
     padding: 0.75rem 1.5rem;
     background: var(--primary-color);
     color: white;
@@ -510,7 +581,7 @@ body {
     border-radius: 6px;
     font-weight: 500;
     transition: var(--transition);
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-sm);
     font-size: 1rem;
 }
 
@@ -522,26 +593,25 @@ body {
     color: var(--text-secondary);
     font-family: 'Monaco', 'Consolas', monospace;
     background: rgba(0, 0, 0, 0.05);
-    padding: 0.5rem 1rem;
+    padding: var(--space-xs) var(--space-sm);
     border-radius: 4px;
     display: inline-block;
     word-break: break-all;
     font-size: 0.9rem;
 }
 
-/* 下载链接样式改进 */
+/* 下载链接样式优化 */
 .download-links {
     background: var(--bg-secondary);
-    padding: 1.5rem;
+    padding: var(--space-md);
     border-radius: var(--radius);
     border: 1px solid var(--border-color);
 }
 
-/* 下载下拉菜单样式 */
 .download-dropdown {
     position: relative;
     display: inline-block;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-md);
 }
 
 .download-main-button {
@@ -555,7 +625,7 @@ body {
     text-align: center;
     border-radius: 0.45em;
     font-family: inherit;
-    transition: all 0.3s;
+    transition: all var(--animation-duration);
     cursor: pointer;
     box-shadow: var(--shadow);
     border: none;
@@ -565,7 +635,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: var(--space-xs);
+    
+    /* 性能优化 */
+    will-change: transform;
+    transform: translateZ(0);
 }
 
 .download-main-button:hover {
@@ -575,7 +649,7 @@ body {
 }
 
 .download-main-button .icon {
-    transition: transform 0.3s ease;
+    transition: transform var(--animation-duration) ease;
 }
 
 .download-main-button.open .icon {
@@ -591,11 +665,11 @@ body {
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
     box-shadow: var(--shadow-lg);
-    margin-top: 0.5rem;
+    margin-top: var(--space-xs);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px);
-    transition: all 0.3s ease;
+    transition: all var(--animation-duration) ease;
     z-index: 100;
     max-height: 300px;
     overflow-y: auto;
@@ -610,7 +684,7 @@ body {
 .download-option {
     display: flex;
     align-items: center;
-    padding: 1rem 1.25rem;
+    padding: var(--space-sm) 1.25rem;
     color: var(--text-primary);
     text-decoration: none;
     transition: var(--transition);
@@ -659,7 +733,7 @@ body {
     border-radius: 12px;
     font-size: 0.7rem;
     font-weight: 600;
-    margin-left: 0.5rem;
+    margin-left: var(--space-xs);
 }
 
 .download-option.pc .option-badge {
@@ -667,16 +741,15 @@ body {
 }
 
 .download-option.mobile .option-badge {
-    background: #2ecc71;
+    background: var(--success-color);
 }
 
 .download-option.other .option-badge {
     background: #9b59b6;
 }
 
-/* 无下载选项时的样式 */
 .no-download-options {
-    padding: 1.5rem;
+    padding: var(--space-md);
     text-align: center;
     color: var(--text-secondary);
 }
@@ -689,11 +762,11 @@ body {
 .download-info {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    padding: 1.5rem;
+    gap: var(--space-sm);
+    padding: var(--space-md);
     background: var(--bg-primary);
     border-radius: var(--radius);
-    margin-top: 1rem;
+    margin-top: var(--space-sm);
     border: 1px solid var(--border-color);
 }
 
@@ -704,19 +777,19 @@ body {
     line-height: 1.6;
 }
 
-/* 相关链接改进 */
+/* 相关链接优化 */
 .additional-links {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
 }
 
 .additional-link {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 1.25rem;
     background: var(--bg-primary);
     color: var(--text-primary);
     text-decoration: none;
@@ -749,7 +822,7 @@ body {
 /* 无内容状态 */
 .no-link, .no-download, .no-additional-links, .no-trailer {
     text-align: center;
-    padding: 2rem 1.5rem;
+    padding: var(--space-lg) var(--space-md);
     color: var(--text-secondary);
     background: var(--bg-secondary);
     border-radius: var(--radius);
@@ -757,29 +830,29 @@ body {
 }
 
 .no-link svg, .no-download svg, .no-trailer svg {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-sm);
     opacity: 0.5;
 }
 
 .no-additional-links {
     text-align: center;
-    padding: 2rem;
+    padding: var(--space-lg);
     color: var(--text-secondary);
     background: var(--bg-secondary);
     border-radius: var(--radius);
 }
 
-/* 游戏评价页面改进 */
+/* 游戏评价页面优化 */
 .review-section {
     background: var(--bg-secondary);
-    padding: 1.5rem;
+    padding: var(--space-md);
     border-radius: var(--radius);
     border: 1px solid var(--border-color);
 }
 
 .review-editor {
     background: var(--bg-primary);
-    padding: 1.5rem;
+    padding: var(--space-md);
     border-radius: var(--radius);
     border: 1px solid var(--border-color);
     margin-bottom: 0;
@@ -788,7 +861,7 @@ body {
 .review-textarea {
     width: 100%;
     min-height: 120px;
-    padding: 1rem;
+    padding: var(--space-sm);
     border: 2px solid var(--border-color);
     border-radius: 8px;
     background: var(--bg-primary);
@@ -810,8 +883,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1rem;
-    padding-top: 1rem;
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
     border-top: 1px solid var(--border-color);
 }
 
@@ -849,10 +922,10 @@ body {
     transform: none;
 }
 
-/* 评价列表改进 */
+/* 评价列表优化 */
 .reviews-list-section {
     background: var(--bg-secondary);
-    padding: 1.5rem;
+    padding: var(--space-md);
     border-radius: var(--radius);
     border: 1px solid var(--border-color);
 }
@@ -860,12 +933,12 @@ body {
 .reviews-list {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: var(--space-lg);
 }
 
 .review-placeholder {
     text-align: center;
-    padding: 2.5rem 1.5rem;
+    padding: 2.5rem var(--space-md);
     color: var(--text-secondary);
     background: var(--bg-secondary);
     border-radius: var(--radius);
@@ -873,18 +946,23 @@ body {
 }
 
 .review-placeholder svg {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-sm);
     opacity: 0.5;
 }
 
-/* 单个评价项 */
+/* 单个评价项优化 */
 .review-item {
     background: var(--bg-primary);
-    padding: 1.5rem;
+    padding: var(--space-md);
     border-radius: var(--radius);
     border-left: 4px solid var(--primary-color);
     box-shadow: var(--shadow);
-    transition: var(--transition);
+    transition: transform var(--fast-animation) ease, box-shadow var(--fast-animation) ease;
+    
+    /* 性能优化 */
+    will-change: transform;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 200px;
 }
 
 .review-item:hover {
@@ -896,7 +974,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-sm);
     padding-bottom: 0.75rem;
     border-bottom: 1px solid var(--border-color);
 }
@@ -915,13 +993,13 @@ body {
 .review-content {
     color: var(--text-primary);
     line-height: 1.7;
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-sm);
     white-space: pre-wrap;
     font-size: 1rem;
 }
 
 .review-stats {
-    margin-bottom: 1rem;
+    margin-bottom: var(--space-sm);
 }
 
 .review-likes {
@@ -931,20 +1009,20 @@ body {
 
 .review-actions {
     display: flex;
-    gap: 1rem;
+    gap: var(--space-sm);
 }
 
 .review-action {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--space-xs);
     background: none;
     border: none;
     color: var(--text-secondary);
     cursor: pointer;
     font-size: 0.875rem;
     transition: var(--transition);
-    padding: 0.5rem 0.75rem;
+    padding: var(--space-xs) 0.75rem;
     border-radius: 6px;
 }
 
@@ -957,10 +1035,10 @@ body {
     color: var(--primary-color);
 }
 
-/* 回复功能样式 */
+/* 回复功能样式优化 */
 .reply-section {
-    margin-top: 1rem;
-    padding-top: 1rem;
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
     border-top: 1px solid var(--border-color);
     display: none;
 }
@@ -976,7 +1054,7 @@ body {
     font-family: inherit;
     font-size: 0.875rem;
     resize: vertical;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-xs);
     transition: var(--transition);
 }
 
@@ -998,7 +1076,7 @@ body {
 }
 
 .reply-cancel, .reply-submit {
-    padding: 0.5rem 1rem;
+    padding: var(--space-xs) var(--space-sm);
     border: none;
     border-radius: 4px;
     font-size: 0.875rem;
@@ -1009,7 +1087,7 @@ body {
 .reply-cancel {
     background: var(--bg-secondary);
     color: var(--text-secondary);
-    margin-right: 0.5rem;
+    margin-right: var(--space-xs);
 }
 
 .reply-cancel:hover {
@@ -1030,25 +1108,25 @@ body {
     cursor: not-allowed;
 }
 
-/* 回复列表 */
+/* 回复列表优化 */
 .replies-list {
-    margin-top: 1rem;
-    padding-left: 1rem;
+    margin-top: var(--space-sm);
+    padding-left: var(--space-sm);
     border-left: 2px solid var(--border-color);
 }
 
 .reply-item {
     background: rgba(74, 108, 247, 0.05);
-    padding: 1rem;
+    padding: var(--space-sm);
     border-radius: 6px;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-xs);
 }
 
 .reply-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: var(--space-xs);
 }
 
 .reply-author {
@@ -1070,7 +1148,7 @@ body {
 }
 
 .reply-actions {
-    margin-top: 0.5rem;
+    margin-top: var(--space-xs);
 }
 
 .reply-action {
@@ -1093,31 +1171,34 @@ body {
     color: var(--primary-color);
 }
 
-/* 消息提示 */
+/* 消息提示优化 */
 .message-toast {
     position: fixed;
     top: 100px;
     right: 20px;
     padding: 12px 20px;
-    background: #2ecc71;
+    background: var(--success-color);
     color: white;
     border-radius: 6px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     z-index: 10000;
     font-size: 14px;
     transform: translateX(100%);
-    transition: transform 0.3s ease;
+    transition: transform var(--animation-duration) ease;
+    
+    /* 性能优化 */
+    will-change: transform;
 }
 
 .message-toast.message-error {
-    background: #e74c3c;
+    background: var(--error-color);
 }
 
 .message-toast.message-success {
-    background: #2ecc71;
+    background: var(--success-color);
 }
 
-/* 图片预览模态框 */
+/* 图片预览模态框优化 */
 .image-modal {
     position: fixed;
     top: 0;
@@ -1130,6 +1211,10 @@ body {
     align-items: center;
     z-index: 10000;
     cursor: zoom-out;
+    
+    /* 性能优化 */
+    will-change: opacity;
+    transform: translateZ(0);
 }
 
 .image-modal img {
@@ -1137,28 +1222,35 @@ body {
     max-height: 90%;
     object-fit: contain;
     border-radius: 8px;
+    
+    /* 性能优化 */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
-/* 页脚 */
+/* 页脚优化 */
 .site-footer {
     background: var(--bg-secondary);
-    padding: 2rem 0;
+    padding: var(--space-lg) 0;
     margin-top: 4rem;
 }
 
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 var(--space-lg);
     text-align: center;
     color: var(--text-secondary);
 }
 
-/* 响应式设计 */
+/* 响应式设计优化 */
 @media (max-width: 768px) {
     .game-header {
         grid-template-columns: 1fr;
         text-align: center;
+        
+        /* 性能优化 */
+        content-visibility: auto;
     }
     
     .cover-container {
@@ -1168,10 +1260,17 @@ body {
     
     .game-title {
         font-size: 2.5rem;
+        
+/* 性能优化 - 避免复杂的渐变效果 */
+background: none;
+-webkit-background-clip: initial;
+background-clip: initial;          /* 添加标准属性 */
+-webkit-text-fill-color: initial;
+color: var(--primary-color);       /* 使用标准的 color 属性替代 */
     }
     
     .nav-container {
-        padding: 1rem;
+        padding: var(--space-sm);
     }
     
     .nav-links {
@@ -1179,13 +1278,13 @@ body {
     }
     
     .game-content {
-        padding: 5rem 1rem 1rem;
+        padding: 5rem var(--space-sm) var(--space-sm);
     }
     
     .page-navigation {
         flex-direction: column;
         border-bottom: none;
-        gap: 0.5rem;
+        gap: var(--space-xs);
     }
     
     .nav-btn {
@@ -1217,7 +1316,7 @@ body {
     
     .review-controls {
         flex-direction: column;
-        gap: 1rem;
+        gap: var(--space-sm);
         align-items: stretch;
     }
     
@@ -1227,11 +1326,14 @@ body {
     
     .screenshots-grid {
         grid-template-columns: 1fr;
+        
+        /* 性能优化 */
+        gap: var(--space-sm);
     }
     
     .description-section, .links-section, .download-section, 
     .additional-links-section, .review-section, .reviews-list-section {
-        padding: 1rem;
+        padding: var(--space-sm);
     }
     
     .download-main-button {
@@ -1247,4 +1349,64 @@ body {
         width: 100%;
         min-width: 280px;
     }
+    
+    /* 移动端减少阴影效果 */
+    .game-cover,
+    .screenshot-item,
+    .review-item {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .game-cover:hover,
+    .screenshot-item:hover,
+    .review-item:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+}
+
+/* 减少动画和过渡的使用 */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .game-cover:hover,
+    .screenshot-item:hover,
+    .review-item:hover,
+    .download-main-button:hover {
+        transform: none !important;
+    }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: #000000;
+        --shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* 优化焦点指示器 */
+.nav-btn:focus,
+.download-main-button:focus,
+.review-action:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    
+    /* 性能优化 */
+    transition: outline-offset var(--fast-animation) ease;
+}
+
+/* 优化字体加载 */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/inter-var.woff2') format('woff2');
 }

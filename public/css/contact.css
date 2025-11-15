@@ -4,6 +4,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   margin-top: 60px;
+  /* 优化网格布局性能 */
+  will-change: transform;
 }
 
 .contact-info, .contact-form {
@@ -12,6 +14,9 @@
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-soft);
   transition: transform var(--transition-fast);
+  /* 启用硬件加速 */
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .contact-info:hover, .contact-form:hover {
@@ -25,6 +30,8 @@
   text-align: center;
   position: relative;
   padding-bottom: 15px;
+  /* 优化文本渲染 */
+  text-rendering: optimizeLegibility;
 }
 
 .contact-info h2::after, .contact-form h2::after {
@@ -37,6 +44,7 @@
   height: 3px;
   background: var(--gradient-primary);
   border-radius: 2px;
+  will-change: transform;
 }
 
 .contact-item {
@@ -46,6 +54,9 @@
   border-radius: var(--border-radius);
   transition: all var(--transition-fast);
   border-left: 4px solid var(--primary-color);
+  /* 优化动画性能 */
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
 }
 
 .contact-item:hover {
@@ -64,6 +75,8 @@
 .contact-item p {
   color: var(--text-light);
   line-height: 1.6;
+  /* 优化文本渲染 */
+  text-rendering: optimizeLegibility;
 }
 
 .contact-item p:first-of-type {
@@ -93,6 +106,12 @@
   font-size: 1rem;
   transition: all var(--transition-fast);
   background-color: var(--bg-white);
+  /* 优化表单元素渲染 */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transform: translateZ(0);
+  will-change: border-color, box-shadow;
 }
 
 .form-group input:focus,
@@ -121,6 +140,9 @@
   cursor: pointer;
   transition: all var(--transition-fast);
   box-shadow: var(--shadow-soft);
+  /* 优化按钮动画性能 */
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
 }
 
 .submit-btn:hover {
@@ -135,6 +157,8 @@
   border-radius: var(--border-radius);
   box-shadow: var(--shadow-soft);
   margin-top: 60px;
+  /* 优化布局性能 */
+  transform: translateZ(0);
 }
 
 .faq-section h2 {
@@ -144,6 +168,8 @@
   color: var(--text-dark);
   position: relative;
   padding-bottom: 15px;
+  /* 优化文本渲染 */
+  text-rendering: optimizeLegibility;
 }
 
 .faq-section h2::after {
@@ -156,12 +182,15 @@
   height: 4px;
   background: var(--gradient-primary);
   border-radius: 2px;
+  will-change: transform;
 }
 
 .faq-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
+  /* 优化网格布局性能 */
+  will-change: transform;
 }
 
 .faq-item {
@@ -170,6 +199,9 @@
   border-radius: var(--border-radius);
   transition: all var(--transition-fast);
   border-top: 4px solid var(--secondary-color);
+  /* 优化动画性能 */
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
 }
 
 .faq-item:hover {
@@ -194,8 +226,11 @@
 .faq-item p {
   color: var(--text-light);
   line-height: 1.6;
+  /* 优化文本渲染 */
+  text-rendering: optimizeLegibility;
 }
 
+/* 响应式调整 */
 @media (max-width: 768px) {
   .contact-content {
     grid-template-columns: 1fr;
@@ -212,5 +247,49 @@
   
   .faq-section {
     padding: 40px 25px;
+  }
+  
+  /* 移动端性能优化 */
+  .contact-content,
+  .faq-grid {
+    will-change: auto;
+  }
+}
+
+/* 禁用动画的用户偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .contact-info,
+  .contact-form,
+  .contact-item,
+  .faq-item,
+  .submit-btn,
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  
+  .contact-info:hover,
+  .contact-form:hover,
+  .contact-item:hover,
+  .faq-item:hover,
+  .submit-btn:hover {
+    transform: none !important;
+  }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .contact-item,
+  .faq-item {
+    border-left-width: 6px;
+    border-top-width: 6px;
+  }
+  
+  .contact-info h2::after,
+  .contact-form h2::after,
+  .faq-section h2::after {
+    height: 4px;
   }
 }

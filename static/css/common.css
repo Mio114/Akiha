@@ -1,4 +1,4 @@
-/* ===== CSS变量定义 ===== */
+/* ===== CSS变量定义 - 性能优化版 ===== */
 :root {
   /* 色彩系统 */
   --primary-color: #bb645b;
@@ -58,9 +58,14 @@
   --font-size-2xl: 1.5rem;
   --font-size-3xl: 1.875rem;
   --font-size-4xl: 2.25rem;
+
+  /* 性能相关变量 */
+  --animation-duration: 0.3s;
+  --fast-animation: 0.15s;
+  --content-visibility: auto;
 }
 
-/* ===== 基础重置与布局 ===== */
+/* ===== 基础重置与布局 - 性能优化 ===== */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -70,9 +75,14 @@
 html {
   scroll-behavior: smooth;
   font-size: 100%;
+  
+  /* 性能优化 */
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* 根据缩放调整根字体大小 */
+/* 根据缩放调整根字体大小 - 优化渲染 */
 @media (max-width: 1400px) {
   html { font-size: 95%; }
 }
@@ -92,6 +102,9 @@ body {
   background-color: var(--bg-light);
   overflow-x: hidden;
   font-size: var(--font-size-base);
+  
+  /* 性能优化 */
+  will-change: auto;
 }
 
 .container {
@@ -99,6 +112,9 @@ body {
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 var(--element-spacing);
+  
+  /* 性能优化 */
+  content-visibility: auto;
 }
 
 /* ===== 可访问性改进 ===== */
@@ -114,7 +130,7 @@ body {
   border: 0;
 }
 
-/* ===== 顶部导航栏 ===== */
+/* ===== 顶部导航栏 - 性能优化 ===== */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -127,12 +143,20 @@ body {
   flex-wrap: wrap;
   gap: var(--element-spacing);
   min-height: 5rem;
+  
+  /* 性能优化 */
+  will-change: transform;
+  transform: translateZ(0);
+  contain: layout style paint;
 }
 
 .navbar-logo {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .logo {
@@ -141,6 +165,9 @@ body {
   text-decoration: none;
   color: inherit;
   transition: transform var(--transition-fast);
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .logo:hover {
@@ -160,6 +187,10 @@ body {
   background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
   position: relative;
   flex-shrink: 0;
+  
+  /* 性能优化 */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .logo-img::before {
@@ -171,6 +202,9 @@ body {
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
   animation: shimmer 2s infinite;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 @keyframes shimmer {
@@ -183,6 +217,11 @@ body {
   height: 100%;
   object-fit: contain;
   transition: transform var(--transition-slow);
+  
+  /* 性能优化 */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  will-change: transform;
 }
 
 .logo:hover .logo-img img {
@@ -213,6 +252,9 @@ body {
   justify-content: center;
   margin-left: 3rem;
   padding-right: 2rem;
+  
+  /* 性能优化 */
+  content-visibility: auto;
 }
 
 .navbar-menu li {
@@ -229,6 +271,9 @@ body {
   font-weight: 500;
   white-space: nowrap;
   font-size: clamp(0.9rem, 1.5vw, 1rem);
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .navbar-menu a:hover,
@@ -246,14 +291,17 @@ body {
   flex-shrink: 0;
 }
 
-/* ===== 新的主题切换器样式 - 修正版 ===== */
+/* ===== 新的主题切换器样式 - 性能优化 ===== */
 .theme-toggle-new {
   display: flex;
   align-items: center;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
-  transform: scale(0.6); /* 调整这个值，0.6比原来的0.8更小 */
+  transform: scale(0.6);
   margin-right: -0.5rem;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .theme__fill,
@@ -270,6 +318,10 @@ body {
   height: 100%;
   transform: translateX(-100%);
   z-index: 9998;
+  
+  /* 性能优化 */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .theme__icon,
@@ -288,6 +340,9 @@ body {
   left: 0.5em;
   width: 1.5em;
   height: 1.5em;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .theme__icon-part {
@@ -297,10 +352,13 @@ body {
   left: calc(50% - 0.5em);
   width: 1em;
   height: 1em;
-  transition: box-shadow 0.3s ease-in-out,
-    opacity 0.3s ease-in-out,
-    transform 0.3s ease-in-out;
+  transition: box-shadow var(--animation-duration) ease-in-out,
+    opacity var(--animation-duration) ease-in-out,
+    transform var(--animation-duration) ease-in-out;
   transform: scale(0.5);
+  
+  /* 性能优化 */
+  will-change: transform, opacity;
 }
 
 .theme__icon-part ~ .theme__icon-part {
@@ -335,11 +393,11 @@ body {
 }
 
 .theme__icon-part:nth-child(8) {
-  transform: rotate(270deg) translateY(0.5em);
+  transform: rotate(270deg) translateY(0.45em);
 }
 
 .theme__icon-part:nth-child(9) {
-  transform: rotate(315deg) translateY(0.5em);
+  transform: rotate(315deg) translateY(0.45em);
 }
 
 .theme__toggle,
@@ -356,12 +414,15 @@ body {
   height: 3em;
   -webkit-appearance: none;
   appearance: none;
-  transition: background-color 0.3s ease-in-out,
+  transition: background-color var(--animation-duration) ease-in-out,
     box-shadow 0.15s ease-in-out,
-    transform 0.3s ease-in-out;
+    transform var(--animation-duration) ease-in-out;
   cursor: pointer;
   border: none;
   outline: none;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .theme__toggle:before {
@@ -370,7 +431,10 @@ body {
   content: "";
   width: 2.5em;
   height: 2.5em;
-  transition: 0.3s;
+  transition: var(--animation-duration);
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .theme__toggle:focus {
@@ -468,7 +532,7 @@ body {
   display: none;
 }
 
-/* ===== 登录按钮 ===== */
+/* ===== 登录按钮 - 性能优化 ===== */
 .login-container {
   flex-shrink: 0;
 }
@@ -491,6 +555,11 @@ body {
   position: relative;
   overflow: hidden;
   border: 2.5px solid var(--text-dark);
+  
+  /* 性能优化 */
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .login-btn::before {
@@ -502,6 +571,9 @@ body {
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
   transition: left 0.6s ease;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .login-btn:hover::before {
@@ -513,6 +585,9 @@ body {
   height: 1.4rem;
   transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   z-index: 2;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .login-btn .text {
@@ -528,6 +603,9 @@ body {
   letter-spacing: 0.8px;
   z-index: 2;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  
+  /* 性能优化 */
+  will-change: transform, opacity;
 }
 
 .login-btn:hover,
@@ -688,7 +766,7 @@ body {
   }
 }
 
-/* ===== 底部导航栏 ===== */
+/* ===== 底部导航栏 - 性能优化 ===== */
 footer {
   background: var(--gradient-footer);
   color: #ecf0f1;
@@ -696,6 +774,9 @@ footer {
   margin-top: clamp(1rem, 2.5vw, 1.5rem);
   text-align: center;
   position: relative;
+  
+  /* 性能优化 */
+  contain: layout style paint;
 }
 
 footer::before {
@@ -752,7 +833,10 @@ footer::before {
     0 0 40px rgba(255, 255, 255, 0.8),
     0 0 25px rgba(255, 105, 180, 0.6),
     0 0 15px rgba(0, 191, 255, 0.5);
+  
+  /* 性能优化 */
   will-change: transform, filter, background-position;
+  transform: translateZ(0);
   z-index: 1;
 }
 
@@ -889,7 +973,7 @@ footer .container {
   gap: clamp(0.75rem, 2vw, 1rem);
 }
 
-/* ===== 返回顶部按钮 ===== */
+/* ===== 返回顶部按钮 - 性能优化 ===== */
 .back-to-top {
   width: clamp(2rem, 4vw, 2.5rem);
   height: clamp(2rem, 4vw, 2.5rem);
@@ -902,7 +986,7 @@ footer .container {
   justify-content: center;
   box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
   cursor: pointer;
-  transition-duration: 0.3s;
+  transition-duration: var(--animation-duration);
   overflow: hidden;
   position: fixed;
   bottom: clamp(1.5rem, 3vw, 2rem);
@@ -911,6 +995,11 @@ footer .container {
   opacity: 0;
   visibility: hidden;
   transform: translateY(1.25rem);
+  
+  /* 性能优化 */
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .back-to-top.visible {
@@ -921,7 +1010,10 @@ footer .container {
 
 .svgIcon {
   width: 0.75rem;
-  transition-duration: 0.3s;
+  transition-duration: var(--animation-duration);
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .svgIcon path {
@@ -931,13 +1023,13 @@ footer .container {
 .back-to-top:hover {
   width: 6rem;
   border-radius: 3rem;
-  transition-duration: 0.3s;
+  transition-duration: var(--animation-duration);
   background-color: rgb(181, 160, 255);
   align-items: center;
 }
 
 .back-to-top:hover .svgIcon {
-  transition-duration: 0.3s;
+  transition-duration: var(--animation-duration);
   transform: translateY(-200%);
 }
 
@@ -953,7 +1045,7 @@ footer .container {
   font-size: 0.8125rem;
   opacity: 1;
   bottom: unset;
-  transition-duration: 0.3s;
+  transition-duration: var(--animation-duration);
 }
 
 /* ===== 底部链接样式 ===== */
@@ -975,6 +1067,9 @@ footer .container {
   border: 1px solid rgba(255, 255, 255, 0.2);
   font-size: clamp(0.8rem, 1.5vw, 0.9rem);
   white-space: nowrap;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .footer-link:hover {
@@ -1002,5 +1097,76 @@ footer .container {
   
   .navbar-menu a {
     padding: 0.5rem 0.875rem;
+  }
+}
+
+/* ===== 性能优化补充 ===== */
+
+/* 减少动画和过渡的使用 - 可访问性支持 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .logo:hover,
+  .navbar-menu a:hover,
+  .login-btn:hover,
+  .footer-link:hover,
+  .back-to-top:hover {
+    transform: none !important;
+  }
+  
+  footer::before {
+    animation: none !important;
+  }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  :root {
+    --shadow-soft: 0 2px 4px rgba(0, 0, 0, 0.5);
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.6);
+    --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.7);
+  }
+  
+  .navbar-menu a,
+  .footer-link {
+    border: 2px solid currentColor;
+  }
+}
+
+/* 优化焦点指示器 */
+.navbar-menu a:focus,
+.login-btn:focus,
+.footer-link:focus,
+.back-to-top:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* 字体加载优化 */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/inter-var.woff2') format('woff2');
+}
+
+/* 移动端性能优化 */
+@media (max-width: 768px) {
+  /* 移动端减少复杂动画 */
+  .login-btn:hover,
+  .login-btn:focus {
+    transform: translateY(-2px) scale(1.05);
+  }
+  
+  .back-to-top:hover {
+    width: 4rem;
   }
 }

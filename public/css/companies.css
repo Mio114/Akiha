@@ -5,6 +5,8 @@
   text-align: center;
   padding: 2.5rem 0;
   margin-bottom: 2.5rem;
+  /* 优化渲染 */
+  will-change: transform;
 }
 
 .works-banner h1 {
@@ -24,6 +26,8 @@
   box-shadow: var(--shadow-soft);
   overflow: hidden;
   border: 1px solid rgba(0,0,0,0.05);
+  /* 优化合成层 */
+  transform: translateZ(0);
 }
 
 .company-header {
@@ -45,13 +49,18 @@
   height: 60px;
   border-radius: 50%;
   overflow: hidden;
+  /* 优化图片渲染 */
+  backface-visibility: hidden;
 }
 
 .company-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: center center; 
+  object-position: center center;
+  /* 优化图片渲染 */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .company-info h2 {
@@ -79,6 +88,8 @@
   gap: 0.5rem;
   transition: all var(--transition-fast);
   text-decoration: none;
+  /* 优化动画性能 */
+  will-change: transform, box-shadow;
 }
 
 .view-all-btn:hover {
@@ -98,16 +109,19 @@
 .works-container {
   position: relative;
   padding: 1rem 2.2rem;
+  /* 优化滚动性能 */
+  contain: layout style;
 }
 
 .works-scroll {
-  overflow-x: hidden; /* 完全禁用横向滚动 */
+  overflow-x: hidden;
   overflow-y: visible;
   display: flex;
   gap: 1rem;
   flex-wrap: nowrap;
-  /* 确保内容不会溢出 */
   width: 100%;
+  /* 优化滚动性能 */
+  will-change: transform;
 }
 
 .works-scroll::-webkit-scrollbar {
@@ -141,6 +155,10 @@
   flex-shrink: 0;
   position: relative;
   overflow: hidden;
+  /* 优化动画性能 */
+  will-change: transform, box-shadow;
+  /* 优化合成层 */
+  transform: translateZ(0);
 }
 
 .work-card:hover {
@@ -161,6 +179,8 @@
   color: white;
   font-size: 0.95rem;
   font-weight: 600;
+  /* 优化图片容器 */
+  backface-visibility: hidden;
 }
 
 .work-image img {
@@ -168,6 +188,10 @@
   height: 100%;
   object-fit: cover;
   transition: transform var(--transition-slow);
+  /* 优化图片渲染 */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  will-change: transform;
 }
 
 .work-card:hover .work-image img {
@@ -175,7 +199,7 @@
 }
 
 .work-year {
-  background-color:rgba(74, 108, 247, 0.8);
+  background-color: rgba(74, 108, 247, 0.8);
   color: white;
   padding: 0.4rem 1rem;
   border-radius: 1rem;
@@ -200,12 +224,14 @@
   margin-bottom: 1rem;
   position: relative;
   overflow: hidden;
-  max-height: 3.6em; /* 限制显示行数 */
+  max-height: 3.6em;
   transition: max-height 0.3s ease;
+  /* 优化文本渲染 */
+  text-rendering: optimizeLegibility;
 }
 
 .work-card:hover .work-description {
-  max-height: 140px; /* 悬停时显示更多内容 */
+  max-height: 140px;
 }
 
 .work-description::after {
@@ -217,6 +243,7 @@
   height: 1.2em;
   background: linear-gradient(transparent, white);
   transition: opacity 0.3s ease;
+  will-change: opacity;
 }
 
 .work-card:hover .work-description::after {
@@ -255,6 +282,8 @@
   box-shadow: var(--shadow-soft);
   z-index: 2;
   font-size: 0.9rem;
+  /* 优化按钮性能 */
+  will-change: transform, background-color;
 }
 
 .scroll-btn:hover {
@@ -302,6 +331,9 @@
   box-shadow: var(--shadow-soft);
   position: relative;
   overflow: hidden;
+  /* 优化动画性能 */
+  will-change: transform, box-shadow;
+  transform: translateZ(0);
 }
 
 .more-companies-btn::before {
@@ -313,6 +345,7 @@
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
   transition: left 0.5s;
+  will-change: left;
 }
 
 .more-companies-btn:hover::before {
@@ -331,6 +364,7 @@
 .more-companies-btn .btn-icon {
   font-size: 1.2rem;
   transition: transform var(--transition-fast);
+  will-change: transform;
 }
 
 .more-companies-btn:hover .btn-icon {
@@ -368,5 +402,35 @@
   
   .more-companies-text h2 {
     font-size: 1.5rem;
+  }
+  
+  /* 移动端性能优化 */
+  .work-card {
+    min-width: 200px;
+    max-width: 200px;
+  }
+}
+
+/* 禁用动画的用户偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .work-card,
+  .view-all-btn,
+  .scroll-btn,
+  .more-companies-btn,
+  .more-companies-btn .btn-icon {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+  
+  .work-card:hover {
+    transform: none;
+  }
+  
+  .work-card:hover .work-image img {
+    transform: none;
+  }
+  
+  .more-companies-btn:hover {
+    transform: none;
   }
 }

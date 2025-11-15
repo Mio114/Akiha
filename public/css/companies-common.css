@@ -1,4 +1,4 @@
-/* 会社页面通用样式 */
+/* 会社页面通用样式 - 性能优化版 */
 .company-common-info {
   display: flex;
   align-items: flex-start;
@@ -10,6 +10,11 @@
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(0, 0, 0, 0.04);
+  
+  /* 性能优化 */
+  will-change: transform;
+  transform: translateZ(0);
+  contain: layout style paint;
 }
 
 .company-common-logo-large {
@@ -21,6 +26,10 @@
   box-shadow: 
     0 4px 12px rgba(0, 0, 0, 0.1),
     0 0 8px rgba(65, 105, 225, 0.3);
+  
+  /* 性能优化 */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .company-common-logo-large img {
@@ -32,6 +41,11 @@
     box-shadow 0.3s ease;
   border: 1.5px solid royalblue;
   box-shadow: 0 0 4px rgba(65, 105, 225, 0.4);
+  
+  /* 性能优化 */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  will-change: transform;
 }
 
 .company-common-logo-large:hover img {
@@ -42,6 +56,9 @@
 .company-common-info-text {
   flex: 1;
   min-width: 0;
+  
+  /* 性能优化 */
+  content-visibility: auto;
 }
 
 .company-common-info-text h2 {
@@ -53,6 +70,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .company-common-info-text p {
@@ -86,6 +106,9 @@
   flex-shrink: 0;
   margin-top: 0.15rem;
   filter: drop-shadow(0 2px 4px rgba(74, 108, 247, 0.2));
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .company-common-detail-label {
@@ -111,6 +134,9 @@
   font-size: 0.85rem;
   border: 1px solid rgba(106, 17, 203, 0.1);
   transition: all 0.2s ease;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .company-common-detail-value:hover {
@@ -140,6 +166,10 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  
+  /* 性能优化 */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .company-common-website-link:hover {
@@ -152,6 +182,9 @@
   height: 16px;
   flex-shrink: 0;
   transition: transform 0.3s ease;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .company-common-website-link:hover svg {
@@ -205,6 +238,10 @@
 
 .company-common-works-section {
   margin-bottom: 3rem;
+  
+  /* 性能优化 */
+  content-visibility: auto;
+  contain-intrinsic-size: 0 800px;
 }
 
 .company-common-works-section h2 {
@@ -215,6 +252,9 @@
   color: var(--text-dark);
   font-weight: 700;
   position: relative;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .company-common-works-section h2::after {
@@ -239,6 +279,10 @@
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(0, 0, 0, 0.04);
+  
+  /* 性能优化 */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .company-common-sort-label {
@@ -266,6 +310,10 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  
+  /* 性能优化 */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .company-common-sort-option:hover {
@@ -299,6 +347,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
+  
+  /* 性能优化 */
+  content-visibility: auto;
+  contain-intrinsic-size: 0 1200px;
 }
 
 .company-common-work-card {
@@ -309,6 +361,11 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   border: 1px solid rgba(0, 0, 0, 0.04);
   position: relative;
+  
+  /* 性能优化 */
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 .company-common-work-card:hover {
@@ -328,6 +385,11 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* 性能优化 */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  will-change: transform;
 }
 
 .company-common-work-card:hover .company-common-work-image img {
@@ -346,6 +408,9 @@
   font-weight: 700;
   z-index: 1;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .company-common-work-content {
@@ -383,6 +448,9 @@
   font-weight: 600;
   border: 1px solid rgba(106, 17, 203, 0.2);
   transition: all 0.3s ease;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .company-common-work-tag:hover {
@@ -403,6 +471,10 @@
   background: rgba(74, 108, 247, 0.08);
   border-radius: 10px;
   border: 2px solid transparent;
+  
+  /* 性能优化 */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .company-common-work-link:hover {
@@ -421,6 +493,9 @@
   gap: 1.5rem;
   margin: 3rem 0;
   width: 100%;
+  
+  /* 性能优化 */
+  content-visibility: auto;
 }
 
 .company-common-pagination-controls {
@@ -445,6 +520,10 @@
   transition: all 0.3s ease;
   font-size: 0.9rem;
   font-weight: 600;
+  
+  /* 性能优化 */
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .company-common-pagination-btn:hover:not(:disabled) {
@@ -513,10 +592,13 @@
   font-size: 0.85rem;
   font-weight: 600;
   transition: all 0.3s ease;
+  
+  /* 性能优化 */
+  will-change: transform;
 }
 
 .company-common-pagination-go-btn:hover {
-  background:cornflowerblue;
+  background: cornflowerblue;
   transform: translateY(-1px);
 }
 
@@ -551,7 +633,59 @@
   border-color: var(--key-primary-color);
 }
 
-/* 响应式调整 */
+/* ===== 性能优化补充 ===== */
+
+/* 减少动画和过渡的使用 - 可访问性支持 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .company-common-logo-large:hover img,
+  .company-common-work-card:hover,
+  .company-common-work-card:hover .company-common-work-image img,
+  .company-common-detail-value:hover,
+  .company-common-website-link:hover,
+  .company-common-sort-option:hover,
+  .company-common-work-tag:hover,
+  .company-common-work-link:hover,
+  .company-common-pagination-btn:hover:not(:disabled),
+  .company-common-pagination-go-btn:hover {
+    transform: none !important;
+  }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .company-common-work-card,
+  .company-common-sort-controls,
+  .company-common-info {
+    border: 2px solid currentColor;
+  }
+  
+  .company-common-detail-value,
+  .company-common-website-link,
+  .company-common-work-tag {
+    border: 1px solid currentColor;
+  }
+}
+
+/* 优化焦点指示器 */
+.company-common-website-link:focus,
+.company-common-sort-option:focus,
+.company-common-work-link:focus,
+.company-common-pagination-btn:focus,
+.company-common-pagination-input:focus,
+.company-common-page-size-select:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* 移动端性能优化 */
 @media (max-width: 768px) {
   .company-common-info {
     flex-direction: column;
@@ -631,4 +765,22 @@
     width: 100%;
     justify-content: center;
   }
+  
+  /* 移动端减少动画效果 */
+  .company-common-work-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .company-common-work-card:hover .company-common-work-image img {
+    transform: scale(1.05);
+  }
+}
+
+/* 字体加载优化 */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/inter-var.woff2') format('woff2');
 }

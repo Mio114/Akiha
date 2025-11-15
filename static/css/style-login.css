@@ -10,6 +10,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: var(--font-size-base);
+  /* 优化背景渲染 */
+  background-attachment: fixed;
+  backface-visibility: hidden;
 }
 
 /* 页面样式 */
@@ -21,6 +24,7 @@ body {
   /* 启用硬件加速 */
   transform: translateZ(0);
   padding: 0 var(--element-spacing);
+  will-change: opacity;
 }
 
 /* 性能优化的表单容器 */
@@ -35,7 +39,9 @@ body {
   transition: box-shadow 0.2s ease;
   /* 启用硬件加速 */
   transform: translateZ(0);
-  will-change: transform;
+  will-change: transform, box-shadow;
+  /* 优化合成层 */
+  isolation: isolate;
 }
 
 .form-container:hover {
@@ -52,6 +58,7 @@ h2 {
   position: relative;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   line-height: 1.3;
+  will-change: transform;
 }
 
 h2::after {
@@ -64,6 +71,7 @@ h2::after {
   height: 0.25rem;
   background: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.4));
   border-radius: 0.125rem;
+  will-change: transform;
 }
 
 /* 表单组样式 */
@@ -96,6 +104,7 @@ input[type="password"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   transform: translateZ(0);
+  will-change: transform, background, border;
 }
 
 input::placeholder {
@@ -138,6 +147,7 @@ input[type="password"]:focus {
   flex-shrink: 0;
   transition: all 0.15s ease;
   margin-top: 0.125rem;
+  will-change: background, border;
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkmark {
@@ -189,7 +199,7 @@ input[type="password"]:focus {
   text-align: center;
   /* 启用硬件加速 */
   transform: translateZ(0);
-  will-change: transform;
+  will-change: transform, box-shadow;
 }
 
 .btn-login {
@@ -253,6 +263,7 @@ input.invalid {
   border-radius: 0.125rem;
   transition: width 0.3s ease;
   width: 0%;
+  will-change: width;
 }
 
 .strength-bar.weak {
@@ -287,6 +298,7 @@ input.invalid {
   border-top-color: transparent;
   animation: spin 0.8s linear infinite;
   margin-right: 0.5rem;
+  will-change: transform;
 }
 
 @keyframes spin {
@@ -328,6 +340,7 @@ input.invalid {
   white-space: nowrap;
   min-width: clamp(5rem, 10vw, 7rem);
   transform: translateZ(0);
+  will-change: transform;
 }
 
 .btn-send-code:hover:not(:disabled) {
@@ -450,6 +463,7 @@ input.invalid {
   color: white;
   transform: translateZ(0);
   font-size: clamp(0.75rem, 1.5vw, 0.85rem);
+  will-change: transform, background;
 }
 
 .social-btn:hover {
@@ -457,7 +471,7 @@ input.invalid {
   transform: translateY(-0.125rem);
 }
 
-/* 响应式设计 */
+/* 响应式设计优化 */
 @media (max-width: 1024px) {
   .page {
     margin: clamp(1.5rem, 4vw, 2.5rem) auto;
@@ -468,10 +482,7 @@ input.invalid {
     padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1rem, 2.5vw, 1.5rem);
   }
   
-  .social-buttons {
-    flex-direction: column;
-  }
-  
+  .social-buttons,
   .verification-code-group {
     flex-direction: column;
   }
@@ -496,19 +507,6 @@ input.invalid {
   
   .form-actions {
     gap: 0.75rem;
-  }
-}
-
-/* 禁用动画的用户偏好 */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  .page {
-    animation: none;
   }
 }
 
@@ -569,5 +567,18 @@ input.invalid {
   input[type="password"] {
     padding: 0.675rem 0.75rem;
     font-size: 0.85rem;
+  }
+}
+
+/* 禁用动画的用户偏好 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .page {
+    animation: none;
   }
 }
