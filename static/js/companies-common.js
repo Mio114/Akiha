@@ -1,165 +1,141 @@
-// companies-common.js
+// companies-common.js - 修复跳转延迟问题
 document.addEventListener('DOMContentLoaded', function() {
     console.log('companies-common.js 加载成功');
 
-    // 获取所有元素
-    const sortOptions = document.querySelectorAll('.company-common-sort-option');
-    const worksGrid = document.getElementById('works-grid');
-    const sortStatus = document.querySelector('.company-common-sort-status');
-    const prevPageBtn = document.getElementById('prev-page');
-    const nextPageBtn = document.getElementById('next-page');
-    const currentPageSpan = document.getElementById('current-page');
-    const totalPagesSpan = document.getElementById('total-pages');
-    const pageSizeSelect = document.getElementById('page-size-select');
-    const pageInput = document.getElementById('page-input');
-    const goToPageBtn = document.getElementById('go-to-page');
+    // 简化DOM查询 - 只缓存必要的元素
+    const elements = {
+        sortOptions: document.querySelectorAll('.company-common-sort-option'),
+        worksGrid: document.getElementById('works-grid'),
+        sortStatus: document.querySelector('.company-common-sort-status'),
+        prevPageBtn: document.getElementById('prev-page'),
+        nextPageBtn: document.getElementById('next-page'),
+        currentPageSpan: document.getElementById('current-page'),
+        totalPagesSpan: document.getElementById('total-pages'),
+        pageSizeSelect: document.getElementById('page-size-select'),
+        pageInput: document.getElementById('page-input'),
+        goToPageBtn: document.getElementById('go-to-page')
+    };
 
-    // 检查必要元素是否存在
-    if (!worksGrid) {
+    if (!elements.worksGrid) {
         console.error('错误: 找不到 works-grid 元素');
         return;
     }
 
-    // 状态变量
-    let allWorks = []; // 存储所有作品DOM元素
+    // 简化状态管理
+    let allWorks = [];
     let currentSortType = 'default';
     let currentPage = 1;
-    let pageSize = parseInt(pageSizeSelect?.value || 9);
+    let pageSize = parseInt(elements.pageSizeSelect?.value || 9);
 
-    // 初始化：收集所有作品
+    // 修复：移除复杂的防抖和节流，使用直接执行
     function initializeWorks() {
-        allWorks = Array.from(worksGrid.querySelectorAll('.company-common-work-card'));
-        console.log('初始化作品数据:', allWorks.length, '个作品');
+        const workCards = elements.worksGrid.querySelectorAll('.company-common-work-card');
+        allWorks = Array.from(workCards);
         
-        // 打印所有作品的初始信息用于调试
-        allWorks.forEach((work, index) => {
-            const name = work.getAttribute('data-name');
-            const year = work.getAttribute('data-year');
-            console.log(`初始作品 ${index + 1}: ${name} - ${year}年`);
-        });
+        console.log('初始化作品数据:', allWorks.length, '个作品');
     }
 
-    // 全局排序函数
+    // 修复：简化比较函数
+    const sortComparators = {
+        'name-asc': (a, b) => {
+            const nameA = a.getAttribute('data-name') || '';
+            const nameB = b.getAttribute('data-name') || '';
+            return nameA.localeCompare(nameB, 'zh-CN');
+        },
+        'name-desc': (a, b) => {
+            const nameA = a.getAttribute('data-name') || '';
+            const nameB = b.getAttribute('data-name') || '';
+            return nameB.localeCompare(nameA, 'zh-CN');
+        },
+        'year-asc': (a, b) => {
+            const yearA = parseInt(a.getAttribute('data-year')) || 0;
+            const yearB = parseInt(b.getAttribute('data-year')) || 0;
+            return yearA - yearB;
+        },
+        'year-desc': (a, b) => {
+            const yearA = parseInt(a.getAttribute('data-year')) || 0;
+            const yearB = parseInt(b.getAttribute('data-year')) || 0;
+            return yearB - yearA;
+        },
+        'default': (a, b) => {
+            // 保持原始顺序
+            return 0;
+        }
+    };
+
+    // 修复：简化排序函数，移除缓存
     function globalSortWorks(sortType) {
-        let sortedWorks = [...allWorks];
+        console.log('开始排序, 方式:', sortType);
         
-        console.log('开始全局排序, 方式:', sortType);
+        const sortedWorks = [...allWorks];
+        const comparator = sortComparators[sortType] || sortComparators.default;
         
-        switch(sortType) {
-            case 'name-asc':
-                sortedWorks.sort((a, b) => {
-                    const nameA = a.getAttribute('data-name') || '';
-                    const nameB = b.getAttribute('data-name') || '';
-                    return nameA.localeCompare(nameB, 'zh-CN');
-                });
-                break;
-                
-            case 'name-desc':
-                sortedWorks.sort((a, b) => {
-                    const nameA = a.getAttribute('data-name') || '';
-                    const nameB = b.getAttribute('data-name') || '';
-                    return nameB.localeCompare(nameA, 'zh-CN');
-                });
-                break;
-                
-            case 'year-asc':
-                sortedWorks.sort((a, b) => {
-                    const yearA = parseInt(a.getAttribute('data-year')) || 0;
-                    const yearB = parseInt(b.getAttribute('data-year')) || 0;
-                    return yearA - yearB; // 旧→新
-                });
-                break;
-                
-            case 'year-desc':
-                sortedWorks.sort((a, b) => {
-                    const yearA = parseInt(a.getAttribute('data-year')) || 0;
-                    const yearB = parseInt(b.getAttribute('data-year')) || 0;
-                    return yearB - yearA; // 新→旧
-                });
-                break;
-                
-            default: // 默认排序 - 按原始DOM顺序
-                // 保持原始顺序，不需要排序
-                console.log('使用默认排序（原始顺序）');
-                break;
+        if (sortType !== 'default') {
+            sortedWorks.sort(comparator);
         }
         
         return sortedWorks;
     }
 
-    // 显示指定页面的作品
+    // 修复：简化显示函数，确保立即执行
     function displayPage(sortedWorks, page, pageSize) {
-        // 清空当前显示
-        worksGrid.innerHTML = '';
-        
-        // 计算分页范围
         const totalPages = Math.ceil(sortedWorks.length / pageSize);
         const startIndex = (page - 1) * pageSize;
         const endIndex = Math.min(startIndex + pageSize, sortedWorks.length);
         
-        console.log(`显示第 ${page} 页: 作品 ${startIndex + 1}-${endIndex}, 共 ${sortedWorks.length} 个作品`);
+        console.log(`显示第 ${page} 页: 作品 ${startIndex + 1}-${endIndex}`);
         
-        // 显示当前页的作品
-        for (let i = startIndex; i < endIndex; i++) {
-            const work = sortedWorks[i];
-            worksGrid.appendChild(work.cloneNode(true)); // 使用clone避免引用问题
-        }
+        // 获取当前页的作品（直接引用，不克隆）
+        const currentPageWorks = sortedWorks.slice(startIndex, endIndex);
+        
+        // 使用文档片段但直接添加原节点
+        const fragment = document.createDocumentFragment();
+        currentPageWorks.forEach(work => {
+            fragment.appendChild(work);
+        });
+        
+        // 快速清空和插入
+        elements.worksGrid.innerHTML = '';
+        elements.worksGrid.appendChild(fragment);
         
         return totalPages;
     }
 
-    // 应用排序和分页
+    // 修复：直接执行，无延迟
     function applySortAndPagination() {
         console.log('执行排序分页 - 方式:', currentSortType, '页码:', currentPage);
         
-        // 1. 全局排序所有作品
         const sortedWorks = globalSortWorks(currentSortType);
-        
-        // 打印排序结果用于调试
-        console.log('=== 排序结果 ===');
-        sortedWorks.forEach((work, index) => {
-            const name = work.getAttribute('data-name');
-            const year = work.getAttribute('data-year');
-            console.log(`${index + 1}. ${name} - ${year}年`);
-        });
-        console.log('===============');
-        
-        // 2. 显示当前页
         const totalPages = displayPage(sortedWorks, currentPage, pageSize);
-        
-        // 3. 更新分页控件
         updatePaginationControls(totalPages);
     }
 
-    // 更新分页控件
+    // 修复：简化分页控件更新
     function updatePaginationControls(totalPages) {
-        if (totalPagesSpan) totalPagesSpan.textContent = totalPages;
-        if (currentPageSpan) currentPageSpan.textContent = currentPage;
+        if (elements.totalPagesSpan) elements.totalPagesSpan.textContent = totalPages;
+        if (elements.currentPageSpan) elements.currentPageSpan.textContent = currentPage;
         
-        if (prevPageBtn) prevPageBtn.disabled = currentPage === 1;
-        if (nextPageBtn) nextPageBtn.disabled = currentPage === totalPages || totalPages === 0;
-        
-        // 更新页码输入框的最大值
-        if (pageInput) {
-            pageInput.max = totalPages;
-            pageInput.value = currentPage;
+        if (elements.prevPageBtn) elements.prevPageBtn.disabled = currentPage === 1;
+        if (elements.nextPageBtn) {
+            elements.nextPageBtn.disabled = currentPage === totalPages || totalPages === 0;
         }
         
-        console.log(`分页状态: 第 ${currentPage} 页 / 共 ${totalPages} 页`);
+        if (elements.pageInput) {
+            elements.pageInput.max = totalPages;
+            elements.pageInput.value = currentPage;
+        }
     }
 
-    // 跳转到指定页面
     function goToPage() {
-        if (!pageInput) return;
+        if (!elements.pageInput) return;
         
-        const targetPage = parseInt(pageInput.value);
+        const targetPage = parseInt(elements.pageInput.value);
         const sortedWorks = globalSortWorks(currentSortType);
         const totalPages = Math.ceil(sortedWorks.length / pageSize);
         
         if (isNaN(targetPage) || targetPage < 1 || targetPage > totalPages) {
-            // 输入无效，重置为当前页
             alert(`请输入有效的页码 (1-${totalPages})`);
-            pageInput.value = currentPage;
+            elements.pageInput.value = currentPage;
             return;
         }
         
@@ -167,101 +143,117 @@ document.addEventListener('DOMContentLoaded', function() {
         applySortAndPagination();
     }
 
-    // 更新页码输入框的值
     function updatePageInput() {
-        if (pageInput) {
-            pageInput.value = currentPage;
+        if (elements.pageInput) {
+            elements.pageInput.value = currentPage;
         }
     }
 
-    // 初始化事件监听
-    function initEventListeners() {
-        // 排序选项点击事件
-        sortOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                // 更新活动状态
-                sortOptions.forEach(opt => opt.classList.remove('active'));
-                this.classList.add('active');
-                
-                // 更新排序状态显示
-                if (sortStatus) {
-                    sortStatus.textContent = `当前排序: ${this.textContent}`;
-                }
-                
-                // 应用新排序
-                currentSortType = this.getAttribute('data-sort');
-                currentPage = 1; // 重置到第一页
+    // 修复：简化事件处理器
+    const eventHandlers = {
+        handleSortOptionClick: function() {
+            console.log('排序选项点击:', this.textContent);
+            
+            elements.sortOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+            
+            if (elements.sortStatus) {
+                elements.sortStatus.textContent = `当前排序: ${this.textContent}`;
+            }
+            
+            currentSortType = this.getAttribute('data-sort');
+            currentPage = 1;
+            updatePageInput();
+            applySortAndPagination(); // 直接调用，无延迟
+        },
+        
+        handlePrevPage: function() {
+            if (currentPage > 1) {
+                currentPage--;
                 updatePageInput();
                 applySortAndPagination();
-            });
+            }
+        },
+        
+        handleNextPage: function() {
+            const sortedWorks = globalSortWorks(currentSortType);
+            const totalPages = Math.ceil(sortedWorks.length / pageSize);
+            
+            if (currentPage < totalPages) {
+                currentPage++;
+                updatePageInput();
+                applySortAndPagination();
+            }
+        },
+        
+        handlePageSizeChange: function() {
+            pageSize = parseInt(this.value);
+            currentPage = 1;
+            updatePageInput();
+            applySortAndPagination();
+        },
+        
+        handlePageInputKeyup: function(e) {
+            if (e.key === 'Enter') {
+                goToPage();
+            }
+        }
+    };
+
+    // 修复：确保事件绑定正确
+    function initEventListeners() {
+        console.log('初始化事件监听器...');
+        
+        // 排序选项
+        elements.sortOptions.forEach(option => {
+            option.addEventListener('click', eventHandlers.handleSortOptionClick);
         });
 
-        // 分页按钮事件
-        if (prevPageBtn) {
-            prevPageBtn.addEventListener('click', function() {
-                if (currentPage > 1) {
-                    currentPage--;
-                    updatePageInput();
-                    applySortAndPagination();
-                }
-            });
+        // 分页按钮
+        if (elements.prevPageBtn) {
+            elements.prevPageBtn.addEventListener('click', eventHandlers.handlePrevPage);
         }
 
-        if (nextPageBtn) {
-            nextPageBtn.addEventListener('click', function() {
-                // 重新计算总页数（基于当前排序后的作品）
-                const sortedWorks = globalSortWorks(currentSortType);
-                const totalPages = Math.ceil(sortedWorks.length / pageSize);
-                
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    updatePageInput();
-                    applySortAndPagination();
-                }
-            });
+        if (elements.nextPageBtn) {
+            elements.nextPageBtn.addEventListener('click', eventHandlers.handleNextPage);
         }
 
-        // 每页数量更改事件
-        if (pageSizeSelect) {
-            pageSizeSelect.addEventListener('change', function() {
-                pageSize = parseInt(this.value);
-                currentPage = 1; // 重置到第一页
-                updatePageInput();
-                applySortAndPagination();
-            });
+        // 页面大小
+        if (elements.pageSizeSelect) {
+            elements.pageSizeSelect.addEventListener('change', eventHandlers.handlePageSizeChange);
         }
         
-        // 页码输入框事件
-        if (pageInput) {
-            pageInput.addEventListener('keyup', function(e) {
-                if (e.key === 'Enter') {
-                    goToPage();
-                }
-            });
+        // 页码输入
+        if (elements.pageInput) {
+            elements.pageInput.addEventListener('keyup', eventHandlers.handlePageInputKeyup);
         }
         
-        // 前往按钮事件
-        if (goToPageBtn) {
-            goToPageBtn.addEventListener('click', goToPage);
+        // 前往按钮
+        if (elements.goToPageBtn) {
+            elements.goToPageBtn.addEventListener('click', goToPage);
         }
+
+        // 修复：确保作品卡片的点击事件不被阻止
+        elements.worksGrid.addEventListener('click', function(e) {
+            // 允许所有点击事件正常传播
+            console.log('网格点击事件:', e.target);
+        }, { passive: true });
     }
 
-    // 主初始化函数
     function init() {
         console.log('初始化分页排序系统...');
         
-        // 1. 收集作品数据
-        initializeWorks();
-        
-        // 2. 设置事件监听
-        initEventListeners();
-        
-        // 3. 初始显示
-        applySortAndPagination();
-        
-        console.log('分页排序系统初始化完成');
+        try {
+            initializeWorks();
+            initEventListeners();
+            applySortAndPagination();
+            
+            console.log('分页排序系统初始化完成');
+        } catch (error) {
+            console.error('初始化失败:', error);
+        }
     }
 
-    // 启动系统
+    // 启动
     init();
 });
