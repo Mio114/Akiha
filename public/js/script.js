@@ -1,126 +1,57 @@
-// 配置管理 - 使用Object.freeze防止修改，提升访问性能
-const Config = Object.freeze({
-    validation: Object.freeze({
-        email: Object.freeze({
+// 配置管理
+const Config = {
+    validation: {
+        email: {
             regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-            messages: Object.freeze({
+            messages: {
                 required: '请输入邮箱地址',
                 invalid: '请输入有效的邮箱地址'
-            })
-        }),
-        password: Object.freeze({
+            }
+        },
+        password: {
             minLength: 6,
             maxLength: 32,
-            messages: Object.freeze({
+            messages: {
                 required: '请输入密码',
                 minLength: '密码至少需要6个字符',
                 maxLength: '密码不能超过32个字符'
-            })
-        }),
-        nickname: Object.freeze({
+            }
+        },
+        nickname: {
             minLength: 2,
             maxLength: 20,
-            messages: Object.freeze({
+            messages: {
                 required: '请输入昵称',
                 minLength: '昵称至少需要2个字符',
                 maxLength: '昵称不能超过20个字符'
-            })
-        }),
-        verificationCode: Object.freeze({
+            }
+        },
+        verificationCode: {
             length: 6,
-            messages: Object.freeze({
+            messages: {
                 required: '请输入验证码',
                 invalid: '验证码应为6位数字'
-            })
-        })
-    }),
-    api: Object.freeze({
+            }
+        }
+    },
+    api: {
         baseUrl: 'https://api.akihafield.com',
-        endpoints: Object.freeze({
+        endpoints: {
             login: '/auth/login',
             register: '/auth/register',
             forgotPassword: '/auth/forgot-password',
             resetPassword: '/auth/reset-password'
-        })
-    })
-});
-
-// 预编译正则表达式和缓存常用值
-const VALIDATION_REGEX = {
-    email: Config.validation.email.regex,
-    verificationCode: /^\d{6}$/
+        }
+    }
 };
 
-// 密码强度检测器 - 优化计算逻辑
-class PasswordStrengthChecker {
-    constructor() {
-        // 预定义检查项，避免每次调用时重新创建
-        this.checks = Object.freeze([
-            { test: /.{8,}/, weight: 25 },
-            { test: /[a-z]/, weight: 15 },
-            { test: /[A-Z]/, weight: 15 },
-            { test: /[0-9]/, weight: 15 },
-            { test: /[^a-zA-Z0-9]/, weight: 15 },
-            { test: /.{12,}/, weight: 15 }
-        ]);
-        
-        this.levels = Object.freeze([
-            { min: 0, max: 40, text: '弱', class: 'weak', color: '#e74c3c' },
-            { min: 40, max: 70, text: '一般', class: 'medium', color: '#f39c12' },
-            { min: 70, max: 100, text: '强', class: 'strong', color: '#2ecc71' }
-        ]);
-        
-        this.defaultResult = Object.freeze({ level: 'weak', percentage: 0, text: '弱', class: 'weak', color: '#e74c3c' });
-    }
-
-    checkStrength(password) {
-        if (!password) return this.defaultResult;
-
-        let strength = 0;
-        
-        // 使用for循环替代forEach，性能更好
-        for (let i = 0; i < this.checks.length; i++) {
-            const check = this.checks[i];
-            if (check.test.test(password)) {
-                strength += check.weight;
-            }
-        }
-
-        strength = Math.min(strength, 100);
-
-        // 使用find替代循环查找
-        const level = this.levels.find(l => strength >= l.min && strength <= l.max) || this.levels[0];
-        return { ...level, percentage: strength };
-    }
-
-    updateUI(password, strengthBarId = 'password-strength', strengthTextId = 'strength-text') {
-        const result = this.checkStrength(password);
-        
-        // 批量DOM操作，减少重排重绘
-        const bar = document.querySelector(`#${strengthBarId} .strength-bar`);
-        const text = document.getElementById(strengthTextId);
-        
-        if (bar) {
-            bar.className = 'strength-bar ' + result.class;
-            bar.style.cssText = `width: ${result.percentage}%; background-color: ${result.color};`;
-        }
-        
-        if (text) {
-            text.textContent = `密码强度：${result.text}`;
-            text.style.color = result.color;
-        }
-        
-        return result;
-    }
-}
-
-// 表单验证器 - 优化验证逻辑
+// 表单验证器
 class FormValidator {
     validateEmail(email) {
         if (!email) {
             return { isValid: false, message: Config.validation.email.messages.required };
         }
-        if (!VALIDATION_REGEX.email.test(email)) {
+        if (!Config.validation.email.regex.test(email)) {
             return { isValid: false, message: Config.validation.email.messages.invalid };
         }
         return { isValid: true };
@@ -130,12 +61,11 @@ class FormValidator {
         if (!password) {
             return { isValid: false, message: Config.validation.password.messages.required };
         }
-        const { minLength, maxLength, messages } = Config.validation.password;
-        if (password.length < minLength) {
-            return { isValid: false, message: messages.minLength };
+        if (password.length < Config.validation.password.minLength) {
+            return { isValid: false, message: Config.validation.password.messages.minLength };
         }
-        if (password.length > maxLength) {
-            return { isValid: false, message: messages.maxLength };
+        if (password.length > Config.validation.password.maxLength) {
+            return { isValid: false, message: Config.validation.password.messages.maxLength };
         }
         return { isValid: true };
     }
@@ -144,12 +74,11 @@ class FormValidator {
         if (!nickname) {
             return { isValid: false, message: Config.validation.nickname.messages.required };
         }
-        const { minLength, maxLength, messages } = Config.validation.nickname;
-        if (nickname.length < minLength) {
-            return { isValid: false, message: messages.minLength };
+        if (nickname.length < Config.validation.nickname.minLength) {
+            return { isValid: false, message: Config.validation.nickname.messages.minLength };
         }
-        if (nickname.length > maxLength) {
-            return { isValid: false, message: messages.maxLength };
+        if (nickname.length > Config.validation.nickname.maxLength) {
+            return { isValid: false, message: Config.validation.nickname.messages.maxLength };
         }
         return { isValid: true };
     }
@@ -158,55 +87,98 @@ class FormValidator {
         if (!code) {
             return { isValid: false, message: Config.validation.verificationCode.messages.required };
         }
-        if (!VALIDATION_REGEX.verificationCode.test(code)) {
+        if (!/^\d{6}$/.test(code)) {
             return { isValid: false, message: Config.validation.verificationCode.messages.invalid };
         }
         return { isValid: true };
     }
 }
 
-// 缓存DOM查询和事件处理优化
+// 密码强度检测器
+class PasswordStrengthChecker {
+    checkStrength(password) {
+        if (!password) return { level: 'weak', percentage: 0, text: '弱', class: 'weak', color: '#e74c3c' };
+
+        let strength = 0;
+        const checks = [
+            { test: /.{8,}/, weight: 25 },
+            { test: /[a-z]/, weight: 15 },
+            { test: /[A-Z]/, weight: 15 },
+            { test: /[0-9]/, weight: 15 },
+            { test: /[^a-zA-Z0-9]/, weight: 15 },
+            { test: /.{12,}/, weight: 15 }
+        ];
+
+        checks.forEach(check => {
+            if (check.test.test(password)) strength += check.weight;
+        });
+
+        // 限制最大强度为100%
+        strength = Math.min(strength, 100);
+
+        const levels = [
+            { min: 0, max: 40, text: '弱', class: 'weak', color: '#e74c3c' },
+            { min: 40, max: 70, text: '一般', class: 'medium', color: '#f39c12' },
+            { min: 70, max: 100, text: '强', class: 'strong', color: '#2ecc71' }
+        ];
+
+        const level = levels.find(l => strength >= l.min && strength <= l.max) || levels[0];
+        return { ...level, percentage: strength };
+    }
+
+    updateUI(password, strengthBarId = 'password-strength', strengthTextId = 'strength-text') {
+        const result = this.checkStrength(password);
+        const bar = document.querySelector(`#${strengthBarId} .strength-bar`);
+        const text = document.getElementById(strengthTextId);
+        
+        if (bar) {
+            bar.className = 'strength-bar';
+            bar.classList.add(result.class);
+            bar.style.width = `${result.percentage}%`;
+            bar.style.backgroundColor = result.color;
+        }
+        if (text) {
+            text.textContent = `密码强度：${result.text}`;
+            text.style.color = result.color;
+        }
+        return result;
+    }
+}
+
+// 表单处理器基类
 class FormHandler {
     constructor(formId) {
         this.form = document.getElementById(formId);
-        if (!this.form) return;
-        
         this.validator = new FormValidator();
         this.passwordChecker = new PasswordStrengthChecker();
         this.isSubmitting = false;
-        
-        // 缓存常用DOM元素
-        this.cachedElements = new Map();
-        this.submitButton = this.form.querySelector('button[type="submit"]');
         
         this.init();
     }
 
     init() {
-        if (!this.form) return;
         this.setupEventListeners();
         this.setupCustomCheckboxes();
     }
 
     setupEventListeners() {
-        // 使用事件委托，减少事件监听器数量
         this.form.addEventListener('submit', this.handleSubmit.bind(this));
         this.form.addEventListener('input', this.handleInput.bind(this));
-        this.form.addEventListener('keypress', this.handleKeypress.bind(this));
-    }
-
-    handleKeypress(e) {
-        if (e.key === 'Enter' && !this.isSubmitting) {
-            this.form.requestSubmit();
-        }
+        
+        // 添加键盘事件支持
+        this.form.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !this.isSubmitting) {
+                this.form.requestSubmit();
+            }
+        });
     }
 
     setupCustomCheckboxes() {
-        // 使用事件委托处理所有checkbox
-        this.form.addEventListener('change', (e) => {
-            if (e.target.type === 'checkbox') {
+        const checkboxes = this.form.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
                 this.validateCheckboxes();
-            }
+            });
         });
     }
 
@@ -235,28 +207,20 @@ class FormHandler {
         this.updateFieldUI(fieldName, result);
     }
 
-    // 缓存DOM查询结果
-    getCachedElement(id) {
-        if (!this.cachedElements.has(id)) {
-            this.cachedElements.set(id, document.getElementById(id));
-        }
-        return this.cachedElements.get(id);
-    }
-
     updateFieldUI(fieldName, result, prefix = '') {
         const fieldId = prefix ? `${prefix}-${fieldName}` : `${this.form.id.replace('-form', '')}-${fieldName}`;
-        const field = this.getCachedElement(fieldId);
-        const errorElement = this.getCachedElement(`${fieldId}-error`);
+        const field = document.getElementById(fieldId);
+        const errorElement = document.getElementById(`${fieldId}-error`);
         
         if (!field || !errorElement) return;
 
-        // 使用classList批量操作
-        field.classList.toggle('valid', result.isValid);
-        field.classList.toggle('invalid', !result.isValid);
+        field.classList.remove('valid', 'invalid');
         
         if (result.isValid) {
+            field.classList.add('valid');
             this.hideError(errorElement);
         } else {
+            field.classList.add('invalid');
             this.showError(errorElement, result.message);
         }
     }
@@ -276,60 +240,54 @@ class FormHandler {
     }
 
     validateCheckboxes() {
-        // 缓存查询
-        const loginAgreement1 = this.form.querySelector('input[name="agreement1"]');
-        const loginAgreement2 = this.form.querySelector('input[name="agreement2"]');
-        const registerAgreement1 = this.form.querySelector('input[name="register-agreement1"]');
-        const registerAgreement2 = this.form.querySelector('input[name="register-agreement2"]');
+        const loginAgreement1 = document.querySelector('input[name="agreement1"]');
+        const loginAgreement2 = document.querySelector('input[name="agreement2"]');
+        const registerAgreement1 = document.querySelector('input[name="register-agreement1"]');
+        const registerAgreement2 = document.querySelector('input[name="register-agreement2"]');
         
+        // 验证登录页面的协议
         if (loginAgreement1 && loginAgreement2) {
-            const errorElement = this.getCachedElement('login-agreement-error');
-            if (errorElement) {
-                if (!loginAgreement1.checked || !loginAgreement2.checked) {
-                    this.showError(errorElement, '请同意所有协议');
-                } else {
-                    this.hideError(errorElement);
-                }
+            const errorElement = document.getElementById('login-agreement-error');
+            if (!loginAgreement1.checked || !loginAgreement2.checked) {
+                this.showError(errorElement, '请同意所有协议');
+            } else {
+                this.hideError(errorElement);
             }
         }
         
+        // 验证注册页面的协议
         if (registerAgreement1 && registerAgreement2) {
-            const errorElement = this.getCachedElement('register-agreement-error');
-            if (errorElement) {
-                if (!registerAgreement1.checked || !registerAgreement2.checked) {
-                    this.showError(errorElement, '请同意所有协议');
-                } else {
-                    this.hideError(errorElement);
-                }
+            const errorElement = document.getElementById('register-agreement-error');
+            if (!registerAgreement1.checked || !registerAgreement2.checked) {
+                this.showError(errorElement, '请同意所有协议');
+            } else {
+                this.hideError(errorElement);
             }
         }
     }
 
     setSubmitButton(submitting, buttonText = '提交') {
-        if (!this.submitButton) return;
+        const button = this.form.querySelector('button[type="submit"]');
+        if (!button) return;
 
         if (submitting) {
-            this.submitButton.disabled = true;
-            this.submitButton.innerHTML = '<span class="loading"></span> 提交中...';
+            button.disabled = true;
+            button.innerHTML = '<span class="loading"></span> 提交中...';
         } else {
-            this.submitButton.disabled = false;
-            this.submitButton.textContent = buttonText;
+            button.disabled = false;
+            button.textContent = buttonText;
         }
     }
 
-    // 优化消息显示，避免频繁创建销毁
     showMessage(message, type) {
-        // 使用单例模式管理toast
-        let toast = document.querySelector('.toast');
-        if (!toast) {
-            toast = document.createElement('div');
-            toast.className = `toast toast-${type}`;
-            document.body.appendChild(toast);
-        }
-        
-        toast.textContent = message;
+        // 移除现有的消息
+        const existingToasts = document.querySelectorAll('.toast');
+        existingToasts.forEach(toast => toast.remove());
+
+        const toast = document.createElement('div');
         toast.className = `toast toast-${type}`;
-        toast.style.cssText = `
+        toast.textContent = message;
+        toast. Text = `
             position: fixed;
             top: 20px;
             right: 20px;
@@ -342,12 +300,8 @@ class FormHandler {
             animation: slideInRight 0.3s ease-out;
         `;
         
-        // 清除之前的定时器
-        if (this.toastTimeout) {
-            clearTimeout(this.toastTimeout);
-        }
-        
-        this.toastTimeout = setTimeout(() => {
+        document.body.appendChild(toast);
+        setTimeout(() => {
             if (document.body.contains(toast)) {
                 toast.style.animation = 'slideOutRight 0.3s ease-in';
                 setTimeout(() => {
@@ -363,16 +317,15 @@ class FormHandler {
         let isValid = true;
         
         const inputs = this.form.querySelectorAll('input[type="text"], input[type="email"], input[type="password"]');
-        for (let i = 0; i < inputs.length; i++) {
-            const input = inputs[i];
+        inputs.forEach(input => {
             const fieldName = input.name || input.id.replace(/^(login|register|forgot)-/, '');
             this.validateField(fieldName, input.value);
             
-            const errorElement = this.getCachedElement(`${input.id}-error`);
+            const errorElement = document.getElementById(`${input.id}-error`);
             if (errorElement && errorElement.classList.contains('show')) {
                 isValid = false;
             }
-        }
+        });
         
         this.validateCheckboxes();
         const agreementError = this.form.querySelector('.error-message.show');
@@ -397,9 +350,13 @@ class FormHandler {
         this.setSubmitButton(true);
 
         try {
+            // 模拟API调用
             await this.submitFormData();
+            
             this.showMessage('操作成功！', 'success');
             this.form.reset();
+
+            // 根据表单类型进行不同的重定向
             await this.handleFormSuccess();
 
         } catch (error) {
@@ -412,9 +369,11 @@ class FormHandler {
     }
 
     async submitFormData() {
+        // 模拟网络延迟
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                if (Math.random() < 0.1) {
+                // 模拟随机失败
+                if (Math.random() < 0.1) { // 10% 失败率用于测试
                     reject(new Error('网络错误'));
                 } else {
                     resolve();
@@ -440,7 +399,7 @@ class FormHandler {
     }
 }
 
-// 注册表单处理器 - 优化密码匹配验证
+// 注册表单处理器
 class RegisterFormHandler extends FormHandler {
     constructor(formId) {
         super(formId);
@@ -455,13 +414,8 @@ class RegisterFormHandler extends FormHandler {
     setupPasswordStrength() {
         const passwordField = this.form.querySelector('#register-password');
         if (passwordField) {
-            // 使用防抖优化频繁输入
-            let timeoutId;
             passwordField.addEventListener('input', (e) => {
-                clearTimeout(timeoutId);
-                timeoutId = setTimeout(() => {
-                    this.passwordChecker.updateUI(e.target.value);
-                }, 150);
+                this.passwordChecker.updateUI(e.target.value);
             });
         }
     }
@@ -471,25 +425,22 @@ class RegisterFormHandler extends FormHandler {
         const confirmPasswordField = this.form.querySelector('#register-confirm-password');
         
         if (passwordField && confirmPasswordField) {
-            // 使用防抖
-            let timeoutId;
-            const validate = () => {
-                clearTimeout(timeoutId);
-                timeoutId = setTimeout(() => {
-                    this.validatePasswordMatch();
-                }, 150);
-            };
+            passwordField.addEventListener('input', (e) => {
+                this.validatePasswordMatch();
+                this.passwordChecker.updateUI(e.target.value);
+            });
             
-            passwordField.addEventListener('input', validate);
-            confirmPasswordField.addEventListener('input', validate);
+            confirmPasswordField.addEventListener('input', () => {
+                this.validatePasswordMatch();
+            });
         }
     }
 
     validatePasswordMatch() {
         const passwordField = this.form.querySelector('#register-password');
         const confirmPasswordField = this.form.querySelector('#register-confirm-password');
-        const passwordError = this.getCachedElement('register-password-error');
-        const confirmPasswordError = this.getCachedElement('register-confirm-password-error');
+        const passwordError = document.getElementById('register-password-error');
+        const confirmPasswordError = document.getElementById('register-confirm-password-error');
         
         if (!passwordField || !confirmPasswordField) return;
         
@@ -522,7 +473,7 @@ class RegisterFormHandler extends FormHandler {
         
         const passwordField = this.form.querySelector('#register-password');
         const confirmPasswordField = this.form.querySelector('#register-confirm-password');
-        const confirmPasswordError = this.getCachedElement('register-confirm-password-error');
+        const confirmPasswordError = document.getElementById('register-confirm-password-error');
         
         if (passwordField && confirmPasswordField && 
             passwordField.value && confirmPasswordField.value && 
@@ -535,11 +486,10 @@ class RegisterFormHandler extends FormHandler {
     }
 }
 
-// 忘记密码表单处理器 - 优化DOM操作
+// 忘记密码表单处理器
 class ForgotPasswordHandler extends FormHandler {
     constructor(formId) {
         super(formId);
-        this.cachedPasswordFields = null;
     }
 
     init() {
@@ -548,73 +498,59 @@ class ForgotPasswordHandler extends FormHandler {
         this.setupRealTimePasswordValidation();
     }
 
-    // 延迟初始化DOM元素缓存
-    getPasswordFields() {
-        if (!this.cachedPasswordFields) {
-            this.cachedPasswordFields = {
-                password: document.getElementById('new-password'),
-                confirmPassword: document.getElementById('confirm-new-password'),
-                passwordError: document.getElementById('new-password-error'),
-                confirmPasswordError: document.getElementById('confirm-new-password-error')
-            };
-        }
-        return this.cachedPasswordFields;
-    }
-
     setupPasswordStrength() {
         const passwordField = document.getElementById('new-password');
         if (passwordField) {
-            let timeoutId;
             passwordField.addEventListener('input', (e) => {
-                clearTimeout(timeoutId);
-                timeoutId = setTimeout(() => {
-                    this.passwordChecker.updateUI(e.target.value, 'new-password-strength', 'new-strength-text');
-                }, 150);
+                this.passwordChecker.updateUI(e.target.value, 'new-password-strength', 'new-strength-text');
             });
         }
     }
 
     setupRealTimePasswordValidation() {
-        const fields = this.getPasswordFields();
-        if (fields.password && fields.confirmPassword) {
-            let timeoutId;
-            const validate = () => {
-                clearTimeout(timeoutId);
-                timeoutId = setTimeout(() => {
-                    this.validatePasswordMatch();
-                }, 150);
-            };
+        const passwordField = document.getElementById('new-password');
+        const confirmPasswordField = document.getElementById('confirm-new-password');
+        
+        if (passwordField && confirmPasswordField) {
+            passwordField.addEventListener('input', () => {
+                this.validatePasswordMatch();
+            });
             
-            fields.password.addEventListener('input', validate);
-            fields.confirmPassword.addEventListener('input', validate);
+            confirmPasswordField.addEventListener('input', () => {
+                this.validatePasswordMatch();
+            });
         }
     }
 
     validatePasswordMatch() {
-        const fields = this.getPasswordFields();
-        if (!fields.password || !fields.confirmPassword) return;
+        const passwordField = document.getElementById('new-password');
+        const confirmPasswordField = document.getElementById('confirm-new-password');
+        const passwordError = document.getElementById('new-password-error');
+        const confirmPasswordError = document.getElementById('confirm-new-password-error');
         
-        const password = fields.password.value;
-        const confirmPassword = fields.confirmPassword.value;
+        if (!passwordField || !confirmPasswordField) return;
         
-        fields.password.classList.remove('invalid');
-        fields.confirmPassword.classList.remove('invalid');
-        this.hideError(fields.passwordError);
-        this.hideError(fields.confirmPasswordError);
+        const password = passwordField.value;
+        const confirmPassword = confirmPasswordField.value;
+        
+        passwordField.classList.remove('invalid');
+        confirmPasswordField.classList.remove('invalid');
+        this.hideError(passwordError);
+        this.hideError(confirmPasswordError);
         
         if (confirmPassword && password !== confirmPassword) {
-            fields.confirmPassword.classList.add('invalid');
-            this.showError(fields.confirmPasswordError, '两次输入的密码不一致');
+            confirmPasswordField.classList.add('invalid');
+            this.showError(confirmPasswordError, '两次输入的密码不一致');
         }
         
         if (password && !confirmPassword) {
-            this.showError(fields.confirmPasswordError, '请确认密码');
+            this.showError(confirmPasswordError, '请确认密码');
         }
         
         if (password && confirmPassword && password === confirmPassword) {
-            fields.password.classList.add('valid');
-            fields.confirmPassword.classList.add('valid');
-            this.hideError(fields.confirmPasswordError);
+            passwordField.classList.add('valid');
+            confirmPasswordField.classList.add('valid');
+            this.hideError(confirmPasswordError);
         }
     }
 
@@ -632,15 +568,14 @@ class ForgotPasswordHandler extends FormHandler {
         this.updateFieldUI('verification-code', codeValidation);
         if (!codeValidation.isValid) isValid = false;
         
-        const fields = this.getPasswordFields();
-        const newPassword = fields.password ? fields.password.value : '';
-        const confirmPassword = fields.confirmPassword ? fields.confirmPassword.value : '';
+        const newPassword = document.getElementById('new-password').value;
+        const confirmPassword = document.getElementById('confirm-new-password').value;
         const passwordValidation = validator.validatePassword(newPassword);
         this.updateFieldUI('new-password', passwordValidation);
         if (!passwordValidation.isValid) isValid = false;
         
         if (newPassword && confirmPassword && newPassword !== confirmPassword) {
-            this.showError(fields.confirmPasswordError, '两次输入的密码不一致');
+            this.showError(document.getElementById('confirm-new-password-error'), '两次输入的密码不一致');
             isValid = false;
         }
         
@@ -675,24 +610,22 @@ class ForgotPasswordHandler extends FormHandler {
 
     showSuccessMessage() {
         const formContainer = this.form.closest('.form-container');
-        if (formContainer) {
-            formContainer.innerHTML = `
-                <div class="success-message">
-                    <div class="success-icon">✓</div>
-                    <h3>密码重置成功！</h3>
-                    <p>您的密码已成功重置，请使用新密码登录。</p>
-                    <button type="button" class="btn btn-login" onclick="showLoginPage()">立即登录</button>
-                </div>
-            `;
-        }
+        const successHTML = `
+            <div class="success-message">
+                <div class="success-icon">✓</div>
+                <h3>密码重置成功！</h3>
+                <p>您的密码已成功重置，请使用新密码登录。</p>
+                <button type="button" class="btn btn-login" onclick="showLoginPage()">立即登录</button>
+            </div>
+        `;
+        
+        formContainer.innerHTML = successHTML;
     }
 }
 
-// 应用主类 - 优化页面切换和事件处理
+// 应用主类
 class AuthApp {
     constructor() {
-        this.pageCache = new Map();
-        this.countdownTimers = new Map();
         this.init();
     }
 
@@ -705,24 +638,20 @@ class AuthApp {
     }
 
     initializeForms() {
-        // 使用Promise.all并行初始化（如果有多个表单）
-        const forms = [];
         if (document.getElementById('login-form')) {
-            forms.push(new FormHandler('login-form'));
+            new FormHandler('login-form');
         }
         
         if (document.getElementById('register-form')) {
-            forms.push(new RegisterFormHandler('register-form'));
+            new RegisterFormHandler('register-form');
         }
         
         if (document.getElementById('forgot-password-form')) {
-            forms.push(new ForgotPasswordHandler('forgot-password-form'));
+            new ForgotPasswordHandler('forgot-password-form');
         }
-        return forms;
     }
 
     setupPageSwitching() {
-        // 缓存页面切换函数
         window.showRegisterPage = () => {
             this.animatePageTransition('login-page', 'register-page');
         };
@@ -744,28 +673,26 @@ class AuthApp {
         
         if (!hidePage || !showPage) return;
         
-        // 使用CSS动画替代JS动画
-        hidePage.style.cssText = 'opacity: 0; transform: translateX(-20px); transition: all 0.3s ease;';
+        hidePage.style.opacity = '0';
+        hidePage.style.transform = 'translateX(-20px)';
         
         setTimeout(() => {
             hidePage.style.display = 'none';
             showPage.style.display = 'block';
-            showPage.style.cssText = 'opacity: 0; transform: translateX(20px); transition: all 0.3s ease;';
+            showPage.style.opacity = '0';
+            showPage.style.transform = 'translateX(20px)';
             
-            // 强制重排
-            showPage.offsetHeight;
-            
-            showPage.style.cssText = 'opacity: 1; transform: translateX(0); transition: all 0.3s ease;';
-        }, 50);
+            setTimeout(() => {
+                showPage.style.opacity = '1';
+                showPage.style.transform = 'translateX(0)';
+            }, 50);
+        }, 300);
     }
 
     setupForgotPassword() {
         const sendCodeBtn = document.getElementById('send-code-btn');
         if (sendCodeBtn) {
-            // 移除之前的事件监听器，避免重复绑定
-            sendCodeBtn.removeEventListener('click', this.sendCodeHandler);
-            this.sendCodeHandler = this.handleSendVerificationCode.bind(this);
-            sendCodeBtn.addEventListener('click', this.sendCodeHandler);
+            sendCodeBtn.addEventListener('click', this.handleSendVerificationCode.bind(this));
         }
     }
 
@@ -787,18 +714,13 @@ class AuthApp {
         console.log(`向 ${email} 发送验证码`);
         this.showMessage('验证码已发送到您的邮箱，请查收', 'success');
         
+        // 模拟验证码（实际项目中应该通过后端发送）
         setTimeout(() => {
             this.showMessage('模拟验证码：123456', 'success');
         }, 1000);
     }
 
     startCountdown(button) {
-        // 清除之前的定时器
-        const existingTimer = this.countdownTimers.get(button);
-        if (existingTimer) {
-            clearInterval(existingTimer);
-        }
-        
         let countdown = 60;
         button.disabled = true;
         button.textContent = `${countdown}秒后重新发送`;
@@ -809,29 +731,20 @@ class AuthApp {
             
             if (countdown <= 0) {
                 clearInterval(timer);
-                this.countdownTimers.delete(button);
                 button.disabled = false;
                 button.textContent = '发送验证码';
             }
         }, 1000);
-        
-        this.countdownTimers.set(button, timer);
     }
 
     setupBackToTop() {
         const backToTopBtn = document.querySelector('.back-to-top');
         if (backToTopBtn) {
-            // 使用节流优化scroll事件
-            let ticking = false;
-            const updateVisibility = () => {
-                backToTopBtn.classList.toggle('visible', window.scrollY > 300);
-                ticking = false;
-            };
-            
             window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    requestAnimationFrame(updateVisibility);
-                    ticking = true;
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
                 }
             });
 
@@ -846,16 +759,14 @@ class AuthApp {
 
     addCSRFToken() {
         const forms = document.querySelectorAll('form');
-        const csrfToken = this.generateCSRFToken();
-        
-        for (let i = 0; i < forms.length; i++) {
-            const form = forms[i];
+        forms.forEach(form => {
+            const csrfToken = this.generateCSRFToken();
             const input = document.createElement('input');
             input.type = 'hidden';
             input.name = 'csrf_token';
             input.value = csrfToken;
             form.appendChild(input);
-        }
+        });
     }
 
     generateCSRFToken() {
@@ -863,16 +774,10 @@ class AuthApp {
     }
 
     showMessage(message, type) {
-        let toast = document.querySelector('.toast');
-        if (!toast) {
-            toast = document.createElement('div');
-            toast.className = `toast toast-${type}`;
-            document.body.appendChild(toast);
-        }
-        
-        toast.textContent = message;
+        const toast = document.createElement('div');
         toast.className = `toast toast-${type}`;
-        toast.style.cssText = `
+        toast.textContent = message;
+        toast. Text = `
             position: fixed;
             top: 20px;
             right: 20px;
@@ -885,11 +790,8 @@ class AuthApp {
             animation: slideInRight 0.3s ease-out;
         `;
         
-        if (this.toastTimeout) {
-            clearTimeout(this.toastTimeout);
-        }
-        
-        this.toastTimeout = setTimeout(() => {
+        document.body.appendChild(toast);
+        setTimeout(() => {
             if (document.body.contains(toast)) {
                 toast.style.animation = 'slideOutRight 0.3s ease-in';
                 setTimeout(() => {
@@ -902,7 +804,7 @@ class AuthApp {
     }
 }
 
-// 预加载CSS动画
+// 添加CSS动画
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideInRight {
@@ -929,13 +831,12 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// 使用DOMContentLoaded最佳实践
-let appInstance = null;
+// 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', () => {
-    appInstance = new AuthApp();
+    new AuthApp();
 });
 
-// 全局页面切换函数 - 保持原功能不变
+// 全局页面切换函数
 function showRegisterPage() {
     document.getElementById('login-page').style.display = 'none';
     document.getElementById('register-page').style.display = 'block';
