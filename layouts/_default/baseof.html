@@ -8,6 +8,7 @@
   
   {{ $commonCSS := resources.Get "css/common.css" }}
   {{ $styleCSS := resources.Get "css/style.css" }}
+  {{ $loadingCSS := resources.Get "css/loading.css" }}
   
   {{ if $commonCSS }}
     {{ $commonCSS = $commonCSS | fingerprint }}
@@ -23,8 +24,23 @@
   {{ else }}
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
   {{ end }}
+
+  <!-- 加载动画 CSS -->
+  {{ if $loadingCSS }}
+    {{ $loadingCSS = $loadingCSS | fingerprint }}
+    <link rel="stylesheet" href="{{ $loadingCSS.Permalink }}">
+  {{ else }}
+    <link rel="stylesheet" href="{{ "css/loading.css" | relURL }}">
+  {{ end }}
 </head>
 <body> 
+  <!-- 加载动画 -->
+  <div id="loading">
+    <div class="loader"></div>
+    <!-- 可选：添加加载文字 -->
+    <div class="loading-text">Loading...</div>
+  </div>
+
   <!-- 顶部导航栏 -->
   <nav class="navbar">
     <div class="navbar-logo">
@@ -47,38 +63,38 @@
       <li><a href="{{ "contact/" | relURL }}">联系我们</a></li>
     </ul>
     
-<!-- 替换原来的主题切换按钮 -->
-<div class="navbar-controls">
-  <!-- 新的主题切换器 -->
-  <label for="theme" class="theme-toggle-new">
-    <span class="theme__toggle-wrap">
-      <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="dark">
-      <span class="theme__fill"></span>
-      <span class="theme__icon">
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-        <span class="theme__icon-part"></span>
-      </span>
-    </span>
-  </label>
-  
-  <!-- 登录按钮保持不变 -->
-  <div class="login-container">
-    <a href="{{ "login/" | relURL }}" class="login-btn">
-      <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" 
-              stroke="currentColor" stroke-width="2" fill="none"/>
-      </svg>
-      <span class="text">登录/注册</span>
-    </a>
-  </div>
-</div>
+    <!-- 替换原来的主题切换按钮 -->
+    <div class="navbar-controls">
+      <!-- 新的主题切换器 -->
+      <label for="theme" class="theme-toggle-new">
+        <span class="theme__toggle-wrap">
+          <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="dark">
+          <span class="theme__fill"></span>
+          <span class="theme__icon">
+            <span class="theme__icon-part"></span>
+            <span class="theme__icon-part"></span>
+            <span class="theme__icon-part"></span>
+            <span class="theme__icon-part"></span>
+            <span class="theme__icon-part"></span>
+            <span class="theme__icon-part"></span>
+            <span class="theme__icon-part"></span>
+            <span class="theme__icon-part"></span>
+            <span class="theme__icon-part"></span>
+          </span>
+        </span>
+      </label>
+      
+      <!-- 登录按钮保持不变 -->
+      <div class="login-container">
+        <a href="{{ "login/" | relURL }}" class="login-btn">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" 
+                  stroke="currentColor" stroke-width="2" fill="none"/>
+          </svg>
+          <span class="text">登录/注册</span>
+        </a>
+      </div>
+    </div>
   </nav>
 
   <main>
@@ -119,6 +135,15 @@
     <script src="{{ $themeJS.Permalink }}"></script>
   {{ else }}
     <script src="{{ "js/theme-switcher.js" | relURL }}"></script>
+  {{ end }}
+
+  <!-- 添加加载动画脚本 -->
+  {{ $loadingJS := resources.Get "js/loading.js" }}
+  {{ if $loadingJS }}
+    {{ $loadingJS = $loadingJS | resources.Minify | fingerprint }}
+    <script src="{{ $loadingJS.Permalink }}"></script>
+  {{ else }}
+    <script src="{{ "js/loading.js" | relURL }}"></script>
   {{ end }}
   
   {{ block "scripts" . }}{{ end }}
