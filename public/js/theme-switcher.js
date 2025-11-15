@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const themeToggle = document.getElementById('theme');
   const html = document.documentElement;
   
+  if (!themeToggle) return;
+  
   // 检查本地存储的主题偏好
   const savedTheme = localStorage.getItem('theme') || 'light';
   html.setAttribute('data-theme', savedTheme);
@@ -23,36 +25,48 @@ document.addEventListener('DOMContentLoaded', function() {
 // ===== 导航栏交互功能 =====
 document.addEventListener('DOMContentLoaded', function() {
   const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
   
-  // 导航栏滚动效果
+  // 导航栏滚动效果 - 使用节流优化
   let lastScrollTop = 0;
+  let ticking = false;
   
-  window.addEventListener('scroll', function() {
+  const handleScroll = function() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    if (scrollTop > lastScrollTop && scrollTop > 100) {
-      // 向下滚动
-      navbar.style.transform = 'translateY(-100%)';
-    } else {
-      // 向上滚动
-      navbar.style.transform = 'translateY(0)';
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+          // 向下滚动
+          navbar.style.transform = 'translateY(-100%)';
+        } else {
+          // 向上滚动
+          navbar.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = scrollTop;
+        ticking = false;
+      });
+      ticking = true;
     }
-    
-    lastScrollTop = scrollTop;
-  });
+  };
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
   
   // 导航菜单激活状态
   function setActiveNavLink() {
     const currentPath = window.location.pathname;
     const navLinks = document.querySelectorAll('.navbar-menu a');
     
-    navLinks.forEach(link => {
+    for (let i = 0; i < navLinks.length; i++) {
+      const link = navLinks[i];
       const linkPath = link.getAttribute('href');
       if (currentPath === linkPath || (currentPath.startsWith(linkPath) && linkPath !== '/')) {
         link.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
         link.style.color = 'var(--text-white)';
+        break;
       }
-    });
+    }
   }
   
   setActiveNavLink();
@@ -61,19 +75,29 @@ document.addEventListener('DOMContentLoaded', function() {
 // ===== 图片懒加载 =====
 document.addEventListener('DOMContentLoaded', function() {
   const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+  if (lazyImages.length === 0) return;
   
   if ('IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      for (let i = 0; i < entries.length; i++) {
+        const entry = entries[i];
         if (entry.isIntersecting) {
           const img = entry.target;
           img.src = img.dataset.src || img.src;
           imageObserver.unobserve(img);
         }
-      });
+      }
     });
     
-    lazyImages.forEach(img => imageObserver.observe(img));
+    for (let i = 0; i < lazyImages.length; i++) {
+      imageObserver.observe(lazyImages[i]);
+    }
+  } else {
+    // 回退方案：直接加载所有图片
+    for (let i = 0; i < lazyImages.length; i++) {
+      const img = lazyImages[i];
+      img.src = img.dataset.src || img.src;
+    }
   }
 });
 
@@ -82,6 +106,21 @@ document.addEventListener('DOMContentLoaded', function() {
   const loginBtn = document.querySelector('.login-btn');
   
   if (loginBtn) {
+    // 预创建样式避免重复创建
+    if (!document.getElementById('ripple-style')) {
+      const rippleStyle = document.createElement('style');
+      rippleStyle.id = 'ripple-style';
+      rippleStyle.textContent = `
+        @keyframes ripple {
+          to {
+            transform: scale(4);
+            opacity: 0;
+          }
+        }
+      `;
+      document.head.appendChild(rippleStyle);
+    }
+    
     // 添加点击涟漪效果
     loginBtn.addEventListener('click', function(e) {
       const ripple = document.createElement('span');
@@ -106,23 +145,13 @@ document.addEventListener('DOMContentLoaded', function() {
       this.appendChild(ripple);
       
       setTimeout(() => {
-        ripple.remove();
+        if (ripple.parentNode === this) {
+          this.removeChild(ripple);
+        }
       }, 600);
     });
   }
 });
-
-// 添加涟漪动画样式
-const rippleStyle = document.createElement('style');
-rippleStyle.textContent = `
-  @keyframes ripple {
-    to {
-      transform: scale(4);
-      opacity: 0;
-    }
-  }
-`;
-document.head.appendChild(rippleStyle);
 
 // ===== 页面加载动画 =====
 document.addEventListener('DOMContentLoaded', function() {
@@ -132,79 +161,109 @@ document.addEventListener('DOMContentLoaded', function() {
     navbar.style.opacity = '0';
     navbar.style.transform = 'translateY(-20px)';
     
-    setTimeout(() => {
+    requestAnimationFrame(() => {
       navbar.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
       navbar.style.opacity = '1';
       navbar.style.transform = 'translateY(0)';
-    }, 100);
+    });
   }
 });
 
 // ===== 键盘导航支持 =====
+// 预创建样式避免重复创建
+if (!document.getElementById('keyboard-nav-style')) {
+  const keyboardNavStyle = document.createElement('style');
+  keyboardNavStyle.id = 'keyboard-nav-style';
+  keyboardNavStyle.textContent = `
+    .keyboard-navigation *:focus {
+      outline: 2px solid var(--primary-color) !important;
+      outline-offset: 2px !important;
+    }
+  `;
+  document.head.appendChild(keyboardNavStyle);
+}
+
+let keyboardTimeout;
 document.addEventListener('keydown', function(e) {
   // Tab 键导航
   if (e.key === 'Tab') {
     document.body.classList.add('keyboard-navigation');
+    clearTimeout(keyboardTimeout);
   }
 });
 
 document.addEventListener('mousedown', function() {
   document.body.classList.remove('keyboard-navigation');
+  keyboardTimeout = setTimeout(() => {
+    document.body.classList.remove('keyboard-navigation');
+  }, 100);
 });
-
-// 添加键盘导航样式
-const keyboardNavStyle = document.createElement('style');
-keyboardNavStyle.textContent = `
-  .keyboard-navigation *:focus {
-    outline: 2px solid var(--primary-color) !important;
-    outline-offset: 2px !important;
-  }
-`;
-document.head.appendChild(keyboardNavStyle);
 
 // ===== 错误处理 =====
 // 图片加载错误处理
 document.addEventListener('DOMContentLoaded', function() {
   const images = document.querySelectorAll('img');
   
-  images.forEach(img => {
-    img.addEventListener('error', function() {
+  for (let i = 0; i < images.length; i++) {
+    images[i].addEventListener('error', function() {
       this.alt = '图片加载失败';
       this.style.backgroundColor = '#f0f0f0';
     });
-  });
+  }
 });
 
 // ===== 工具函数 =====
-const utils = {
+const utils = Object.freeze({
   // 防抖函数
-  debounce: function(func, wait) {
+  debounce: function(func, wait, immediate) {
     let timeout;
     return function(...args) {
+      const context = this;
+      const later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      const callNow = immediate && !timeout;
       clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(this, args), wait);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
     };
   },
   
   // 节流函数
   throttle: function(func, limit) {
     let inThrottle;
+    let lastFunc;
+    let lastRan;
     return function(...args) {
+      const context = this;
       if (!inThrottle) {
-        func.apply(this, args);
+        func.apply(context, args);
+        lastRan = Date.now();
         inThrottle = true;
-        setTimeout(() => inThrottle = false, limit);
+      } else {
+        clearTimeout(lastFunc);
+        lastFunc = setTimeout(function() {
+          if (Date.now() - lastRan >= limit) {
+            func.apply(context, args);
+            lastRan = Date.now();
+          }
+        }, limit - (Date.now() - lastRan));
       }
     };
   }
-};
+});
 
 // 控制台欢迎信息
-console.log(`
-%cAKIHA FIELD %c欢迎来到我们的视觉小说世界！🎮
-%c典藏世间之美，共叙心动诗篇。✨
-`,
-'color: #bb645b; font-size: 20px; font-weight: bold;',
-'color: #666; font-size: 14px;',
-'color: #bb645b; font-size: 12px; font-style: italic;'
-);
+function showWelcomeMessage() {
+  console.log(`%cAKIHA FIELD %c欢迎来到我们的视觉小说世界！🎮\n%c典藏世间之美，共叙心动诗篇。✨`,
+    'color: #bb645b; font-size: 20px; font-weight: bold;',
+    'color: #666; font-size: 14px;',
+    'color: #bb645b; font-size: 12px; font-style: italic;'
+  );
+}
+
+// 简化初始化，避免干扰其他功能
+document.addEventListener('DOMContentLoaded', function() {
+  showWelcomeMessage();
+});
