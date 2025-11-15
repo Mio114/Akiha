@@ -1,31 +1,207 @@
-// 加载动画控制 - 深色模式适配
-document.addEventListener('DOMContentLoaded', function() {
-  const loading = document.getElementById('loading');
-  const body = document.body;
-  
-  if (!loading) return;
+// 极致丝滑加载动画控制
+class SmoothLoadingAnimation {
+  constructor() {
+    this.loading = document.getElementById('loading');
+    this.body = document.body;
+    this.startTime = performance.now();
+    this.minLoadingTime = 700;
+    this.maxLoadingTime = 3000;
+    this.loadingSpeed = 'normal';
+    
+    this.init();
+  }
 
-  // 应用当前主题到加载动画
-  function applyThemeToLoading() {
-    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
-    if (loading) {
-      // 使用 CSS 类而不是直接修改样式，以便 CSS 可以处理过渡
-      if (currentTheme === 'dark') {
-        loading.classList.add('dark-mode');
-        loading.classList.remove('light-mode');
+  init() {
+    if (!this.loading) return;
+
+    // 立即设置为预加载状态（无过渡）
+    this.loading.classList.add('preload');
+    
+    // 应用主题
+    this.applyThemeToLoading();
+    this.observeThemeChanges();
+    
+    // 微延迟后激活过渡效果
+    setTimeout(() => {
+      this.activateSmoothTransition();
+    }, 10);
+    
+    this.setupPerformanceMonitoring();
+    this.setupLoadingHandlers();
+    this.observeContentLoading();
+  }
+
+  // 激活平滑过渡
+  activateSmoothTransition() {
+    if (this.loading) {
+      // 移除预加载状态，添加激活状态（触发过渡）
+      this.loading.classList.remove('preload');
+      
+      // 使用 requestAnimationFrame 确保过渡触发
+      requestAnimationFrame(() => {
+        this.loading.classList.add('active');
+      });
+    }
+  }
+
+  // 根据性能数据确定加载速度
+  determineLoadingSpeed() {
+    const navTiming = performance.getEntriesByType('navigation')[0];
+    if (navTiming) {
+      const domContentLoaded = navTiming.domContentLoadedEventEnd - navTiming.navigationStart;
+      
+      if (domContentLoaded < 800) {
+        this.loadingSpeed = 'fast';
+        this.minLoadingTime = 500;
+      } else if (domContentLoaded > 2500) {
+        this.loadingSpeed = 'slow';
+        this.minLoadingTime = 1200;
       } else {
-        loading.classList.add('light-mode');
-        loading.classList.remove('dark-mode');
+        this.loadingSpeed = 'normal';
+        this.minLoadingTime = 800;
+      }
+      
+      this.loading.classList.add(`loading-${this.loadingSpeed}`);
+    }
+  }
+
+  // 性能监控
+  setupPerformanceMonitoring() {
+    this.determineLoadingSpeed();
+  }
+
+  // 内容加载观察
+  observeContentLoading() {
+    // 监控关键图片加载
+    const criticalImages = document.querySelectorAll('img[loading="eager"], .navbar-logo img');
+    let loadedCriticalImages = 0;
+    const totalCriticalImages = criticalImages.length;
+
+    if (totalCriticalImages > 0) {
+      criticalImages.forEach(img => {
+        if (img.complete) {
+          loadedCriticalImages++;
+        } else {
+          img.addEventListener('load', () => {
+            loadedCriticalImages++;
+            this.checkCriticalContentLoaded(loadedCriticalImages, totalCriticalImages);
+          });
+          img.addEventListener('error', () => {
+            loadedCriticalImages++;
+            this.checkCriticalContentLoaded(loadedCriticalImages, totalCriticalImages);
+          });
+        }
+      });
+    }
+  }
+
+  checkCriticalContentLoaded(loaded, total) {
+    if (loaded >= total) {
+      // 关键内容已加载，可以准备隐藏动画
+      this.scheduleHideAnimation();
+    }
+  }
+
+  // 安排隐藏动画
+  scheduleHideAnimation() {
+    const currentTime = performance.now();
+    const elapsedTime = currentTime - this.startTime;
+    const remainingTime = Math.max(0, this.minLoadingTime - elapsedTime);
+
+    // 提前准备内容过渡
+    this.prepareContentTransition();
+
+    setTimeout(() => {
+      this.startHideAnimation();
+    }, remainingTime);
+  }
+
+  // 准备内容过渡
+  prepareContentTransition() {
+    const mainContent = document.querySelector('main');
+    if (mainContent && !mainContent.classList.contains('main-content')) {
+      mainContent.classList.add('main-content');
+    }
+  }
+
+  // 开始隐藏动画
+  startHideAnimation() {
+    // 第一阶段：添加页面加载类（触发CSS过渡）
+    this.body.classList.add('page-loaded');
+    
+    // 第二阶段：完全移除元素
+    setTimeout(() => {
+      this.completeHide();
+    }, 700); // 与CSS过渡时间匹配
+  }
+
+  // 完成隐藏
+  completeHide() {
+    if (this.loading && this.loading.parentNode) {
+      // 添加最终微调过渡
+      this.loading.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+      this.loading.style.opacity = '0';
+      this.loading.style.transform = 'scale(0.97)';
+      
+      setTimeout(() => {
+        if (this.loading.parentNode) {
+          this.loading.parentNode.removeChild(this.loading);
+          
+          // 触发自定义事件，通知其他组件
+          window.dispatchEvent(new CustomEvent('loadingComplete', {
+            detail: { loadTime: performance.now() - this.startTime }
+          }));
+        }
+      }, 400);
+    }
+  }
+
+  // 设置加载处理器
+  setupLoadingHandlers() {
+    // 主要加载完成事件
+    if (document.readyState === 'complete') {
+      this.scheduleHideAnimation();
+    } else {
+      window.addEventListener('load', () => this.scheduleHideAnimation());
+    }
+
+    // DOM内容加载完成时调整策略
+    document.addEventListener('DOMContentLoaded', () => {
+      this.determineLoadingSpeed();
+    });
+
+    // 备用方案：最大等待时间
+    setTimeout(() => {
+      if (this.loading && this.loading.parentNode) {
+        console.log('Fallback: Force completing loading animation');
+        this.startHideAnimation();
+      }
+    }, this.maxLoadingTime);
+
+    // 错误处理
+    window.addEventListener('error', (e) => {
+      console.warn('Page loading error, completing loading animation:', e.error);
+      this.startHideAnimation();
+    });
+  }
+
+  // 主题适配
+  applyThemeToLoading() {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    if (this.loading) {
+      if (currentTheme === 'dark') {
+        this.loading.style.backgroundColor = '#1a1a1a';
+      } else {
+        this.loading.style.backgroundColor = '#fff';
       }
     }
   }
 
-  // 监听主题变化
-  function observeThemeChanges() {
-    const observer = new MutationObserver(function(mutations) {
-      mutations.forEach(function(mutation) {
+  observeThemeChanges() {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
         if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
-          applyThemeToLoading();
+          this.applyThemeToLoading();
         }
       });
     });
@@ -35,95 +211,25 @@ document.addEventListener('DOMContentLoaded', function() {
       attributeFilter: ['data-theme']
     });
   }
+}
 
-  // 初始化主题
-  applyThemeToLoading();
-  observeThemeChanges();
+// 初始化 - 在DOM解析完成后立即执行
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    new SmoothLoadingAnimation();
+  });
+} else {
+  new SmoothLoadingAnimation();
+}
 
-  // 确保加载动画至少显示一段时间（提供更好的用户体验）
-  let minLoadingTime = 800; // 最少显示 800ms
-  let startTime = Date.now();
-
-  function hideLoading() {
-    let loadTime = Date.now() - startTime;
-    let remainingTime = Math.max(0, minLoadingTime - loadTime);
+// 性能记录和用户体验监控
+window.addEventListener('load', function() {
+  const navTiming = performance.getEntriesByType('navigation')[0];
+  if (navTiming) {
+    const loadTime = navTiming.loadEventEnd - navTiming.navigationStart;
+    const speed = loadTime < 800 ? '极快' : loadTime < 1600 ? '快速' : '正常';
     
-    setTimeout(() => {
-      // 添加 loaded class 触发 CSS 过渡
-      body.classList.add('loaded');
-      
-      // 过渡完成后完全移除加载元素
-      setTimeout(() => {
-        if (loading && loading.parentNode) {
-          // 先触发重绘确保动画完成
-          loading.offsetHeight;
-          loading.parentNode.removeChild(loading);
-        }
-      }, 500); // 与 CSS 过渡时间匹配
-    }, remainingTime);
+    console.log(`%c🎯 页面加载完成 - ${loadTime.toFixed(0)}ms (${speed})`, 
+      'color: #4CAF50; font-weight: bold; font-size: 14px;');
   }
-
-  // 页面完全加载后隐藏加载动画
-  if (document.readyState === 'complete') {
-    hideLoading();
-  } else {
-    window.addEventListener('load', hideLoading);
-  }
-
-  // 备用方案：如果 3 秒后仍未加载完成，强制隐藏加载动画
-  setTimeout(hideLoading, 3000);
-
-  // 错误处理：如果页面加载出错也隐藏加载动画
-  window.addEventListener('error', function(e) {
-    console.warn('页面加载出现错误，隐藏加载动画:', e.error);
-    hideLoading();
-  });
-
-  // 处理页面可见性变化
-  document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-      // 页面被隐藏，暂停不必要的操作
-    } else {
-      // 页面重新可见
-    }
-  });
 });
-
-// 性能监控：记录加载时间
-(function() {
-  const startTime = performance.now();
-  
-  window.addEventListener('load', function() {
-    const loadTime = performance.now() - startTime;
-    console.log(`%c🚀 页面加载完成 - ${loadTime.toFixed(2)}ms`, 
-      'color: #4CAF50; font-weight: bold;');
-    
-    // 发送性能数据到分析服务（可选）
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'timing_complete', {
-        'name': 'load',
-        'value': Math.round(loadTime),
-        'event_category': 'Load Time'
-      });
-    }
-  });
-})();
-
-// 与现有工具函数集成
-if (typeof utils !== 'undefined') {
-  // 使用现有的防抖/节流函数
-  const optimizedHideLoading = utils.throttle(function() {
-    const loading = document.getElementById('loading');
-    if (loading) {
-      loading.style.opacity = '0';
-    }
-  }, 100);
-}
-
-// 导出函数供其他模块使用（如果需要）
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    applyThemeToLoading: applyThemeToLoading,
-    hideLoading: hideLoading
-  };
-}

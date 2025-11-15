@@ -1,4 +1,4 @@
-/* 加载动画容器 - 深色模式适配 */
+/* 加载动画容器 - 极致丝滑过渡 */
 #loading {
   position: fixed;
   top: 0;
@@ -10,7 +10,25 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  transition: opacity 0.5s ease-out, visibility 0.5s ease-out, background-color 0.3s ease;
+  transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.02);
+}
+
+/* 激活状态 - 从第一个界面平滑进入 */
+#loading.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+/* 预加载状态 - 在JS控制前就准备好 */
+#loading.preload {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition: none; /* 初始显示无过渡 */
 }
 
 /* 深色模式背景 */
@@ -18,12 +36,31 @@
   background: #1a1a1a;
 }
 
+/* 加载动画容器 - 延迟显示内部元素 */
+.loader-container {
+  opacity: 0;
+  transform: translateY(10px) scale(0.98);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+}
+
+#loading.active .loader-container {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 /* 从 Uiverse.io 复制的加载动画 */
 .loader {
   position: relative;
   width: 2.5em;
   height: 2.5em;
-  transform: rotate(165deg);
+  transform: rotate(165deg) scale(0.8);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 0;
+}
+
+#loading.active .loader {
+  transform: rotate(165deg) scale(1);
+  opacity: 1;
 }
 
 .loader:before, .loader:after {
@@ -93,12 +130,17 @@
   position: absolute;
   bottom: 30%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(15px);
   color: #333;
   font-family: Arial, sans-serif;
   font-size: 14px;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s;
+}
+
+#loading.active .loading-text {
   opacity: 0.7;
-  transition: color 0.3s ease;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* 深色模式文字颜色 */
@@ -106,35 +148,114 @@
   color: #e0e0e0;
 }
 
-/* 加载完成后的状态 */
-.loaded #loading {
+/* 加载完成后的状态 - 极致丝滑隐藏 */
+.page-loaded #loading {
   opacity: 0;
   visibility: hidden;
+  transform: scale(0.98);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 平滑的主题切换过渡 */
-#loading,
-.loading-text {
-  transition: background-color 0.3s ease, color 0.3s ease;
+.page-loaded #loading .loader-container {
+  opacity: 0;
+  transform: translateY(-15px) scale(0.95);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-loaded .loader {
+  transform: rotate(345deg) scale(0.7);
+  opacity: 0;
+}
+
+.page-loaded .loading-text {
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+}
+
+/* 主内容区域的过渡 */
+.main-content {
+  opacity: 0;
+  transform: translateY(8px) scale(0.998);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  filter: blur(0.3px);
+}
+
+.page-loaded .main-content {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* 背景渐变过渡 */
+#loading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(255,255,255,0.1) 0%, 
+    rgba(255,255,255,0.05) 50%, 
+    rgba(255,255,255,0) 100%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+#loading.active::before {
+  opacity: 1;
+}
+
+[data-theme="dark"] #loading::before {
+  background: linear-gradient(135deg, 
+    rgba(0,0,0,0.1) 0%, 
+    rgba(0,0,0,0.05) 50%, 
+    rgba(0,0,0,0) 100%);
+}
+
+/* 快速加载时的状态 */
+.loading-fast .loader {
+  animation-duration: 1.2s;
+}
+
+.loading-slow .loader {
+  animation-duration: 2.5s;
 }
 
 /* 无障碍支持：减少动画偏好 */
 @media (prefers-reduced-motion: reduce) {
+  #loading,
+  .loader-container,
+  .loader,
+  .loading-text,
+  .main-content {
+    transition-duration: 0.2s !important;
+    transition-delay: 0s !important;
+  }
+  
   .loader:before,
   .loader:after {
     animation-duration: 3s;
   }
-  
+}
+
+/* 高性能优化 */
+#loading,
+.loader-container,
+.loader,
+.main-content {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* 移动端优化 */
+@media (max-width: 768px) {
   #loading {
-    transition-duration: 0.3s;
+    transition-duration: 0.7s;
   }
-}
-
-/* 高性能优化：使用 transform 和 opacity */
-#loading {
-  will-change: opacity, visibility;
-}
-
-.loader {
-  will-change: transform;
+  
+  .loader-container {
+    transition-duration: 0.5s;
+  }
 }

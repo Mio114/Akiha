@@ -27,18 +27,20 @@
 
   <!-- 加载动画 CSS -->
   {{ if $loadingCSS }}
-    {{ $loadingCSS = $loadingCSS | fingerprint }}
+    {{ $loadingCSS = $loadingCSS | minify | fingerprint }}
     <link rel="stylesheet" href="{{ $loadingCSS.Permalink }}">
   {{ else }}
     <link rel="stylesheet" href="{{ "css/loading.css" | relURL }}">
   {{ end }}
 </head>
 <body> 
-  <!-- 加载动画 -->
+  <!-- 加载动画 - 极致丝滑版本 -->
   <div id="loading">
-    <div class="loader"></div>
-    <!-- 可选：添加加载文字 -->
-    <div class="loading-text">Loading...</div>
+    <div class="loader-container">
+      <div class="loader"></div>
+      <!-- 可选：添加加载文字 -->
+      <div class="loading-text">Loading...</div>
+    </div>
   </div>
 
   <!-- 顶部导航栏 -->
@@ -97,7 +99,8 @@
     </div>
   </nav>
 
-  <main>
+  <!-- 主内容区域 - 添加过渡类 -->
+  <main class="main-content">
     {{ block "main" . }}{{ end }}
   </main>
   
@@ -137,7 +140,7 @@
     <script src="{{ "js/theme-switcher.js" | relURL }}"></script>
   {{ end }}
 
-  <!-- 添加加载动画脚本 -->
+  <!-- 添加加载动画脚本 - 极致丝滑版本 -->
   {{ $loadingJS := resources.Get "js/loading.js" }}
   {{ if $loadingJS }}
     {{ $loadingJS = $loadingJS | resources.Minify | fingerprint }}
