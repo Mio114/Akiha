@@ -35,7 +35,7 @@ vndb_link: "https://vndb.org/v36"
 
 website: "https://key.visualarts.gr.jp/product/air/"
 download: ""
-trailer: "/videos/AIR.mp4"
+trailer: ""
 
 screenshots:
   - "/images/Air 01.png"
