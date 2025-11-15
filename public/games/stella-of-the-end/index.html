@@ -5,55 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>星之终途 - 视觉小说收藏</title>
     <link rel="stylesheet" href="/css/game-detail.css">
-    <style>
-         
-        .theme-toggle-new {
-            display: flex;
-            align-items: center;
-            -webkit-tap-highlight-color: transparent;
-            cursor: pointer;
-            transform: scale(0.6);
-            margin-right: -100rem;
-        }
-
-        .theme__fill, .theme__icon { transition: 0.3s; }
-        .theme__fill {
-            background-color: var(--bg);
-            display: block;
-            mix-blend-mode: difference;
-            position: fixed;
-            inset: 0;
-            height: 100%;
-            transform: translateX(-100%);
-            z-index: 9998;
-        }
-    </style>
 </head>
 <body>
     
     <nav class="navbar">
         <div class="nav-container">
             <a href="/" class="nav-logo">VisualNovel</a>
-                        
-            <div class="navbar-controls">
-                <label for="theme" class="theme-toggle-new">
-                    <span class="theme__toggle-wrap">
-                        <input id="theme" class="theme__toggle" type="checkbox" role="switch" name="theme" value="dark">
-                        <span class="theme__fill"></span>
-                        <span class="theme__icon">
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                            <span class="theme__icon-part"></span>
-                        </span>
-                    </span>
-                </label>
-            </div>
             <div class="nav-links">
                 <a href="/">首页</a>
                 <a href="/games">游戏库</a>
@@ -398,7 +355,6 @@
         </div>
     </footer>
 
-    <script src="/js/theme-switcher.js"></script>
     <script src="/js/game-detail.js"></script>
 </body>
 </html>
