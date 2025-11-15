@@ -1,8 +1,7 @@
-// companies-common.js - 修复跳转延迟问题
+// companies-common.js - 完全修复跳转问题
 document.addEventListener('DOMContentLoaded', function() {
     console.log('companies-common.js 加载成功');
 
-    // 简化DOM查询 - 只缓存必要的元素
     const elements = {
         sortOptions: document.querySelectorAll('.company-common-sort-option'),
         worksGrid: document.getElementById('works-grid'),
@@ -21,21 +20,31 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    // 简化状态管理
     let allWorks = [];
     let currentSortType = 'default';
     let currentPage = 1;
     let pageSize = parseInt(elements.pageSizeSelect?.value || 9);
 
-    // 修复：移除复杂的防抖和节流，使用直接执行
     function initializeWorks() {
         const workCards = elements.worksGrid.querySelectorAll('.company-common-work-card');
         allWorks = Array.from(workCards);
         
+        // 关键修复：在初始化时就保存每个作品的原始HTML和链接信息
+        allWorks.forEach((work, index) => {
+            work._originalHTML = work.outerHTML; // 保存原始HTML
+            work._originalHref = work.querySelector('a')?.getAttribute('href') || '';
+            work._dataGame = work.querySelector('a')?.getAttribute('data-game') || '';
+            
+            console.log(`作品 ${index + 1}:`, {
+                href: work._originalHref,
+                dataGame: work._dataGame,
+                hasLink: !!work.querySelector('a')
+            });
+        });
+        
         console.log('初始化作品数据:', allWorks.length, '个作品');
     }
 
-    // 修复：简化比较函数
     const sortComparators = {
         'name-asc': (a, b) => {
             const nameA = a.getAttribute('data-name') || '';
@@ -57,16 +66,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const yearB = parseInt(b.getAttribute('data-year')) || 0;
             return yearB - yearA;
         },
-        'default': (a, b) => {
-            // 保持原始顺序
-            return 0;
-        }
+        'default': (a, b) => 0
     };
 
-    // 修复：简化排序函数，移除缓存
     function globalSortWorks(sortType) {
         console.log('开始排序, 方式:', sortType);
-        
         const sortedWorks = [...allWorks];
         const comparator = sortComparators[sortType] || sortComparators.default;
         
@@ -77,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return sortedWorks;
     }
 
-    // 修复：简化显示函数，确保立即执行
     function displayPage(sortedWorks, page, pageSize) {
         const totalPages = Math.ceil(sortedWorks.length / pageSize);
         const startIndex = (page - 1) * pageSize;
@@ -85,32 +88,58 @@ document.addEventListener('DOMContentLoaded', function() {
         
         console.log(`显示第 ${page} 页: 作品 ${startIndex + 1}-${endIndex}`);
         
-        // 获取当前页的作品（直接引用，不克隆）
-        const currentPageWorks = sortedWorks.slice(startIndex, endIndex);
-        
-        // 使用文档片段但直接添加原节点
+        // 关键修复：使用原始HTML重新创建元素，确保链接完整
         const fragment = document.createDocumentFragment();
-        currentPageWorks.forEach(work => {
-            fragment.appendChild(work);
-        });
         
-        // 快速清空和插入
+        for (let i = startIndex; i < endIndex; i++) {
+            const work = sortedWorks[i];
+            
+            // 使用原始HTML重新创建元素，确保所有属性和事件都完整
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = work._originalHTML;
+            const newWork = tempDiv.firstElementChild;
+            
+            // 确保数据属性也正确设置
+            if (work._dataGame) {
+                const link = newWork.querySelector('a');
+                if (link) {
+                    link.setAttribute('data-game', work._dataGame);
+                    // 确保href正确
+                    if (!link.getAttribute('href') || link.getAttribute('href') === '#') {
+                        link.setAttribute('href', work._originalHref || `/games/${work._dataGame}/`);
+                    }
+                }
+            }
+            
+            fragment.appendChild(newWork);
+        }
+        
         elements.worksGrid.innerHTML = '';
         elements.worksGrid.appendChild(fragment);
+        
+        // 调试：检查渲染后的链接状态
+        setTimeout(() => {
+            const renderedLinks = elements.worksGrid.querySelectorAll('a.company-common-work-link');
+            console.log('渲染后链接状态:');
+            renderedLinks.forEach((link, index) => {
+                console.log(`链接 ${index + 1}:`, {
+                    href: link.getAttribute('href'),
+                    dataGame: link.getAttribute('data-game'),
+                    text: link.textContent.trim()
+                });
+            });
+        }, 0);
         
         return totalPages;
     }
 
-    // 修复：直接执行，无延迟
     function applySortAndPagination() {
         console.log('执行排序分页 - 方式:', currentSortType, '页码:', currentPage);
-        
         const sortedWorks = globalSortWorks(currentSortType);
         const totalPages = displayPage(sortedWorks, currentPage, pageSize);
         updatePaginationControls(totalPages);
     }
 
-    // 修复：简化分页控件更新
     function updatePaginationControls(totalPages) {
         if (elements.totalPagesSpan) elements.totalPagesSpan.textContent = totalPages;
         if (elements.currentPageSpan) elements.currentPageSpan.textContent = currentPage;
@@ -149,7 +178,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 修复：简化事件处理器
     const eventHandlers = {
         handleSortOptionClick: function() {
             console.log('排序选项点击:', this.textContent);
@@ -164,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
             currentSortType = this.getAttribute('data-sort');
             currentPage = 1;
             updatePageInput();
-            applySortAndPagination(); // 直接调用，无延迟
+            applySortAndPagination();
         },
         
         handlePrevPage: function() {
@@ -200,16 +228,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // 修复：确保事件绑定正确
     function initEventListeners() {
         console.log('初始化事件监听器...');
         
-        // 排序选项
         elements.sortOptions.forEach(option => {
             option.addEventListener('click', eventHandlers.handleSortOptionClick);
         });
 
-        // 分页按钮
         if (elements.prevPageBtn) {
             elements.prevPageBtn.addEventListener('click', eventHandlers.handlePrevPage);
         }
@@ -218,26 +243,39 @@ document.addEventListener('DOMContentLoaded', function() {
             elements.nextPageBtn.addEventListener('click', eventHandlers.handleNextPage);
         }
 
-        // 页面大小
         if (elements.pageSizeSelect) {
             elements.pageSizeSelect.addEventListener('change', eventHandlers.handlePageSizeChange);
         }
         
-        // 页码输入
         if (elements.pageInput) {
             elements.pageInput.addEventListener('keyup', eventHandlers.handlePageInputKeyup);
         }
         
-        // 前往按钮
         if (elements.goToPageBtn) {
             elements.goToPageBtn.addEventListener('click', goToPage);
         }
 
-        // 修复：确保作品卡片的点击事件不被阻止
-        elements.worksGrid.addEventListener('click', function(e) {
-            // 允许所有点击事件正常传播
-            console.log('网格点击事件:', e.target);
-        }, { passive: true });
+        // 备用方案：如果链接仍然有问题，使用全局点击委托
+        document.addEventListener('click', function(e) {
+            const link = e.target.closest('a.company-common-work-link');
+            if (link) {
+                const href = link.getAttribute('href');
+                const dataGame = link.getAttribute('data-game');
+                
+                console.log('全局点击捕获:', { href, dataGame });
+                
+                // 如果链接无效，使用data-game生成正确链接
+                if (!href || href === '#' || href === 'javascript:void(0)') {
+                    if (dataGame) {
+                        e.preventDefault();
+                        const correctHref = `/games/${dataGame}/`;
+                        console.log('强制跳转到:', correctHref);
+                        window.location.href = correctHref;
+                    }
+                }
+                // 否则允许正常跳转
+            }
+        });
     }
 
     function init() {
@@ -254,6 +292,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // 启动
     init();
 });
