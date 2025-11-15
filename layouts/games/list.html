@@ -55,9 +55,9 @@
             <div class="game-card-content">
                 <h3 class="game-title">{{ .Title }}</h3>
                 <p class="game-developer">{{ .Params.developer }}</p>
-                <div class="game-description">
-                    {{ .Params.description | default .Summary | truncate 100 }}
-                </div>
+<div class="game-description">
+    {{ .Params.description | default .Summary | plainify | truncate 100 }}
+</div>
                 <div class="game-tags">
                     {{ range first 3 (.Params.tags | default slice) }}
                     <span class="game-tag">{{ . }}</span>
