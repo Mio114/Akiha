@@ -79,7 +79,262 @@
     
 <article class="page-content">
     <div class="container">
-        暂无相关链接
+        <!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <style>
+        /* 所有游戏会社页面特有样式 - 不会影响其他部分 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* 使用更具体的选择器，避免影响顶部栏 */
+        .container > header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+        }
+
+        .container > header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50; /* 改为纯色，避免影响其他标题 */
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .companies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .company-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            overflow: hidden;
+            border: 1px solid #e1e5e9;
+        }
+
+        .company-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .company-header {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .company-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-right: 1rem;
+            border: 2px solid #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .company-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .company-info h2 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .company-meta {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .company-description {
+            padding: 1.5rem;
+            color: #495057;
+            line-height: 1.6;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .company-stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 1rem 1.5rem;
+            background: #f8f9fa;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        /* 会社特定颜色 */
+        .key-card .company-info h2 {
+            color: #3498db;
+        }
+
+        .minori-card .company-info h2 {
+            color: #e74c3c;
+        }
+
+        .nitro-card .company-info h2 {
+            color: #2c3e50;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .companies-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container > header h1 {
+                font-size: 2rem;
+            }
+            
+            .company-header {
+                padding: 1rem;
+            }
+            
+            .company-logo {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>所有游戏会社</h1>
+            <p class="subtitle">探索视觉小说世界的精彩制作公司，了解它们独特的创作风格与经典作品</p>
+        </header>
+        
+        <div class="companies-grid">
+            <!-- Key社 -->
+            <div class="company-card key-card" onclick="window.location.href='/products/key-works/'">
+                <div class="company-header">
+                    <div class="company-logo">
+                        <img src="/images/Key_LOGO.jpg" alt="Key">
+                    </div>
+                    <div class="company-info">
+                        <h2>Key</h2>
+                        <div class="company-meta">视觉小说品牌 · 1998年成立</div>
+                    </div>
+                </div>
+                <div class="company-description">
+                    以催人泪下的剧情和深刻的角色塑造闻名，被誉为"泣きゲー"的代表。作品往往探讨亲情、友情和爱情等永恒主题，在全球范围内拥有大量忠实粉丝。
+                </div>
+                <div class="company-stats">
+                    <div class="stat">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">作品数量</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">"泣"与"绊"</div>
+                        <div class="stat-label">创作理念</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">全球</div>
+                        <div class="stat-label">影响力</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- minori -->
+            <div class="company-card minori-card" onclick="window.location.href='/products/minori-works/'">
+                <div class="company-header">
+                    <div class="company-logo">
+                        <img src="/images/Minori.jpg" alt="minori">
+                    </div>
+                    <div class="company-info">
+                        <h2>minori</h2>
+                        <div class="company-meta">游戏公司 · 2007年成立</div>
+                    </div>
+                </div>
+                <div class="company-description">
+                    以"我们编织的是感动"为理念，作品以其精美的画面、深刻的剧情和独特的演出风格著称。虽然公司已停止运营，但其作品至今仍被玩家深深铭记。
+                </div>
+                <div class="company-stats">
+                    <div class="stat">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">作品数量</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">艺术</div>
+                        <div class="stat-label">追求</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">2019</div>
+                        <div class="stat-label">停止活动</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Nitro+ -->
+            <div class="company-card nitro-card" onclick="window.location.href='/products/nitro-works/'">
+                <div class="company-header">
+                    <div class="company-logo">
+                        <img src="/images/Nitro Plus.jpg" alt="Nitro+">
+                    </div>
+                    <div class="company-info">
+                        <h2>Nitro+</h2>
+                        <div class="company-meta">视觉小说开发商 · 2000年成立</div>
+                    </div>
+                </div>
+                <div class="company-description">
+                    以黑暗、悬疑和硬核的剧情风格著称，作品往往涉及深刻的社会和哲学议题。在视觉小说界独树一帜，以其深刻的剧情和复杂的角色塑造闻名。
+                </div>
+                <div class="company-stats">
+                    <div class="stat">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">精选作品</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">黑暗</div>
+                        <div class="stat-label">风格</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">哲学</div>
+                        <div class="stat-label">主题</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
     </div>
 </article>
 
@@ -132,6 +387,12 @@
 
 
 
+
+
+
+
+    <link rel="stylesheet" href="/css/companies.css">
+    <link rel="stylesheet" href="/css/companies-common.css">
 
 
 
