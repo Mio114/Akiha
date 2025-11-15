@@ -58,5 +58,5 @@ screenshots:
 - "https://cloud.touchgaloss.com/uploads/1a2b0cdff120231203075808_jpg.avif"
 
 steam_link: "https://store.steampowered.com/app/1144300/ef__the_first_tale_All_Ages/"
-wiki_link: ""
+wiki_link: "https://zh.wikipedia.org/wiki/Ef_-_a_fairy_tale_of_the_two."
 ---

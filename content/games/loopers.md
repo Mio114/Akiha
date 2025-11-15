@@ -27,7 +27,7 @@ vndb_link: "https://vndb.org/v29445"
 
 trailer: "https://cloud.touchgaloss.com/2023/07/f0a3d7a9a820231122013049.mp4"
 website: "https://key.visualarts.gr.jp/kinetic/loopers/"
-steam_link: "https://store.steampowered.com/app/1483340/LOOPERS/"
+steam_link: "https://store.steampowered.com/app/1811500/LOOPERS/"
 downloads:
   - name: "Windows"
     url: "https://pan.touchgal.net/s/pa3sD"
@@ -43,5 +43,5 @@ screenshots:
 - "https://cloud.touchgaloss.com/uploads/2003d5bbe5015924_jpg.avif"
 - "https://cloud.touchgaloss.com/uploads/53fd4582a6015926_jpg.avif"
 
-wiki_link: ""
+wiki_link: "https://zh.wikipedia.org/wiki/LOOPERS"
 ---

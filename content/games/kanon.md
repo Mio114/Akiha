@@ -23,7 +23,7 @@ vndb_link: "https://vndb.org/v33"
 
 trailer: "https://cloud.touchgaloss.com/2024/03/200930df6720240304022111.mp4"
 website: "https://key.visualarts.gr.jp/product/kanon/"
-steam_link: "https://store.steampowered.com/app/312840/Kanon/"
+steam_link: "https://store.steampowered.com/app/2850310/Kanon/?curator_clanid=33017662"
 downloads:
   - name: "Windows"
     url: "https://pan.touchgal.net/s/BxGpSw"
@@ -35,5 +35,5 @@ screenshots:
 - "https://cloud.touchgaloss.com/uploads/59bd1fe72f20240304021932_jpg.avif"
 - "https://cloud.touchgaloss.com/uploads/810788db9a20240304021934_jpg.avif"
 
-wiki_link: "https://zh.wikipedia.org/wiki/Kanon_(%E9%81%8A%E6%88%B2)"
+wiki_link: "https://zh.wikipedia.org/wiki/Kanon"
 ---

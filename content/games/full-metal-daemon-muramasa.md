@@ -43,5 +43,5 @@ screenshots:
 
 
 steam_link: ""
-wiki_link: ""
+wiki_link: "https://zh.wikipedia.org/wiki/%E8%A3%9D%E7%94%B2%E6%83%A1%E9%AC%BC%E6%9D%91%E6%AD%A3"
 ---

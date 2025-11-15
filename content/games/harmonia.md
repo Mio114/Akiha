@@ -53,5 +53,5 @@ screenshots:
 - "https://cloud.touchgaloss.com/uploads/sample_cg_5_l_jpg.avif"
 
 steam_link: "https://store.steampowered.com/app/421660/Harmonia/"
-wiki_link: ""
+wiki_link: "https://zh.wikipedia.org/wiki/Harmonia_(%E6%B8%B8%E6%88%8F)"
 ---

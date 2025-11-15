@@ -5,7 +5,7 @@ release_date: "2007-07-27"
 platforms: ["Windows", "PS2", "PSP", "PS Vita", "Switch"]
 tags: ["友情", "校园", "成长"]
 rating: 8.63
-cover_image: "/images/Little-Busters.jpg"
+cover_image: "/images/小小克星Little Busters.jpg"
 description: |
   <p>我叫直枝理樹，幼时父母双亡，徘徊在绝望之中，痛苦的度过着每一天。</p>
   

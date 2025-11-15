@@ -61,5 +61,5 @@ screenshots:
 - "https://cloud.touchgaloss.com/uploads/20140822134403_png.avif"
 
 steam_link: "https://store.steampowered.com/app/315810/eden/"
-wiki_link: ""
+wiki_link: "https://zh.wikipedia.org/wiki/Eden*"
 ---

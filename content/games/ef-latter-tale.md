@@ -67,5 +67,5 @@ screenshots:
 - "https://cloud.touchgaloss.com/uploads/5f9ff413de20231203222854_jpg.avif"
 
 steam_link: "https://store.steampowered.com/app/1145030/ef__the_latter_tale_All_Ages/"
-wiki_link: ""
+wiki_link: "https://zh.wikipedia.org/wiki/Ef_-_a_fairy_tale_of_the_two."
 ---

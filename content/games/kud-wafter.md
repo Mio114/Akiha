@@ -30,7 +30,6 @@ vndb_link: "https://vndb.org/v3079"
 
 trailer: "https://cloud.touchgaloss.com/2023/01/20231021221240667-Kud-Wafter-All-Ages-Edition-Opening.mp4"
 website: http://key.visualarts.gr.jp/kudo/index.html"
-steam_link: "https://store.steampowered.com/app/1160220/Kud_Wafter/"
 downloads:
   - name: "Windows"
     url: "https://pan.touchgal.net/s/8qSg"
@@ -42,5 +41,6 @@ screenshots:
 - "https://cloud.touchgaloss.com/uploads/f8e5d892b3122643_jpg.avif"
 - "https://cloud.touchgaloss.com/uploads/27e5aacd68122708_jpg.avif"
 
-wiki_link: "https://zh.wikipedia.org/wiki/Little_Busters!"
+steam_link: ""
+wiki_link: "https://zh.wikipedia.org/wiki/Kud_Wafter"
 ---

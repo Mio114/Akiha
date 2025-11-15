@@ -26,7 +26,7 @@ vndb_link: "https://vndb.org/v49954"
 
 trailer: "https://cloud.touchgaloss.com/2024/08/219525f44b20240803215233.mp4"
 website: "https://primadoll.jp/kineticnovel/02/"
-steam_link: "https://store.steampowered.com/app/2417460/Heaven_Burns_Red_Unnamed_Ceremony/"
+steam_link: ""
 downloads:
   - name: "Windows"
     url: "https://pan.touchgal.net/s/GDgrcX"

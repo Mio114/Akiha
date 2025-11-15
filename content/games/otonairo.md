@@ -5,7 +5,7 @@ release_date: "2023-04-28"
 platforms: ["Windows", "Switch"]
 tags: ["人偶", "自我追寻", "战后"]
 rating: 7.53
-cover_image: "/images/天籁人偶-冬空焰火-雪花纹理.jpg"
+cover_image: "/images/天籁人偶 冬空焰火.jpg"
 description: |
   <p>冬空花火编</p>
   
@@ -19,14 +19,14 @@ description: |
   <p>她会帮助リリア实现去ローベリア的愿望吗……?</p>
 
 # 游戏别名
-alternative_names: ["Heaven Burns Red: Winter Sky Fireworks/Snowflake Texture", "ヘブンバーンズレッド 冬空の花火/雪花のテクスチャ"]
+alternative_names: ["Prima Doll: Fuyuzora Hanabi / Sekka Mon'you", "プリマドール 冬空花火／雪華文様"]
 
 # VNDB 链接
 vndb_link: "https://vndb.org/v29761"
 
 trailer: "https://cloud.touchgaloss.com/2023/05/c10daec6b020231031132447.mp4"
 website: "https://primadoll.jp/kineticnovel/01/index.html"
-steam_link: "https://store.steampowered.com/app/2164260/Heaven_Burns_Red_Winter_Sky_FireworksSnowflake_Texture/"
+steam_link: ""
 downloads:
   - name: "Windows"
     url: "https://pan.touchgal.net/s/d3ycb"
