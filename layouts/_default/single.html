@@ -35,6 +35,12 @@
     <link rel="stylesheet" href="{{ "css/companies-common.css" | relURL }}">
 {{ end }}
 
+<!-- 加载Nitro+作品页面特定CSS -->
+{{ if eq .Page.RelPermalink "/products/nitro-works/" }}
+    <link rel="stylesheet" href="{{ "css/companies.css" | relURL }}">
+    <link rel="stylesheet" href="{{ "css/companies-common.css" | relURL }}">
+{{ end }}
+
 <!-- 加载登录页面特定CSS -->
 {{ if eq .Page.RelPermalink "/login/" }}
     <link rel="stylesheet" href="{{ "css/style-login.css" | relURL }}">
