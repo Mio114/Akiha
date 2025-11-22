@@ -35,5 +35,12 @@
       <guid>http://localhost:1313/games/maiden-and-beast/</guid>
       <description></description>
     </item>
+    <item>
+      <title>龙恋</title>
+      <link>http://localhost:1313/games/dra-koi/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/dra-koi/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

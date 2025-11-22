@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello, world. - 视觉小说收藏</title>
+    <link rel="stylesheet" href="/css/game-detail.css">
+    <style>
+         
+.navbar {
+    background: rgba(255, 255, 255, 0.05) !important;  
+    backdrop-filter: blur(25px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;  
+}
+
+ 
+[data-theme="dark"] .navbar {
+    background: rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(20px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+ 
+.nav-links a {
+    color: var(--text-primary) !important;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+ 
+.nav-logo {
+    color: var(--text-primary) !important;
+    font-weight: 700;
+}
+
+ 
+.theme-toggle-new {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 4px;
+}
+
+ 
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(25px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
+}
+
+[data-theme="dark"] .navbar.scrolled {
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(25px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(180%) !important;
+}
+
+ 
+.nav-container {
+    position: relative;
+    z-index: 1;
+}
+    .navbar-controls {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        margin-left: auto;
+    }
+
+    .theme-toggle-new {
+        display: flex;
+        align-items: center;
+        -webkit-tap-highlight-color: transparent;
+        cursor: pointer;
+        transform: scale(0.6);
+        margin-right: -0.5rem;
+    }
+
+    .theme__fill,
+    .theme__icon {
+        transition: 0.3s;
+    }
+
+    .theme__fill {
+        background-color: var(--bg);
+        display: block;
+        mix-blend-mode: difference;
+        position: fixed;
+        inset: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        z-index: 9998;
+    }
+
+    .theme__icon,
+    .theme__toggle {
+        z-index: 1;
+    }
+
+    .theme__icon,
+    .theme__icon-part {
+        position: absolute;
+    }
+
+    .theme__icon {
+        display: block;
+        top: 0.5em;
+        left: 0.5em;
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    .theme__icon-part {
+        border-radius: 50%;
+        box-shadow: 0.4em -0.4em 0 0.5em hsl(0,0%,100%) inset;
+        top: calc(50% - 0.5em);
+        left: calc(50% - 0.5em);
+        width: 1em;
+        height: 1em;
+        transition: box-shadow 0.3s ease-in-out,
+            opacity 0.3s ease-in-out,
+            transform 0.3s ease-in-out;
+        transform: scale(0.5);
+    }
+
+    .theme__icon-part ~ .theme__icon-part {
+        background-color: hsl(0,0%,100%);
+        border-radius: 0.05em;
+        top: 50%;
+        left: calc(50% - 0.05em);
+        transform: rotate(0deg) translateY(0.5em);
+        transform-origin: 50% 0;
+        width: 0.1em;
+        height: 0.2em;
+    }
+
+    .theme__icon-part:nth-child(3) { transform: rotate(45deg) translateY(0.45em); }
+    .theme__icon-part:nth-child(4) { transform: rotate(90deg) translateY(0.45em); }
+    .theme__icon-part:nth-child(5) { transform: rotate(135deg) translateY(0.45em); }
+    .theme__icon-part:nth-child(6) { transform: rotate(180deg) translateY(0.45em); }
+    .theme__icon-part:nth-child(7) { transform: rotate(225deg) translateY(0.45em); }
+    .theme__icon-part:nth-child(8) { transform: rotate(270deg) translateY(0.45em); }
+    .theme__icon-part:nth-child(9) { transform: rotate(315deg) translateY(0.45em); }
+
+    .theme__toggle,
+    .theme__toggle:before {
+        display: block;
+    }
+
+    .theme__toggle {
+        background-color: hsl(48,90%,85%);
+        border-radius: 25% / 50%;
+        box-shadow: 0 0 0 0.125em rgba(74, 108, 247, 0.3);
+        padding: 0.25em;
+        width: 6em;
+        height: 3em;
+        -webkit-appearance: none;
+        appearance: none;
+        transition: background-color 0.3s ease-in-out,
+            box-shadow 0.15s ease-in-out,
+            transform 0.3s ease-in-out;
+        cursor: pointer;
+        border: none;
+        outline: none;
+    }
+
+    .theme__toggle:before {
+        background-color: hsl(48,90%,55%);
+        border-radius: 50%;
+        content: "";
+        width: 2.5em;
+        height: 2.5em;
+        transition: 0.3s;
+    }
+
+    .theme__toggle:focus {
+        box-shadow: 0 0 0 0.125em var(--primary-color);
+        outline: transparent;
+    }
+
+     
+    .theme__toggle:checked {
+        background-color: hsl(198,90%,15%);
+    }
+
+    .theme__toggle:checked:before,
+    .theme__toggle:checked ~ .theme__icon {
+        transform: translateX(3em);
+    }
+
+    .theme__toggle:checked:before {
+        background-color: hsl(198,90%,55%);
+    }
+
+    .theme__toggle:checked ~ .theme__fill {
+        transform: translateX(0);
+    }
+
+    .theme__toggle:checked ~ .theme__icon .theme__icon-part:nth-child(1) {
+        box-shadow: 0.2em -0.2em 0 0.2em hsl(0,0%,100%) inset;
+        transform: scale(1);
+        top: 0.2em;
+        left: -0.2em;
+    }
+
+    .theme__toggle:checked ~ .theme__icon .theme__icon-part ~ .theme__icon-part {
+        opacity: 0;
+    }
+
+    .theme__toggle:checked ~ .theme__icon .theme__icon-part:nth-child(2) {
+        transform: rotate(45deg) translateY(0.8em);
+    }
+
+    .theme__toggle:checked ~ .theme__icon .theme__icon-part:nth-child(3) {
+        transform: rotate(90deg) translateY(0.8em);
+    }
+
+    .theme__toggle:checked ~ .theme__icon .theme__icon-part:nth-child(4) {
+        transform: rotate(135deg) translateY(0.8em);
+    }
+
+    .theme__toggle:checked ~ .theme__icon .theme__icon-part:nth-child(5) {
+        transform: rotate(180deg) translateY(0.8em);
+    }
+
+    .theme__toggle:checked ~ .theme__icon .theme__icon-part:nth-child(6) {
+        transform: rotate(225deg) translateY(0.8em);
+    }
+
+    .theme__toggle:checked ~ .theme__icon .theme__icon-part:nth-child(7) {
+        transform: rotate(270deg) translateY(0.8em);
+    }
+
+    .theme__toggle:checked ~ .theme__icon .theme__icon-part:nth-child(8) {
+        transform: rotate(315deg) translateY(0.8em);
+    }
+
+    .theme__toggle:checked ~ .theme__icon .theme__icon-part:nth-child(9) {
+        transform: rotate(360deg) translateY(0.8em);
+    }
+
+    .theme__toggle-wrap {
+        margin: 0;
+        position: relative;
+    }
+
+     
+    @media (max-width: 768px) {
+        .theme-toggle-new {
+            transform: scale(0.7);
+            margin-right: -0.5rem;
+        }
+        
+        .navbar-controls {
+            gap: 1rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">VisualNovel</a>
+            <div class="navbar-controls">
+            <div class="theme-toggle-new">
+                <div class="theme__toggle-wrap">
+                    <input type="checkbox" class="theme__toggle" id="theme" role="switch" aria-label="切换主题">
+                    <div class="theme__fill"></div>
+                    <div class="theme__icon">
+                        <span class="theme__icon-part"></span>
+                        <span class="theme__icon-part"></span>
+                        <span class="theme__icon-part"></span>
+                        <span class="theme__icon-part"></span>
+                        <span class="theme__icon-part"></span>
+                        <span class="theme__icon-part"></span>
+                        <span class="theme__icon-part"></span>
+                        <span class="theme__icon-part"></span>
+                        <span class="theme__icon-part"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="/">首页</a>
+                <a href="/games">游戏库</a>
+            </div>
+        </div>
+    </nav>
+
+    
+    <main class="game-main">
+        
+        <div class="cover-background">
+            
+            <img src="/images/Hello-world.jpg" alt="Hello, world." class="background-image">
+            
+            <div class="background-overlay"></div>
+        </div>
+
+        
+        <div class="game-content">
+            <div class="game-header">
+                <div class="cover-container">
+                    
+                    <img src="/images/Hello-world.jpg" alt="Hello, world." class="game-cover">
+                    
+                </div>
+                
+                <div class="game-info">
+                    <h1 class="game-title">Hello, world.</h1>
+                    <div class="game-meta">
+                        
+                        <div class="meta-item">
+                            <span class="meta-label">开发商</span>
+                            <span class="meta-value">Nitro&#43;</span>
+                        </div>
+                        
+                        
+                        
+                        <div class="meta-item">
+                            <span class="meta-label">发行日期</span>
+                            <span class="meta-value">2002-09-27</span>
+                        </div>
+                        
+                        
+                        
+                        
+                        <div class="meta-item">
+                            <span class="meta-label">别名</span>
+                            <span class="meta-value">ハローワールド</span>
+                        </div>
+                        
+                        
+                        
+                        <div class="meta-item rating-item">
+                            <span class="meta-label">评分</span>
+                            <span class="rating-value">7.98</span>
+                            <div class="rating-stars">
+                                
+                                
+                                <span class="star filled">★</span>
+                                
+                                <span class="star filled">★</span>
+                                
+                                <span class="star filled">★</span>
+                                
+                                <span class="star ">★</span>
+                                
+                                <span class="star ">★</span>
+                                
+                            </div>
+                            
+                            
+                            <a href="https://vndb.org/v431" target="_blank" class="vndb-link" title="评分来自 VNDB">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+                                </svg>
+                            </a>
+                            
+                        </div>
+                        
+                    </div>
+
+                    
+                    
+                    <div class="platforms">
+                        <span class="section-label">平台</span>
+                        <div class="platform-tags">
+                            
+                            <span class="platform-tag">Windows</span>
+                            
+                        </div>
+                    </div>
+                    
+
+                    
+                    
+                    <div class="tags-section">
+                        <span class="section-label">标签</span>
+                        <div class="tag-list">
+                            
+                            <span class="game-tag">编程</span>
+                            
+                            <span class="game-tag">虚拟现实</span>
+                            
+                            <span class="game-tag">悬疑</span>
+                            
+                        </div>
+                    </div>
+                    
+
+                    
+                    <div class="page-navigation">
+                        <button class="nav-btn active" data-page="description">游戏介绍</button>
+                        <button class="nav-btn" data-page="links">官网与下载</button>
+                        <button class="nav-btn" data-page="reviews">游戏评价</button>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="page-content">
+                
+                <div class="page active" id="description-page">
+                <section class="description-section">
+    <h2 class="section-title">游戏介绍</h2>
+    <div class="description-content">
+        
+            
+<p>这里、有我想要守护之人存在。</p>
+
+<p>主人公、友永和樹乃是「机器人」。<br>
+并非简单的机械组合、而是装备与人类相似的、超精密程式的、高科技机械大脑的拟态机器人。<br>
+被任命调查人类感情的和樹、为了完成任务而潜伏进入到了适合调查的某一场所"皇路学園"。</p>
+
+<p>为了完成目的而与各种各样的女孩子相遇、并积极与她们交流、<br>
+但她们对待自己的态度行为那些感情完全是自己无法理解的。</p>
+
+<p>比起深化交流获取有价值的信息变为了纯粹的"兴趣"与"好意"、<br>
+并非因为命令、他渐渐的自发形成了个人的价值观。</p>
+
+<p>就在不远的未来、「命运的决断」即将袭来、此时的他们还一无所知……。</p>
+
+
+        
+    </div>
+</section>
+
+                    
+                    
+                    <section class="screenshots-section">
+                        <h2 class="section-title">游戏截图</h2>
+                        <div class="screenshots-grid">
+                            
+                            <div class="screenshot-item">
+                                <img src="https://cloud.touchgaloss.com/uploads/20250705111212049.avif" alt="游戏截图" class="screenshot-image">
+                            </div>
+                            
+                            <div class="screenshot-item">
+                                <img src="https://cloud.touchgaloss.com/uploads/20250705111220397.avif" alt="游戏截图" class="screenshot-image">
+                            </div>
+                            
+                            <div class="screenshot-item">
+                                <img src="https://cloud.touchgaloss.com/uploads/20250705111230307.avif" alt="游戏截图" class="screenshot-image">
+                            </div>
+                            
+                        </div>
+                    </section>
+                    
+
+                    
+                    
+                    <section class="trailer-section">
+                        <h2 class="section-title">PV鉴赏</h2>
+                        <div class="video-container">
+                            <div class="video-placeholder" data-src="https://cloud.touchgaloss.com/uploads/20250705111348660.mp4">
+                                <div class="video-poster">
+                                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none">
+                                        <path d="M8 5v14l11-7z" fill="currentColor"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                </div>
+
+                
+                <div class="page" id="links-page">
+                    <section class="links-section">
+                        <h2 class="section-title">官方网站</h2>
+                        
+                        <div class="website-link-container">
+                            <a href="https://www.getchu.com/soft.phtml?id=546225" class="official-website-link" target="_blank">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="currentColor"/>
+                                </svg>
+                                <span>访问官方网站</span>
+                            </a>
+                            <p class="website-url">https://www.getchu.com/soft.phtml?id=546225</p>
+                        </div>
+                        
+                    </section>
+
+                   <section class="download-section">
+    <h2 class="section-title">下载链接</h2>
+    
+    <div class="download-links">
+        <div class="download-dropdown">
+            <button class="download-main-button">
+                <span>下载游戏</span>
+                <span class="icon">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </span>
+            </button>
+            <div class="download-dropdown-menu">
+                
+                <div class="download-option pc" data-url="https://pan.touchgal.net/s/55a6tE">
+                    <div class="option-icon">
+                        
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/>
+                        </svg>
+                        
+                    </div>
+                    <div class="option-info">
+                        <div class="option-name">Windows</div>
+                        <div class="option-desc">包含游戏本体文件，适用于 Windows 系统</div>
+                    </div>
+                    <span class="option-badge">pc</span>
+                </div>
+                
+            </div>
+        </div>
+        
+        <div class="download-info">
+            <p>请注意, 本站的 Galgame 下载资源和补丁均来自互联网或用户上传, 请自行鉴别资源安全性。如果您要发布资源, 请您选择正确的资源分类, 并仔细编写注意事项, 以免其它用户产生困扰。使用资源前请认真阅读资源的备注（如果有）, 以免产生问题。（若有解压码默认为touchgal）</p>
+        </div>
+    </div>
+    
+</section>
+
+                    <section class="additional-links-section">
+                        <h2 class="section-title">相关链接</h2>
+                        <div class="additional-links">
+                            
+
+                            
+
+                            
+                            <a href="https://ja.wikipedia.org/wiki/%22Hello,_world.%22" class="additional-link wiki-link" target="_blank">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+                                </svg>
+                                维基百科
+                            </a>
+                            
+                        </div>
+
+                        
+                    </section>
+                </div>
+
+                
+                <div class="page" id="reviews-page">
+                    <section class="review-section">
+                        <h2 class="section-title">发表评价</h2>
+                        <div class="review-editor">
+                            <textarea 
+                                class="review-textarea" 
+                                placeholder="您可以发布对于这个游戏的看法, 建议填写一定字数的短评。"
+                                maxlength="500"
+                            ></textarea>
+                            <div class="review-controls">
+                                <div class="review-counter">
+                                    <span class="char-count">0</span>/500 字
+                                </div>
+                                <button class="review-submit">发布评价</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="reviews-list-section">
+                        <h2 class="section-title">玩家评价</h2>
+                        <div class="reviews-list">
+                            <div class="review-placeholder">
+                                <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                                    <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z" fill="currentColor"/>
+                                </svg>
+                                <p>暂无评价，快来发表你的看法吧！</p>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2025  Akiha Field. 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <script src="/js/theme-switcher.js"></script>
+    <script>
+
+(function() {
+    'use strict';
+    
+    let themeToggle = null;
+    let toggleWrap = null;
+    
+    function initThemeFix() {
+        
+        if (themeToggle) return;
+        
+        themeToggle = document.getElementById('theme');
+        if (!themeToggle) return;
+        
+        console.log('初始化主题切换器修复...');
+        
+        
+        document.addEventListener('change', function(e) {
+            if (e.target === themeToggle) {
+                console.log('主题切换器状态变更:', themeToggle.checked);
+            }
+        }, { passive: true });
+        
+        
+        setTimeout(() => {
+            toggleWrap = document.querySelector('.theme__toggle-wrap');
+            if (toggleWrap) {
+                
+                toggleWrap.addEventListener('click', handleToggleClick, { passive: true });
+            }
+        }, 100);
+        
+        
+        Object.assign(themeToggle.style, {
+            pointerEvents: 'auto',
+            cursor: 'pointer'
+        });
+    }
+    
+    function handleToggleClick(e) {
+        if (e.target === themeToggle) return;
+        
+        e.stopPropagation();
+        themeToggle.checked = !themeToggle.checked;
+        
+        
+        requestAnimationFrame(() => {
+            themeToggle.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+    }
+    
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initThemeFix, { once: true });
+    } else {
+        
+        Promise.resolve().then(initThemeFix);
+    }
+    
+    
+    let checkCount = 0;
+    const maxChecks = 3; 
+    const checkInterval = setInterval(() => {
+        if (themeToggle || checkCount >= maxChecks) {
+            clearInterval(checkInterval);
+            return;
+        }
+        checkCount++;
+        initThemeFix();
+    }, 500);
+    
+    
+    document.addEventListener('visibilitychange', function() {
+        if (document.visibilityState === 'visible' && !themeToggle) {
+            initThemeFix();
+        }
+    }, { passive: true });
+    
+    
+    window.addEventListener('beforeunload', function() {
+        if (toggleWrap) {
+            toggleWrap.removeEventListener('click', handleToggleClick);
+        }
+    });
+})();
+</script>
+    <script src="/js/game-detail.js"></script>
+</body>
+</html>

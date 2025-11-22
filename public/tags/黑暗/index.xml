@@ -8,10 +8,24 @@
     <language>en-us</language>
     <atom:link href="http://localhost:1313/tags/%E9%BB%91%E6%9A%97/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>天使的双枪</title>
+      <link>http://localhost:1313/games/tenshi-no-nichou-kenjuu/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/tenshi-no-nichou-kenjuu/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>沙耶之歌</title>
       <link>http://localhost:1313/games/song-of-saya/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/games/song-of-saya/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>装甲悪鬼村正 邪念篇</title>
+      <link>http://localhost:1313/games/soukou-akki-muramasa-janen-hen/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/soukou-akki-muramasa-janen-hen/</guid>
       <description></description>
     </item>
   </channel>

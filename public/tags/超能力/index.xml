@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>超能力 on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/%E8%B6%85%E8%83%BD%E5%8A%9B/</link>
+    <description>Recent content in 超能力 on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/tags/%E8%B6%85%E8%83%BD%E5%8A%9B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>丑小鸭与文字祸</title>
+      <link>http://localhost:1313/games/minikui-mojika-no-ko/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/minikui-mojika-no-ko/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>罪恶王冠 失落的圣诞节</title>
+      <link>http://localhost:1313/games/guilty-crown/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/games/guilty-crown/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
