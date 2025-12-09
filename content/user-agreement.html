@@ -10,30 +10,29 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Microsoft YaHei', 'Segoe UI', sans-serif;
         }
         
         body {
-            background-color: #f5f7fa;
+            background-color: #f0f2f5;
             color: #333;
             line-height: 1.6;
-            padding: 20px;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
+            padding: 20px;
         }
         
         header {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            background: linear-gradient(135deg, #1a73e8 0%, #0d47a1 100%);
             color: white;
-            padding: 30px;
+            padding: 40px 20px;
             text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
         h1 {
@@ -45,69 +44,102 @@
             font-size: 1.1rem;
             opacity: 0.9;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 20px;
+        }
+        
+        .warning-box {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .warning-box::before {
+            content: "⚠️";
+            font-size: 24px;
+        }
+        
+        .tabs-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            margin-bottom: 30px;
         }
         
         .tabs {
             display: flex;
-            background-color: #f1f5f9;
-            border-bottom: 1px solid #ddd;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            border-bottom: 1px solid #dee2e6;
         }
         
-        .tab-button {
+        .tab {
             padding: 15px 30px;
             background: none;
             border: none;
             font-size: 1.1rem;
             font-weight: 600;
-            color: #64748b;
+            color: #495057;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
             position: relative;
+            flex: 1;
+            text-align: center;
         }
         
-        .tab-button:hover {
-            background-color: #e2e8f0;
-            color: #475569;
+        .tab:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+            color: #1a73e8;
         }
         
-        .tab-button.active {
-            color: #3b82f6;
+        .tab.active {
             background-color: white;
+            color: #1a73e8;
         }
         
-        .tab-button.active::after {
+        .tab.active::after {
             content: '';
             position: absolute;
             bottom: -1px;
             left: 0;
             right: 0;
             height: 3px;
-            background-color: #3b82f6;
+            background-color: #1a73e8;
         }
         
         .tab-content {
             display: none;
-            padding: 20px;
+            padding: 30px;
         }
         
         .tab-content.active {
             display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         .code-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            background-color: #1e293b;
+            background-color: #2d3748;
             color: white;
+            padding: 15px 20px;
             border-radius: 8px 8px 0 0;
             font-weight: 600;
         }
         
         .copy-btn {
-            background-color: #3b82f6;
+            background-color: #4a5568;
             color: white;
             border: none;
             padding: 8px 16px;
@@ -115,73 +147,100 @@
             cursor: pointer;
             font-weight: 600;
             transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .copy-btn:hover {
-            background-color: #2563eb;
+            background-color: #2d3748;
         }
         
-        .code-container {
-            position: relative;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        .copy-btn::before {
+            content: "📋";
+        }
+        
+        .copy-btn.copied {
+            background-color: #38a169;
+        }
+        
+        .copy-btn.copied::before {
+            content: "✓";
         }
         
         .code-display {
-            max-height: 500px;
+            max-height: 600px;
             overflow-y: auto;
-            background-color: #1e293b;
-            padding: 20px;
+            background-color: #2d3748;
+            padding: 0;
             border-radius: 0 0 8px 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
-        .description {
-            background-color: #f8fafc;
+        .code-display pre {
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .code-info {
+            background-color: #f8f9fa;
             padding: 20px;
             border-radius: 8px;
+            border-left: 4px solid #1a73e8;
             margin-top: 20px;
-            border-left: 4px solid #3b82f6;
         }
         
-        .description h3 {
-            color: #1e293b;
+        .code-info h3 {
+            color: #1a293b;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .code-info p {
+            color: #4a5568;
             margin-bottom: 10px;
         }
         
-        .description p {
-            color: #475569;
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
         }
         
-        .info-box {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #f0f9ff;
-            border-radius: 8px;
-            border-left: 4px solid #0ea5e9;
+        .feature {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
         }
         
-        .info-item {
-            flex: 1;
-            min-width: 200px;
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .info-item h4 {
-            color: #0369a1;
-            margin-bottom: 8px;
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .feature h3 {
+            color: #2d3748;
+            margin-bottom: 10px;
         }
         
         footer {
             text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            color: #64748b;
+            padding: 30px 0;
+            margin-top: 50px;
+            color: #718096;
             border-top: 1px solid #e2e8f0;
+            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
@@ -189,9 +248,10 @@
                 flex-direction: column;
             }
             
-            .tab-button {
+            .tab {
                 width: 100%;
                 text-align: left;
+                padding-left: 30px;
             }
             
             .code-header {
@@ -199,341 +259,541 @@
                 gap: 10px;
                 align-items: flex-start;
             }
+            
+            .features-list {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         
-        <div class="tabs">
-            <button class="tab-button active" data-tab="tab1">示例1: 鼠标选择器</button>
-            <button class="tab-button" data-tab="tab2">示例2: 隔行变色列表</button>
-            <button class="tab-button" data-tab="tab3">示例3: 导航特效</button>
-        </div>
-        
-        <div id="tab1" class="tab-content active">
-            <div class="code-container">
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" data-tab="tab1">示例1：用户信息表单</button>
+                <button class="tab" data-tab="tab2">示例2：四种布局切换</button>
+                <button class="tab" data-tab="tab3">示例3：下拉菜单导航</button>
+            </div>
+            
+            <!-- 示例1：用户信息表单 -->
+            <div id="tab1" class="tab-content active">
                 <div class="code-header">
-                    <span>代码示例 1: 鼠标选择器 (HTML+CSS+JS)</span>
-                    <button class="copy-btn" data-code="code1">复制代码</button>
+                    <span>用户信息表单 - 包含表单验证、文件上传和响应式设计</span>
+                    <button class="copy-btn" data-target="code1">复制代码</button>
                 </div>
-                <pre class="code-display"><code class="language-html" id="code1"><!-- 第一段代码: 鼠标选择器 -->
-&lt;!DOCTYPE html&gt;
+                <div class="code-display">
+                    <pre><code class="language-html" id="code1">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-&lt;head lang="en"&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;选择你喜欢的鼠标&lt;/title&gt;
+&lt;head&gt;
+    &lt;title&gt;用户信息表单&lt;/title&gt;
     &lt;style&gt;
-        *{font-size: 16px; font-family: "Arial", "微软雅黑"; line-height: 25px;}
-        div{
-            padding: 5px; text-align: center;
-            width: 300px;
-            display: inline;
+        body { 
+            padding: 20px; 
+            font-family: Arial; 
         }
-        img{
-            width: 300px;
+        .form-container { 
+            width: 650px; 
+            margin: auto; 
         }
-        div span{display: block;}
-        .mouse-title{
-            font-size: 20px;
-        } 
-        
+        .row { 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+        }
+        .inline-group { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 15px; 
+        }
+        label { 
+            width: 100px; 
+            text-align: right; 
+            margin-right: 10px; 
+        }
+        input, select, textarea { 
+            padding: 5px; 
+        }
+        .btn { 
+            margin-top: 15px; 
+            padding: 8px 20px; 
+        }
+        .required:after { 
+            content: " *"; 
+            color: red; 
+        }
+        .radio-group { 
+            display: inline-block; 
+            margin-right: 20px; 
+        }
+        .radio-group label { 
+            width: auto; 
+            margin-right: 5px; 
+        }
+        .radio-group input { 
+            width: auto; 
+        }
+        .file-upload-container { 
+            display: flex; 
+            align-items: center; 
+        }
+        .file-name-box { 
+            width: 200px; 
+            padding: 5px; 
+            border: 1px solid #ccc; 
+            background-color: #f9f9f9; 
+            margin-right: 10px; 
+            height: 20px; 
+            line-height: 20px; 
+        }
+        .file-input-container { 
+            display: flex; 
+            align-items: center; 
+        }
+        .file-input-container input[type="file"] { 
+            display: none; 
+        }
+        .file-input-container label { 
+            display: inline-block;
+            padding: 6px 12px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            cursor: pointer;
+            margin: 0;
+            width: auto;
+            text-align: center;
+        }
     &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;p&gt; &lt;span class="mouse-title"&gt;选择你喜欢的鼠标：&lt;/span&gt; &lt;br&gt;
-    &lt;input type="radio" name="mouse" onclick="mouse()"&gt;罗技——轨迹球&lt;br&gt;
-    &lt;input type="radio" name="mouse" onclick="mouse()"&gt;雷蛇——游戏鼠&lt;/p&gt;
-&lt;div&gt;&lt;img src="" alt="" id="image" onclick="img()"&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;
-&lt;script&gt;
-function mouse(){
-    var ele = document.getElementsByName("mouse");
-    var img = document.getElementById("image");
-    if(ele[0].checked){
-        img.setAttribute("src","images/gj.jpg");
-        img.setAttribute("alt","罗技——轨迹球");
-        img.nextSibling.innerHTML = "罗技——轨迹球";
-    }
-    else if(ele[1].checked){
-        img.setAttribute("src","images/ls.jpg");
-        img.setAttribute("alt","雷蛇——游戏鼠");
-        img.nextSibling.innerHTML = "雷蛇——游戏鼠";
-    }
-}
+    &lt;div class="form-container"&gt;
+        &lt;form&gt;
+            &lt;div class="inline-group"&gt;
+                &lt;label&gt;用户名：&lt;/label&gt;
+                &lt;input type="text" style="width:200px;"&gt;
+                &lt;label style="width:100px; text-align:right;"&gt;真实姓名：&lt;/label&gt;
+                &lt;input type="text" style="width:200px;"&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="inline-group"&gt;
+                &lt;label&gt;性别：&lt;/label&gt;
+                &lt;select style="width:200px;"&gt;
+                    &lt;option&gt;男&lt;/option&gt;
+                    &lt;option&gt;女&lt;/option&gt;
+                &lt;/select&gt;
+                &lt;label style="width:100px; text-align:right;"&gt;密码：&lt;/label&gt;
+                &lt;input type="password" style="width:200px;" value="198051"&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="inline-group"&gt;
+                &lt;label&gt;电子邮件：&lt;/label&gt;
+                &lt;input type="email" style="width:200px;" value="UserName@pkuschool.edu"&gt;
+                &lt;label style="width:100px; text-align:right;"&gt;联系电话：&lt;/label&gt;
+                &lt;input type="text" style="width:200px;"&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="row"&gt;
+                &lt;label class="required"&gt;用户类型：&lt;/label&gt;
+                &lt;div class="radio-group"&gt;
+                    &lt;input type="radio" name="type" checked&gt; &lt;label&gt;教师&lt;/label&gt;
+                    &lt;input type="radio" name="type"&gt; &lt;label&gt;学生&lt;/label&gt;
+                &lt;/div&gt;
+                &lt;label class="required"&gt;是否发布：&lt;/label&gt;
+                &lt;div class="radio-group"&gt;
+                    &lt;input type="radio" name="publish" checked&gt; &lt;label&gt;是&lt;/label&gt;
+                    &lt;input type="radio" name="publish"&gt; &lt;label&gt;否&lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="row"&gt;
+                &lt;label&gt;所在部门：&lt;/label&gt;
+                &lt;select style="width:510px;"&gt;
+                    &lt;option value=""&gt;请选择部门&lt;/option&gt;
+                    &lt;option value="math"&gt;数学系&lt;/option&gt;
+                    &lt;option value="physics"&gt;物理系&lt;/option&gt;
+                    &lt;option value="chemistry"&gt;化学系&lt;/option&gt;
+                    &lt;option value="biology"&gt;生物系&lt;/option&gt;
+                    &lt;option value="computer"&gt;计算机系&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="inline-group"&gt;
+                &lt;label&gt;所教学科：&lt;/label&gt;
+                &lt;select style="width:200px;"&gt;
+                    &lt;option value=""&gt;请选择学科&lt;/option&gt;
+                    &lt;option value="math"&gt;数学&lt;/option&gt;
+                    &lt;option value="physics"&gt;物理&lt;/option&gt;
+                    &lt;option value="chemistry"&gt;化学&lt;/option&gt;
+                    &lt;option value="biology"&gt;生物&lt;/option&gt;
+                    &lt;option value="english"&gt;英语&lt;/option&gt;
+                &lt;/select&gt;
+                &lt;label style="width:100px; text-align:right;"&gt;所属课程：&lt;/label&gt;
+                &lt;select style="width:200px;"&gt;
+                    &lt;option value=""&gt;请选择课程&lt;/option&gt;
+                    &lt;option value="math1"&gt;高等数学&lt;/option&gt;
+                    &lt;option value="physics1"&gt;大学物理&lt;/option&gt;
+                    &lt;option value="chemistry1"&gt;基础化学&lt;/option&gt;
+                    &lt;option value="biology1"&gt;生物学导论&lt;/option&gt;
+                    &lt;option value="english1"&gt;大学英语&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="row"&gt;
+                &lt;label&gt;职位：&lt;/label&gt;
+                &lt;input type="text" style="width:510px;"&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="row"&gt;
+                &lt;label&gt;时间：&lt;/label&gt;
+                &lt;input type="date" style="width:200px;" value="2025-01-01"&gt;
+                &lt;label class="required" style="margin-left:30px;"&gt;能否登陆：&lt;/label&gt;
+                &lt;div class="radio-group"&gt;
+                    &lt;input type="radio" name="login" checked&gt; &lt;label&gt;是&lt;/label&gt;
+                    &lt;input type="radio" name="login"&gt; &lt;label&gt;否&lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="row"&gt;
+                &lt;label&gt;上传照片：&lt;/label&gt;
+                &lt;div class="file-upload-container"&gt;
+                    &lt;div id="fileNameBox" class="file-name-box"&gt;未选择文件&lt;/div&gt;
+                    &lt;div class="file-input-container"&gt;
+                        &lt;input type="file" id="photoUpload" onchange="updateFileName()"&gt;
+                        &lt;label for="photoUpload"&gt;浏览...&lt;/label&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="row"&gt;
+                &lt;label&gt;个人描述：&lt;/label&gt;
+                &lt;textarea style="width:510px; height:80px; overflow-y:auto;"&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+            
+            &lt;div style="text-align:center; margin-top:20px;"&gt;
+                &lt;button class="btn" type="submit"&gt;添加&lt;/button&gt;
+                &lt;button class="btn" type="reset" onclick="resetFileName()"&gt;刷新&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+    &lt;/div&gt;
 
-function img(){
-    var alt = document.getElementById("image").getAttribute("alt");
-    alert("alt 属性值: " + alt);
-}
-&lt;/script&gt;
+    &lt;script&gt;
+        function updateFileName() {
+            const fileInput = document.getElementById('photoUpload');
+            const fileNameBox = document.getElementById('fileNameBox');
+            
+            if (fileInput.files.length &gt; 0) {
+                fileNameBox.textContent = fileInput.files[0].name;
+            } else {
+                fileNameBox.textContent = '未选择文件';
+            }
+        }
+        
+        function resetFileName() {
+            document.getElementById('fileNameBox').textContent = '未选择文件';
+        }
+    &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-            </div>
-        </div>
-        
-        <div id="tab2" class="tab-content">
-            <div class="code-container">
-                <div class="code-header">
-                    <span>代码示例 2: 隔行变色列表 (CSS和HTML分开)</span>
-                    <button class="copy-btn" data-code="code2">复制CSS</button>
-                    <button class="copy-btn" data-code="code2-html">复制HTML</button>
                 </div>
-                <pre class="code-display"><code class="language-css" id="code2">/* CSS部分 (nav.css) */
-*{padding:0px;margin:0px;font-size:12px;}
-a{
-    color:#000;
-    text-decoration:none;
-}
-ul{list-style:none;}
-dl,dt,dd{
-    display:block;
-}
-dl{
-    clear:both;
-    height:30px;
-    width:670px;
-    line-height:30px;
-}
-dl dt{
-    width:100px;
-    padding-left:10px;
-    float:left;
-}
-dl dd{
-    float:left;
-}
-dl dd a{margin:3px;}
-dl dd.more{
-    float:right;
-    margin-right:10px;
-}
-/* 奇数行背景色 */
-dl:nth-child(odd) {
-    background-color: #fff;
-}
-
-/* 偶数行背景色 */
-dl:nth-child(even) {
-    background-color: #ECECEC;
-}</code></pre>
-                
-                <pre class="code-display"><code class="language-html" id="code2-html"><!-- HTML部分 -->
-&lt;!DOCTYPE html&gt;
+            </div>
+            
+            <!-- 示例2：四种布局切换 -->
+            <div id="tab2" class="tab-content">
+                <div class="code-header">
+                    <span>四种布局切换 - 响应式布局设计和动态内容切换</span>
+                    <button class="copy-btn" data-target="code2">复制代码</button>
+                </div>
+                <div class="code-display">
+                    <pre><code class="language-html" id="code2">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-&lt;head lang="en"&gt;
-    &lt;meta charset="UTF-8"&gt;
-&lt;title&gt;隔行变色的列表&lt;/title&gt;
-&lt;link rel="stylesheet" href="css/nav.css"&gt;
-
+&lt;head&gt;
+    &lt;title&gt;四种布局&lt;/title&gt;
+    &lt;style&gt;
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-size: 24px;
+            text-align: center;
+            list-style: none;
+        }
+        
+        body { 
+            font-family: Arial; 
+            background: #d2ebef;
+        }
+        
+        .layout-container {
+            width: 980px;
+            margin: 0 auto;
+        }
+        
+        #nav, #banner, #footer, .content, .content_left, .content_right, .content_middle {
+            margin: 5px auto;
+        }
+        
+        #nav {
+            height: 80px;
+            background: #97D19D;
+        }
+        
+        #banner {
+            height: 30px;
+            background: #589354;
+        }
+        
+        #content {
+            height: 600px;
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+        
+        #footer {
+            height: 40px;
+            background: #589354;
+        }
+        
+        .layout1 .content_left {
+            width: 300px;
+            height: 600px;
+            background: #C0F0A3;
+        }
+        
+        .layout1 .content_right {
+            width: 750px;
+            height: 600px;
+            background: #FCF481;
+        }
+        
+        .layout2 .content_left {
+            width: 750px;
+            height: 600px;
+            background: #FCF481;
+        }
+        
+        .layout2 .content_right {
+            width: 300px;
+            height: 600px;
+            background: #C0F0A3;
+        }
+        
+        .layout3 .content {
+            width: 980px;
+            height: 600px;
+            background: #C0F0A3;
+        }
+        
+        .layout4 .content_left,
+        .layout4 .content_right {
+            width: 300px;
+            height: 600px;
+            background: #C0F0A3;
+        }
+        
+        .layout4 .content_middle {
+            width: 570px;
+            height: 600px;
+            background: #FCF481;
+        }
+        
+        .layout4 #footer {
+            background: #97D19D;
+        }
+    &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;div class="content"&gt;
-    &lt;dl&gt;
-        &lt;dt&gt;&lt;a href="#"&gt;[页游]&lt;/a&gt;&lt;/dt&gt;
-        &lt;dd&gt;
-        &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#"&gt;枪魂&lt;/a&gt;
-            &lt;a href="#"&gt;女神联盟&lt;/a&gt; &lt;a href="#"&gt;37WAN游戏&lt;/a&gt; &lt;a href="#"&gt;武易&lt;/a&gt; &lt;a href="#"&gt;斗圣&lt;/a&gt; &lt;a href="#"&gt;烈焰&lt;/a&gt; &lt;a href="#"&gt;大闹天宫OL&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;/dd&gt;
-        &lt;dd class="more"&gt;&lt;a href="#"&gt;更多&gt;&gt;&lt;/a&gt;&lt;/dd&gt;
-    &lt;/dl&gt;
-    &lt;dl class="s1"&gt;
-        &lt;dt&gt;&lt;a href="#"&gt;[小游戏]&lt;/a&gt;&lt;/dt&gt;
-        &lt;dd&gt;
-        &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#"&gt;4339小游戏&lt;/a&gt; &lt;a href="#"&gt;6949小游戏&lt;/a&gt; &lt;a href="#"&gt;3155小游戏&lt;/a&gt; &lt;a href="#"&gt;4399i小游戏&lt;/a&gt; &lt;a href="#"&gt;3199小游戏&lt;/a&gt; &lt;a href="#"&gt;7k7k7小游戏&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;/dd&gt;
-        &lt;dd class="more"&gt;&lt;a href="#"&gt;更多&gt;&gt;&lt;/a&gt;
-        &lt;/dd&gt;
-    &lt;/dl&gt;
-    &lt;dl&gt;
-        &lt;dt&gt;&lt;a href="#"&gt;[影视]&lt;/a&gt;&lt;/dt&gt;
-        &lt;dd&gt;
-        &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#"&gt;爱奇艺高清&lt;/a&gt;&lt;a href="#"&gt;土豆网&lt;/a&gt;&lt;a href="#"&gt;搜狐电影&lt;/a&gt;&lt;a href="#"&gt;CNTV&lt;/a&gt;
-            &lt;a href="#"&gt;KK美女视频&lt;/a&gt; &lt;a href="#"&gt;六间房&lt;/a&gt;
+    &lt;div style="margin:20px; text-align:center"&gt;
+        &lt;button onclick="changeLayout(1)"&gt;左窄右宽&lt;/button&gt;
+        &lt;button onclick="changeLayout(2)"&gt;左宽右窄&lt;/button&gt;
+        &lt;button onclick="changeLayout(3)"&gt;单栏布局&lt;/button&gt;
+        &lt;button onclick="changeLayout(4)"&gt;三栏布局&lt;/button&gt;
+    &lt;/div&gt;
+    
+    &lt;div id="layout-container"&gt;
+        &lt;div class="layout-container layout1"&gt;
+            &lt;div id="nav"&gt;&lt;/div&gt;
+            &lt;div id="banner"&gt;&lt;/div&gt;
+            &lt;div id="content"&gt;
+                &lt;div class="content_left"&gt;&lt;/div&gt;
+                &lt;div class="content_right"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div id="footer"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        function changeLayout(type) {
+            const container = document.getElementById('layout-container');
+            
+            const layouts = {
+                1: `&lt;div class="layout-container layout1"&gt;
+                    &lt;div id="nav"&gt;&lt;/div&gt;
+                    &lt;div id="banner"&gt;&lt;/div&gt;
+                    &lt;div id="content"&gt;
+                        &lt;div class="content_left"&gt;&lt;/div&gt;
+                        &lt;div class="content_right"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div id="footer"&gt;&lt;/div&gt;
+                &lt;/div&gt;`,
+                
+                2: `&lt;div class="layout-container layout2"&gt;
+                    &lt;div id="nav"&gt;&lt;/div&gt;
+                    &lt;div id="banner"&gt;&lt;/div&gt;
+                    &lt;div id="content"&gt;
+                        &lt;div class="content_left"&gt;&lt;/div&gt;
+                        &lt;div class="content_right"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div id="footer"&gt;&lt;/div&gt;
+                &lt;/div&gt;`,
+                
+                3: `&lt;div class="layout-container layout3"&gt;
+                    &lt;div id="nav"&gt;&lt;/div&gt;
+                    &lt;div id="banner"&gt;&lt;/div&gt;
+                    &lt;div id="content"&gt;
+                        &lt;div class="content"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div id="footer"&gt;&lt;/div&gt;
+                &lt;/div&gt;`,
+                
+                4: `&lt;div class="layout-container layout4"&gt;
+                    &lt;div id="nav"&gt;&lt;/div&gt;
+                    &lt;div id="banner"&gt;&lt;/div&gt;
+                    &lt;div id="content"&gt;
+                        &lt;div class="content_left"&gt;&lt;/div&gt;
+                        &lt;div class="content_middle"&gt;&lt;/div&gt;
+                        &lt;div class="content_right"&gt;&lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div id="footer"&gt;&lt;/div&gt;
+                &lt;/div&gt;`
+            };
+            
+            container.innerHTML = layouts[type];
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+            </div>
+            
+            <!-- 示例3：下拉菜单导航 -->
+            <div id="tab3" class="tab-content">
+                <div class="code-header">
+                    <span>下拉菜单导航 - CSS悬停效果和过渡动画</span>
+                    <button class="copy-btn" data-target="code3">复制代码</button>
+                </div>
+                <div class="code-display">
+                    <pre><code class="language-html" id="code3">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;下拉菜单导航&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body {
+            padding: 50px;
+        }
+        .nav-container {
+            position: relative;
+        }
+        .menu {
+            display: flex;
+        }
+        .menu &gt; li {
+            position: relative;
+        }
+        .menu a {
+            display: block;
+            padding: 15px 30px;
+            color: #333;
+            text-decoration: none;
+        }
+        .menu a:hover {
+            background: #f5f5f5;
+        }
+        .nav-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: red;
+        }
+        .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            display: none;
+            min-width: 120px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+            padding: 0;
+        }
+        .submenu li {
+            border-bottom: 1px solid #eee;
+        }
+        .submenu a {
+            color: #333;
+            padding: 8px 15px;
+            display: block;
+            text-align: center;
+        }
+        .submenu a:hover {
+            background-color: black;
+            color: white;
+        }
+        .menu li:hover .submenu {
+            display: block;
+        }
+        .submenu {
+            transition: opacity 0.3s ease 0.05s, visibility 0.3s ease 0.05s;
+        }
+        .menu li:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transition-delay: 0s;
+        }
+        .menu li .submenu {
+            opacity: 0;
+            visibility: hidden;
+            display: block !important;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="nav-container"&gt;
+        &lt;ul class="menu"&gt;
+            &lt;li&gt;
+                &lt;a href="#"&gt;首页&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href="#"&gt;企业园地&lt;/a&gt;
+                &lt;ul class="submenu"&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;企业风采&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;企业荣誉&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href="#"&gt;产品介绍&lt;/a&gt;
+                &lt;ul class="submenu"&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;保健品&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="#"&gt;药品&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
             &lt;/li&gt;
         &lt;/ul&gt;
-        &lt;/dd&gt;
-        &lt;dd class="more"&gt;&lt;a href="#"&gt;更多&gt;&gt;&lt;/a&gt;
-        &lt;/dd&gt;
-    &lt;/dl&gt;
-    &lt;dl class="s1"&gt;
-        &lt;dt&gt;&lt;a href="#"&gt;[小说]&lt;/a&gt;&lt;/dt&gt;
-        &lt;dd&gt;
-        &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#"&gt;起点女生网&lt;/a&gt; &lt;a href="#"&gt;纵横中文网&lt;/a&gt; &lt;a href="#"&gt;杂志铺&lt;/a&gt;&lt;a href="#"&gt;潇湘书院&lt;/a&gt; &lt;a href="#"&gt;起点&lt;/a&gt; &lt;a href="#"&gt;言情小说吧&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;/dd&gt;
-        &lt;dd class="more"&gt;&lt;a href="#"&gt;更多&gt;&gt;&lt;/a&gt;
-        &lt;/dd&gt;
-    &lt;/dl&gt;
-    &lt;dl&gt;
-        &lt;dt&gt;&lt;a href="#"&gt;[游戏]&lt;/a&gt;&lt;/dt&gt;
-        &lt;dd&gt;
-        &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#"&gt;同城游棋牌&lt;/a&gt;&lt;a href="#"&gt;新浪游戏&lt;/a&gt;&lt;a href="#"&gt;5173游戏交易&lt;/a&gt;&lt;a href="#"&gt;17173游戏&lt;/a&gt;&lt;a href="#"&gt;多玩游戏&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;/dd&gt;
-        &lt;dd class="more"&gt;&lt;a href="#"&gt;更多&gt;&gt;&lt;/a&gt;
-        &lt;/dd&gt;
-    &lt;/dl&gt;
-    &lt;dl class="s1"&gt;
-        &lt;dt&gt;&lt;a href="#"&gt;[音乐]&lt;/a&gt;&lt;/dt&gt;
-        &lt;dd&gt;
-        &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#"&gt;一听音乐网&lt;/a&gt; &lt;a href="#"&gt;搜狗音乐&lt;/a&gt; &lt;a href="#"&gt;百度mp3&lt;/a&gt; &lt;a href="#"&gt;音悦台MV&lt;/a&gt; &lt;a href="#"&gt;快乐男声&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;/dd&gt;
-        &lt;dd class="more"&gt;&lt;a href="#"&gt;更多&gt;&gt;&lt;/a&gt;
-        &lt;/dd&gt;
-    &lt;/dl&gt;
-    &lt;dl&gt;
-        &lt;dt&gt;&lt;a href="#"&gt;[交友]&lt;/a&gt;&lt;/dt&gt;
-        &lt;dd&gt;
-        &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#"&gt;世纪佳缘&lt;/a&gt;
-            &lt;a href="#"&gt;同城交友网&lt;/a&gt;&lt;a href="#"&gt;珍爱网&lt;/a&gt;&lt;a href="#"&gt;美女秀场&lt;/a&gt; &lt;a href="#"&gt;非诚勿扰&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;/dd&gt;
-        &lt;dd class="more"&gt;&lt;a href="#"&gt;更多&gt;&gt;&lt;/a&gt;
-        &lt;/dd&gt;
-    &lt;/dl&gt;
-    &lt;dl class="s1"&gt;
-        &lt;dt&gt;&lt;a href="#"&gt;[旅游]&lt;/a&gt;&lt;/dt&gt;
-        &lt;dd&gt;
-        &lt;ul&gt;
-            &lt;li&gt;&lt;a href="#"&gt;携程旅游&lt;/a&gt;&lt;a href="#"&gt;途牛旅游网&lt;/a&gt;&lt;a href="#"&gt;云南旅游&lt;/a&gt;&lt;a href="#"&gt;艺龙订酒店&lt;/a&gt; &lt;a href="#"&gt;去哪儿旅游&lt;/a&gt; &lt;a href="#"&gt;迪士尼门票&lt;/a&gt; &lt;a href="#"&gt;同程机票&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-        &lt;/dd&gt;
-        &lt;dd class="more"&gt;&lt;a href="#"&gt;更多&gt;&gt;&lt;/a&gt;
-        &lt;/dd&gt;
-    &lt;/dl&gt;
-     
-&lt;/div&gt;
-
+    &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+                </div>
             </div>
         </div>
-        
-        <div id="tab3" class="tab-content">
-            <div class="code-container">
-                <div class="code-header">
-                    <span>代码示例 3: 导航特效</span>
-                    <button class="copy-btn" data-code="code3">复制代码</button>
-                </div>
-                <pre class="code-display"><code class="language-html" id="code3"><!-- 第三段代码: 导航特效 -->
-&lt;!doctype html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-	&lt;meta charset="UTF-8"&gt;
-&lt;title&gt;导航特效&lt;/title&gt;
-&lt;style type="text/css"&gt;
-*{
-	margin: 0px;
-	padding: 0px;
-	font-size: 12px;
-}
-#nav .navsBox{
-	width: 160px;
-}
-#nav .navsBox .firstNav{
-	height:45px;
-	line-height:45px;
-	background-color:#EBEBEB;
-	border-left:10px solid #FE705C;
-	padding-left:20px;
-	width:130px;
-	font-weight:bold;
-	cursor: pointer;
-}
-#nav .navsBox ul{
-	display:none;
-	list-style:none; 
-}
-#nav .navsBox ul.show {
-    display: block;
-}
-#nav .navsBox ul li{
-	display:block;
-	height:45px;
-	line-height:45px;
-	padding-left:70px;
-	width:90px; 
-	background:#F2F2F2 33px 7px no-repeat;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#nav .navsBox ul li.jedh{
-	background-image:url("./images/huan.gif");
-}
-#nav .navsBox ul li.jlbbyk{
-	background-image:url("./images/you.gif");
-}
-#nav .navsBox ul li.jwljb{
-	background-image:url("./images/gouwu.gif");
-}
-#nav .navsBox ul li.mrljb{
-	background-image:url("./images/meiri.gif");
-}
-#nav .navsBox ul li.vipjtj{
-	background-image:url("./images/zhe.gif");
-}
-#nav .navsBox ul li.onbg,
-#nav .navsBox ul li:hover{
-	background-color:#F9DBD1;
-}
-
-#nav .navsBox ul li a{
-	color:#000;
-	text-decoration:none;	
-}
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;div id="nav"&gt; 
-	 &lt;div class="navsBox"&gt;
-	 	&lt;div class="firstNav"&gt;购物特权&lt;/div&gt; 
-		&lt;ul&gt;
-			&lt;li class="jedh"&gt;&lt;a href="#"&gt;全额兑换&lt;/a&gt;&lt;/li&gt;
-			&lt;li class="jlbbyk"&gt;&lt;a href="#"&gt;俱乐部包邮卡&lt;/a&gt;&lt;/li&gt;
-			&lt;li class="jwljb"&gt;&lt;a href="#"&gt;购物领金币&lt;/a&gt;&lt;/li&gt;
-			&lt;li class="mrljb"&gt;&lt;a href="#"&gt;每日领金币&lt;/a&gt;&lt;/li&gt;
-			&lt;li class="vipjtj"&gt;&lt;a href="#"&gt;VIP阶梯价&lt;/a&gt;&lt;/li&gt;
-		&lt;/ul&gt;
-	 &lt;/div&gt; 
-&lt;/div&gt;
-
-&lt;script&gt;
-document.addEventListener('DOMContentLoaded', function() {
-    const firstNav = document.querySelector('.firstNav');
-    const subMenu = document.querySelector('.navsBox ul');
-    
-    // 点击主菜单切换二级菜单显示/隐藏
-    firstNav.addEventListener('click', function() {
-        subMenu.classList.toggle('show');
-    });
-    
-    // 鼠标移入移出子菜单项添加/移除背景色
-    const menuItems = document.querySelectorAll('.navsBox ul li');
-    menuItems.forEach(item =&gt; {
-        item.addEventListener('mouseenter', function() {
-            this.classList.add('onbg');
-        });
-        
-        item.addEventListener('mouseleave', function() {
-            this.classList.remove('onbg');
-        });
-    });
-});
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-            </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
@@ -543,15 +803,15 @@ document.addEventListener('DOMContentLoaded', function() {
             hljs.highlightAll();
             
             // 标签页切换功能
-            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabs = document.querySelectorAll('.tab');
             const tabContents = document.querySelectorAll('.tab-content');
             
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
                     const tabId = this.getAttribute('data-tab');
                     
                     // 移除所有active类
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabs.forEach(t => t.classList.remove('active'));
                     tabContents.forEach(content => content.classList.remove('active'));
                     
                     // 添加active类到当前标签
@@ -565,8 +825,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             copyButtons.forEach(button => {
                 button.addEventListener('click', function() {
-                    const codeId = this.getAttribute('data-code');
-                    const codeElement = document.getElementById(codeId);
+                    const targetId = this.getAttribute('data-target');
+                    const codeElement = document.getElementById(targetId);
                     
                     // 获取代码文本
                     let codeText = codeElement.textContent;
@@ -579,19 +839,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     try {
                         const successful = document.execCommand('copy');
-                        const originalText = this.textContent;
-                        this.textContent = successful ? '已复制!' : '复制失败';
-                        
-                        setTimeout(() => {
-                            this.textContent = originalText;
-                        }, 2000);
+                        if (successful) {
+                            // 显示复制成功状态
+                            this.classList.add('copied');
+                            this.textContent = '已复制';
+                            
+                            setTimeout(() => {
+                                this.classList.remove('copied');
+                                this.innerHTML = '<span>📋</span> 复制代码';
+                            }, 2000);
+                        }
                     } catch (err) {
                         console.error('复制失败: ', err);
-                        this.textContent = '复制失败';
-                        
-                        setTimeout(() => {
-                            this.textContent = '复制代码';
-                        }, 2000);
+                        alert('复制失败，请手动选择并复制代码');
                     }
                     
                     document.body.removeChild(textArea);
