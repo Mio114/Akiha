@@ -380,7 +380,8 @@
                     <button class="copy-btn" data-target="code1">复制代码</button>
                 </div>
                 <div class="code-display">
-                    <pre><code class="language-html" id="code1">&lt;!DOCTYPE html&gt;
+                    <pre><code class="language-html" id="code1">
+                        &lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
     &lt;title&gt;用户信息表单&lt;/title&gt;
@@ -415,181 +416,46 @@
             margin-top: 15px; 
             padding: 8px 20px; 
         }
-        .required:after { 
-            content: " *"; 
-            color: red; 
-        }
-        .radio-group { 
-            display: inline-block; 
-            margin-right: 20px; 
-        }
-        .radio-group label { 
-            width: auto; 
-            margin-right: 5px; 
-        }
-        .radio-group input { 
-            width: auto; 
-        }
-        .file-upload-container { 
-            display: flex; 
-            align-items: center; 
-        }
-        .file-name-box { 
-            width: 200px; 
-            padding: 5px; 
-            border: 1px solid #ccc; 
-            background-color: #f9f9f9; 
-            margin-right: 10px; 
-            height: 20px; 
-            line-height: 20px; 
-        }
-        .file-input-container { 
-            display: flex; 
-            align-items: center; 
-        }
-        .file-input-container input[type="file"] { 
-            display: none; 
-        }
-        .file-input-container label { 
-            display: inline-block;
-            padding: 6px 12px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            cursor: pointer;
-            margin: 0;
-            width: auto;
-            text-align: center;
-        }
     &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;div class="form-container"&gt;
+    &lt;div class=&quot;form-container&quot;&gt;
         &lt;form&gt;
-            &lt;div class="inline-group"&gt;
-                &lt;label&gt;用户名：&lt;/label&gt;
-                &lt;input type="text" style="width:200px;"&gt;
-                &lt;label style="width:100px; text-align:right;"&gt;真实姓名：&lt;/label&gt;
-                &lt;input type="text" style="width:200px;"&gt;
+            &lt;div class=&quot;inline-group&quot;&gt;
+                &lt;label&gt;你的姓名：&lt;/label&gt;
+                &lt;input type=&quot;text&quot; style=&quot;width:200px;&quot;&gt;
             &lt;/div&gt;
             
-            &lt;div class="inline-group"&gt;
+            &lt;div class=&quot;inline-group&quot;&gt;
                 &lt;label&gt;性别：&lt;/label&gt;
-                &lt;select style="width:200px;"&gt;
+                &lt;select style=&quot;width:200px;&quot;&gt;
+                    &lt;option&gt;请选择&lt;/option&gt;
                     &lt;option&gt;男&lt;/option&gt;
                     &lt;option&gt;女&lt;/option&gt;
                 &lt;/select&gt;
-                &lt;label style="width:100px; text-align:right;"&gt;密码：&lt;/label&gt;
-                &lt;input type="password" style="width:200px;" value="198051"&gt;
             &lt;/div&gt;
             
-            &lt;div class="inline-group"&gt;
+            &lt;div class=&quot;inline-group&quot;&gt;
                 &lt;label&gt;电子邮件：&lt;/label&gt;
-                &lt;input type="email" style="width:200px;" value="UserName@pkuschool.edu"&gt;
-                &lt;label style="width:100px; text-align:right;"&gt;联系电话：&lt;/label&gt;
-                &lt;input type="text" style="width:200px;"&gt;
+                &lt;input type=&quot;email&quot; style=&quot;width:200px;&quot; value=&quot;&quot;&gt;
+            &lt;/div&gt;
+     
+                      &lt;div class=&quot;inline-group&quot;&gt;
+                &lt;label&gt;信息标题：&lt;/label&gt;
+                &lt;input type=&quot;text&quot; style=&quot;width:200px;&quot;&gt;
+            &lt;/div&gt;
+
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;label&gt;信息描述：&lt;/label&gt;
+                &lt;textarea style=&quot;width:510px; height:80px; overflow-y:auto;&quot;&gt;&lt;/textarea&gt;
             &lt;/div&gt;
             
-            &lt;div class="row"&gt;
-                &lt;label class="required"&gt;用户类型：&lt;/label&gt;
-                &lt;div class="radio-group"&gt;
-                    &lt;input type="radio" name="type" checked&gt; &lt;label&gt;教师&lt;/label&gt;
-                    &lt;input type="radio" name="type"&gt; &lt;label&gt;学生&lt;/label&gt;
-                &lt;/div&gt;
-                &lt;label class="required"&gt;是否发布：&lt;/label&gt;
-                &lt;div class="radio-group"&gt;
-                    &lt;input type="radio" name="publish" checked&gt; &lt;label&gt;是&lt;/label&gt;
-                    &lt;input type="radio" name="publish"&gt; &lt;label&gt;否&lt;/label&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            
-            &lt;div class="row"&gt;
-                &lt;label&gt;所在部门：&lt;/label&gt;
-                &lt;select style="width:510px;"&gt;
-                    &lt;option value=""&gt;请选择部门&lt;/option&gt;
-                    &lt;option value="math"&gt;数学系&lt;/option&gt;
-                    &lt;option value="physics"&gt;物理系&lt;/option&gt;
-                    &lt;option value="chemistry"&gt;化学系&lt;/option&gt;
-                    &lt;option value="biology"&gt;生物系&lt;/option&gt;
-                    &lt;option value="computer"&gt;计算机系&lt;/option&gt;
-                &lt;/select&gt;
-            &lt;/div&gt;
-            
-            &lt;div class="inline-group"&gt;
-                &lt;label&gt;所教学科：&lt;/label&gt;
-                &lt;select style="width:200px;"&gt;
-                    &lt;option value=""&gt;请选择学科&lt;/option&gt;
-                    &lt;option value="math"&gt;数学&lt;/option&gt;
-                    &lt;option value="physics"&gt;物理&lt;/option&gt;
-                    &lt;option value="chemistry"&gt;化学&lt;/option&gt;
-                    &lt;option value="biology"&gt;生物&lt;/option&gt;
-                    &lt;option value="english"&gt;英语&lt;/option&gt;
-                &lt;/select&gt;
-                &lt;label style="width:100px; text-align:right;"&gt;所属课程：&lt;/label&gt;
-                &lt;select style="width:200px;"&gt;
-                    &lt;option value=""&gt;请选择课程&lt;/option&gt;
-                    &lt;option value="math1"&gt;高等数学&lt;/option&gt;
-                    &lt;option value="physics1"&gt;大学物理&lt;/option&gt;
-                    &lt;option value="chemistry1"&gt;基础化学&lt;/option&gt;
-                    &lt;option value="biology1"&gt;生物学导论&lt;/option&gt;
-                    &lt;option value="english1"&gt;大学英语&lt;/option&gt;
-                &lt;/select&gt;
-            &lt;/div&gt;
-            
-            &lt;div class="row"&gt;
-                &lt;label&gt;职位：&lt;/label&gt;
-                &lt;input type="text" style="width:510px;"&gt;
-            &lt;/div&gt;
-            
-            &lt;div class="row"&gt;
-                &lt;label&gt;时间：&lt;/label&gt;
-                &lt;input type="date" style="width:200px;" value="2025-01-01"&gt;
-                &lt;label class="required" style="margin-left:30px;"&gt;能否登陆：&lt;/label&gt;
-                &lt;div class="radio-group"&gt;
-                    &lt;input type="radio" name="login" checked&gt; &lt;label&gt;是&lt;/label&gt;
-                    &lt;input type="radio" name="login"&gt; &lt;label&gt;否&lt;/label&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            
-            &lt;div class="row"&gt;
-                &lt;label&gt;上传照片：&lt;/label&gt;
-                &lt;div class="file-upload-container"&gt;
-                    &lt;div id="fileNameBox" class="file-name-box"&gt;未选择文件&lt;/div&gt;
-                    &lt;div class="file-input-container"&gt;
-                        &lt;input type="file" id="photoUpload" onchange="updateFileName()"&gt;
-                        &lt;label for="photoUpload"&gt;浏览...&lt;/label&gt;
-                    &lt;/div&gt;
-                &lt;/div&gt;
-            &lt;/div&gt;
-            
-            &lt;div class="row"&gt;
-                &lt;label&gt;个人描述：&lt;/label&gt;
-                &lt;textarea style="width:510px; height:80px; overflow-y:auto;"&gt;&lt;/textarea&gt;
-            &lt;/div&gt;
-            
-            &lt;div style="text-align:center; margin-top:20px;"&gt;
-                &lt;button class="btn" type="submit"&gt;添加&lt;/button&gt;
-                &lt;button class="btn" type="reset" onclick="resetFileName()"&gt;刷新&lt;/button&gt;
+            &lt;div style=&quot;text-align:center; margin-top:20px;&quot;&gt;
+                &lt;button class=&quot;btn&quot; type=&quot;submit&quot;&gt;提交&lt;/button&gt;
+                &lt;button class=&quot;btn&quot; type=&quot;reset&quot; onclick=&quot;resetFileName()&quot;&gt;重置&lt;/button&gt;
             &lt;/div&gt;
         &lt;/form&gt;
     &lt;/div&gt;
-
-    &lt;script&gt;
-        function updateFileName() {
-            const fileInput = document.getElementById('photoUpload');
-            const fileNameBox = document.getElementById('fileNameBox');
-            
-            if (fileInput.files.length &gt; 0) {
-                fileNameBox.textContent = fileInput.files[0].name;
-            } else {
-                fileNameBox.textContent = '未选择文件';
-            }
-        }
-        
-        function resetFileName() {
-            document.getElementById('fileNameBox').textContent = '未选择文件';
-        }
-    &lt;/script&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
                 </div>
